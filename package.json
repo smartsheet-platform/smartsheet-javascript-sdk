@@ -1,0 +1,48 @@
+{
+  "name": "smartsheet",
+  "version": "0.0.1",
+  "description": "Smartsheet JavaScript SDK",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/smartsheet-platform/smartsheet-javascript-sdk.git"
+  },
+  "keywords": [
+    "Smartsheet",
+    "productivity",
+    "collaboration"
+  ],
+  "author": "Smartsheet",
+  "licenses": [
+    {
+      "type": "Apache-2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0"
+    }
+  ],
+  "bugs": {
+    "url": "https://github.com/smartsheet-platform/smartsheet-javascript-sdk/issues"
+  },
+  "browser": {
+    "request": "browser-request"
+  },
+  "homepage": "http://smartsheet.com/developers",
+  "dependencies": {
+    "bluebird": "^2.9.24",
+    "request": "^2.54.0",
+    "underscore": "^1.8.2"
+  },
+  "devDependencies": {
+    "gulp": "^3.8.11",
+    "gulp-jshint": "^1.10.0",
+    "gulp-mocha": "^2.0.1",
+    "gulp-util": "^3.0.4",
+    "jshint-stylish": "^1.0.1",
+    "mocha": "^2.2.1",
+    "mock": "^0.1.1",
+    "should": "^5.2.0",
+    "sinon": "^1.14.1"
+  }
+}
