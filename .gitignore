@@ -2,4 +2,3 @@ node_modules/
 config/default.json
 .idea/**
 .DS_Store
-samples/
