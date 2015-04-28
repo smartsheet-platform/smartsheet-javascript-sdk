@@ -38,7 +38,7 @@ describe('Utils Unit Tests', function() {
 
   beforeEach(function() {
     smartsheet = require('../lib/utils/httpUtils');
-    console.log(smartsheet);
+    //console.log(smartsheet);
     stub = sinon.stub(request, 'getAsync');
     handleResponseStub = sinon.stub(smartsheet, 'handleResponse');
     var mockResponse = {

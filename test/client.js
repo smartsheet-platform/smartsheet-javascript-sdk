@@ -35,7 +35,7 @@ describe('Client Unit Tests', function() {
     });
 
     it('should have Sheets get methods', function() {
-      Object.keys(smartsheet.sheets).should.be.length(12);
+      Object.keys(smartsheet.sheets).should.be.length(48);
       smartsheet.sheets.should.have.property('getSheet');
       smartsheet.sheets.should.have.property('getSheetAsCsv');
       smartsheet.sheets.should.have.property('getSheetAsPdf');

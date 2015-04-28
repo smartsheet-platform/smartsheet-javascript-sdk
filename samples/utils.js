@@ -19,6 +19,10 @@ var smartsheet = client.createClient({accessToken:''});
 
  //console.log(smartsheet);
 
+smartsheet.sheets.getSheets({sheetId:2191630309582724, columnId:6442353301972868})
+  .then(function(dawta) {
+
+  });
 
 //smartsheet.sheets.getSheets()
 //  .then(function(data) {
