@@ -98,14 +98,14 @@ describe('Client Unit Tests', function() {
 
     it('should have delete methods', function() {
       smartsheet.groups.should.have.property('deleteGroup');
-      smartsheet.groups.should.have.property('deleteGroupMember');
+      smartsheet.groups.should.have.property('removeGroupMember');
     });
   });
 
   describe('#home', function() {
     it('should have home object',function(){
       smartsheet.should.have.property('home');
-      Object.keys(smartsheet.home).should.be.length(4);
+      Object.keys(smartsheet.home).should.be.length(3);
     });
 
     it('should have get methods', function() {

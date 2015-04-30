@@ -27,7 +27,7 @@ for (var api in smartsheet) {
   }
   list.sort();
   for (var name in list) {
-    console.log('smartsheet.'+api+'.should.have.property(\''+list[name]+'\');');
+    console.log('smartsheet.'+api+'.'+list[name]+'');
   }
   console.log('');
 }
@@ -35,12 +35,12 @@ for (var api in smartsheet) {
 
 //sheetId:2191630309582724, columnId:6442353301972868
 
-//smartsheet.sheets.getSheet({id: 2191630309582724})
+//smartsheet.sheets.getShares({sheetId: 2191630309582724, shareId:'AAAN_vmWFOeE'})
 //.then(function(data) {
-//  console.log(data.rows[0].cells);
+//  console.log(data);
 //});
 
-//smartsheet.sheets.getSheets()
+//smartsheet.sheets.getSheets() 
 //  .then(function(data) {
 //    console.log(data);
 //  })

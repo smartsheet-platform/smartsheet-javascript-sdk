@@ -8,6 +8,7 @@ exports.createClient = function(options) {
       folders    : require('./lib/folders/').create({accessToken: options.accessToken, apiUrls: apiUrls}),
       groups     : require('./lib/groups/').create({accessToken: options.accessToken, apiUrls: apiUrls}),
       home       : require('./lib/home/').create({accessToken: options.accessToken, apiUrls: apiUrls}),
+      reports    : require('./lib/reports/').create({accessToken: options.accessToken, apiUrls: apiUrls}),
       search     : require('./lib/search/').create({accessToken: options.accessToken, apiUrls: apiUrls}),
       server     : require('./lib/server/').create({accessToken: options.accessToken, apiUrls: apiUrls}),
       sheets     : require('./lib/sheets/').create({accessToken: options.accessToken, apiUrls: apiUrls}),
