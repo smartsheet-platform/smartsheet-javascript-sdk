@@ -4,7 +4,7 @@ var request = require('request');
 var sinon = require('sinon');
 var Promise = require('bluebird');
 
-var smartsheet = null;
+var smartsheet = require('../lib/utils/httpUtils');;
 
 var sample = {
 
@@ -31,32 +31,6 @@ var sampleRequestWithQueryParameters = {
 };
 
 describe('Utils Unit Tests', function() {
-
-
-  var stub = null;
-  var handleResponseStub = null;
-
-  beforeEach(function() {
-    smartsheet = require('../lib/utils/httpUtils');
-    //console.log(smartsheet);
-    stub = sinon.stub(request, 'getAsync');
-    handleResponseStub = sinon.stub(smartsheet, 'handleResponse');
-    var mockResponse = {
-      statusCode: 200,
-      headers: {
-        'content-type':'application/json;charset=UTF-8'
-      }
-    };
-    var mockBody = '{"hello":"world"}';
-    stub.returns(new Promise.resolve([mockResponse, mockBody]));
-    handleResponseStub.returns('woooot');
-  });
-
-  afterEach(function() {
-    stub.restore();
-    handleResponseStub.restore();
-  });
-
   describe('#HttpUtils', function() {
     it('should have GET method',function(){
       smartsheet.should.have.property('get');
@@ -74,17 +48,6 @@ describe('Utils Unit Tests', function() {
       smartsheet.should.have.property('delete');
     });
 
-    it('request should contain proper options',function(){
-      return smartsheet.get(sampleRequest)
-      .then(function(data) {
-        console.log(data);
-      })
-      .catch(function(error) {
-        console.log(error)
-      });
-
-    });
-
     //it('should return an error if one is returned in the callback of request',function(){
     //});
     //
@@ -99,6 +62,69 @@ describe('Utils Unit Tests', function() {
   });
 
   describe('#GET', function() {
+    describe('#Success', function() {
+      var stub = null;
+      var handleResponseStub = null;
+
+      beforeEach(function() {
+        stub = sinon.stub(request, 'getAsync');
+        handleResponseStub = sinon.stub(smartsheet, 'handleResponse');
+        var mockResponse = {
+          statusCode: 200,
+          headers: {
+            'content-type':'application/json;charset=UTF-8'
+          }
+        };
+        var mockBody = '{"hello":"world"}';
+        stub.returns(new Promise.resolve([mockResponse, mockBody]));
+        handleResponseStub.returns(true);
+      });
+
+      afterEach(function() {
+        stub.restore();
+        handleResponseStub.restore();
+      });
+
+      it('request should resolve as true',function() {
+        return smartsheet.get(sampleRequest)
+          .then(function(data) {
+            data.should.equal(true);
+          });
+      });
+    });
+
+    describe('#Error', function() {
+      var stub = null;
+      var handleResponseStub = null;
+
+      beforeEach(function() {
+        stub = sinon.stub(request, 'getAsync');
+        handleResponseStub = sinon.stub(smartsheet, 'handleResponse');
+        var mockResponse = {
+          statusCode: 403,
+          headers: {
+            'content-type':'application/json;charset=UTF-8'
+          }
+        };
+        var mockBody = {error:true};
+        stub.returns(new Promise.reject(mockBody));
+        handleResponseStub.returns(true);
+      });
+
+      afterEach(function() {
+        stub.restore();
+        handleResponseStub.restore();
+      });
+
+      it('request should error as false',function(){
+        return smartsheet.get(sampleRequest)
+          .catch(function(error) {
+            error.error.should.equal(true);
+          });
+      });
+    });
+
+
 
   });
 

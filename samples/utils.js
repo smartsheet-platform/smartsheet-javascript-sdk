@@ -15,14 +15,30 @@ var _ = require('underscore');
 //};
 
 
-var smartsheet = client.createClient({accessToken:''});
+var smartsheet = client.createClient({accessToken:'f3q5xrkqimrozxhqqoo5l8kxk'});
 
  //console.log(smartsheet);
 
-smartsheet.sheets.getSheets({sheetId:2191630309582724, columnId:6442353301972868})
-  .then(function(dawta) {
 
-  });
+for (var api in smartsheet) {
+  var list = [];
+  for (var method in smartsheet[api]) {
+    list.push(method);
+  }
+  list.sort();
+  for (var name in list) {
+    console.log('smartsheet.'+api+'.should.have.property(\''+list[name]+'\');');
+  }
+  console.log('');
+}
+
+
+//sheetId:2191630309582724, columnId:6442353301972868
+
+//smartsheet.sheets.getSheet({id: 2191630309582724})
+//.then(function(data) {
+//  console.log(data.rows[0].cells);
+//});
 
 //smartsheet.sheets.getSheets()
 //  .then(function(data) {
