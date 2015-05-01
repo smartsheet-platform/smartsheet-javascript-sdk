@@ -6,19 +6,25 @@ var _ = require('underscore');
 
 
 
-
-
-
 //var options = {
 //  url:'/2.0/home',
 //  accessToken:''
 //};
 
 
-var smartsheet = client.createClient({accessToken:'f3q5xrkqimrozxhqqoo5l8kxk'});
 
- //console.log(smartsheet);
 
+var smartsheet = client.createClient({accessToken:process.ENV.SS_TOKEN});
+//
+// console.log(smartsheet);
+//smartsheet.favorites.getFavorites()
+//  .then(function(data) {
+//    console.log(data);
+//  })
+//  .catch(function(error) {
+//    console.log('I AM AN ERROR!!!');
+//    console.log(error);
+//  });
 
 for (var api in smartsheet) {
   var list = [];
@@ -32,7 +38,7 @@ for (var api in smartsheet) {
   console.log('');
 }
 
-
+//smartsheet.
 //sheetId:2191630309582724, columnId:6442353301972868
 
 //smartsheet.sheets.getShares({sheetId: 2191630309582724, shareId:'AAAN_vmWFOeE'})
@@ -40,7 +46,7 @@ for (var api in smartsheet) {
 //  console.log(data);
 //});
 
-//smartsheet.sheets.getSheets() 
+//smartsheet.sheets.getSheets()
 //  .then(function(data) {
 //    console.log(data);
 //  })
