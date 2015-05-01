@@ -17,17 +17,6 @@ along with the request and response examples for all available methods. Have any
 The documentation for the APIs can be [found here](http://www.smartsheet.com/developers/api-documentation). If you
 need to know what the format of the request needs to be check here!
 
-## Usage
-
-All APIs are exposed inside the root module that is created using the following:
-
-    var client = require('smartsheet');
-    var smartsheet = client.create({accessToken:'ACCESSTOKEN'});
-    eg..
-    smartsheet.sheets //contains methods to create, get, update and delete sheets.
-
-The smartsheet variable now contains access to all the APIs [found here](http://www.smartsheet.com/developers/api-documentation).
-
 ## Unit Tests
 
 Inside the /test folder there are unit tests that can be run. These are helpful if you would like to expand/change and
@@ -50,6 +39,17 @@ If you would like to contribute a change to the SDK, please fork a branch and th
 
 ### Examples of Method calls
 
+## Usage
+
+All APIs are exposed inside the root module that is created using the following:
+
+    var client = require('smartsheet');
+    var smartsheet = client.create({accessToken:'ACCESSTOKEN'});
+    eg..
+    smartsheet.sheets //contains methods to create, get, update and delete sheets.
+
+The smartsheet variable now contains access to all the APIs [found here](http://www.smartsheet.com/developers/api-documentation).
+Once you have created the smartsheet object above, you can use all the methods like below.
 
 ###Favorite API methods
 
