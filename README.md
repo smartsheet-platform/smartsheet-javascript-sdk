@@ -161,9 +161,11 @@ All APIs are exposed inside the root module that is created using the following:
 The smartsheet variable now contains access to all the APIs [found here](http://www.smartsheet.com/developers/api-documentation).
 Once you have created the smartsheet object above, you can use all the methods like below.
 
+
 ###Favorite API methods
 
 ####createFavorite
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      var options = {
@@ -202,6 +204,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####getFavorites
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      smartsheet.favorites.getFavorites({})
@@ -224,6 +227,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####deleteFavoriteSheet
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      var options = {
@@ -252,6 +256,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####deleteFavoriteFolder
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      var options = {
@@ -280,6 +285,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####deleteFavoriteReport
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      var options = {
@@ -308,6 +314,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####deleteFavoriteTemplate
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      var options = {
@@ -336,6 +343,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####deleteFavoriteWorkspace
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      var options = {
@@ -366,6 +374,7 @@ Once you have created the smartsheet object above, you can use all the methods l
 ###Folder API methods
 
 ####getFolder
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      smartsheet.folders.getFolder({id: foldersId})
@@ -388,6 +397,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####listChildFolders
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      smartsheet.folders.listChildFolders({})
@@ -410,6 +420,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####createChildFolder
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      var options = {
@@ -448,6 +459,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####updateFolder
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      var options = {
@@ -488,6 +500,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####deleteFolders
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      var options = {
@@ -518,6 +531,7 @@ Once you have created the smartsheet object above, you can use all the methods l
 ###Group API methods
 
 ####getGroups
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      smartsheet.groups.getGroups({})
@@ -540,6 +554,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####getGroup
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      smartsheet.groups.getGroup({id: groupsId})
@@ -562,6 +577,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####createGroup
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      var options = {
@@ -600,6 +616,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####createGroupMember
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      var options = {
@@ -638,6 +655,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####updateGroup
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      var options = {
@@ -678,6 +696,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####deleteGroup
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      var options = {
@@ -706,6 +725,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####removeGroupMember
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      smartsheet.groups.removeGroupMember({id: groupsId})
@@ -730,6 +750,7 @@ Once you have created the smartsheet object above, you can use all the methods l
 ###Hom API methods
 
 ####getHome
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      smartsheet.home.getHome({id: homeId})
@@ -752,6 +773,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####getFolders
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      smartsheet.home.getFolders({})
@@ -774,6 +796,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####createHomeFolder
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      var options = {
@@ -814,6 +837,7 @@ Once you have created the smartsheet object above, you can use all the methods l
 ###Report API methods
 
 ####getReport
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      smartsheet.reports.getReport({id: reportsId})
@@ -836,6 +860,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####getReportShare
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      smartsheet.reports.getReportShare({id: reportsId})
@@ -858,6 +883,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####getReportShares
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      smartsheet.reports.getReportShares({})
@@ -880,6 +906,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####sendReportAsEmail
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      smartsheet.reports.sendReportAsEmail({id: reportsId})
@@ -902,6 +929,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####shareReportWithGroups
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      smartsheet.reports.shareReportWithGroups({})
@@ -924,6 +952,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####shareReportWithGroupsAndSendEmail
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      smartsheet.reports.shareReportWithGroupsAndSendEmail({id: reportsId})
@@ -946,6 +975,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####updateShareWithGroups
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      var options = {
@@ -986,6 +1016,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####deleteShareWithGroups
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      var options = {
@@ -1016,6 +1047,7 @@ Once you have created the smartsheet object above, you can use all the methods l
 ###Searc API methods
 
 ####searchAll
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      smartsheet.search.searchAll({id: searchId})
@@ -1038,6 +1070,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####searchSheet
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      smartsheet.search.searchSheet({id: searchId})
@@ -1062,6 +1095,7 @@ Once you have created the smartsheet object above, you can use all the methods l
 ###Serve API methods
 
 ####getInfo
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      smartsheet.server.getInfo({id: serverId})
@@ -1086,6 +1120,7 @@ Once you have created the smartsheet object above, you can use all the methods l
 ###Sheet API methods
 
 ####sendSheetAsEmail
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      smartsheet.sheets.sendSheetAsEmail({id: sheetsId})
@@ -1108,6 +1143,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####getPublishStatus
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      smartsheet.sheets.getPublishStatus({})
@@ -1130,6 +1166,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####setPublishStatus
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      smartsheet.sheets.setPublishStatus({})
@@ -1152,6 +1189,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####updateSheet
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      var options = {
@@ -1192,6 +1230,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####deleteSheet
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      var options = {
@@ -1220,6 +1259,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####getAttachment
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      smartsheet.sheets.getAttachment({id: sheetsId})
@@ -1242,6 +1282,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####getAttachments
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      smartsheet.sheets.getAttachments({})
@@ -1264,6 +1305,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####getAttachmentVersion
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      smartsheet.sheets.getAttachmentVersion({id: sheetsId})
@@ -1286,6 +1328,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####uploadAttachment
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      smartsheet.sheets.uploadAttachment({id: sheetsId})
@@ -1308,6 +1351,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####uploadNewAttachmentVersion
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      smartsheet.sheets.uploadNewAttachmentVersion({id: sheetsId})
@@ -1330,6 +1374,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####deleteAttachment
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      var options = {
@@ -1358,6 +1403,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####deleteAttachmentVersion
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      var options = {
@@ -1386,6 +1432,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####getColumns
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      smartsheet.sheets.getColumns({})
@@ -1408,6 +1455,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####getColumn
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      smartsheet.sheets.getColumn({id: sheetsId})
@@ -1430,6 +1478,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####createColumn
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      var options = {
@@ -1468,6 +1517,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####deleteColumn
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      var options = {
@@ -1496,6 +1546,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####updateColumn
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      var options = {
@@ -1536,6 +1587,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####createSheet
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      var options = {
@@ -1574,6 +1626,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####createSheetFromExisting
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      var options = {
@@ -1612,6 +1665,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####createSheetInFolder
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      var options = {
@@ -1650,6 +1704,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####createSheetInWorkspace
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      var options = {
@@ -1688,6 +1743,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####getDiscussions
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      smartsheet.sheets.getDiscussions({})
@@ -1710,6 +1766,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####getDiscussion
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      smartsheet.sheets.getDiscussion({id: sheetsId})
@@ -1732,6 +1789,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####getDiscussionAttachments
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      smartsheet.sheets.getDiscussionAttachments({})
@@ -1754,6 +1812,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####createDiscussion
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      var options = {
@@ -1792,6 +1851,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####createDiscussionComment
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      var options = {
@@ -1830,6 +1890,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####deleteDiscussion
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      var options = {
@@ -1858,6 +1919,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####getSheets
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      smartsheet.sheets.getSheets({})
@@ -1880,6 +1942,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####getSheet
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      smartsheet.sheets.getSheet({id: sheetsId})
@@ -1902,6 +1965,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####getSheetAsCsv
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      smartsheet.sheets.getSheetAsCsv({id: sheetsId})
@@ -1924,6 +1988,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####getSheetAsExcel
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      smartsheet.sheets.getSheetAsExcel({id: sheetsId})
@@ -1946,6 +2011,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####getSheetAsPdf
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      smartsheet.sheets.getSheetAsPdf({id: sheetsId})
@@ -1968,6 +2034,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####getRow
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      smartsheet.sheets.getRow({id: sheetsId})
@@ -1990,6 +2057,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####getRowAttachments
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      smartsheet.sheets.getRowAttachments({})
@@ -2012,6 +2080,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####getRowDiscussions
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      smartsheet.sheets.getRowDiscussions({})
@@ -2034,6 +2103,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####getCellHistory
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      smartsheet.sheets.getCellHistory({id: sheetsId})
@@ -2056,6 +2126,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####createRow
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      var options = {
@@ -2094,6 +2165,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####createRowAttachments
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      var options = {
@@ -2132,6 +2204,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####createRowDiscussions
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      var options = {
@@ -2170,6 +2243,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####sendRow
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      smartsheet.sheets.sendRow({id: sheetsId})
@@ -2192,6 +2266,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####deleteRow
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      var options = {
@@ -2220,6 +2295,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####updateRow
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      var options = {
@@ -2260,6 +2336,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####getShare
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      smartsheet.sheets.getShare({id: sheetsId})
@@ -2282,6 +2359,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####getShares
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      smartsheet.sheets.getShares({})
@@ -2304,6 +2382,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####createShare
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      var options = {
@@ -2342,6 +2421,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####deleteShare
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      var options = {
@@ -2370,6 +2450,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####updateShare
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      var options = {
@@ -2412,6 +2493,7 @@ Once you have created the smartsheet object above, you can use all the methods l
 ###Template API methods
 
 ####getTemplates
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      smartsheet.templates.getTemplates({})
@@ -2434,6 +2516,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####getPublicTemplates
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      smartsheet.templates.getPublicTemplates({})
@@ -2458,6 +2541,7 @@ Once you have created the smartsheet object above, you can use all the methods l
 ###User API methods
 
 ####getUsers
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      smartsheet.users.getUsers({})
@@ -2480,6 +2564,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####getCurrentUser
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      smartsheet.users.getCurrentUser({id: usersId})
@@ -2502,6 +2587,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####getAllUsersSheets
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      smartsheet.users.getAllUsersSheets({})
@@ -2524,6 +2610,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####createUser
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      var options = {
@@ -2562,6 +2649,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####createUserAndSendEmail
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      var options = {
@@ -2600,6 +2688,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####updateUser
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      var options = {
@@ -2640,6 +2729,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####deleteUser
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      var options = {
@@ -2670,6 +2760,7 @@ Once you have created the smartsheet object above, you can use all the methods l
 ###Workspace API methods
 
 ####getWorkspaces
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      smartsheet.workspaces.getWorkspaces({})
@@ -2692,6 +2783,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####getWorkspace
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      smartsheet.workspaces.getWorkspace({id: workspacesId})
@@ -2714,6 +2806,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####getWorkspaceFolders
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      smartsheet.workspaces.getWorkspaceFolders({})
@@ -2736,6 +2829,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####createWorkspace
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      var options = {
@@ -2774,6 +2868,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####createWorkspaceFolder
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      var options = {
@@ -2812,6 +2907,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####deleteWorkspace
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      var options = {
@@ -2840,6 +2936,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####updateWorkspace
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      var options = {
@@ -2880,6 +2977,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####getShare
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      smartsheet.workspaces.getShare({id: workspacesId})
@@ -2902,6 +3000,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####getShares
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      smartsheet.workspaces.getShares({})
@@ -2924,6 +3023,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####createShare
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      var options = {
@@ -2962,6 +3062,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####deleteShare
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      var options = {
@@ -2990,6 +3091,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ####updateShare
+[back to TOC](#table-of-contents)
 #####Example using promises
 
      var options = {
@@ -3028,6 +3130,7 @@ Once you have created the smartsheet object above, you can use all the methods l
        // Data will contain the workspaces object
        console.log(data);
      });
+
 
 #License
 
