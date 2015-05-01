@@ -37,9 +37,8 @@ If you would like to contribute a change to the SDK, please fork a branch and th
 
 - [Create Sheet](#create-sheet)
 
-### Examples of Method calls
-
 ## Usage
+--------------------
 
 All APIs are exposed inside the root module that is created using the following:
 
