@@ -3,7 +3,7 @@ var _ = require('underscore');
 
 exports.createClient = function(options) {
     return {
-      constants  : require('./lib/utils/constants.js'),
+      // constants  : require('./lib/utils/constants.js'),
       favorites  : require('./lib/favorites/').create({accessToken: options.accessToken, apiUrls: apiUrls}),
       folders    : require('./lib/folders/').create({accessToken: options.accessToken, apiUrls: apiUrls}),
       groups     : require('./lib/groups/').create({accessToken: options.accessToken, apiUrls: apiUrls}),
