@@ -17,6 +17,8 @@ var _ = require('underscore');
 var smartsheet = client.createClient({accessToken:process.env.SS_TOKEN});
 //
 console.log(smartsheet);
+
+// smartsheet.reports.getReport
 // smartsheet.favorites.getFavorites()
 //  // .then(function(data) {
 //    console.log(data);
@@ -25,6 +27,56 @@ console.log(smartsheet);
 //    console.log('I AM AN ERROR!!!');
 //    console.log(error);
 //  });
+
+// smartsheet.favorites.addSheetToFavorites({objectId:2191630309582724})
+//   .then(function(data) {
+//     console.log(data)
+//   })
+//   .catch(function(error) {
+//     console.log(error)
+//     })
+
+// var options = {
+//   queryParameters : {
+//     include : 'reports,templates'
+//   }
+// }
+//
+// smartsheet.home.listContents()
+// .then(function(data) {
+//   console.log(data)
+//   })
+
+
+smartsheet.sheets.getColumns({sheetId:2191630309582724})
+.then(function(data) {
+  console.log(data);
+})
+//
+// smartsheet.favorites.listFavorites().then(function(data) {console.log(data)});
+// var options = {
+//   queryParameters : {
+//     objectIds:'6932724448552836'
+//   }
+// };
+//
+//
+// smartsheet.favorites.removeReportsFromFavorites(options)
+//   .then(function(data) {
+//     console.log(data)
+//   })
+//   .catch(function(error) {
+//     console.log(error)
+//     })
+
+// {objectId:2191630309582724,1427091771156356}
+
+
+// smartsheet.favorites.addItemsToFavorites({body: [{type: 'sheet', objectId:2191630309582724},{type:'sheet', objectId:1427091771156356}]})
+// .then(function(data) {
+  // console.log(data);
+// })
+
 
 // // for (var api in smartsheet) {
 //   var list = [];

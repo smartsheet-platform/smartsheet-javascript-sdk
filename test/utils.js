@@ -114,16 +114,6 @@ describe('Utils Unit Tests', function() {
         builtUrl.should.equal('https://api.smartsheet.com/');
       });
 
-      it('url should contain the type', function() {
-        var builtUrl = smartsheet.internal.buildUrl({url: 'url/', type:'sheet'});
-        builtUrl.should.equal(host + 'url/sheet/');
-      });
-
-      it('url should contain the type + ID', function() {
-        var builtUrl = smartsheet.internal.buildUrl({url: 'url/', type:'sheet', id:'123'});
-        builtUrl.should.equal(host + 'url/sheet/123');
-      });
-
       it('url should contain the host + url', function() {
         var builtUrl = smartsheet.internal.buildUrl({url: 'url/'});
         builtUrl.should.equal(host + 'url/');
