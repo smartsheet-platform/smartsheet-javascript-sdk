@@ -2,3 +2,4 @@ samples/**
 test/**
 .editorconfig
 gulpfile.js
+coverage/

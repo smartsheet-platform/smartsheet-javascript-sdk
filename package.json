@@ -4,7 +4,7 @@
   "description": "Smartsheet JavaScript SDK",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "istanbul cover _mocha -- -u exports -R spec"
   },
   "repository": {
     "type": "git",

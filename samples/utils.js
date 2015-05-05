@@ -14,11 +14,11 @@ var _ = require('underscore');
 
 
 
-var smartsheet = client.createClient({accessToken:process.ENV.SS_TOKEN});
+var smartsheet = client.createClient({accessToken:process.env.SS_TOKEN});
 //
-// console.log(smartsheet);
-//smartsheet.favorites.getFavorites()
-//  .then(function(data) {
+console.log(smartsheet);
+// smartsheet.favorites.getFavorites()
+//  // .then(function(data) {
 //    console.log(data);
 //  })
 //  .catch(function(error) {
@@ -26,17 +26,17 @@ var smartsheet = client.createClient({accessToken:process.ENV.SS_TOKEN});
 //    console.log(error);
 //  });
 
-for (var api in smartsheet) {
-  var list = [];
-  for (var method in smartsheet[api]) {
-    list.push(method);
-  }
-  list.sort();
-  for (var name in list) {
-    console.log('smartsheet.'+api+'.'+list[name]+'');
-  }
-  console.log('');
-}
+// // for (var api in smartsheet) {
+//   var list = [];
+//   for (var method in smartsheet[api]) {
+//     list.push(method);
+//   }
+//   list.sort();
+//   for (var name in list) {
+//     console.log('smartsheet.'+api+'.'+list[name]+'');
+//   }
+//   console.log('');
+// }
 
 //smartsheet.
 //sheetId:2191630309582724, columnId:6442353301972868

@@ -4,14 +4,11 @@ var should = require('should');
 var smartsheet = null;
 
 describe('Client Unit Tests', function() {
-  var sandbox;
-
   beforeEach(function() {
-    sandbox = sinon.sandbox.create();
     client = require('../');
     smartsheet = client.createClient({accessToken:'1234'});
   });
-   
+
   afterEach(function() {
     smartsheet = null;
   });
@@ -114,7 +111,7 @@ describe('Client Unit Tests', function() {
     });
 
     it('should have create methods', function() {
-      smartsheet.home.should.have.property('createHomeFolder');
+      smartsheet.home.should.have.property('createFolder');
     });
   });
 
@@ -144,7 +141,7 @@ describe('Client Unit Tests', function() {
   describe('#Sheets', function() {
     it('should have Sheets object',function(){
       smartsheet.should.have.property('sheets');
-      Object.keys(smartsheet.sheets).should.be.length(47);
+      Object.keys(smartsheet.sheets).should.be.length(48);
     });
 
     it('should have Sheets get methods', function() {
@@ -166,7 +163,8 @@ describe('Client Unit Tests', function() {
     });
 
     it('should have Row methods', function () {
-      smartsheet.sheets.should.have.property('createRow');
+      smartsheet.sheets.should.have.property('addRows');
+      smartsheet.sheets.should.have.property('addRow');
       smartsheet.sheets.should.have.property('createRowAttachments');
       smartsheet.sheets.should.have.property('createRowDiscussions');
       smartsheet.sheets.should.have.property('getRow');
@@ -228,13 +226,14 @@ describe('Client Unit Tests', function() {
   describe('#users', function () {
     it('should have user object', function () {
       smartsheet.should.have.property('users');
-      Object.keys(smartsheet.users).should.be.length(7);
+      Object.keys(smartsheet.users).should.be.length(8);
     });
 
     it('should have get methods', function () {
       smartsheet.users.should.have.property('getAllUsersSheets');
       smartsheet.users.should.have.property('getCurrentUser');
       smartsheet.users.should.have.property('getUsers');
+      smartsheet.users.should.have.property('getUser');
     });
 
     it('should have create methods', function () {
