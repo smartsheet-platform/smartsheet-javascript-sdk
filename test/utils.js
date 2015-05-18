@@ -1,10 +1,9 @@
-var sinon = require('sinon');
 var should = require('should');
 var request = require('request');
 var sinon = require('sinon');
 var Promise = require('bluebird');
 
-var smartsheet = require('../lib/utils/httpUtils');;
+var smartsheet = require('../lib/utils/httpUtils');
 
 var sample = {
   name : 'name'

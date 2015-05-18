@@ -78,27 +78,37 @@ var smartsheet = client.createClient({accessToken:process.env.SS_TOKEN});
 // })
 
 
-for (var api in smartsheet) {
-  var list = [];
-  for (var method in smartsheet[api]) {
-    list.push(method);
-  }
-  list.sort();
-  for (var name in list) {
-    // console.log('smartsheet.'+api+'.'+list[name]+'');
-    console.log('smartsheet.sheets.should.have.property(\''+list[name]+'\');')
-  }
-  console.log('');
-}
+//for (var api in smartsheet) {
+//  var list = [];
+//  for (var method in smartsheet[api]) {
+//    list.push(method);
+//  }
+//  list.sort();
+//  for (var name in list) {
+//    // console.log('smartsheet.'+api+'.'+list[name]+'');
+//    console.log('smartsheet.sheets.should.have.property(\''+list[name]+'\');')
+//  }
+//  console.log('');
+//}
 
 //smartsheet.
 //sheetId:2191630309582724, columnId:6442353301972868
 
-//smartsheet.sheets.getShares({sheetId: 2191630309582724, shareId:'AAAN_vmWFOeE'})
-//.then(function(data) {
-//  console.log(data);
-//});
+//shareId:'AAAN_vmWFOeE'
+smartsheet.sheets.listShares({sheetId: 2191630309582724})
+.then(function(data) {
+  console.log(data);
+});
 
+//smartsheet.workspaces.listWorkspaces()
+//  .then(function(data) {
+//    console.log(data);
+//  });
+
+smartsheet.workspaces.listShares({workspaceId:1204158339540868})
+  .then(function(data) {
+    console.log(data);
+  });
 //smartsheet.sheets.getSheets()
 //  .then(function(data) {
 //    console.log(data);
