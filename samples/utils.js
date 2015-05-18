@@ -16,7 +16,7 @@ var _ = require('underscore');
 
 var smartsheet = client.createClient({accessToken:process.env.SS_TOKEN});
 //
-console.log(smartsheet);
+// console.log(smartsheet);
 
 // smartsheet.reports.getReport
 // smartsheet.favorites.getFavorites()
@@ -47,11 +47,11 @@ console.log(smartsheet);
 //   console.log(data)
 //   })
 
-
-smartsheet.sheets.getColumns({sheetId:2191630309582724})
-.then(function(data) {
-  console.log(data);
-})
+//
+// smartsheet.sheets.getColumns({sheetId:2191630309582724})
+// .then(function(data) {
+//   console.log(data);
+// })
 //
 // smartsheet.favorites.listFavorites().then(function(data) {console.log(data)});
 // var options = {
@@ -78,17 +78,18 @@ smartsheet.sheets.getColumns({sheetId:2191630309582724})
 // })
 
 
-// // for (var api in smartsheet) {
-//   var list = [];
-//   for (var method in smartsheet[api]) {
-//     list.push(method);
-//   }
-//   list.sort();
-//   for (var name in list) {
-//     console.log('smartsheet.'+api+'.'+list[name]+'');
-//   }
-//   console.log('');
-// }
+for (var api in smartsheet) {
+  var list = [];
+  for (var method in smartsheet[api]) {
+    list.push(method);
+  }
+  list.sort();
+  for (var name in list) {
+    // console.log('smartsheet.'+api+'.'+list[name]+'');
+    console.log('smartsheet.sheets.should.have.property(\''+list[name]+'\');')
+  }
+  console.log('');
+}
 
 //smartsheet.
 //sheetId:2191630309582724, columnId:6442353301972868
@@ -279,9 +280,9 @@ smartsheet.sheets.getColumns({sheetId:2191630309582724})
 
 
 
-//
-//smartsheet.sheets.getSheets()
-//.then(function(sheets) {
+// 
+// smartsheet.sheets.getSheets()
+// .then(function(sheets) {
 //    var multipleSheets = [];
 //    for (i = 0; i < sheets.data.length; i ++) {
 //      multipleSheets.push(smartsheet.sheets.getSheet({objectId:sheets.data[i].id}));
@@ -293,7 +294,7 @@ smartsheet.sheets.getColumns({sheetId:2191630309582724})
 //      .catch(function(error) {
 //        console.log('error', error);
 //      })
-//}).catch(function(error) {
+// }).catch(function(error) {
 //    console.log('error', error);
 //  });
 

@@ -29,23 +29,33 @@ describe('Client Unit Tests', function() {
   describe('#Favorites', function() {
     it('should have Favorites object',function(){
       smartsheet.should.have.property('favorites');
-      Object.keys(smartsheet.favorites).should.be.length(7);
+      Object.keys(smartsheet.favorites).should.be.length(17);
     });
 
     it('should have get methods', function() {
-      smartsheet.favorites.should.have.property('getFavorites');
+      smartsheet.favorites.should.have.property('listFavorites');
     });
 
     it('should have create methods', function() {
-      smartsheet.favorites.should.have.property('createFavorite');
+      smartsheet.favorites.should.have.property('addItemsToFavorites');
+      smartsheet.favorites.should.have.property('addSheetToFavorites');
+      smartsheet.favorites.should.have.property('addFolderToFavorites');
+      smartsheet.favorites.should.have.property('addReportToFavorites');
+      smartsheet.favorites.should.have.property('addTemplateToFavorites');
+      smartsheet.favorites.should.have.property('addWorkspaceToFavorites');
     });
 
     it('should have delete methods', function() {
-      smartsheet.favorites.should.have.property('deleteFavoriteSheet');
-      smartsheet.favorites.should.have.property('deleteFavoriteFolder');
-      smartsheet.favorites.should.have.property('deleteFavoriteReport');
-      smartsheet.favorites.should.have.property('deleteFavoriteTemplate');
-      smartsheet.favorites.should.have.property('deleteFavoriteWorkspace');
+      smartsheet.favorites.should.have.property('removeSheetFromFavorites');
+      smartsheet.favorites.should.have.property('removeWorkspaceFromFavorites');
+      smartsheet.favorites.should.have.property('removeFolderFromFavorites');
+      smartsheet.favorites.should.have.property('removeTemplateFromFavorites');
+      smartsheet.favorites.should.have.property('removeReportFromFavorites');
+      smartsheet.favorites.should.have.property('removeSheetsFromFavorites');
+      smartsheet.favorites.should.have.property('removeWorkspacesFromFavorites');
+      smartsheet.favorites.should.have.property('removeFoldersFromFavorites');
+      smartsheet.favorites.should.have.property('removeTemplatesFromFavorites');
+      smartsheet.favorites.should.have.property('removeReportsFromFavorites');
     });
   });
 
@@ -74,19 +84,19 @@ describe('Client Unit Tests', function() {
   });
 
   describe('#groups', function() {
-    it('should have folders object',function(){
+    it('should have groups object',function(){
       smartsheet.should.have.property('groups');
-      Object.keys(smartsheet.favorites).should.be.length(7);
+      Object.keys(smartsheet.groups).should.be.length(7);
     });
 
     it('should have get methods', function() {
-      smartsheet.groups.should.have.property('getGroups');
+      smartsheet.groups.should.have.property('listGroups');
       smartsheet.groups.should.have.property('getGroup');
     });
 
     it('should have create methods', function() {
       smartsheet.groups.should.have.property('createGroup');
-      smartsheet.groups.should.have.property('createGroupMember');
+      smartsheet.groups.should.have.property('addGroupMembers');
     });
 
     it('should have update methods', function() {
@@ -106,8 +116,8 @@ describe('Client Unit Tests', function() {
     });
 
     it('should have get methods', function() {
-      smartsheet.home.should.have.property('getHome');
-      smartsheet.home.should.have.property('getFolders');
+      smartsheet.home.should.have.property('listContents');
+      smartsheet.home.should.have.property('listFolders');
     });
 
     it('should have create methods', function() {
@@ -141,69 +151,74 @@ describe('Client Unit Tests', function() {
   describe('#Sheets', function() {
     it('should have Sheets object',function(){
       smartsheet.should.have.property('sheets');
-      Object.keys(smartsheet.sheets).should.be.length(48);
+      Object.keys(smartsheet.sheets).should.be.length(53);
     });
 
     it('should have Sheets get methods', function() {
       smartsheet.sheets.should.have.property('getAttachment');
-      smartsheet.sheets.should.have.property('getAttachmentVersion');
-      smartsheet.sheets.should.have.property('getAttachments');
       smartsheet.sheets.should.have.property('getCellHistory');
+      smartsheet.sheets.should.have.property('getComment');
       smartsheet.sheets.should.have.property('getDiscussion');
-      smartsheet.sheets.should.have.property('getDiscussionAttachments');
       smartsheet.sheets.should.have.property('getDiscussions');
       smartsheet.sheets.should.have.property('getPublishStatus');
+      smartsheet.sheets.should.have.property('getRowAttachments');
+      smartsheet.sheets.should.have.property('getRowDiscussions');
       smartsheet.sheets.should.have.property('getShare');
-      smartsheet.sheets.should.have.property('getShares');
       smartsheet.sheets.should.have.property('getSheet');
-      smartsheet.sheets.should.have.property('getSheetAsCsv');
+      smartsheet.sheets.should.have.property('getSheetAsCSV');
       smartsheet.sheets.should.have.property('getSheetAsExcel');
-      smartsheet.sheets.should.have.property('getSheetAsPdf');
-      smartsheet.sheets.should.have.property('getSheets');
+      smartsheet.sheets.should.have.property('getSheetAsPDF');
+      smartsheet.sheets.should.have.property('getSheetVersion');
+      smartsheet.sheets.should.have.property('listAttachmentVersions');
+      smartsheet.sheets.should.have.property('listAttachments');
+      smartsheet.sheets.should.have.property('listDiscussionAttachments');
+      smartsheet.sheets.should.have.property('listOrganizationSheets');
+      smartsheet.sheets.should.have.property('listShares');
+      smartsheet.sheets.should.have.property('listSheets');
     });
 
     it('should have Row methods', function () {
-      smartsheet.sheets.should.have.property('addRows');
       smartsheet.sheets.should.have.property('addRow');
-      smartsheet.sheets.should.have.property('createRowAttachments');
-      smartsheet.sheets.should.have.property('createRowDiscussions');
+      smartsheet.sheets.should.have.property('addRowAttachment');
+      smartsheet.sheets.should.have.property('addRows');
+      smartsheet.sheets.should.have.property('createRowDiscussion');
       smartsheet.sheets.should.have.property('getRow');
       smartsheet.sheets.should.have.property('getRowAttachments');
       smartsheet.sheets.should.have.property('getRowDiscussions');
+      smartsheet.sheets.should.have.property('updateRow');
+      smartsheet.sheets.should.have.property('sendRow');
     });
 
     it('should have Column methods', function() {
-      smartsheet.sheets.should.have.property('createColumn');
+      smartsheet.sheets.should.have.property('addColumn');
       smartsheet.sheets.should.have.property('getColumn');
       smartsheet.sheets.should.have.property('getColumns');
+      smartsheet.sheets.should.have.property('updateColumn');
     });
 
     it('should have Sheets create methods', function() {
+      smartsheet.sheets.should.have.property('addAttachment');
+      smartsheet.sheets.should.have.property('addCommentAttachment');
+      smartsheet.sheets.should.have.property('addDiscussionComment');
+      smartsheet.sheets.should.have.property('attachNewVersion');
       smartsheet.sheets.should.have.property('createDiscussion');
-      smartsheet.sheets.should.have.property('createDiscussionComment');
-      smartsheet.sheets.should.have.property('createShare');
+      smartsheet.sheets.should.have.property('createRowDiscussion');
       smartsheet.sheets.should.have.property('createSheet');
       smartsheet.sheets.should.have.property('createSheetFromExisting');
       smartsheet.sheets.should.have.property('createSheetInFolder');
       smartsheet.sheets.should.have.property('createSheetInWorkspace');
-      smartsheet.sheets.should.have.property('uploadAttachment');
-      smartsheet.sheets.should.have.property('sendRow');
-      smartsheet.sheets.should.have.property('sendSheetAsEmail');
-      smartsheet.sheets.should.have.property('setPublishStatus');
     });
 
     it('should have Sheets update methods', function() {
-      smartsheet.sheets.should.have.property('updateColumn');
-      smartsheet.sheets.should.have.property('updateRow');
       smartsheet.sheets.should.have.property('updateShare');
       smartsheet.sheets.should.have.property('updateSheet');
-      smartsheet.sheets.should.have.property('uploadNewAttachmentVersion');
     });
 
     it('should have Sheets delete methods', function() {
+      smartsheet.sheets.should.have.property('deleteAllAttachmentVersions');
       smartsheet.sheets.should.have.property('deleteAttachment');
-      smartsheet.sheets.should.have.property('deleteAttachmentVersion');
       smartsheet.sheets.should.have.property('deleteColumn');
+      smartsheet.sheets.should.have.property('deleteComment');
       smartsheet.sheets.should.have.property('deleteDiscussion');
       smartsheet.sheets.should.have.property('deleteRow');
       smartsheet.sheets.should.have.property('deleteShare');
@@ -218,27 +233,26 @@ describe('Client Unit Tests', function() {
     });
 
     it('should have get methods', function () {
-      smartsheet.templates.should.have.property('getPublicTemplates');
-      smartsheet.templates.should.have.property('getTemplates');
+      smartsheet.templates.should.have.property('listPublicTemplates');
+      smartsheet.templates.should.have.property('listUserCreatedTemplates');
     });
   });
 
   describe('#users', function () {
     it('should have user object', function () {
       smartsheet.should.have.property('users');
-      Object.keys(smartsheet.users).should.be.length(8);
+      Object.keys(smartsheet.users).should.be.length(7);
     });
 
     it('should have get methods', function () {
-      smartsheet.users.should.have.property('getAllUsersSheets');
       smartsheet.users.should.have.property('getCurrentUser');
-      smartsheet.users.should.have.property('getUsers');
+      smartsheet.users.should.have.property('listAllUsers');
       smartsheet.users.should.have.property('getUser');
     });
 
     it('should have create methods', function () {
-      smartsheet.users.should.have.property('createUser');
-      smartsheet.users.should.have.property('createUserAndSendEmail');
+      smartsheet.users.should.have.property('addUser');
+      smartsheet.users.should.have.property('addUserAndSendEmail');
     });
 
     it('should have update methods', function () {
@@ -246,7 +260,7 @@ describe('Client Unit Tests', function() {
     });
 
     it('should have delete methods', function () {
-      smartsheet.users.should.have.property('deleteUser');
+      smartsheet.users.should.have.property('removeUser');
     });
   });
 
@@ -258,16 +272,16 @@ describe('Client Unit Tests', function() {
 
     it('should have get methods', function () {
       smartsheet.workspaces.should.have.property('getShare');
-      smartsheet.workspaces.should.have.property('getShares');
+      smartsheet.workspaces.should.have.property('listShares');
       smartsheet.workspaces.should.have.property('getWorkspace');
-      smartsheet.workspaces.should.have.property('getWorkspaceFolders');
-      smartsheet.workspaces.should.have.property('getWorkspaces');
+      smartsheet.workspaces.should.have.property('listWorkspaceFolders');
+      smartsheet.workspaces.should.have.property('listWorkspaces');
     });
 
     it('should have create methods', function () {
-      smartsheet.workspaces.should.have.property('createShare');
+      smartsheet.workspaces.should.have.property('share');
       smartsheet.workspaces.should.have.property('createWorkspace');
-      smartsheet.workspaces.should.have.property('createWorkspaceFolder');
+      smartsheet.workspaces.should.have.property('createFolder');
     });
 
     it('should have update methods', function () {

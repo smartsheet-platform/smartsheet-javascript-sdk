@@ -61,6 +61,7 @@ describe('Utils Unit Tests', function() {
         };
 
         mockBody = '{"hello":"world"}';
+        mockBodyError = '{"errorCode": 911, "message":"EMERGENCY"}';
       });
 
       afterEach(function() {
@@ -70,10 +71,11 @@ describe('Utils Unit Tests', function() {
 
       it('should return a rejected promise if status code is not 200', function() {
         mockResponse.statusCode = 500;
-        smartsheet.handleResponse(mockResponse, mockBody)
+        smartsheet.handleResponse(mockResponse, mockBodyError)
         .catch(function(error) {
           error.statusCode.should.equal(500);
-          error.message.should.equal(mockBody);
+          error.message.should.equal('EMERGENCY');
+          error.errorCode.should.equal(911);
         });
       });
 
