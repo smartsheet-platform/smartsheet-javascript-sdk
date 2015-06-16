@@ -14,19 +14,28 @@ var _ = require('underscore');
 
 
 
-var smartsheet = client.createClient({accessToken:process.env.SS_TOKEN});
+//var smartsheet = client.createClient({accessToken:process.env.SS_TOKEN});
+var smartsheet = client.createClient({accessToken:''});
+
+
+var favorites = smartsheet.favorites;
 //
 // console.log(smartsheet);
 
-// smartsheet.reports.getReport
-// smartsheet.favorites.getFavorites()
-//  // .then(function(data) {
-//    console.log(data);
-//  })
-//  .catch(function(error) {
-//    console.log('I AM AN ERROR!!!');
-//    console.log(error);
-//  });
+ smartsheet.home.listContents()
+ //smartsheet.sheets.listSheets()
+ //smartsheet.sheets.getSheet({id:5631528672749444})
+ //smartsheet.sheets.copyRowToAnotherSheet({sheetId:5631528672749444, body:{rowIds:[7318413333817220], to:{sheetId:3379728859064196}}})
+ smartsheet.sheets.moveRowToAnotherSheet({sheetId:5631528672749444, body:{rowIds:[7318413333817220], to:{sheetId:3379728859064196}}})
+//  smartsheet.reports.getReportAsExcel({id:4503842059511684})
+//  smartsheet.reports.listReports()
+   .then(function(reports) {
+    console.log(reports);
+  })
+  .catch(function(error) {
+    console.log('I AM AN ERROR!!!');
+    console.log(error);
+  });
 
 // smartsheet.favorites.addSheetToFavorites({objectId:2191630309582724})
 //   .then(function(data) {
@@ -95,20 +104,20 @@ var smartsheet = client.createClient({accessToken:process.env.SS_TOKEN});
 //sheetId:2191630309582724, columnId:6442353301972868
 
 //shareId:'AAAN_vmWFOeE'
-smartsheet.sheets.listShares({sheetId: 2191630309582724})
-.then(function(data) {
-  console.log(data);
-});
+//smartsheet.sheets.listShares({sheetId: 2191630309582724})
+//.then(function(data) {
+//  console.log(data);
+//});
 
 //smartsheet.workspaces.listWorkspaces()
 //  .then(function(data) {
 //    console.log(data);
 //  });
 
-smartsheet.workspaces.listShares({workspaceId:1204158339540868})
-  .then(function(data) {
-    console.log(data);
-  });
+//smartsheet.workspaces.listShares({workspaceId:1204158339540868})
+//  .then(function(data) {
+//    console.log(data);
+//  });
 //smartsheet.sheets.getSheets()
 //  .then(function(data) {
 //    console.log(data);
