@@ -1,6 +1,6 @@
 # Smartsheet SDK for JavaScript
 
-**Please not the initial version of the SDK is Pre-Alpha because there can be breaking changes**
+**Please note the initial version of the SDK is Pre-Alpha because there can be breaking changes**
 
 [Smartsheet Platform](http://smartsheet.com/developers) extends the the power of [Smartsheet](http://www.smartsheet.com).
 Check out the [documentation](http://www.smartsheet.com/developers/api-documentation) for a more detailed API reference
