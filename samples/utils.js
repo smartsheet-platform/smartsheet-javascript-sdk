@@ -22,12 +22,12 @@ var favorites = smartsheet.favorites;
 //
 // console.log(smartsheet);
 
- smartsheet.home.listContents()
+ //smartsheet.home.listContents()
  //smartsheet.sheets.listSheets()
  //smartsheet.sheets.getSheet({id:5631528672749444})
  //smartsheet.sheets.copyRowToAnotherSheet({sheetId:5631528672749444, body:{rowIds:[7318413333817220], to:{sheetId:3379728859064196}}})
- smartsheet.sheets.moveRowToAnotherSheet({sheetId:5631528672749444, body:{rowIds:[7318413333817220], to:{sheetId:3379728859064196}}})
-//  smartsheet.reports.getReportAsExcel({id:4503842059511684})
+ //smartsheet.sheets.moveRowToAnotherSheet({sheetId:5631528672749444, body:{rowIds:[7318413333817220], to:{sheetId:3379728859064196}}})
+  smartsheet.reports.getReportAsExcel({id:4503842059511684})
 //  smartsheet.reports.listReports()
    .then(function(reports) {
     console.log(reports);
