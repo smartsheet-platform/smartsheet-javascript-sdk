@@ -66,7 +66,7 @@ If you would like to contribute a change to the SDK, please fork a branch and th
     - [updateGroup](#updategroup)
     - [deleteGroup](#deletegroup)
     - [removeGroupMember](#removegroupmember)
-- [Hom API methods](#hom-api-methods)
+- [Home API methods](#home-api-methods)
     - [listContents](#listcontents)
     - [listFolders](#listfolders)
     - [createFolder](#createfolder)
@@ -81,10 +81,10 @@ If you would like to contribute a change to the SDK, please fork a branch and th
     - [share](#share)
     - [deleteShare](#deleteshare)
     - [updateShare](#updateshare)
-- [Searc API methods](#searc-api-methods)
+- [Search API methods](#search-api-methods)
     - [searchAll](#searchall)
     - [searchSheet](#searchsheet)
-- [Serve API methods](#serve-api-methods)
+- [Server API methods](#server-api-methods)
     - [getInfo](#getinfo)
 - [Sheet API methods](#sheet-api-methods)
     - [sendSheetViaEmail](#sendsheetviaemail)
@@ -1047,7 +1047,7 @@ Once you have created the smartsheet object above, you can use all the methods l
        console.log(data);
      });
 
-###Hom API methods
+###Home API methods
 
 ####listContents
 [back to TOC](#table-of-contents)
@@ -1390,7 +1390,7 @@ Once you have created the smartsheet object above, you can use all the methods l
        console.log(data);
      });
 
-###Searc API methods
+###Search API methods
 
 ####searchAll
 [back to TOC](#table-of-contents)
@@ -1438,7 +1438,7 @@ Once you have created the smartsheet object above, you can use all the methods l
        console.log(data);
      });
 
-###Serve API methods
+###Server API methods
 
 ####getInfo
 [back to TOC](#table-of-contents)
