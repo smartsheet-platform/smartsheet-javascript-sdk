@@ -35,117 +35,137 @@ If you would like to contribute a change to the SDK, please fork a branch and th
 
 - [Usage](#usage)
 - [Favorite API methods](#favorite-api-methods)
-  - [createFavorite](#createfavorite)
-  - [getFavorites](#getfavorites)
-  - [deleteFavoriteSheet](#deletefavoritesheet)
-  - [deleteFavoriteFolder](#deletefavoritefolder)
-  - [deleteFavoriteReport](#deletefavoritereport)
-  - [deleteFavoriteTemplate](#deletefavoritetemplate)
-  - [deleteFavoriteWorkspace](#deletefavoriteworkspace)
+    - [listFavorites](#listfavorites)
+    - [addItemsToFavorites](#additemstofavorites)
+    - [addSheetToFavorites](#addsheettofavorites)
+    - [addFolderToFavorites](#addfoldertofavorites)
+    - [addReportToFavorites](#addreporttofavorites)
+    - [addTemplateToFavorites](#addtemplatetofavorites)
+    - [addWorkspaceToFavorites](#addworkspacetofavorites)
+    - [removeSheetFromFavorites](#removesheetfromfavorites)
+    - [removeFolderFromFavorites](#removefolderfromfavorites)
+    - [removeReportFromFavorites](#removereportfromfavorites)
+    - [removeTemplateFromFavorites](#removetemplatefromfavorites)
+    - [removeWorkspaceFromFavorites](#removeworkspacefromfavorites)
+    - [removeSheetsFromFavorites](#removesheetsfromfavorites)
+    - [removeFoldersFromFavorites](#removefoldersfromfavorites)
+    - [removeReportsFromFavorites](#removereportsfromfavorites)
+    - [removeTemplatesFromFavorites](#removetemplatesfromfavorites)
+    - [removeWorkspacesFromFavorites](#removeworkspacesfromfavorites)
 - [Folder API methods](#folder-api-methods)
-  - [getFolder](#getfolder)
-  - [listChildFolders](#listchildfolders)
-  - [createChildFolder](#createchildfolder)
-  - [updateFolder](#updatefolder)
-  - [deleteFolders](#deletefolders)
+    - [getFolder](#getfolder)
+    - [listChildFolders](#listchildfolders)
+    - [createChildFolder](#createchildfolder)
+    - [updateFolder](#updatefolder)
+    - [deleteFolder](#deletefolder)
 - [Group API methods](#group-api-methods)
-  - [getGroups](#getgroups)
-  - [getGroup](#getgroup)
-  - [createGroup](#creategroup)
-  - [createGroupMember](#creategroupmember)
-  - [updateGroup](#updategroup)
-  - [deleteGroup](#deletegroup)
-  - [removeGroupMember](#removegroupmember)
+    - [listGroups](#listgroups)
+    - [getGroup](#getgroup)
+    - [createGroup](#creategroup)
+    - [addGroupMembers](#addgroupmembers)
+    - [updateGroup](#updategroup)
+    - [deleteGroup](#deletegroup)
+    - [removeGroupMember](#removegroupmember)
 - [Hom API methods](#hom-api-methods)
-  - [getHome](#gethome)
-  - [getFolders](#getfolders)
-  - [createHomeFolder](#createhomefolder)
+    - [listContents](#listcontents)
+    - [listFolders](#listfolders)
+    - [createFolder](#createfolder)
 - [Report API methods](#report-api-methods)
-  - [getReport](#getreport)
-  - [getReportShare](#getreportshare)
-  - [getReportShares](#getreportshares)
-  - [sendReportAsEmail](#sendreportasemail)
-  - [shareReportWithGroups](#sharereportwithgroups)
-  - [shareReportWithGroupsAndSendEmail](#sharereportwithgroupsandsendemail)
-  - [updateShareWithGroups](#updatesharewithgroups)
-  - [deleteShareWithGroups](#deletesharewithgroups)
+    - [listReports](#listreports)
+    - [getReport](#getreport)
+    - [sendReportViaEmail](#sendreportviaemail)
+    - [getReportAsExcel](#getreportasexcel)
+    - [getReportAsCSV](#getreportascsv)
+    - [getShare](#getshare)
+    - [listShares](#listshares)
+    - [share](#share)
+    - [deleteShare](#deleteshare)
+    - [updateShare](#updateshare)
 - [Searc API methods](#searc-api-methods)
-  - [searchAll](#searchall)
-  - [searchSheet](#searchsheet)
+    - [searchAll](#searchall)
+    - [searchSheet](#searchsheet)
 - [Serve API methods](#serve-api-methods)
-  - [getInfo](#getinfo)
+    - [getInfo](#getinfo)
 - [Sheet API methods](#sheet-api-methods)
-  - [sendSheetAsEmail](#sendsheetasemail)
-  - [getPublishStatus](#getpublishstatus)
-  - [setPublishStatus](#setpublishstatus)
-  - [updateSheet](#updatesheet)
-  - [deleteSheet](#deletesheet)
-  - [getAttachment](#getattachment)
-  - [getAttachments](#getattachments)
-  - [getAttachmentVersion](#getattachmentversion)
-  - [uploadAttachment](#uploadattachment)
-  - [uploadNewAttachmentVersion](#uploadnewattachmentversion)
-  - [deleteAttachment](#deleteattachment)
-  - [deleteAttachmentVersion](#deleteattachmentversion)
-  - [getColumns](#getcolumns)
-  - [getColumn](#getcolumn)
-  - [createColumn](#createcolumn)
-  - [deleteColumn](#deletecolumn)
-  - [updateColumn](#updatecolumn)
-  - [createSheet](#createsheet)
-  - [createSheetFromExisting](#createsheetfromexisting)
-  - [createSheetInFolder](#createsheetinfolder)
-  - [createSheetInWorkspace](#createsheetinworkspace)
-  - [getDiscussions](#getdiscussions)
-  - [getDiscussion](#getdiscussion)
-  - [getDiscussionAttachments](#getdiscussionattachments)
-  - [createDiscussion](#creatediscussion)
-  - [createDiscussionComment](#creatediscussioncomment)
-  - [deleteDiscussion](#deletediscussion)
-  - [getSheets](#getsheets)
-  - [getSheet](#getsheet)
-  - [getSheetAsCsv](#getsheetascsv)
-  - [getSheetAsExcel](#getsheetasexcel)
-  - [getSheetAsPdf](#getsheetaspdf)
-  - [getRow](#getrow)
-  - [getRowAttachments](#getrowattachments)
-  - [getRowDiscussions](#getrowdiscussions)
-  - [getCellHistory](#getcellhistory)
-  - [createRow](#createrow)
-  - [createRowAttachments](#createrowattachments)
-  - [createRowDiscussions](#createrowdiscussions)
-  - [sendRow](#sendrow)
-  - [deleteRow](#deleterow)
-  - [updateRow](#updaterow)
-  - [getShare](#getshare)
-  - [getShares](#getshares)
-  - [createShare](#createshare)
-  - [deleteShare](#deleteshare)
-  - [updateShare](#updateshare)
+    - [sendSheetViaEmail](#sendsheetviaemail)
+    - [getPublishStatus](#getpublishstatus)
+    - [setPublishStatus](#setpublishstatus)
+    - [updateSheet](#updatesheet)
+    - [deleteSheet](#deletesheet)
+    - [getAttachment](#getattachment)
+    - [listAttachments](#listattachments)
+    - [listAttachmentVersions](#listattachmentversions)
+    - [addAttachment](#addattachment)
+    - [attachNewVersion](#attachnewversion)
+    - [deleteAttachment](#deleteattachment)
+    - [deleteAllAttachmentVersions](#deleteallattachmentversions)
+    - [getColumns](#getcolumns)
+    - [getColumn](#getcolumn)
+    - [addColumn](#addcolumn)
+    - [deleteColumn](#deletecolumn)
+    - [updateColumn](#updatecolumn)
+    - [getComment](#getcomment)
+    - [deleteComment](#deletecomment)
+    - [addCommentAttachment](#addcommentattachment)
+    - [createSheet](#createsheet)
+    - [createSheetFromExisting](#createsheetfromexisting)
+    - [createSheetInFolder](#createsheetinfolder)
+    - [createSheetInWorkspace](#createsheetinworkspace)
+    - [getDiscussions](#getdiscussions)
+    - [getDiscussion](#getdiscussion)
+    - [listDiscussionAttachments](#listdiscussionattachments)
+    - [createDiscussion](#creatediscussion)
+    - [addDiscussionComment](#adddiscussioncomment)
+    - [deleteDiscussion](#deletediscussion)
+    - [getSheet](#getsheet)
+    - [listSheets](#listsheets)
+    - [getSheetAsCSV](#getsheetascsv)
+    - [getSheetAsExcel](#getsheetasexcel)
+    - [getSheetAsPDF](#getsheetaspdf)
+    - [getSheetVersion](#getsheetversion)
+    - [listOrganizationSheets](#listorganizationsheets)
+    - [getRow](#getrow)
+    - [getRowAttachments](#getrowattachments)
+    - [getRowDiscussions](#getrowdiscussions)
+    - [getCellHistory](#getcellhistory)
+    - [copyRowToAnotherSheet](#copyrowtoanothersheet)
+    - [moveRowToAnotherSheet](#moverowtoanothersheet)
+    - [addRow](#addrow)
+    - [addRows](#addrows)
+    - [addRowAttachment](#addrowattachment)
+    - [createRowDiscussion](#createrowdiscussion)
+    - [sendRow](#sendrow)
+    - [deleteRow](#deleterow)
+    - [updateRow](#updaterow)
+    - [getShare](#getshare)
+    - [listShares](#listshares)
+    - [share](#share)
+    - [deleteShare](#deleteshare)
+    - [updateShare](#updateshare)
 - [Template API methods](#template-api-methods)
-  - [getTemplates](#gettemplates)
-  - [getPublicTemplates](#getpublictemplates)
+    - [listUserCreatedTemplates](#listusercreatedtemplates)
+    - [listPublicTemplates](#listpublictemplates)
 - [User API methods](#user-api-methods)
-  - [getUsers](#getusers)
-  - [getCurrentUser](#getcurrentuser)
-  - [getAllUsersSheets](#getalluserssheets)
-  - [createUser](#createuser)
-  - [createUserAndSendEmail](#createuserandsendemail)
-  - [updateUser](#updateuser)
-  - [deleteUser](#deleteuser)
+    - [getUser](#getuser)
+    - [listAllUsers](#listallusers)
+    - [getCurrentUser](#getcurrentuser)
+    - [addUser](#adduser)
+    - [addUserAndSendEmail](#adduserandsendemail)
+    - [updateUser](#updateuser)
+    - [removeUser](#removeuser)
 - [Workspace API methods](#workspace-api-methods)
-  - [getWorkspaces](#getworkspaces)
-  - [getWorkspace](#getworkspace)
-  - [getWorkspaceFolders](#getworkspacefolders)
-  - [createWorkspace](#createworkspace)
-  - [createWorkspaceFolder](#createworkspacefolder)
-  - [deleteWorkspace](#deleteworkspace)
-  - [updateWorkspace](#updateworkspace)
-  - [getShare](#getshare-1)
-  - [getShares](#getshares-1)
-  - [createShare](#createshare-1)
-  - [deleteShare](#deleteshare-1)
-  - [updateShare](#updateshare-1)
+    - [listWorkspaces](#listworkspaces)
+    - [getWorkspace](#getworkspace)
+    - [listWorkspaceFolders](#listworkspacefolders)
+    - [createWorkspace](#createworkspace)
+    - [createFolder](#createfolder)
+    - [deleteWorkspace](#deleteworkspace)
+    - [updateWorkspace](#updateworkspace)
+    - [getShare](#getshare-1)
+    - [listShares](#listshares-1)
+    - [share](#share-1)
+    - [deleteShare](#deleteshare-1)
+    - [updateShare](#updateshare-1)
 
 
 ## Usage
@@ -164,7 +184,30 @@ Once you have created the smartsheet object above, you can use all the methods l
 
 ###Favorite API methods
 
-####createFavorite
+####listFavorites
+[back to TOC](#table-of-contents)
+#####Example using promises
+
+     smartsheet.favorites.listFavorites({})
+     .then(function(data) {
+       // Data will contain the favorites object
+     })
+     .catch(function(error) {
+       // Error will contain the error returned.
+     });
+
+#####Example using callbacks
+
+     smartsheet.favorites.listFavorites({}, function(err, data) {
+       if (err) {
+         // Error will contain the error returned.
+         console.log(err);
+       }
+       // Data will contain the favorites object
+       console.log(data);
+     });
+
+####addItemsToFavorites
 [back to TOC](#table-of-contents)
 #####Example using promises
 
@@ -176,7 +219,7 @@ Once you have created the smartsheet object above, you can use all the methods l
          //optional, found in the documentation linked above.
         }
      };
-     smartsheet.favorites.createFavorite(options)
+     smartsheet.favorites.addItemsToFavorites(options)
      .then(function(data) {
        // Data will contain the favorites object
      })
@@ -194,7 +237,7 @@ Once you have created the smartsheet object above, you can use all the methods l
          //optional, found in the documentation linked above.
         }
      };
-     smartsheet.favorites.createFavorite(options, function(err, data) {
+     smartsheet.favorites.addItemsToFavorites(options, function(err, data) {
        if (err) {
          // Error will contain the error returned.
          console.log(err);
@@ -203,37 +246,19 @@ Once you have created the smartsheet object above, you can use all the methods l
        console.log(data);
      });
 
-####getFavorites
-[back to TOC](#table-of-contents)
-#####Example using promises
-
-     smartsheet.favorites.getFavorites({})
-     .then(function(data) {
-       // Data will contain the favorites object
-     })
-     .catch(function(error) {
-       // Error will contain the error returned.
-     });
-
-#####Example using callbacks
-
-     smartsheet.favorites.getFavorites({}, function(err, data) {
-       if (err) {
-         // Error will contain the error returned.
-         console.log(err);
-       }
-       // Data will contain the favorites object
-       console.log(data);
-     });
-
-####deleteFavoriteSheet
+####addSheetToFavorites
 [back to TOC](#table-of-contents)
 #####Example using promises
 
      var options = {
-        id: favoritesId
-     }
-     smartsheet.favorites.deleteFavoriteSheet(options)
+        body: {
+         //body of request to send for favorites API in documentation linked above
+        },
+        queryParameters: {
+         //optional, found in the documentation linked above.
+        }
+     };
+     smartsheet.favorites.addSheetToFavorites(options)
      .then(function(data) {
        // Data will contain the favorites object
      })
@@ -244,9 +269,14 @@ Once you have created the smartsheet object above, you can use all the methods l
 #####Example using callbacks
 
      var options = {
-        id: favoritesId
-     }
-     smartsheet.favorites.deleteFavoriteSheet(options, function(err, data) {
+        body: {
+         //body of request to send for favorites API in documentation linked above
+        },
+        queryParameters: {
+         //optional, found in the documentation linked above.
+        }
+     };
+     smartsheet.favorites.addSheetToFavorites(options, function(err, data) {
        if (err) {
          // Error will contain the error returned.
          console.log(err);
@@ -255,14 +285,19 @@ Once you have created the smartsheet object above, you can use all the methods l
        console.log(data);
      });
 
-####deleteFavoriteFolder
+####addFolderToFavorites
 [back to TOC](#table-of-contents)
 #####Example using promises
 
      var options = {
-        id: favoritesId
-     }
-     smartsheet.favorites.deleteFavoriteFolder(options)
+        body: {
+         //body of request to send for favorites API in documentation linked above
+        },
+        queryParameters: {
+         //optional, found in the documentation linked above.
+        }
+     };
+     smartsheet.favorites.addFolderToFavorites(options)
      .then(function(data) {
        // Data will contain the favorites object
      })
@@ -273,9 +308,14 @@ Once you have created the smartsheet object above, you can use all the methods l
 #####Example using callbacks
 
      var options = {
-        id: favoritesId
-     }
-     smartsheet.favorites.deleteFavoriteFolder(options, function(err, data) {
+        body: {
+         //body of request to send for favorites API in documentation linked above
+        },
+        queryParameters: {
+         //optional, found in the documentation linked above.
+        }
+     };
+     smartsheet.favorites.addFolderToFavorites(options, function(err, data) {
        if (err) {
          // Error will contain the error returned.
          console.log(err);
@@ -284,14 +324,19 @@ Once you have created the smartsheet object above, you can use all the methods l
        console.log(data);
      });
 
-####deleteFavoriteReport
+####addReportToFavorites
 [back to TOC](#table-of-contents)
 #####Example using promises
 
      var options = {
-        id: favoritesId
-     }
-     smartsheet.favorites.deleteFavoriteReport(options)
+        body: {
+         //body of request to send for favorites API in documentation linked above
+        },
+        queryParameters: {
+         //optional, found in the documentation linked above.
+        }
+     };
+     smartsheet.favorites.addReportToFavorites(options)
      .then(function(data) {
        // Data will contain the favorites object
      })
@@ -302,9 +347,14 @@ Once you have created the smartsheet object above, you can use all the methods l
 #####Example using callbacks
 
      var options = {
-        id: favoritesId
-     }
-     smartsheet.favorites.deleteFavoriteReport(options, function(err, data) {
+        body: {
+         //body of request to send for favorites API in documentation linked above
+        },
+        queryParameters: {
+         //optional, found in the documentation linked above.
+        }
+     };
+     smartsheet.favorites.addReportToFavorites(options, function(err, data) {
        if (err) {
          // Error will contain the error returned.
          console.log(err);
@@ -313,14 +363,19 @@ Once you have created the smartsheet object above, you can use all the methods l
        console.log(data);
      });
 
-####deleteFavoriteTemplate
+####addTemplateToFavorites
 [back to TOC](#table-of-contents)
 #####Example using promises
 
      var options = {
-        id: favoritesId
-     }
-     smartsheet.favorites.deleteFavoriteTemplate(options)
+        body: {
+         //body of request to send for favorites API in documentation linked above
+        },
+        queryParameters: {
+         //optional, found in the documentation linked above.
+        }
+     };
+     smartsheet.favorites.addTemplateToFavorites(options)
      .then(function(data) {
        // Data will contain the favorites object
      })
@@ -331,9 +386,14 @@ Once you have created the smartsheet object above, you can use all the methods l
 #####Example using callbacks
 
      var options = {
-        id: favoritesId
-     }
-     smartsheet.favorites.deleteFavoriteTemplate(options, function(err, data) {
+        body: {
+         //body of request to send for favorites API in documentation linked above
+        },
+        queryParameters: {
+         //optional, found in the documentation linked above.
+        }
+     };
+     smartsheet.favorites.addTemplateToFavorites(options, function(err, data) {
        if (err) {
          // Error will contain the error returned.
          console.log(err);
@@ -342,14 +402,19 @@ Once you have created the smartsheet object above, you can use all the methods l
        console.log(data);
      });
 
-####deleteFavoriteWorkspace
+####addWorkspaceToFavorites
 [back to TOC](#table-of-contents)
 #####Example using promises
 
      var options = {
-        id: favoritesId
-     }
-     smartsheet.favorites.deleteFavoriteWorkspace(options)
+        body: {
+         //body of request to send for favorites API in documentation linked above
+        },
+        queryParameters: {
+         //optional, found in the documentation linked above.
+        }
+     };
+     smartsheet.favorites.addWorkspaceToFavorites(options)
      .then(function(data) {
        // Data will contain the favorites object
      })
@@ -360,9 +425,244 @@ Once you have created the smartsheet object above, you can use all the methods l
 #####Example using callbacks
 
      var options = {
-        id: favoritesId
-     }
-     smartsheet.favorites.deleteFavoriteWorkspace(options, function(err, data) {
+        body: {
+         //body of request to send for favorites API in documentation linked above
+        },
+        queryParameters: {
+         //optional, found in the documentation linked above.
+        }
+     };
+     smartsheet.favorites.addWorkspaceToFavorites(options, function(err, data) {
+       if (err) {
+         // Error will contain the error returned.
+         console.log(err);
+       }
+       // Data will contain the favorites object
+       console.log(data);
+     });
+
+####removeSheetFromFavorites
+[back to TOC](#table-of-contents)
+#####Example using promises
+
+     smartsheet.favorites.removeSheetFromFavorites({})
+     .then(function(data) {
+       // Data will contain the favorites object
+     })
+     .catch(function(error) {
+       // Error will contain the error returned.
+     });
+
+#####Example using callbacks
+
+     smartsheet.favorites.removeSheetFromFavorites({}, function(err, data) {
+       if (err) {
+         // Error will contain the error returned.
+         console.log(err);
+       }
+       // Data will contain the favorites object
+       console.log(data);
+     });
+
+####removeFolderFromFavorites
+[back to TOC](#table-of-contents)
+#####Example using promises
+
+     smartsheet.favorites.removeFolderFromFavorites({})
+     .then(function(data) {
+       // Data will contain the favorites object
+     })
+     .catch(function(error) {
+       // Error will contain the error returned.
+     });
+
+#####Example using callbacks
+
+     smartsheet.favorites.removeFolderFromFavorites({}, function(err, data) {
+       if (err) {
+         // Error will contain the error returned.
+         console.log(err);
+       }
+       // Data will contain the favorites object
+       console.log(data);
+     });
+
+####removeReportFromFavorites
+[back to TOC](#table-of-contents)
+#####Example using promises
+
+     smartsheet.favorites.removeReportFromFavorites({})
+     .then(function(data) {
+       // Data will contain the favorites object
+     })
+     .catch(function(error) {
+       // Error will contain the error returned.
+     });
+
+#####Example using callbacks
+
+     smartsheet.favorites.removeReportFromFavorites({}, function(err, data) {
+       if (err) {
+         // Error will contain the error returned.
+         console.log(err);
+       }
+       // Data will contain the favorites object
+       console.log(data);
+     });
+
+####removeTemplateFromFavorites
+[back to TOC](#table-of-contents)
+#####Example using promises
+
+     smartsheet.favorites.removeTemplateFromFavorites({})
+     .then(function(data) {
+       // Data will contain the favorites object
+     })
+     .catch(function(error) {
+       // Error will contain the error returned.
+     });
+
+#####Example using callbacks
+
+     smartsheet.favorites.removeTemplateFromFavorites({}, function(err, data) {
+       if (err) {
+         // Error will contain the error returned.
+         console.log(err);
+       }
+       // Data will contain the favorites object
+       console.log(data);
+     });
+
+####removeWorkspaceFromFavorites
+[back to TOC](#table-of-contents)
+#####Example using promises
+
+     smartsheet.favorites.removeWorkspaceFromFavorites({})
+     .then(function(data) {
+       // Data will contain the favorites object
+     })
+     .catch(function(error) {
+       // Error will contain the error returned.
+     });
+
+#####Example using callbacks
+
+     smartsheet.favorites.removeWorkspaceFromFavorites({}, function(err, data) {
+       if (err) {
+         // Error will contain the error returned.
+         console.log(err);
+       }
+       // Data will contain the favorites object
+       console.log(data);
+     });
+
+####removeSheetsFromFavorites
+[back to TOC](#table-of-contents)
+#####Example using promises
+
+     smartsheet.favorites.removeSheetsFromFavorites({})
+     .then(function(data) {
+       // Data will contain the favorites object
+     })
+     .catch(function(error) {
+       // Error will contain the error returned.
+     });
+
+#####Example using callbacks
+
+     smartsheet.favorites.removeSheetsFromFavorites({}, function(err, data) {
+       if (err) {
+         // Error will contain the error returned.
+         console.log(err);
+       }
+       // Data will contain the favorites object
+       console.log(data);
+     });
+
+####removeFoldersFromFavorites
+[back to TOC](#table-of-contents)
+#####Example using promises
+
+     smartsheet.favorites.removeFoldersFromFavorites({})
+     .then(function(data) {
+       // Data will contain the favorites object
+     })
+     .catch(function(error) {
+       // Error will contain the error returned.
+     });
+
+#####Example using callbacks
+
+     smartsheet.favorites.removeFoldersFromFavorites({}, function(err, data) {
+       if (err) {
+         // Error will contain the error returned.
+         console.log(err);
+       }
+       // Data will contain the favorites object
+       console.log(data);
+     });
+
+####removeReportsFromFavorites
+[back to TOC](#table-of-contents)
+#####Example using promises
+
+     smartsheet.favorites.removeReportsFromFavorites({})
+     .then(function(data) {
+       // Data will contain the favorites object
+     })
+     .catch(function(error) {
+       // Error will contain the error returned.
+     });
+
+#####Example using callbacks
+
+     smartsheet.favorites.removeReportsFromFavorites({}, function(err, data) {
+       if (err) {
+         // Error will contain the error returned.
+         console.log(err);
+       }
+       // Data will contain the favorites object
+       console.log(data);
+     });
+
+####removeTemplatesFromFavorites
+[back to TOC](#table-of-contents)
+#####Example using promises
+
+     smartsheet.favorites.removeTemplatesFromFavorites({})
+     .then(function(data) {
+       // Data will contain the favorites object
+     })
+     .catch(function(error) {
+       // Error will contain the error returned.
+     });
+
+#####Example using callbacks
+
+     smartsheet.favorites.removeTemplatesFromFavorites({}, function(err, data) {
+       if (err) {
+         // Error will contain the error returned.
+         console.log(err);
+       }
+       // Data will contain the favorites object
+       console.log(data);
+     });
+
+####removeWorkspacesFromFavorites
+[back to TOC](#table-of-contents)
+#####Example using promises
+
+     smartsheet.favorites.removeWorkspacesFromFavorites({})
+     .then(function(data) {
+       // Data will contain the favorites object
+     })
+     .catch(function(error) {
+       // Error will contain the error returned.
+     });
+
+#####Example using callbacks
+
+     smartsheet.favorites.removeWorkspacesFromFavorites({}, function(err, data) {
        if (err) {
          // Error will contain the error returned.
          console.log(err);
@@ -499,14 +799,14 @@ Once you have created the smartsheet object above, you can use all the methods l
        console.log(data);
      });
 
-####deleteFolders
+####deleteFolder
 [back to TOC](#table-of-contents)
 #####Example using promises
 
      var options = {
         id: foldersId
      }
-     smartsheet.folders.deleteFolders(options)
+     smartsheet.folders.deleteFolder(options)
      .then(function(data) {
        // Data will contain the folders object
      })
@@ -519,7 +819,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      var options = {
         id: foldersId
      }
-     smartsheet.folders.deleteFolders(options, function(err, data) {
+     smartsheet.folders.deleteFolder(options, function(err, data) {
        if (err) {
          // Error will contain the error returned.
          console.log(err);
@@ -530,11 +830,11 @@ Once you have created the smartsheet object above, you can use all the methods l
 
 ###Group API methods
 
-####getGroups
+####listGroups
 [back to TOC](#table-of-contents)
 #####Example using promises
 
-     smartsheet.groups.getGroups({})
+     smartsheet.groups.listGroups({})
      .then(function(data) {
        // Data will contain the groups object
      })
@@ -544,7 +844,7 @@ Once you have created the smartsheet object above, you can use all the methods l
 
 #####Example using callbacks
 
-     smartsheet.groups.getGroups({}, function(err, data) {
+     smartsheet.groups.listGroups({}, function(err, data) {
        if (err) {
          // Error will contain the error returned.
          console.log(err);
@@ -615,7 +915,7 @@ Once you have created the smartsheet object above, you can use all the methods l
        console.log(data);
      });
 
-####createGroupMember
+####addGroupMembers
 [back to TOC](#table-of-contents)
 #####Example using promises
 
@@ -627,7 +927,7 @@ Once you have created the smartsheet object above, you can use all the methods l
          //optional, found in the documentation linked above.
         }
      };
-     smartsheet.groups.createGroupMember(options)
+     smartsheet.groups.addGroupMembers(options)
      .then(function(data) {
        // Data will contain the groups object
      })
@@ -645,7 +945,7 @@ Once you have created the smartsheet object above, you can use all the methods l
          //optional, found in the documentation linked above.
         }
      };
-     smartsheet.groups.createGroupMember(options, function(err, data) {
+     smartsheet.groups.addGroupMembers(options, function(err, data) {
        if (err) {
          // Error will contain the error returned.
          console.log(err);
@@ -749,11 +1049,11 @@ Once you have created the smartsheet object above, you can use all the methods l
 
 ###Hom API methods
 
-####getHome
+####listContents
 [back to TOC](#table-of-contents)
 #####Example using promises
 
-     smartsheet.home.getHome({id: homeId})
+     smartsheet.home.listContents({})
      .then(function(data) {
        // Data will contain the home object
      })
@@ -763,7 +1063,7 @@ Once you have created the smartsheet object above, you can use all the methods l
 
 #####Example using callbacks
 
-     smartsheet.home.getHome({id: homeId}, function(err, data) {
+     smartsheet.home.listContents({}, function(err, data) {
        if (err) {
          // Error will contain the error returned.
          console.log(err);
@@ -772,11 +1072,11 @@ Once you have created the smartsheet object above, you can use all the methods l
        console.log(data);
      });
 
-####getFolders
+####listFolders
 [back to TOC](#table-of-contents)
 #####Example using promises
 
-     smartsheet.home.getFolders({})
+     smartsheet.home.listFolders({})
      .then(function(data) {
        // Data will contain the home object
      })
@@ -786,7 +1086,7 @@ Once you have created the smartsheet object above, you can use all the methods l
 
 #####Example using callbacks
 
-     smartsheet.home.getFolders({}, function(err, data) {
+     smartsheet.home.listFolders({}, function(err, data) {
        if (err) {
          // Error will contain the error returned.
          console.log(err);
@@ -795,7 +1095,7 @@ Once you have created the smartsheet object above, you can use all the methods l
        console.log(data);
      });
 
-####createHomeFolder
+####createFolder
 [back to TOC](#table-of-contents)
 #####Example using promises
 
@@ -807,7 +1107,7 @@ Once you have created the smartsheet object above, you can use all the methods l
          //optional, found in the documentation linked above.
         }
      };
-     smartsheet.home.createHomeFolder(options)
+     smartsheet.home.createFolder(options)
      .then(function(data) {
        // Data will contain the home object
      })
@@ -825,7 +1125,7 @@ Once you have created the smartsheet object above, you can use all the methods l
          //optional, found in the documentation linked above.
         }
      };
-     smartsheet.home.createHomeFolder(options, function(err, data) {
+     smartsheet.home.createFolder(options, function(err, data) {
        if (err) {
          // Error will contain the error returned.
          console.log(err);
@@ -835,6 +1135,29 @@ Once you have created the smartsheet object above, you can use all the methods l
      });
 
 ###Report API methods
+
+####listReports
+[back to TOC](#table-of-contents)
+#####Example using promises
+
+     smartsheet.reports.listReports({})
+     .then(function(data) {
+       // Data will contain the reports object
+     })
+     .catch(function(error) {
+       // Error will contain the error returned.
+     });
+
+#####Example using callbacks
+
+     smartsheet.reports.listReports({}, function(err, data) {
+       if (err) {
+         // Error will contain the error returned.
+         console.log(err);
+       }
+       // Data will contain the reports object
+       console.log(data);
+     });
 
 ####getReport
 [back to TOC](#table-of-contents)
@@ -859,11 +1182,11 @@ Once you have created the smartsheet object above, you can use all the methods l
        console.log(data);
      });
 
-####getReportShare
+####sendReportViaEmail
 [back to TOC](#table-of-contents)
 #####Example using promises
 
-     smartsheet.reports.getReportShare({id: reportsId})
+     smartsheet.reports.sendReportViaEmail({id: reportsId})
      .then(function(data) {
        // Data will contain the reports object
      })
@@ -873,7 +1196,7 @@ Once you have created the smartsheet object above, you can use all the methods l
 
 #####Example using callbacks
 
-     smartsheet.reports.getReportShare({id: reportsId}, function(err, data) {
+     smartsheet.reports.sendReportViaEmail({id: reportsId}, function(err, data) {
        if (err) {
          // Error will contain the error returned.
          console.log(err);
@@ -882,11 +1205,11 @@ Once you have created the smartsheet object above, you can use all the methods l
        console.log(data);
      });
 
-####getReportShares
+####getReportAsExcel
 [back to TOC](#table-of-contents)
 #####Example using promises
 
-     smartsheet.reports.getReportShares({})
+     smartsheet.reports.getReportAsExcel({id: reportsId})
      .then(function(data) {
        // Data will contain the reports object
      })
@@ -896,7 +1219,7 @@ Once you have created the smartsheet object above, you can use all the methods l
 
 #####Example using callbacks
 
-     smartsheet.reports.getReportShares({}, function(err, data) {
+     smartsheet.reports.getReportAsExcel({id: reportsId}, function(err, data) {
        if (err) {
          // Error will contain the error returned.
          console.log(err);
@@ -905,11 +1228,11 @@ Once you have created the smartsheet object above, you can use all the methods l
        console.log(data);
      });
 
-####sendReportAsEmail
+####getReportAsCSV
 [back to TOC](#table-of-contents)
 #####Example using promises
 
-     smartsheet.reports.sendReportAsEmail({id: reportsId})
+     smartsheet.reports.getReportAsCSV({id: reportsId})
      .then(function(data) {
        // Data will contain the reports object
      })
@@ -919,7 +1242,7 @@ Once you have created the smartsheet object above, you can use all the methods l
 
 #####Example using callbacks
 
-     smartsheet.reports.sendReportAsEmail({id: reportsId}, function(err, data) {
+     smartsheet.reports.getReportAsCSV({id: reportsId}, function(err, data) {
        if (err) {
          // Error will contain the error returned.
          console.log(err);
@@ -928,11 +1251,11 @@ Once you have created the smartsheet object above, you can use all the methods l
        console.log(data);
      });
 
-####shareReportWithGroups
+####getShare
 [back to TOC](#table-of-contents)
 #####Example using promises
 
-     smartsheet.reports.shareReportWithGroups({})
+     smartsheet.reports.getShare({id: reportsId})
      .then(function(data) {
        // Data will contain the reports object
      })
@@ -942,7 +1265,7 @@ Once you have created the smartsheet object above, you can use all the methods l
 
 #####Example using callbacks
 
-     smartsheet.reports.shareReportWithGroups({}, function(err, data) {
+     smartsheet.reports.getShare({id: reportsId}, function(err, data) {
        if (err) {
          // Error will contain the error returned.
          console.log(err);
@@ -951,11 +1274,11 @@ Once you have created the smartsheet object above, you can use all the methods l
        console.log(data);
      });
 
-####shareReportWithGroupsAndSendEmail
+####listShares
 [back to TOC](#table-of-contents)
 #####Example using promises
 
-     smartsheet.reports.shareReportWithGroupsAndSendEmail({id: reportsId})
+     smartsheet.reports.listShares({})
      .then(function(data) {
        // Data will contain the reports object
      })
@@ -965,7 +1288,7 @@ Once you have created the smartsheet object above, you can use all the methods l
 
 #####Example using callbacks
 
-     smartsheet.reports.shareReportWithGroupsAndSendEmail({id: reportsId}, function(err, data) {
+     smartsheet.reports.listShares({}, function(err, data) {
        if (err) {
          // Error will contain the error returned.
          console.log(err);
@@ -974,20 +1297,11 @@ Once you have created the smartsheet object above, you can use all the methods l
        console.log(data);
      });
 
-####updateShareWithGroups
+####share
 [back to TOC](#table-of-contents)
 #####Example using promises
 
-     var options = {
-        id: reportsId,
-        body: {
-         //body of request to send for reports API in documentation linked above
-        },
-        queryParameters: {
-         //optional, found in the documentation linked above.
-        }
-     };
-     smartsheet.reports.updateShareWithGroups(options)
+     smartsheet.reports.share({id: reportsId})
      .then(function(data) {
        // Data will contain the reports object
      })
@@ -997,16 +1311,7 @@ Once you have created the smartsheet object above, you can use all the methods l
 
 #####Example using callbacks
 
-     var options = {
-        id: reportsId,
-        body: {
-         //body of request to send for reports API in documentation linked above
-        },
-        queryParameters: {
-         //optional, found in the documentation linked above.
-        }
-     };
-     smartsheet.reports.updateShareWithGroups(options, function(err, data) {
+     smartsheet.reports.share({id: reportsId}, function(err, data) {
        if (err) {
          // Error will contain the error returned.
          console.log(err);
@@ -1015,14 +1320,14 @@ Once you have created the smartsheet object above, you can use all the methods l
        console.log(data);
      });
 
-####deleteShareWithGroups
+####deleteShare
 [back to TOC](#table-of-contents)
 #####Example using promises
 
      var options = {
         id: reportsId
      }
-     smartsheet.reports.deleteShareWithGroups(options)
+     smartsheet.reports.deleteShare(options)
      .then(function(data) {
        // Data will contain the reports object
      })
@@ -1035,7 +1340,48 @@ Once you have created the smartsheet object above, you can use all the methods l
      var options = {
         id: reportsId
      }
-     smartsheet.reports.deleteShareWithGroups(options, function(err, data) {
+     smartsheet.reports.deleteShare(options, function(err, data) {
+       if (err) {
+         // Error will contain the error returned.
+         console.log(err);
+       }
+       // Data will contain the reports object
+       console.log(data);
+     });
+
+####updateShare
+[back to TOC](#table-of-contents)
+#####Example using promises
+
+     var options = {
+        id: reportsId,
+        body: {
+         //body of request to send for reports API in documentation linked above
+        },
+        queryParameters: {
+         //optional, found in the documentation linked above.
+        }
+     };
+     smartsheet.reports.updateShare(options)
+     .then(function(data) {
+       // Data will contain the reports object
+     })
+     .catch(function(error) {
+       // Error will contain the error returned.
+     });
+
+#####Example using callbacks
+
+     var options = {
+        id: reportsId,
+        body: {
+         //body of request to send for reports API in documentation linked above
+        },
+        queryParameters: {
+         //optional, found in the documentation linked above.
+        }
+     };
+     smartsheet.reports.updateShare(options, function(err, data) {
        if (err) {
          // Error will contain the error returned.
          console.log(err);
@@ -1119,11 +1465,11 @@ Once you have created the smartsheet object above, you can use all the methods l
 
 ###Sheet API methods
 
-####sendSheetAsEmail
+####sendSheetViaEmail
 [back to TOC](#table-of-contents)
 #####Example using promises
 
-     smartsheet.sheets.sendSheetAsEmail({id: sheetsId})
+     smartsheet.sheets.sendSheetViaEmail({id: sheetsId})
      .then(function(data) {
        // Data will contain the sheets object
      })
@@ -1133,7 +1479,7 @@ Once you have created the smartsheet object above, you can use all the methods l
 
 #####Example using callbacks
 
-     smartsheet.sheets.sendSheetAsEmail({id: sheetsId}, function(err, data) {
+     smartsheet.sheets.sendSheetViaEmail({id: sheetsId}, function(err, data) {
        if (err) {
          // Error will contain the error returned.
          console.log(err);
@@ -1281,11 +1627,11 @@ Once you have created the smartsheet object above, you can use all the methods l
        console.log(data);
      });
 
-####getAttachments
+####listAttachments
 [back to TOC](#table-of-contents)
 #####Example using promises
 
-     smartsheet.sheets.getAttachments({})
+     smartsheet.sheets.listAttachments({})
      .then(function(data) {
        // Data will contain the sheets object
      })
@@ -1295,7 +1641,7 @@ Once you have created the smartsheet object above, you can use all the methods l
 
 #####Example using callbacks
 
-     smartsheet.sheets.getAttachments({}, function(err, data) {
+     smartsheet.sheets.listAttachments({}, function(err, data) {
        if (err) {
          // Error will contain the error returned.
          console.log(err);
@@ -1304,11 +1650,11 @@ Once you have created the smartsheet object above, you can use all the methods l
        console.log(data);
      });
 
-####getAttachmentVersion
+####listAttachmentVersions
 [back to TOC](#table-of-contents)
 #####Example using promises
 
-     smartsheet.sheets.getAttachmentVersion({id: sheetsId})
+     smartsheet.sheets.listAttachmentVersions({})
      .then(function(data) {
        // Data will contain the sheets object
      })
@@ -1318,7 +1664,7 @@ Once you have created the smartsheet object above, you can use all the methods l
 
 #####Example using callbacks
 
-     smartsheet.sheets.getAttachmentVersion({id: sheetsId}, function(err, data) {
+     smartsheet.sheets.listAttachmentVersions({}, function(err, data) {
        if (err) {
          // Error will contain the error returned.
          console.log(err);
@@ -1327,11 +1673,19 @@ Once you have created the smartsheet object above, you can use all the methods l
        console.log(data);
      });
 
-####uploadAttachment
+####addAttachment
 [back to TOC](#table-of-contents)
 #####Example using promises
 
-     smartsheet.sheets.uploadAttachment({id: sheetsId})
+     var options = {
+        body: {
+         //body of request to send for sheets API in documentation linked above
+        },
+        queryParameters: {
+         //optional, found in the documentation linked above.
+        }
+     };
+     smartsheet.sheets.addAttachment(options)
      .then(function(data) {
        // Data will contain the sheets object
      })
@@ -1341,7 +1695,15 @@ Once you have created the smartsheet object above, you can use all the methods l
 
 #####Example using callbacks
 
-     smartsheet.sheets.uploadAttachment({id: sheetsId}, function(err, data) {
+     var options = {
+        body: {
+         //body of request to send for sheets API in documentation linked above
+        },
+        queryParameters: {
+         //optional, found in the documentation linked above.
+        }
+     };
+     smartsheet.sheets.addAttachment(options, function(err, data) {
        if (err) {
          // Error will contain the error returned.
          console.log(err);
@@ -1350,11 +1712,11 @@ Once you have created the smartsheet object above, you can use all the methods l
        console.log(data);
      });
 
-####uploadNewAttachmentVersion
+####attachNewVersion
 [back to TOC](#table-of-contents)
 #####Example using promises
 
-     smartsheet.sheets.uploadNewAttachmentVersion({id: sheetsId})
+     smartsheet.sheets.attachNewVersion({id: sheetsId})
      .then(function(data) {
        // Data will contain the sheets object
      })
@@ -1364,7 +1726,7 @@ Once you have created the smartsheet object above, you can use all the methods l
 
 #####Example using callbacks
 
-     smartsheet.sheets.uploadNewAttachmentVersion({id: sheetsId}, function(err, data) {
+     smartsheet.sheets.attachNewVersion({id: sheetsId}, function(err, data) {
        if (err) {
          // Error will contain the error returned.
          console.log(err);
@@ -1402,14 +1764,14 @@ Once you have created the smartsheet object above, you can use all the methods l
        console.log(data);
      });
 
-####deleteAttachmentVersion
+####deleteAllAttachmentVersions
 [back to TOC](#table-of-contents)
 #####Example using promises
 
      var options = {
         id: sheetsId
      }
-     smartsheet.sheets.deleteAttachmentVersion(options)
+     smartsheet.sheets.deleteAllAttachmentVersions(options)
      .then(function(data) {
        // Data will contain the sheets object
      })
@@ -1422,7 +1784,7 @@ Once you have created the smartsheet object above, you can use all the methods l
      var options = {
         id: sheetsId
      }
-     smartsheet.sheets.deleteAttachmentVersion(options, function(err, data) {
+     smartsheet.sheets.deleteAllAttachmentVersions(options, function(err, data) {
        if (err) {
          // Error will contain the error returned.
          console.log(err);
@@ -1477,7 +1839,7 @@ Once you have created the smartsheet object above, you can use all the methods l
        console.log(data);
      });
 
-####createColumn
+####addColumn
 [back to TOC](#table-of-contents)
 #####Example using promises
 
@@ -1489,7 +1851,7 @@ Once you have created the smartsheet object above, you can use all the methods l
          //optional, found in the documentation linked above.
         }
      };
-     smartsheet.sheets.createColumn(options)
+     smartsheet.sheets.addColumn(options)
      .then(function(data) {
        // Data will contain the sheets object
      })
@@ -1507,7 +1869,7 @@ Once you have created the smartsheet object above, you can use all the methods l
          //optional, found in the documentation linked above.
         }
      };
-     smartsheet.sheets.createColumn(options, function(err, data) {
+     smartsheet.sheets.addColumn(options, function(err, data) {
        if (err) {
          // Error will contain the error returned.
          console.log(err);
@@ -1578,6 +1940,97 @@ Once you have created the smartsheet object above, you can use all the methods l
         }
      };
      smartsheet.sheets.updateColumn(options, function(err, data) {
+       if (err) {
+         // Error will contain the error returned.
+         console.log(err);
+       }
+       // Data will contain the sheets object
+       console.log(data);
+     });
+
+####getComment
+[back to TOC](#table-of-contents)
+#####Example using promises
+
+     smartsheet.sheets.getComment({id: sheetsId})
+     .then(function(data) {
+       // Data will contain the sheets object
+     })
+     .catch(function(error) {
+       // Error will contain the error returned.
+     });
+
+#####Example using callbacks
+
+     smartsheet.sheets.getComment({id: sheetsId}, function(err, data) {
+       if (err) {
+         // Error will contain the error returned.
+         console.log(err);
+       }
+       // Data will contain the sheets object
+       console.log(data);
+     });
+
+####deleteComment
+[back to TOC](#table-of-contents)
+#####Example using promises
+
+     var options = {
+        id: sheetsId
+     }
+     smartsheet.sheets.deleteComment(options)
+     .then(function(data) {
+       // Data will contain the sheets object
+     })
+     .catch(function(error) {
+       // Error will contain the error returned.
+     });
+
+#####Example using callbacks
+
+     var options = {
+        id: sheetsId
+     }
+     smartsheet.sheets.deleteComment(options, function(err, data) {
+       if (err) {
+         // Error will contain the error returned.
+         console.log(err);
+       }
+       // Data will contain the sheets object
+       console.log(data);
+     });
+
+####addCommentAttachment
+[back to TOC](#table-of-contents)
+#####Example using promises
+
+     var options = {
+        body: {
+         //body of request to send for sheets API in documentation linked above
+        },
+        queryParameters: {
+         //optional, found in the documentation linked above.
+        }
+     };
+     smartsheet.sheets.addCommentAttachment(options)
+     .then(function(data) {
+       // Data will contain the sheets object
+     })
+     .catch(function(error) {
+       // Error will contain the error returned.
+     });
+
+#####Example using callbacks
+
+     var options = {
+        body: {
+         //body of request to send for sheets API in documentation linked above
+        },
+        queryParameters: {
+         //optional, found in the documentation linked above.
+        }
+     };
+     smartsheet.sheets.addCommentAttachment(options, function(err, data) {
        if (err) {
          // Error will contain the error returned.
          console.log(err);
@@ -1788,11 +2241,11 @@ Once you have created the smartsheet object above, you can use all the methods l
        console.log(data);
      });
 
-####getDiscussionAttachments
+####listDiscussionAttachments
 [back to TOC](#table-of-contents)
 #####Example using promises
 
-     smartsheet.sheets.getDiscussionAttachments({})
+     smartsheet.sheets.listDiscussionAttachments({})
      .then(function(data) {
        // Data will contain the sheets object
      })
@@ -1802,7 +2255,7 @@ Once you have created the smartsheet object above, you can use all the methods l
 
 #####Example using callbacks
 
-     smartsheet.sheets.getDiscussionAttachments({}, function(err, data) {
+     smartsheet.sheets.listDiscussionAttachments({}, function(err, data) {
        if (err) {
          // Error will contain the error returned.
          console.log(err);
@@ -1850,7 +2303,7 @@ Once you have created the smartsheet object above, you can use all the methods l
        console.log(data);
      });
 
-####createDiscussionComment
+####addDiscussionComment
 [back to TOC](#table-of-contents)
 #####Example using promises
 
@@ -1862,7 +2315,7 @@ Once you have created the smartsheet object above, you can use all the methods l
          //optional, found in the documentation linked above.
         }
      };
-     smartsheet.sheets.createDiscussionComment(options)
+     smartsheet.sheets.addDiscussionComment(options)
      .then(function(data) {
        // Data will contain the sheets object
      })
@@ -1880,7 +2333,7 @@ Once you have created the smartsheet object above, you can use all the methods l
          //optional, found in the documentation linked above.
         }
      };
-     smartsheet.sheets.createDiscussionComment(options, function(err, data) {
+     smartsheet.sheets.addDiscussionComment(options, function(err, data) {
        if (err) {
          // Error will contain the error returned.
          console.log(err);
@@ -1918,29 +2371,6 @@ Once you have created the smartsheet object above, you can use all the methods l
        console.log(data);
      });
 
-####getSheets
-[back to TOC](#table-of-contents)
-#####Example using promises
-
-     smartsheet.sheets.getSheets({})
-     .then(function(data) {
-       // Data will contain the sheets object
-     })
-     .catch(function(error) {
-       // Error will contain the error returned.
-     });
-
-#####Example using callbacks
-
-     smartsheet.sheets.getSheets({}, function(err, data) {
-       if (err) {
-         // Error will contain the error returned.
-         console.log(err);
-       }
-       // Data will contain the sheets object
-       console.log(data);
-     });
-
 ####getSheet
 [back to TOC](#table-of-contents)
 #####Example using promises
@@ -1964,11 +2394,11 @@ Once you have created the smartsheet object above, you can use all the methods l
        console.log(data);
      });
 
-####getSheetAsCsv
+####listSheets
 [back to TOC](#table-of-contents)
 #####Example using promises
 
-     smartsheet.sheets.getSheetAsCsv({id: sheetsId})
+     smartsheet.sheets.listSheets({})
      .then(function(data) {
        // Data will contain the sheets object
      })
@@ -1978,7 +2408,30 @@ Once you have created the smartsheet object above, you can use all the methods l
 
 #####Example using callbacks
 
-     smartsheet.sheets.getSheetAsCsv({id: sheetsId}, function(err, data) {
+     smartsheet.sheets.listSheets({}, function(err, data) {
+       if (err) {
+         // Error will contain the error returned.
+         console.log(err);
+       }
+       // Data will contain the sheets object
+       console.log(data);
+     });
+
+####getSheetAsCSV
+[back to TOC](#table-of-contents)
+#####Example using promises
+
+     smartsheet.sheets.getSheetAsCSV({id: sheetsId})
+     .then(function(data) {
+       // Data will contain the sheets object
+     })
+     .catch(function(error) {
+       // Error will contain the error returned.
+     });
+
+#####Example using callbacks
+
+     smartsheet.sheets.getSheetAsCSV({id: sheetsId}, function(err, data) {
        if (err) {
          // Error will contain the error returned.
          console.log(err);
@@ -2010,11 +2463,11 @@ Once you have created the smartsheet object above, you can use all the methods l
        console.log(data);
      });
 
-####getSheetAsPdf
+####getSheetAsPDF
 [back to TOC](#table-of-contents)
 #####Example using promises
 
-     smartsheet.sheets.getSheetAsPdf({id: sheetsId})
+     smartsheet.sheets.getSheetAsPDF({id: sheetsId})
      .then(function(data) {
        // Data will contain the sheets object
      })
@@ -2024,7 +2477,53 @@ Once you have created the smartsheet object above, you can use all the methods l
 
 #####Example using callbacks
 
-     smartsheet.sheets.getSheetAsPdf({id: sheetsId}, function(err, data) {
+     smartsheet.sheets.getSheetAsPDF({id: sheetsId}, function(err, data) {
+       if (err) {
+         // Error will contain the error returned.
+         console.log(err);
+       }
+       // Data will contain the sheets object
+       console.log(data);
+     });
+
+####getSheetVersion
+[back to TOC](#table-of-contents)
+#####Example using promises
+
+     smartsheet.sheets.getSheetVersion({id: sheetsId})
+     .then(function(data) {
+       // Data will contain the sheets object
+     })
+     .catch(function(error) {
+       // Error will contain the error returned.
+     });
+
+#####Example using callbacks
+
+     smartsheet.sheets.getSheetVersion({id: sheetsId}, function(err, data) {
+       if (err) {
+         // Error will contain the error returned.
+         console.log(err);
+       }
+       // Data will contain the sheets object
+       console.log(data);
+     });
+
+####listOrganizationSheets
+[back to TOC](#table-of-contents)
+#####Example using promises
+
+     smartsheet.sheets.listOrganizationSheets({})
+     .then(function(data) {
+       // Data will contain the sheets object
+     })
+     .catch(function(error) {
+       // Error will contain the error returned.
+     });
+
+#####Example using callbacks
+
+     smartsheet.sheets.listOrganizationSheets({}, function(err, data) {
        if (err) {
          // Error will contain the error returned.
          console.log(err);
@@ -2125,19 +2624,11 @@ Once you have created the smartsheet object above, you can use all the methods l
        console.log(data);
      });
 
-####createRow
+####copyRowToAnotherSheet
 [back to TOC](#table-of-contents)
 #####Example using promises
 
-     var options = {
-        body: {
-         //body of request to send for sheets API in documentation linked above
-        },
-        queryParameters: {
-         //optional, found in the documentation linked above.
-        }
-     };
-     smartsheet.sheets.createRow(options)
+     smartsheet.sheets.copyRowToAnotherSheet({id: sheetsId})
      .then(function(data) {
        // Data will contain the sheets object
      })
@@ -2147,15 +2638,7 @@ Once you have created the smartsheet object above, you can use all the methods l
 
 #####Example using callbacks
 
-     var options = {
-        body: {
-         //body of request to send for sheets API in documentation linked above
-        },
-        queryParameters: {
-         //optional, found in the documentation linked above.
-        }
-     };
-     smartsheet.sheets.createRow(options, function(err, data) {
+     smartsheet.sheets.copyRowToAnotherSheet({id: sheetsId}, function(err, data) {
        if (err) {
          // Error will contain the error returned.
          console.log(err);
@@ -2164,19 +2647,11 @@ Once you have created the smartsheet object above, you can use all the methods l
        console.log(data);
      });
 
-####createRowAttachments
+####moveRowToAnotherSheet
 [back to TOC](#table-of-contents)
 #####Example using promises
 
-     var options = {
-        body: {
-         //body of request to send for sheets API in documentation linked above
-        },
-        queryParameters: {
-         //optional, found in the documentation linked above.
-        }
-     };
-     smartsheet.sheets.createRowAttachments(options)
+     smartsheet.sheets.moveRowToAnotherSheet({id: sheetsId})
      .then(function(data) {
        // Data will contain the sheets object
      })
@@ -2186,15 +2661,7 @@ Once you have created the smartsheet object above, you can use all the methods l
 
 #####Example using callbacks
 
-     var options = {
-        body: {
-         //body of request to send for sheets API in documentation linked above
-        },
-        queryParameters: {
-         //optional, found in the documentation linked above.
-        }
-     };
-     smartsheet.sheets.createRowAttachments(options, function(err, data) {
+     smartsheet.sheets.moveRowToAnotherSheet({id: sheetsId}, function(err, data) {
        if (err) {
          // Error will contain the error returned.
          console.log(err);
@@ -2203,7 +2670,7 @@ Once you have created the smartsheet object above, you can use all the methods l
        console.log(data);
      });
 
-####createRowDiscussions
+####addRow
 [back to TOC](#table-of-contents)
 #####Example using promises
 
@@ -2215,7 +2682,7 @@ Once you have created the smartsheet object above, you can use all the methods l
          //optional, found in the documentation linked above.
         }
      };
-     smartsheet.sheets.createRowDiscussions(options)
+     smartsheet.sheets.addRow(options)
      .then(function(data) {
        // Data will contain the sheets object
      })
@@ -2233,7 +2700,124 @@ Once you have created the smartsheet object above, you can use all the methods l
          //optional, found in the documentation linked above.
         }
      };
-     smartsheet.sheets.createRowDiscussions(options, function(err, data) {
+     smartsheet.sheets.addRow(options, function(err, data) {
+       if (err) {
+         // Error will contain the error returned.
+         console.log(err);
+       }
+       // Data will contain the sheets object
+       console.log(data);
+     });
+
+####addRows
+[back to TOC](#table-of-contents)
+#####Example using promises
+
+     var options = {
+        body: {
+         //body of request to send for sheets API in documentation linked above
+        },
+        queryParameters: {
+         //optional, found in the documentation linked above.
+        }
+     };
+     smartsheet.sheets.addRows(options)
+     .then(function(data) {
+       // Data will contain the sheets object
+     })
+     .catch(function(error) {
+       // Error will contain the error returned.
+     });
+
+#####Example using callbacks
+
+     var options = {
+        body: {
+         //body of request to send for sheets API in documentation linked above
+        },
+        queryParameters: {
+         //optional, found in the documentation linked above.
+        }
+     };
+     smartsheet.sheets.addRows(options, function(err, data) {
+       if (err) {
+         // Error will contain the error returned.
+         console.log(err);
+       }
+       // Data will contain the sheets object
+       console.log(data);
+     });
+
+####addRowAttachment
+[back to TOC](#table-of-contents)
+#####Example using promises
+
+     var options = {
+        body: {
+         //body of request to send for sheets API in documentation linked above
+        },
+        queryParameters: {
+         //optional, found in the documentation linked above.
+        }
+     };
+     smartsheet.sheets.addRowAttachment(options)
+     .then(function(data) {
+       // Data will contain the sheets object
+     })
+     .catch(function(error) {
+       // Error will contain the error returned.
+     });
+
+#####Example using callbacks
+
+     var options = {
+        body: {
+         //body of request to send for sheets API in documentation linked above
+        },
+        queryParameters: {
+         //optional, found in the documentation linked above.
+        }
+     };
+     smartsheet.sheets.addRowAttachment(options, function(err, data) {
+       if (err) {
+         // Error will contain the error returned.
+         console.log(err);
+       }
+       // Data will contain the sheets object
+       console.log(data);
+     });
+
+####createRowDiscussion
+[back to TOC](#table-of-contents)
+#####Example using promises
+
+     var options = {
+        body: {
+         //body of request to send for sheets API in documentation linked above
+        },
+        queryParameters: {
+         //optional, found in the documentation linked above.
+        }
+     };
+     smartsheet.sheets.createRowDiscussion(options)
+     .then(function(data) {
+       // Data will contain the sheets object
+     })
+     .catch(function(error) {
+       // Error will contain the error returned.
+     });
+
+#####Example using callbacks
+
+     var options = {
+        body: {
+         //body of request to send for sheets API in documentation linked above
+        },
+        queryParameters: {
+         //optional, found in the documentation linked above.
+        }
+     };
+     smartsheet.sheets.createRowDiscussion(options, function(err, data) {
        if (err) {
          // Error will contain the error returned.
          console.log(err);
@@ -2358,11 +2942,11 @@ Once you have created the smartsheet object above, you can use all the methods l
        console.log(data);
      });
 
-####getShares
+####listShares
 [back to TOC](#table-of-contents)
 #####Example using promises
 
-     smartsheet.sheets.getShares({})
+     smartsheet.sheets.listShares({})
      .then(function(data) {
        // Data will contain the sheets object
      })
@@ -2372,7 +2956,7 @@ Once you have created the smartsheet object above, you can use all the methods l
 
 #####Example using callbacks
 
-     smartsheet.sheets.getShares({}, function(err, data) {
+     smartsheet.sheets.listShares({}, function(err, data) {
        if (err) {
          // Error will contain the error returned.
          console.log(err);
@@ -2381,19 +2965,11 @@ Once you have created the smartsheet object above, you can use all the methods l
        console.log(data);
      });
 
-####createShare
+####share
 [back to TOC](#table-of-contents)
 #####Example using promises
 
-     var options = {
-        body: {
-         //body of request to send for sheets API in documentation linked above
-        },
-        queryParameters: {
-         //optional, found in the documentation linked above.
-        }
-     };
-     smartsheet.sheets.createShare(options)
+     smartsheet.sheets.share({id: sheetsId})
      .then(function(data) {
        // Data will contain the sheets object
      })
@@ -2403,15 +2979,7 @@ Once you have created the smartsheet object above, you can use all the methods l
 
 #####Example using callbacks
 
-     var options = {
-        body: {
-         //body of request to send for sheets API in documentation linked above
-        },
-        queryParameters: {
-         //optional, found in the documentation linked above.
-        }
-     };
-     smartsheet.sheets.createShare(options, function(err, data) {
+     smartsheet.sheets.share({id: sheetsId}, function(err, data) {
        if (err) {
          // Error will contain the error returned.
          console.log(err);
@@ -2492,11 +3060,11 @@ Once you have created the smartsheet object above, you can use all the methods l
 
 ###Template API methods
 
-####getTemplates
+####listUserCreatedTemplates
 [back to TOC](#table-of-contents)
 #####Example using promises
 
-     smartsheet.templates.getTemplates({})
+     smartsheet.templates.listUserCreatedTemplates({})
      .then(function(data) {
        // Data will contain the templates object
      })
@@ -2506,7 +3074,7 @@ Once you have created the smartsheet object above, you can use all the methods l
 
 #####Example using callbacks
 
-     smartsheet.templates.getTemplates({}, function(err, data) {
+     smartsheet.templates.listUserCreatedTemplates({}, function(err, data) {
        if (err) {
          // Error will contain the error returned.
          console.log(err);
@@ -2515,11 +3083,11 @@ Once you have created the smartsheet object above, you can use all the methods l
        console.log(data);
      });
 
-####getPublicTemplates
+####listPublicTemplates
 [back to TOC](#table-of-contents)
 #####Example using promises
 
-     smartsheet.templates.getPublicTemplates({})
+     smartsheet.templates.listPublicTemplates({})
      .then(function(data) {
        // Data will contain the templates object
      })
@@ -2529,7 +3097,7 @@ Once you have created the smartsheet object above, you can use all the methods l
 
 #####Example using callbacks
 
-     smartsheet.templates.getPublicTemplates({}, function(err, data) {
+     smartsheet.templates.listPublicTemplates({}, function(err, data) {
        if (err) {
          // Error will contain the error returned.
          console.log(err);
@@ -2540,11 +3108,11 @@ Once you have created the smartsheet object above, you can use all the methods l
 
 ###User API methods
 
-####getUsers
+####getUser
 [back to TOC](#table-of-contents)
 #####Example using promises
 
-     smartsheet.users.getUsers({})
+     smartsheet.users.getUser({id: usersId})
      .then(function(data) {
        // Data will contain the users object
      })
@@ -2554,7 +3122,30 @@ Once you have created the smartsheet object above, you can use all the methods l
 
 #####Example using callbacks
 
-     smartsheet.users.getUsers({}, function(err, data) {
+     smartsheet.users.getUser({id: usersId}, function(err, data) {
+       if (err) {
+         // Error will contain the error returned.
+         console.log(err);
+       }
+       // Data will contain the users object
+       console.log(data);
+     });
+
+####listAllUsers
+[back to TOC](#table-of-contents)
+#####Example using promises
+
+     smartsheet.users.listAllUsers({})
+     .then(function(data) {
+       // Data will contain the users object
+     })
+     .catch(function(error) {
+       // Error will contain the error returned.
+     });
+
+#####Example using callbacks
+
+     smartsheet.users.listAllUsers({}, function(err, data) {
        if (err) {
          // Error will contain the error returned.
          console.log(err);
@@ -2586,11 +3177,19 @@ Once you have created the smartsheet object above, you can use all the methods l
        console.log(data);
      });
 
-####getAllUsersSheets
+####addUser
 [back to TOC](#table-of-contents)
 #####Example using promises
 
-     smartsheet.users.getAllUsersSheets({})
+     var options = {
+        body: {
+         //body of request to send for users API in documentation linked above
+        },
+        queryParameters: {
+         //optional, found in the documentation linked above.
+        }
+     };
+     smartsheet.users.addUser(options)
      .then(function(data) {
        // Data will contain the users object
      })
@@ -2600,7 +3199,15 @@ Once you have created the smartsheet object above, you can use all the methods l
 
 #####Example using callbacks
 
-     smartsheet.users.getAllUsersSheets({}, function(err, data) {
+     var options = {
+        body: {
+         //body of request to send for users API in documentation linked above
+        },
+        queryParameters: {
+         //optional, found in the documentation linked above.
+        }
+     };
+     smartsheet.users.addUser(options, function(err, data) {
        if (err) {
          // Error will contain the error returned.
          console.log(err);
@@ -2609,7 +3216,7 @@ Once you have created the smartsheet object above, you can use all the methods l
        console.log(data);
      });
 
-####createUser
+####addUserAndSendEmail
 [back to TOC](#table-of-contents)
 #####Example using promises
 
@@ -2621,7 +3228,7 @@ Once you have created the smartsheet object above, you can use all the methods l
          //optional, found in the documentation linked above.
         }
      };
-     smartsheet.users.createUser(options)
+     smartsheet.users.addUserAndSendEmail(options)
      .then(function(data) {
        // Data will contain the users object
      })
@@ -2639,46 +3246,7 @@ Once you have created the smartsheet object above, you can use all the methods l
          //optional, found in the documentation linked above.
         }
      };
-     smartsheet.users.createUser(options, function(err, data) {
-       if (err) {
-         // Error will contain the error returned.
-         console.log(err);
-       }
-       // Data will contain the users object
-       console.log(data);
-     });
-
-####createUserAndSendEmail
-[back to TOC](#table-of-contents)
-#####Example using promises
-
-     var options = {
-        body: {
-         //body of request to send for users API in documentation linked above
-        },
-        queryParameters: {
-         //optional, found in the documentation linked above.
-        }
-     };
-     smartsheet.users.createUserAndSendEmail(options)
-     .then(function(data) {
-       // Data will contain the users object
-     })
-     .catch(function(error) {
-       // Error will contain the error returned.
-     });
-
-#####Example using callbacks
-
-     var options = {
-        body: {
-         //body of request to send for users API in documentation linked above
-        },
-        queryParameters: {
-         //optional, found in the documentation linked above.
-        }
-     };
-     smartsheet.users.createUserAndSendEmail(options, function(err, data) {
+     smartsheet.users.addUserAndSendEmail(options, function(err, data) {
        if (err) {
          // Error will contain the error returned.
          console.log(err);
@@ -2728,14 +3296,11 @@ Once you have created the smartsheet object above, you can use all the methods l
        console.log(data);
      });
 
-####deleteUser
+####removeUser
 [back to TOC](#table-of-contents)
 #####Example using promises
 
-     var options = {
-        id: usersId
-     }
-     smartsheet.users.deleteUser(options)
+     smartsheet.users.removeUser({id: usersId})
      .then(function(data) {
        // Data will contain the users object
      })
@@ -2745,10 +3310,7 @@ Once you have created the smartsheet object above, you can use all the methods l
 
 #####Example using callbacks
 
-     var options = {
-        id: usersId
-     }
-     smartsheet.users.deleteUser(options, function(err, data) {
+     smartsheet.users.removeUser({id: usersId}, function(err, data) {
        if (err) {
          // Error will contain the error returned.
          console.log(err);
@@ -2759,11 +3321,11 @@ Once you have created the smartsheet object above, you can use all the methods l
 
 ###Workspace API methods
 
-####getWorkspaces
+####listWorkspaces
 [back to TOC](#table-of-contents)
 #####Example using promises
 
-     smartsheet.workspaces.getWorkspaces({})
+     smartsheet.workspaces.listWorkspaces({})
      .then(function(data) {
        // Data will contain the workspaces object
      })
@@ -2773,7 +3335,7 @@ Once you have created the smartsheet object above, you can use all the methods l
 
 #####Example using callbacks
 
-     smartsheet.workspaces.getWorkspaces({}, function(err, data) {
+     smartsheet.workspaces.listWorkspaces({}, function(err, data) {
        if (err) {
          // Error will contain the error returned.
          console.log(err);
@@ -2805,11 +3367,11 @@ Once you have created the smartsheet object above, you can use all the methods l
        console.log(data);
      });
 
-####getWorkspaceFolders
+####listWorkspaceFolders
 [back to TOC](#table-of-contents)
 #####Example using promises
 
-     smartsheet.workspaces.getWorkspaceFolders({})
+     smartsheet.workspaces.listWorkspaceFolders({})
      .then(function(data) {
        // Data will contain the workspaces object
      })
@@ -2819,7 +3381,7 @@ Once you have created the smartsheet object above, you can use all the methods l
 
 #####Example using callbacks
 
-     smartsheet.workspaces.getWorkspaceFolders({}, function(err, data) {
+     smartsheet.workspaces.listWorkspaceFolders({}, function(err, data) {
        if (err) {
          // Error will contain the error returned.
          console.log(err);
@@ -2867,7 +3429,7 @@ Once you have created the smartsheet object above, you can use all the methods l
        console.log(data);
      });
 
-####createWorkspaceFolder
+####createFolder
 [back to TOC](#table-of-contents)
 #####Example using promises
 
@@ -2879,7 +3441,7 @@ Once you have created the smartsheet object above, you can use all the methods l
          //optional, found in the documentation linked above.
         }
      };
-     smartsheet.workspaces.createWorkspaceFolder(options)
+     smartsheet.workspaces.createFolder(options)
      .then(function(data) {
        // Data will contain the workspaces object
      })
@@ -2897,7 +3459,7 @@ Once you have created the smartsheet object above, you can use all the methods l
          //optional, found in the documentation linked above.
         }
      };
-     smartsheet.workspaces.createWorkspaceFolder(options, function(err, data) {
+     smartsheet.workspaces.createFolder(options, function(err, data) {
        if (err) {
          // Error will contain the error returned.
          console.log(err);
@@ -2999,11 +3561,11 @@ Once you have created the smartsheet object above, you can use all the methods l
        console.log(data);
      });
 
-####getShares
+####listShares
 [back to TOC](#table-of-contents)
 #####Example using promises
 
-     smartsheet.workspaces.getShares({})
+     smartsheet.workspaces.listShares({})
      .then(function(data) {
        // Data will contain the workspaces object
      })
@@ -3013,7 +3575,7 @@ Once you have created the smartsheet object above, you can use all the methods l
 
 #####Example using callbacks
 
-     smartsheet.workspaces.getShares({}, function(err, data) {
+     smartsheet.workspaces.listShares({}, function(err, data) {
        if (err) {
          // Error will contain the error returned.
          console.log(err);
@@ -3022,19 +3584,11 @@ Once you have created the smartsheet object above, you can use all the methods l
        console.log(data);
      });
 
-####createShare
+####share
 [back to TOC](#table-of-contents)
 #####Example using promises
 
-     var options = {
-        body: {
-         //body of request to send for workspaces API in documentation linked above
-        },
-        queryParameters: {
-         //optional, found in the documentation linked above.
-        }
-     };
-     smartsheet.workspaces.createShare(options)
+     smartsheet.workspaces.share({id: workspacesId})
      .then(function(data) {
        // Data will contain the workspaces object
      })
@@ -3044,15 +3598,7 @@ Once you have created the smartsheet object above, you can use all the methods l
 
 #####Example using callbacks
 
-     var options = {
-        body: {
-         //body of request to send for workspaces API in documentation linked above
-        },
-        queryParameters: {
-         //optional, found in the documentation linked above.
-        }
-     };
-     smartsheet.workspaces.createShare(options, function(err, data) {
+     smartsheet.workspaces.share({id: workspacesId}, function(err, data) {
        if (err) {
          // Error will contain the error returned.
          console.log(err);
