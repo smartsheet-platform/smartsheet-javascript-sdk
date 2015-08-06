@@ -212,10 +212,10 @@ Once you have created the smartsheet object above, you can use all the methods l
 
      var options = {
         body: {
-         //body of request as specified in [Smartsheet API documentation](http://www.smartsheet.com/developers/api-documentation)
+         //body of request as specified in the Smartsheet API documentation
         },
         queryParameters: {
-         //optional, found in the documentation linked above.
+         //querystring parameters as specified in the Smartsheet API documentation
         }
      };
      smartsheet.favorites.addItemsToFavorites(options)
@@ -230,10 +230,10 @@ Once you have created the smartsheet object above, you can use all the methods l
 
      var options = {
         body: {
-         //body of request to send for favorites API in documentation linked above
+         //body of request as specified in the Smartsheet API documentation
         },
         queryParameters: {
-         //optional, found in the documentation linked above.
+         //querystring parameters as specified in the Smartsheet API documentation
         }
      };
      smartsheet.favorites.addItemsToFavorites(options, function(error, data) {
@@ -249,10 +249,10 @@ Once you have created the smartsheet object above, you can use all the methods l
 
      var options = {
         body: {
-         //body of request to send for favorites API in documentation linked above
+         //body of request as specified in the Smartsheet API documentation
         },
         queryParameters: {
-         //optional, found in the documentation linked above.
+         //querystring parameters as specified in the Smartsheet API documentation
         }
      };
      smartsheet.favorites.addSheetToFavorites(options)
@@ -267,10 +267,10 @@ Once you have created the smartsheet object above, you can use all the methods l
 
      var options = {
         body: {
-         //body of request to send for favorites API in documentation linked above
+         //body of request as specified in the Smartsheet API documentation
         },
         queryParameters: {
-         //optional, found in the documentation linked above.
+         //querystring parameters as specified in the Smartsheet API documentation
         }
      };
      smartsheet.favorites.addSheetToFavorites(options, function(error, data) {
@@ -286,10 +286,10 @@ Once you have created the smartsheet object above, you can use all the methods l
 
      var options = {
         body: {
-         //body of request to send for favorites API in documentation linked above
+         //body of request as specified in the Smartsheet API documentation
         },
         queryParameters: {
-         //optional, found in the documentation linked above.
+         //querystring parameters as specified in the Smartsheet API documentation
         }
      };
      smartsheet.favorites.addFolderToFavorites(options)
@@ -304,10 +304,10 @@ Once you have created the smartsheet object above, you can use all the methods l
 
      var options = {
         body: {
-         //body of request to send for favorites API in documentation linked above
+         //body of request as specified in the Smartsheet API documentation
         },
         queryParameters: {
-         //optional, found in the documentation linked above.
+         //querystring parameters as specified in the Smartsheet API documentation
         }
      };
      smartsheet.favorites.addFolderToFavorites(options, function(error, data) {
@@ -323,10 +323,10 @@ Once you have created the smartsheet object above, you can use all the methods l
 
      var options = {
         body: {
-         //body of request to send for favorites API in documentation linked above
+         //body of request as specified in the Smartsheet API documentation
         },
         queryParameters: {
-         //optional, found in the documentation linked above.
+         //querystring parameters as specified in the Smartsheet API documentation
         }
      };
      smartsheet.favorites.addReportToFavorites(options)
@@ -341,10 +341,10 @@ Once you have created the smartsheet object above, you can use all the methods l
 
      var options = {
         body: {
-         //body of request to send for favorites API in documentation linked above
+         //body of request as specified in the Smartsheet API documentation
         },
         queryParameters: {
-         //optional, found in the documentation linked above.
+         //querystring parameters as specified in the Smartsheet API documentation
         }
      };
      smartsheet.favorites.addReportToFavorites(options, function(error, data) {
@@ -360,10 +360,10 @@ Once you have created the smartsheet object above, you can use all the methods l
 
      var options = {
         body: {
-         //body of request to send for favorites API in documentation linked above
+         //body of request as specified in the Smartsheet API documentation
         },
         queryParameters: {
-         //optional, found in the documentation linked above.
+         //querystring parameters as specified in the Smartsheet API documentation
         }
      };
      smartsheet.favorites.addTemplateToFavorites(options)
@@ -378,10 +378,10 @@ Once you have created the smartsheet object above, you can use all the methods l
 
      var options = {
         body: {
-         //body of request to send for favorites API in documentation linked above
+         //body of request as specified in the Smartsheet API documentation
         },
         queryParameters: {
-         //optional, found in the documentation linked above.
+         //querystring parameters as specified in the Smartsheet API documentation
         }
      };
      smartsheet.favorites.addTemplateToFavorites(options, function(error, data) {
@@ -397,10 +397,10 @@ Once you have created the smartsheet object above, you can use all the methods l
 
      var options = {
         body: {
-         //body of request to send for favorites API in documentation linked above
+         //body of request as specified in the Smartsheet API documentation
         },
         queryParameters: {
-         //optional, found in the documentation linked above.
+         //querystring parameters as specified in the Smartsheet API documentation
         }
      };
      smartsheet.favorites.addWorkspaceToFavorites(options)
@@ -415,10 +415,10 @@ Once you have created the smartsheet object above, you can use all the methods l
 
      var options = {
         body: {
-         //body of request to send for favorites API in documentation linked above
+         //body of request as specified in the Smartsheet API documentation
         },
         queryParameters: {
-         //optional, found in the documentation linked above.
+         //querystring parameters as specified in the Smartsheet API documentation
         }
      };
      smartsheet.favorites.addWorkspaceToFavorites(options, function(error, data) {
@@ -688,10 +688,10 @@ Once you have created the smartsheet object above, you can use all the methods l
 
      var options = {
         body: {
-         //body of request to send for folders API in documentation linked above
+         //body of request as specified in the Smartsheet API documentation
         },
         queryParameters: {
-         //optional, found in the documentation linked above.
+         //querystring parameters as specified in the Smartsheet API documentation
         }
      };
      smartsheet.folders.createChildFolder(options)
@@ -706,10 +706,10 @@ Once you have created the smartsheet object above, you can use all the methods l
 
      var options = {
         body: {
-         //body of request to send for folders API in documentation linked above
+         //body of request as specified in the Smartsheet API documentation
         },
         queryParameters: {
-         //optional, found in the documentation linked above.
+         //querystring parameters as specified in the Smartsheet API documentation
         }
      };
      smartsheet.folders.createChildFolder(options, function(error, data) {
@@ -726,10 +726,10 @@ Once you have created the smartsheet object above, you can use all the methods l
      var options = {
         id: foldersId,
         body: {
-         //body of request to send for folders API in documentation linked above
+         //body of request as specified in the Smartsheet API documentation
         },
         queryParameters: {
-         //optional, found in the documentation linked above.
+         //querystring parameters as specified in the Smartsheet API documentation
         }
      };
      smartsheet.folders.updateFolder(options)
@@ -745,10 +745,10 @@ Once you have created the smartsheet object above, you can use all the methods l
      var options = {
         id: foldersId,
         body: {
-         //body of request to send for folders API in documentation linked above
+         //body of request as specified in the Smartsheet API documentation
         },
         queryParameters: {
-         //optional, found in the documentation linked above.
+         //querystring parameters as specified in the Smartsheet API documentation
         }
      };
      smartsheet.folders.updateFolder(options, function(error, data) {
@@ -835,10 +835,10 @@ Once you have created the smartsheet object above, you can use all the methods l
 
      var options = {
         body: {
-         //body of request to send for groups API in documentation linked above
+         //body of request as specified in the Smartsheet API documentation
         },
         queryParameters: {
-         //optional, found in the documentation linked above.
+         //querystring parameters as specified in the Smartsheet API documentation
         }
      };
      smartsheet.groups.createGroup(options)
@@ -853,10 +853,10 @@ Once you have created the smartsheet object above, you can use all the methods l
 
      var options = {
         body: {
-         //body of request to send for groups API in documentation linked above
+         //body of request as specified in the Smartsheet API documentation
         },
         queryParameters: {
-         //optional, found in the documentation linked above.
+         //querystring parameters as specified in the Smartsheet API documentation
         }
      };
      smartsheet.groups.createGroup(options, function(error, data) {
@@ -872,10 +872,10 @@ Once you have created the smartsheet object above, you can use all the methods l
 
      var options = {
         body: {
-         //body of request to send for groups API in documentation linked above
+         //body of request as specified in the Smartsheet API documentation
         },
         queryParameters: {
-         //optional, found in the documentation linked above.
+         //querystring parameters as specified in the Smartsheet API documentation
         }
      };
      smartsheet.groups.addGroupMembers(options)
@@ -890,10 +890,10 @@ Once you have created the smartsheet object above, you can use all the methods l
 
      var options = {
         body: {
-         //body of request to send for groups API in documentation linked above
+         //body of request as specified in the Smartsheet API documentation
         },
         queryParameters: {
-         //optional, found in the documentation linked above.
+         //querystring parameters as specified in the Smartsheet API documentation
         }
      };
      smartsheet.groups.addGroupMembers(options, function(error, data) {
@@ -910,10 +910,10 @@ Once you have created the smartsheet object above, you can use all the methods l
      var options = {
         id: groupsId,
         body: {
-         //body of request to send for groups API in documentation linked above
+         //body of request as specified in the Smartsheet API documentation
         },
         queryParameters: {
-         //optional, found in the documentation linked above.
+         //querystring parameters as specified in the Smartsheet API documentation
         }
      };
      smartsheet.groups.updateGroup(options)
@@ -929,10 +929,10 @@ Once you have created the smartsheet object above, you can use all the methods l
      var options = {
         id: groupsId,
         body: {
-         //body of request to send for groups API in documentation linked above
+         //body of request as specified in the Smartsheet API documentation
         },
         queryParameters: {
-         //optional, found in the documentation linked above.
+         //querystring parameters as specified in the Smartsheet API documentation
         }
      };
      smartsheet.groups.updateGroup(options, function(error, data) {
@@ -1040,10 +1040,10 @@ Once you have created the smartsheet object above, you can use all the methods l
 
      var options = {
         body: {
-         //body of request to send for home API in documentation linked above
+         //body of request as specified in the Smartsheet API documentation
         },
         queryParameters: {
-         //optional, found in the documentation linked above.
+         //querystring parameters as specified in the Smartsheet API documentation
         }
      };
      smartsheet.home.createFolder(options)
@@ -1058,10 +1058,10 @@ Once you have created the smartsheet object above, you can use all the methods l
 
      var options = {
         body: {
-         //body of request to send for home API in documentation linked above
+         //body of request as specified in the Smartsheet API documentation
         },
         queryParameters: {
-         //optional, found in the documentation linked above.
+         //querystring parameters as specified in the Smartsheet API documentation
         }
      };
      smartsheet.home.createFolder(options, function(error, data) {
@@ -1275,10 +1275,10 @@ Once you have created the smartsheet object above, you can use all the methods l
      var options = {
         id: reportsId,
         body: {
-         //body of request to send for reports API in documentation linked above
+         //body of request as specified in the Smartsheet API documentation
         },
         queryParameters: {
-         //optional, found in the documentation linked above.
+         //querystring parameters as specified in the Smartsheet API documentation
         }
      };
      smartsheet.reports.updateShare(options)
@@ -1294,10 +1294,10 @@ Once you have created the smartsheet object above, you can use all the methods l
      var options = {
         id: reportsId,
         body: {
-         //body of request to send for reports API in documentation linked above
+         //body of request as specified in the Smartsheet API documentation
         },
         queryParameters: {
-         //optional, found in the documentation linked above.
+         //querystring parameters as specified in the Smartsheet API documentation
         }
      };
      smartsheet.reports.updateShare(options, function(error, data) {
@@ -1446,10 +1446,10 @@ Once you have created the smartsheet object above, you can use all the methods l
      var options = {
         id: sheetsId,
         body: {
-         //body of request to send for sheets API in documentation linked above
+         //body of request as specified in the Smartsheet API documentation
         },
         queryParameters: {
-         //optional, found in the documentation linked above.
+         //querystring parameters as specified in the Smartsheet API documentation
         }
      };
      smartsheet.sheets.updateSheet(options)
@@ -1465,10 +1465,10 @@ Once you have created the smartsheet object above, you can use all the methods l
      var options = {
         id: sheetsId,
         body: {
-         //body of request to send for sheets API in documentation linked above
+         //body of request as specified in the Smartsheet API documentation
         },
         queryParameters: {
-         //optional, found in the documentation linked above.
+         //querystring parameters as specified in the Smartsheet API documentation
         }
      };
      smartsheet.sheets.updateSheet(options, function(error, data) {
@@ -1574,10 +1574,10 @@ Once you have created the smartsheet object above, you can use all the methods l
 
      var options = {
         body: {
-         //body of request to send for sheets API in documentation linked above
+         //body of request as specified in the Smartsheet API documentation
         },
         queryParameters: {
-         //optional, found in the documentation linked above.
+         //querystring parameters as specified in the Smartsheet API documentation
         }
      };
      smartsheet.sheets.addAttachment(options)
@@ -1592,10 +1592,10 @@ Once you have created the smartsheet object above, you can use all the methods l
 
      var options = {
         body: {
-         //body of request to send for sheets API in documentation linked above
+         //body of request as specified in the Smartsheet API documentation
         },
         queryParameters: {
-         //optional, found in the documentation linked above.
+         //querystring parameters as specified in the Smartsheet API documentation
         }
      };
      smartsheet.sheets.addAttachment(options, function(error, data) {
@@ -1728,10 +1728,10 @@ Once you have created the smartsheet object above, you can use all the methods l
 
      var options = {
         body: {
-         //body of request to send for sheets API in documentation linked above
+         //body of request as specified in the Smartsheet API documentation
         },
         queryParameters: {
-         //optional, found in the documentation linked above.
+         //querystring parameters as specified in the Smartsheet API documentation
         }
      };
      smartsheet.sheets.addColumn(options)
@@ -1746,10 +1746,10 @@ Once you have created the smartsheet object above, you can use all the methods l
 
      var options = {
         body: {
-         //body of request to send for sheets API in documentation linked above
+         //body of request as specified in the Smartsheet API documentation
         },
         queryParameters: {
-         //optional, found in the documentation linked above.
+         //querystring parameters as specified in the Smartsheet API documentation
         }
      };
      smartsheet.sheets.addColumn(options, function(error, data) {
@@ -1793,10 +1793,10 @@ Once you have created the smartsheet object above, you can use all the methods l
      var options = {
         id: sheetsId,
         body: {
-         //body of request to send for sheets API in documentation linked above
+         //body of request as specified in the Smartsheet API documentation
         },
         queryParameters: {
-         //optional, found in the documentation linked above.
+         //querystring parameters as specified in the Smartsheet API documentation
         }
      };
      smartsheet.sheets.updateColumn(options)
@@ -1812,10 +1812,10 @@ Once you have created the smartsheet object above, you can use all the methods l
      var options = {
         id: sheetsId,
         body: {
-         //body of request to send for sheets API in documentation linked above
+         //body of request as specified in the Smartsheet API documentation
         },
         queryParameters: {
-         //optional, found in the documentation linked above.
+         //querystring parameters as specified in the Smartsheet API documentation
         }
      };
      smartsheet.sheets.updateColumn(options, function(error, data) {
@@ -1879,10 +1879,10 @@ Once you have created the smartsheet object above, you can use all the methods l
 
      var options = {
         body: {
-         //body of request to send for sheets API in documentation linked above
+         //body of request as specified in the Smartsheet API documentation
         },
         queryParameters: {
-         //optional, found in the documentation linked above.
+         //querystring parameters as specified in the Smartsheet API documentation
         }
      };
      smartsheet.sheets.addCommentAttachment(options)
@@ -1897,10 +1897,10 @@ Once you have created the smartsheet object above, you can use all the methods l
 
      var options = {
         body: {
-         //body of request to send for sheets API in documentation linked above
+         //body of request as specified in the Smartsheet API documentation
         },
         queryParameters: {
-         //optional, found in the documentation linked above.
+         //querystring parameters as specified in the Smartsheet API documentation
         }
      };
      smartsheet.sheets.addCommentAttachment(options, function(error, data) {
@@ -1916,10 +1916,10 @@ Once you have created the smartsheet object above, you can use all the methods l
 
      var options = {
         body: {
-         //body of request to send for sheets API in documentation linked above
+         //body of request as specified in the Smartsheet API documentation
         },
         queryParameters: {
-         //optional, found in the documentation linked above.
+         //querystring parameters as specified in the Smartsheet API documentation
         }
      };
      smartsheet.sheets.createSheet(options)
@@ -1934,10 +1934,10 @@ Once you have created the smartsheet object above, you can use all the methods l
 
      var options = {
         body: {
-         //body of request to send for sheets API in documentation linked above
+         //body of request as specified in the Smartsheet API documentation
         },
         queryParameters: {
-         //optional, found in the documentation linked above.
+         //querystring parameters as specified in the Smartsheet API documentation
         }
      };
      smartsheet.sheets.createSheet(options, function(error, data) {
@@ -1953,10 +1953,10 @@ Once you have created the smartsheet object above, you can use all the methods l
 
      var options = {
         body: {
-         //body of request to send for sheets API in documentation linked above
+         //body of request as specified in the Smartsheet API documentation
         },
         queryParameters: {
-         //optional, found in the documentation linked above.
+         //querystring parameters as specified in the Smartsheet API documentation
         }
      };
      smartsheet.sheets.createSheetFromExisting(options)
@@ -1971,10 +1971,10 @@ Once you have created the smartsheet object above, you can use all the methods l
 
      var options = {
         body: {
-         //body of request to send for sheets API in documentation linked above
+         //body of request as specified in the Smartsheet API documentation
         },
         queryParameters: {
-         //optional, found in the documentation linked above.
+         //querystring parameters as specified in the Smartsheet API documentation
         }
      };
      smartsheet.sheets.createSheetFromExisting(options, function(error, data) {
@@ -1990,10 +1990,10 @@ Once you have created the smartsheet object above, you can use all the methods l
 
      var options = {
         body: {
-         //body of request to send for sheets API in documentation linked above
+         //body of request as specified in the Smartsheet API documentation
         },
         queryParameters: {
-         //optional, found in the documentation linked above.
+         //querystring parameters as specified in the Smartsheet API documentation
         }
      };
      smartsheet.sheets.createSheetInFolder(options)
@@ -2008,10 +2008,10 @@ Once you have created the smartsheet object above, you can use all the methods l
 
      var options = {
         body: {
-         //body of request to send for sheets API in documentation linked above
+         //body of request as specified in the Smartsheet API documentation
         },
         queryParameters: {
-         //optional, found in the documentation linked above.
+         //querystring parameters as specified in the Smartsheet API documentation
         }
      };
      smartsheet.sheets.createSheetInFolder(options, function(error, data) {
@@ -2027,10 +2027,10 @@ Once you have created the smartsheet object above, you can use all the methods l
 
      var options = {
         body: {
-         //body of request to send for sheets API in documentation linked above
+         //body of request as specified in the Smartsheet API documentation
         },
         queryParameters: {
-         //optional, found in the documentation linked above.
+         //querystring parameters as specified in the Smartsheet API documentation
         }
      };
      smartsheet.sheets.createSheetInWorkspace(options)
@@ -2045,10 +2045,10 @@ Once you have created the smartsheet object above, you can use all the methods l
 
      var options = {
         body: {
-         //body of request to send for sheets API in documentation linked above
+         //body of request as specified in the Smartsheet API documentation
         },
         queryParameters: {
-         //optional, found in the documentation linked above.
+         //querystring parameters as specified in the Smartsheet API documentation
         }
      };
      smartsheet.sheets.createSheetInWorkspace(options, function(error, data) {
@@ -2127,10 +2127,10 @@ Once you have created the smartsheet object above, you can use all the methods l
 
      var options = {
         body: {
-         //body of request to send for sheets API in documentation linked above
+         //body of request as specified in the Smartsheet API documentation
         },
         queryParameters: {
-         //optional, found in the documentation linked above.
+         //querystring parameters as specified in the Smartsheet API documentation
         }
      };
      smartsheet.sheets.createDiscussion(options)
@@ -2145,10 +2145,10 @@ Once you have created the smartsheet object above, you can use all the methods l
 
      var options = {
         body: {
-         //body of request to send for sheets API in documentation linked above
+         //body of request as specified in the Smartsheet API documentation
         },
         queryParameters: {
-         //optional, found in the documentation linked above.
+         //querystring parameters as specified in the Smartsheet API documentation
         }
      };
      smartsheet.sheets.createDiscussion(options, function(error, data) {
@@ -2164,10 +2164,10 @@ Once you have created the smartsheet object above, you can use all the methods l
 
      var options = {
         body: {
-         //body of request to send for sheets API in documentation linked above
+         //body of request as specified in the Smartsheet API documentation
         },
         queryParameters: {
-         //optional, found in the documentation linked above.
+         //querystring parameters as specified in the Smartsheet API documentation
         }
      };
      smartsheet.sheets.addDiscussionComment(options)
@@ -2182,10 +2182,10 @@ Once you have created the smartsheet object above, you can use all the methods l
 
      var options = {
         body: {
-         //body of request to send for sheets API in documentation linked above
+         //body of request as specified in the Smartsheet API documentation
         },
         queryParameters: {
-         //optional, found in the documentation linked above.
+         //querystring parameters as specified in the Smartsheet API documentation
         }
      };
      smartsheet.sheets.addDiscussionComment(options, function(error, data) {
@@ -2501,10 +2501,10 @@ Once you have created the smartsheet object above, you can use all the methods l
 
      var options = {
         body: {
-         //body of request to send for sheets API in documentation linked above
+         //body of request as specified in the Smartsheet API documentation
         },
         queryParameters: {
-         //optional, found in the documentation linked above.
+         //querystring parameters as specified in the Smartsheet API documentation
         }
      };
      smartsheet.sheets.addRow(options)
@@ -2519,10 +2519,10 @@ Once you have created the smartsheet object above, you can use all the methods l
 
      var options = {
         body: {
-         //body of request to send for sheets API in documentation linked above
+         //body of request as specified in the Smartsheet API documentation
         },
         queryParameters: {
-         //optional, found in the documentation linked above.
+         //querystring parameters as specified in the Smartsheet API documentation
         }
      };
      smartsheet.sheets.addRow(options, function(error, data) {
@@ -2538,10 +2538,10 @@ Once you have created the smartsheet object above, you can use all the methods l
 
      var options = {
         body: {
-         //body of request to send for sheets API in documentation linked above
+         //body of request as specified in the Smartsheet API documentation
         },
         queryParameters: {
-         //optional, found in the documentation linked above.
+         //querystring parameters as specified in the Smartsheet API documentation
         }
      };
      smartsheet.sheets.addRows(options)
@@ -2556,10 +2556,10 @@ Once you have created the smartsheet object above, you can use all the methods l
 
      var options = {
         body: {
-         //body of request to send for sheets API in documentation linked above
+         //body of request as specified in the Smartsheet API documentation
         },
         queryParameters: {
-         //optional, found in the documentation linked above.
+         //querystring parameters as specified in the Smartsheet API documentation
         }
      };
      smartsheet.sheets.addRows(options, function(error, data) {
@@ -2575,10 +2575,10 @@ Once you have created the smartsheet object above, you can use all the methods l
 
      var options = {
         body: {
-         //body of request to send for sheets API in documentation linked above
+         //body of request as specified in the Smartsheet API documentation
         },
         queryParameters: {
-         //optional, found in the documentation linked above.
+         //querystring parameters as specified in the Smartsheet API documentation
         }
      };
      smartsheet.sheets.addRowAttachment(options)
@@ -2593,10 +2593,10 @@ Once you have created the smartsheet object above, you can use all the methods l
 
      var options = {
         body: {
-         //body of request to send for sheets API in documentation linked above
+         //body of request as specified in the Smartsheet API documentation
         },
         queryParameters: {
-         //optional, found in the documentation linked above.
+         //querystring parameters as specified in the Smartsheet API documentation
         }
      };
      smartsheet.sheets.addRowAttachment(options, function(error, data) {
@@ -2612,10 +2612,10 @@ Once you have created the smartsheet object above, you can use all the methods l
 
      var options = {
         body: {
-         //body of request to send for sheets API in documentation linked above
+         //body of request as specified in the Smartsheet API documentation
         },
         queryParameters: {
-         //optional, found in the documentation linked above.
+         //querystring parameters as specified in the Smartsheet API documentation
         }
      };
      smartsheet.sheets.createRowDiscussion(options)
@@ -2630,10 +2630,10 @@ Once you have created the smartsheet object above, you can use all the methods l
 
      var options = {
         body: {
-         //body of request to send for sheets API in documentation linked above
+         //body of request as specified in the Smartsheet API documentation
         },
         queryParameters: {
-         //optional, found in the documentation linked above.
+         //querystring parameters as specified in the Smartsheet API documentation
         }
      };
      smartsheet.sheets.createRowDiscussion(options, function(error, data) {
@@ -2698,10 +2698,10 @@ Once you have created the smartsheet object above, you can use all the methods l
      var options = {
         id: sheetsId,
         body: {
-         //body of request to send for sheets API in documentation linked above
+         //body of request as specified in the Smartsheet API documentation
         },
         queryParameters: {
-         //optional, found in the documentation linked above.
+         //querystring parameters as specified in the Smartsheet API documentation
         }
      };
      smartsheet.sheets.updateRow(options)
@@ -2717,10 +2717,10 @@ Once you have created the smartsheet object above, you can use all the methods l
      var options = {
         id: sheetsId,
         body: {
-         //body of request to send for sheets API in documentation linked above
+         //body of request as specified in the Smartsheet API documentation
         },
         queryParameters: {
-         //optional, found in the documentation linked above.
+         //querystring parameters as specified in the Smartsheet API documentation
         }
      };
      smartsheet.sheets.updateRow(options, function(error, data) {
@@ -2827,10 +2827,10 @@ Once you have created the smartsheet object above, you can use all the methods l
      var options = {
         id: sheetsId,
         body: {
-         //body of request to send for sheets API in documentation linked above
+         //body of request as specified in the Smartsheet API documentation
         },
         queryParameters: {
-         //optional, found in the documentation linked above.
+         //querystring parameters as specified in the Smartsheet API documentation
         }
      };
      smartsheet.sheets.updateShare(options)
@@ -2846,10 +2846,10 @@ Once you have created the smartsheet object above, you can use all the methods l
      var options = {
         id: sheetsId,
         body: {
-         //body of request to send for sheets API in documentation linked above
+         //body of request as specified in the Smartsheet API documentation
         },
         queryParameters: {
-         //optional, found in the documentation linked above.
+         //querystring parameters as specified in the Smartsheet API documentation
         }
      };
      smartsheet.sheets.updateShare(options, function(error, data) {
@@ -2974,10 +2974,10 @@ Once you have created the smartsheet object above, you can use all the methods l
 
      var options = {
         body: {
-         //body of request to send for users API in documentation linked above
+         //body of request as specified in the Smartsheet API documentation
         },
         queryParameters: {
-         //optional, found in the documentation linked above.
+         //querystring parameters as specified in the Smartsheet API documentation
         }
      };
      smartsheet.users.addUser(options)
@@ -2992,10 +2992,10 @@ Once you have created the smartsheet object above, you can use all the methods l
 
      var options = {
         body: {
-         //body of request to send for users API in documentation linked above
+         //body of request as specified in the Smartsheet API documentation
         },
         queryParameters: {
-         //optional, found in the documentation linked above.
+         //querystring parameters as specified in the Smartsheet API documentation
         }
      };
      smartsheet.users.addUser(options, function(error, data) {
@@ -3011,10 +3011,10 @@ Once you have created the smartsheet object above, you can use all the methods l
 
      var options = {
         body: {
-         //body of request to send for users API in documentation linked above
+         //body of request as specified in the Smartsheet API documentation
         },
         queryParameters: {
-         //optional, found in the documentation linked above.
+         //querystring parameters as specified in the Smartsheet API documentation
         }
      };
      smartsheet.users.addUserAndSendEmail(options)
@@ -3029,10 +3029,10 @@ Once you have created the smartsheet object above, you can use all the methods l
 
      var options = {
         body: {
-         //body of request to send for users API in documentation linked above
+         //body of request as specified in the Smartsheet API documentation
         },
         queryParameters: {
-         //optional, found in the documentation linked above.
+         //querystring parameters as specified in the Smartsheet API documentation
         }
      };
      smartsheet.users.addUserAndSendEmail(options, function(error, data) {
@@ -3049,10 +3049,10 @@ Once you have created the smartsheet object above, you can use all the methods l
      var options = {
         id: usersId,
         body: {
-         //body of request to send for users API in documentation linked above
+         //body of request as specified in the Smartsheet API documentation
         },
         queryParameters: {
-         //optional, found in the documentation linked above.
+         //querystring parameters as specified in the Smartsheet API documentation
         }
      };
      smartsheet.users.updateUser(options)
@@ -3068,10 +3068,10 @@ Once you have created the smartsheet object above, you can use all the methods l
      var options = {
         id: usersId,
         body: {
-         //body of request to send for users API in documentation linked above
+         //body of request as specified in the Smartsheet API documentation
         },
         queryParameters: {
-         //optional, found in the documentation linked above.
+         //querystring parameters as specified in the Smartsheet API documentation
         }
      };
      smartsheet.users.updateUser(options, function(error, data) {
@@ -3173,10 +3173,10 @@ Once you have created the smartsheet object above, you can use all the methods l
 
      var options = {
         body: {
-         //body of request to send for workspaces API in documentation linked above
+         //body of request as specified in the Smartsheet API documentation
         },
         queryParameters: {
-         //optional, found in the documentation linked above.
+         //querystring parameters as specified in the Smartsheet API documentation
         }
      };
      smartsheet.workspaces.createWorkspace(options)
@@ -3191,10 +3191,10 @@ Once you have created the smartsheet object above, you can use all the methods l
 
      var options = {
         body: {
-         //body of request to send for workspaces API in documentation linked above
+         //body of request as specified in the Smartsheet API documentation
         },
         queryParameters: {
-         //optional, found in the documentation linked above.
+         //querystring parameters as specified in the Smartsheet API documentation
         }
      };
      smartsheet.workspaces.createWorkspace(options, function(error, data) {
@@ -3210,10 +3210,10 @@ Once you have created the smartsheet object above, you can use all the methods l
 
      var options = {
         body: {
-         //body of request to send for workspaces API in documentation linked above
+         //body of request as specified in the Smartsheet API documentation
         },
         queryParameters: {
-         //optional, found in the documentation linked above.
+         //querystring parameters as specified in the Smartsheet API documentation
         }
      };
      smartsheet.workspaces.createFolder(options)
@@ -3228,10 +3228,10 @@ Once you have created the smartsheet object above, you can use all the methods l
 
      var options = {
         body: {
-         //body of request to send for workspaces API in documentation linked above
+         //body of request as specified in the Smartsheet API documentation
         },
         queryParameters: {
-         //optional, found in the documentation linked above.
+         //querystring parameters as specified in the Smartsheet API documentation
         }
      };
      smartsheet.workspaces.createFolder(options, function(error, data) {
@@ -3275,10 +3275,10 @@ Once you have created the smartsheet object above, you can use all the methods l
      var options = {
         id: workspacesId,
         body: {
-         //body of request to send for workspaces API in documentation linked above
+         //body of request as specified in the Smartsheet API documentation
         },
         queryParameters: {
-         //optional, found in the documentation linked above.
+         //querystring parameters as specified in the Smartsheet API documentation
         }
      };
      smartsheet.workspaces.updateWorkspace(options)
@@ -3294,10 +3294,10 @@ Once you have created the smartsheet object above, you can use all the methods l
      var options = {
         id: workspacesId,
         body: {
-         //body of request to send for workspaces API in documentation linked above
+         //body of request as specified in the Smartsheet API documentation
         },
         queryParameters: {
-         //optional, found in the documentation linked above.
+         //querystring parameters as specified in the Smartsheet API documentation
         }
      };
      smartsheet.workspaces.updateWorkspace(options, function(error, data) {
@@ -3404,10 +3404,10 @@ Once you have created the smartsheet object above, you can use all the methods l
      var options = {
         id: workspacesId,
         body: {
-         //body of request to send for workspaces API in documentation linked above
+         //body of request as specified in the Smartsheet API documentation
         },
         queryParameters: {
-         //optional, found in the documentation linked above.
+         //querystring parameters as specified in the Smartsheet API documentation
         }
      };
      smartsheet.workspaces.updateShare(options)
@@ -3423,10 +3423,10 @@ Once you have created the smartsheet object above, you can use all the methods l
      var options = {
         id: workspacesId,
         body: {
-         //body of request to send for workspaces API in documentation linked above
+         //body of request as specified in the Smartsheet API documentation
         },
         queryParameters: {
-         //optional, found in the documentation linked above.
+         //querystring parameters as specified in the Smartsheet API documentation
         }
      };
      smartsheet.workspaces.updateShare(options, function(error, data) {
