@@ -19,9 +19,16 @@ make a pull request. To use these run the following command in the root director
 
 ## Documentation
 
-The Smartsheet API is documented [here](http://www.smartsheet.com/developers/api-documentation). 
+The Smartsheet API documentation can be found [here](http://www.smartsheet.com/developers/api-documentation). 
 
 See below for [code examples](#example-usage) that show how to call the various methods in this SDK.
+
+## Contributing
+If you would like to contribute a change to the SDK, please fork a branch and then submit a pull request.
+[More info here.](https://help.github.com/articles/using-pull-requests)
+
+##Support
+If you have any questions or issues with this SDK please post on [StackOverflow using the tag "smartsheet-api"](http://stackoverflow.com/questions/tagged/smartsheet-api) or contact us directly at api@smartsheet.com.
 
 ## Example Usage
 
@@ -205,7 +212,7 @@ Once you have created the smartsheet object above, you can use all the methods l
 
      var options = {
         body: {
-         //body of request to send for favorites API in documentation linked above
+         //body of request as specified in [Smartsheet API documentation](http://www.smartsheet.com/developers/api-documentation)
         },
         queryParameters: {
          //optional, found in the documentation linked above.
@@ -3428,13 +3435,6 @@ Once you have created the smartsheet object above, you can use all the methods l
        }
        console.log(data);
      });
-
-## Contributing
-If you would like to contribute a change to the SDK, please fork a branch and then submit a pull request.
-[More info here.](https://help.github.com/articles/using-pull-requests)
-
-##Support
-If you have any questions or issues with this SDK please post on [StackOverflow using the tag "smartsheet-api"](http://stackoverflow.com/questions/tagged/smartsheet-api) or contact us directly at api@smartsheet.com.
 
 ##Release Notes
 Each specific release is available for download via [Github](https://github.com/smartsheet-platform/smartsheet-javascript-sdk/tags).
