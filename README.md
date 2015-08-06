@@ -1,22 +1,12 @@
 # Smartsheet SDK for JavaScript
+
 This is an SDK to simplify connecting to the [Smartsheet API](http://www.smartsheet.com/developers/api-documentation) from Node.js applications.
 
-**Please note the initial version of the SDK is Pre-Alpha because there can be breaking changes**
-
-[Smartsheet Platform](http://smartsheet.com/developers) extends the the power of [Smartsheet](http://www.smartsheet.com).
-Check out the [documentation](http://www.smartsheet.com/developers/api-documentation) for a more detailed API reference
-along with the request and response examples for all available methods. Have any questions? Check out our tag on our
-[Stackoverflow](http://stackoverflow.com/questions/tagged/smartsheet-api).
+**Please note that this SDK is beta and it may change significantly in the future.**
 
 ## Installation
 
     npm install smartsheet
-
-
-## Documentation
-
-The documentation for the APIs can be [found here](http://www.smartsheet.com/developers/api-documentation). If you
-need to know what the format of the request needs to be check here!
 
 ## Unit Tests
 
@@ -25,12 +15,13 @@ make a pull request. To use these run the following command in the root director
 
     npm test
 
-## Contributing
+## Documentation
 
-If you would like to contribute a change to the SDK, please fork a branch and then submit a pull request.
-[More info here.](https://help.github.com/articles/using-pull-requests)
+The Smartsheet API is documented [here](http://www.smartsheet.com/developers/api-documentation). 
 
-## SDK Documentation
+See below for (code examples)[#example-usage] that show how to call the various methods in this SDK.
+
+## Example Usage
 
 ### Table of Contents
 
@@ -191,10 +182,10 @@ Once you have created the smartsheet object above, you can use all the methods l
 
      smartsheet.favorites.listFavorites({})
      .then(function(data) {
-       // Data will contain the favorites object
+       console.log(data);
      })
      .catch(function(error) {
-       // Error will contain the error returned.
+       console.log(error);
      });
 
 #####Example using callbacks
@@ -204,7 +195,7 @@ Once you have created the smartsheet object above, you can use all the methods l
          // Error will contain the error returned.
          console.log(err);
        }
-       // Data will contain the favorites object
+       // Data will contain the  API response 
        console.log(data);
      });
 
@@ -3678,12 +3669,12 @@ Once you have created the smartsheet object above, you can use all the methods l
        console.log(data);
      });
 
+## Contributing
+If you would like to contribute a change to the SDK, please fork a branch and then submit a pull request.
+[More info here.](https://help.github.com/articles/using-pull-requests)
 
-#License
+##Support
+If you have any questions or issues with this SDK please post on [StackOverflow using the tag "smartsheet-api"](http://stackoverflow.com/questions/tagged/smartsheet-api) or contact us directly at api@smartsheet.com.
 
-Copyright 2015 [Smartsheet](www.smartsheet.com)
-
-Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
-
-http://www.apache.org/licenses/LICENSE-2.0
-Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+##Release Notes
+Each specific release is available for download via [Github](https://github.com/smartsheet-platform/smartsheet-javascript-sdk/tags).
