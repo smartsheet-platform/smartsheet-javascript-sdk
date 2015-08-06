@@ -179,9 +179,8 @@ All APIs are exposed inside the root module that is created using the following:
     eg..
     smartsheet.sheets //contains methods to create, get, update and delete sheets.
 
-The smartsheet variable now contains access to all the APIs [found here](http://www.smartsheet.com/developers/api-documentation).
-Once you have created the smartsheet object above, you can use all the methods like below.
-
+The **smartsheet** variable now contains access to all of the APIs [documented here](http://www.smartsheet.com/developers/api-documentation).
+The following code examples show how to call various methods using this SDK. 
 
 ###Favorite API methods
 
