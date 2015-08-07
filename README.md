@@ -168,7 +168,7 @@ If you have any questions or issues with this SDK please post on [StackOverflow 
 All APIs are exposed inside the root module that is created using the following:
 
     var client = require('smartsheet');
-    var smartsheet = client.create({accessToken:'ACCESSTOKEN'});
+    var smartsheet = client.createClient({accessToken:'ACCESSTOKEN'});
     eg..
     smartsheet.sheets //contains methods to create, get, update and delete sheets.
 
