@@ -10,13 +10,6 @@ To install this SDK, simply run the following command in a terminal window:
 
     npm install smartsheet
 
-## Unit Tests
-
-Inside the /test folder there are unit tests that can be run. These are helpful if you would like to expand/change and
-make a pull request. To use these run the following command in the root directory after you clone the repository.
-
-    npm test
-
 ## Documentation
 
 The Smartsheet API documentation can be found [here](http://www.smartsheet.com/developers/api-documentation). 
