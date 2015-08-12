@@ -39,5 +39,5 @@ See [this page](https://github.com/smartsheet-platform/smartsheet-javascript-sdk
 
 Each specific release is available for download via [Github](https://github.com/smartsheet-platform/smartsheet-javascript-sdk/tags).
 
-**0.0.1 (Aug 12, 2015)**
+**v0.0.1-beta (Aug 12, 2015)**
 * Initial Release of the Smartsheet SDK for JavaScript
