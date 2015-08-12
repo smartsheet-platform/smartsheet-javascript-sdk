@@ -20,7 +20,7 @@ See below for [code examples](#example-usage) that show how to call the various 
 If you would like to contribute a change to the SDK, please fork a branch and then submit a pull request.
 [More info here.](https://help.github.com/articles/using-pull-requests)
 
-##Support
+## Support
 If you have any questions or issues with this SDK please post on [StackOverflow using the tag "smartsheet-api"](http://stackoverflow.com/questions/tagged/smartsheet-api) or contact us directly at api@smartsheet.com.
 
 ## Example Usage
@@ -173,11 +173,11 @@ All APIs are exposed inside the root module that is created using the following:
 The **smartsheet** variable now contains access to all of the APIs [documented here](http://www.smartsheet.com/developers/api-documentation).
 The following code examples show how to call various methods using this SDK. 
 
-###Favorite API methods
+### Favorite API methods
 
-####listFavorites
+#### listFavorites
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      smartsheet.favorites.listFavorites({})
      .then(function(data) {
@@ -187,7 +187,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      smartsheet.favorites.listFavorites({}, function(error, data) {
        if (error) {
@@ -196,9 +196,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####addItemsToFavorites
+#### addItemsToFavorites
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      var options = {
         body: {
@@ -216,7 +216,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      var options = {
         body: {
@@ -233,9 +233,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####addSheetToFavorites
+#### addSheetToFavorites
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      var options = {
         body: {
@@ -253,7 +253,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      var options = {
         body: {
@@ -270,9 +270,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####addFolderToFavorites
+#### addFolderToFavorites
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      var options = {
         body: {
@@ -290,7 +290,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      var options = {
         body: {
@@ -307,9 +307,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####addReportToFavorites
+#### addReportToFavorites
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      var options = {
         body: {
@@ -327,7 +327,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      var options = {
         body: {
@@ -344,9 +344,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####addTemplateToFavorites
+#### addTemplateToFavorites
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      var options = {
         body: {
@@ -364,7 +364,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      var options = {
         body: {
@@ -381,9 +381,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####addWorkspaceToFavorites
+#### addWorkspaceToFavorites
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      var options = {
         body: {
@@ -401,7 +401,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      var options = {
         body: {
@@ -418,9 +418,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####removeSheetFromFavorites
+#### removeSheetFromFavorites
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      smartsheet.favorites.removeSheetFromFavorites({})
      .then(function(data) {
@@ -430,7 +430,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      smartsheet.favorites.removeSheetFromFavorites({}, function(error, data) {
        if (error) {
@@ -439,9 +439,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####removeFolderFromFavorites
+#### removeFolderFromFavorites
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      smartsheet.favorites.removeFolderFromFavorites({})
      .then(function(data) {
@@ -451,7 +451,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      smartsheet.favorites.removeFolderFromFavorites({}, function(error, data) {
        if (error) {
@@ -460,9 +460,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####removeReportFromFavorites
+#### removeReportFromFavorites
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      smartsheet.favorites.removeReportFromFavorites({})
      .then(function(data) {
@@ -472,7 +472,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      smartsheet.favorites.removeReportFromFavorites({}, function(error, data) {
        if (error) {
@@ -481,9 +481,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####removeTemplateFromFavorites
+#### removeTemplateFromFavorites
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      smartsheet.favorites.removeTemplateFromFavorites({})
      .then(function(data) {
@@ -493,7 +493,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      smartsheet.favorites.removeTemplateFromFavorites({}, function(error, data) {
        if (error) {
@@ -502,9 +502,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####removeWorkspaceFromFavorites
+#### removeWorkspaceFromFavorites
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      smartsheet.favorites.removeWorkspaceFromFavorites({})
      .then(function(data) {
@@ -514,7 +514,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      smartsheet.favorites.removeWorkspaceFromFavorites({}, function(error, data) {
        if (error) {
@@ -523,9 +523,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####removeSheetsFromFavorites
+#### removeSheetsFromFavorites
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      smartsheet.favorites.removeSheetsFromFavorites({})
      .then(function(data) {
@@ -535,7 +535,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      smartsheet.favorites.removeSheetsFromFavorites({}, function(error, data) {
        if (error) {
@@ -544,9 +544,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####removeFoldersFromFavorites
+#### removeFoldersFromFavorites
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      smartsheet.favorites.removeFoldersFromFavorites({})
      .then(function(data) {
@@ -556,7 +556,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      smartsheet.favorites.removeFoldersFromFavorites({}, function(error, data) {
        if (error) {
@@ -565,9 +565,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####removeReportsFromFavorites
+#### removeReportsFromFavorites
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      smartsheet.favorites.removeReportsFromFavorites({})
      .then(function(data) {
@@ -577,7 +577,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      smartsheet.favorites.removeReportsFromFavorites({}, function(error, data) {
        if (error) {
@@ -586,9 +586,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####removeTemplatesFromFavorites
+#### removeTemplatesFromFavorites
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      smartsheet.favorites.removeTemplatesFromFavorites({})
      .then(function(data) {
@@ -598,7 +598,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      smartsheet.favorites.removeTemplatesFromFavorites({}, function(error, data) {
        if (error) {
@@ -607,9 +607,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####removeWorkspacesFromFavorites
+#### removeWorkspacesFromFavorites
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      smartsheet.favorites.removeWorkspacesFromFavorites({})
      .then(function(data) {
@@ -619,7 +619,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      smartsheet.favorites.removeWorkspacesFromFavorites({}, function(error, data) {
        if (error) {
@@ -628,11 +628,11 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-###Folder API methods
+### Folder API methods
 
-####getFolder
+#### getFolder
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      smartsheet.folders.getFolder({id: foldersId})
      .then(function(data) {
@@ -642,7 +642,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      smartsheet.folders.getFolder({id: foldersId}, function(error, data) {
        if (error) {
@@ -651,9 +651,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####listChildFolders
+#### listChildFolders
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      smartsheet.folders.listChildFolders({})
      .then(function(data) {
@@ -663,7 +663,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      smartsheet.folders.listChildFolders({}, function(error, data) {
        if (error) {
@@ -672,9 +672,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####createChildFolder
+#### createChildFolder
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      var options = {
         body: {
@@ -692,7 +692,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      var options = {
         body: {
@@ -709,9 +709,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####updateFolder
+#### updateFolder
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      var options = {
         id: foldersId,
@@ -730,7 +730,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      var options = {
         id: foldersId,
@@ -748,9 +748,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####deleteFolder
+#### deleteFolder
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      var options = {
         id: foldersId
@@ -763,7 +763,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      var options = {
         id: foldersId
@@ -775,11 +775,11 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-###Group API methods
+### Group API methods
 
-####listGroups
+#### listGroups
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      smartsheet.groups.listGroups({})
      .then(function(data) {
@@ -789,7 +789,7 @@ The following code examples show how to call various methods using this SDK.
 	   console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      smartsheet.groups.listGroups({}, function(error, data) {
        if (error) {
@@ -798,9 +798,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####getGroup
+#### getGroup
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      smartsheet.groups.getGroup({id: groupsId})
      .then(function(data) {
@@ -810,7 +810,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      smartsheet.groups.getGroup({id: groupsId}, function(error, data) {
        if (error) {
@@ -819,9 +819,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####createGroup
+#### createGroup
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      var options = {
         body: {
@@ -839,7 +839,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      var options = {
         body: {
@@ -856,9 +856,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####addGroupMembers
+#### addGroupMembers
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      var options = {
         body: {
@@ -876,7 +876,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      var options = {
         body: {
@@ -893,9 +893,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####updateGroup
+#### updateGroup
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      var options = {
         id: groupsId,
@@ -914,7 +914,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      var options = {
         id: groupsId,
@@ -932,9 +932,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####deleteGroup
+#### deleteGroup
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      var options = {
         id: groupsId
@@ -947,7 +947,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      var options = {
         id: groupsId
@@ -959,9 +959,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####removeGroupMember
+#### removeGroupMember
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      smartsheet.groups.removeGroupMember({id: groupsId})
      .then(function(data) {
@@ -971,7 +971,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      smartsheet.groups.removeGroupMember({id: groupsId}, function(error, data) {
        if (error) {
@@ -980,11 +980,11 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-###Home API methods
+### Home API methods
 
-####listContents
+#### listContents
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      smartsheet.home.listContents({})
      .then(function(data) {
@@ -994,7 +994,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      smartsheet.home.listContents({}, function(error, data) {
        if (error) {
@@ -1003,9 +1003,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####listFolders
+#### listFolders
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      smartsheet.home.listFolders({})
      .then(function(data) {
@@ -1015,7 +1015,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      smartsheet.home.listFolders({}, function(error, data) {
        if (error) {
@@ -1024,9 +1024,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####createFolder
+#### createFolder
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      var options = {
         body: {
@@ -1044,7 +1044,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      var options = {
         body: {
@@ -1061,11 +1061,11 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-###Report API methods
+### Report API methods
 
-####listReports
+#### listReports
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      smartsheet.reports.listReports({})
      .then(function(data) {
@@ -1075,7 +1075,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      smartsheet.reports.listReports({}, function(error, data) {
        if (error) {
@@ -1084,9 +1084,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####getReport
+#### getReport
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      smartsheet.reports.getReport({id: reportsId})
      .then(function(data) {
@@ -1096,7 +1096,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      smartsheet.reports.getReport({id: reportsId}, function(error, data) {
        if (error) {
@@ -1105,9 +1105,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####sendReportViaEmail
+#### sendReportViaEmail
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      smartsheet.reports.sendReportViaEmail({id: reportsId})
      .then(function(data) {
@@ -1117,7 +1117,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      smartsheet.reports.sendReportViaEmail({id: reportsId}, function(error, data) {
        if (error) {
@@ -1126,9 +1126,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####getReportAsExcel
+#### getReportAsExcel
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      smartsheet.reports.getReportAsExcel({id: reportsId})
      .then(function(data) {
@@ -1138,7 +1138,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      smartsheet.reports.getReportAsExcel({id: reportsId}, function(error, data) {
        if (error) {
@@ -1147,9 +1147,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####getReportAsCSV
+#### getReportAsCSV
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      smartsheet.reports.getReportAsCSV({id: reportsId})
      .then(function(data) {
@@ -1159,7 +1159,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      smartsheet.reports.getReportAsCSV({id: reportsId}, function(error, data) {
        if (error) {
@@ -1168,9 +1168,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####getShare
+#### getShare
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      smartsheet.reports.getShare({id: reportsId})
      .then(function(data) {
@@ -1180,7 +1180,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      smartsheet.reports.getShare({id: reportsId}, function(error, data) {
        if (error) {
@@ -1189,9 +1189,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####listShares
+#### listShares
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      smartsheet.reports.listShares({})
      .then(function(data) {
@@ -1201,7 +1201,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      smartsheet.reports.listShares({}, function(error, data) {
        if (error) {
@@ -1210,9 +1210,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####share
+#### share
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      smartsheet.reports.share({id: reportsId})
      .then(function(data) {
@@ -1222,7 +1222,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      smartsheet.reports.share({id: reportsId}, function(error, data) {
        if (error) {
@@ -1231,9 +1231,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####deleteShare
+#### deleteShare
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      var options = {
         id: reportsId
@@ -1246,7 +1246,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      var options = {
         id: reportsId
@@ -1258,9 +1258,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####updateShare
+#### updateShare
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      var options = {
         id: reportsId,
@@ -1279,7 +1279,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      var options = {
         id: reportsId,
@@ -1297,11 +1297,11 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-###Search API methods
+### Search API methods
 
-####searchAll
+#### searchAll
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      smartsheet.search.searchAll({id: searchId})
      .then(function(data) {
@@ -1311,7 +1311,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      smartsheet.search.searchAll({id: searchId}, function(error, data) {
        if (error) {
@@ -1320,9 +1320,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####searchSheet
+#### searchSheet
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      smartsheet.search.searchSheet({id: searchId})
      .then(function(data) {
@@ -1332,7 +1332,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      smartsheet.search.searchSheet({id: searchId}, function(error, data) {
        if (error) {
@@ -1341,11 +1341,11 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-###Server API methods
+### Server API methods
 
-####getInfo
+#### getInfo
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      smartsheet.server.getInfo({id: serverId})
      .then(function(data) {
@@ -1355,7 +1355,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      smartsheet.server.getInfo({id: serverId}, function(error, data) {
        if (error) {
@@ -1364,11 +1364,11 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-###Sheet API methods
+### Sheet API methods
 
-####sendSheetViaEmail
+#### sendSheetViaEmail
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      smartsheet.sheets.sendSheetViaEmail({id: sheetsId})
      .then(function(data) {
@@ -1378,7 +1378,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      smartsheet.sheets.sendSheetViaEmail({id: sheetsId}, function(error, data) {
        if (error) {
@@ -1387,9 +1387,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####getPublishStatus
+#### getPublishStatus
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      smartsheet.sheets.getPublishStatus({})
      .then(function(data) {
@@ -1399,7 +1399,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      smartsheet.sheets.getPublishStatus({}, function(error, data) {
        if (error) {
@@ -1408,9 +1408,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####setPublishStatus
+#### setPublishStatus
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      smartsheet.sheets.setPublishStatus({})
      .then(function(data) {
@@ -1420,7 +1420,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      smartsheet.sheets.setPublishStatus({}, function(error, data) {
        if (error) {
@@ -1429,9 +1429,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####updateSheet
+#### updateSheet
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      var options = {
         id: sheetsId,
@@ -1450,7 +1450,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      var options = {
         id: sheetsId,
@@ -1468,9 +1468,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####deleteSheet
+#### deleteSheet
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      var options = {
         id: sheetsId
@@ -1483,7 +1483,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      var options = {
         id: sheetsId
@@ -1495,9 +1495,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####getAttachment
+#### getAttachment
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      smartsheet.sheets.getAttachment({id: sheetsId})
      .then(function(data) {
@@ -1507,7 +1507,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      smartsheet.sheets.getAttachment({id: sheetsId}, function(error, data) {
        if (error) {
@@ -1516,9 +1516,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####listAttachments
+#### listAttachments
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      smartsheet.sheets.listAttachments({})
      .then(function(data) {
@@ -1528,7 +1528,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      smartsheet.sheets.listAttachments({}, function(error, data) {
        if (error) {
@@ -1537,9 +1537,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####listAttachmentVersions
+#### listAttachmentVersions
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      smartsheet.sheets.listAttachmentVersions({})
      .then(function(data) {
@@ -1549,7 +1549,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      smartsheet.sheets.listAttachmentVersions({}, function(error, data) {
        if (error) {
@@ -1558,9 +1558,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####addAttachment
+#### addAttachment
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      var options = {
         body: {
@@ -1578,7 +1578,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      var options = {
         body: {
@@ -1595,9 +1595,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####attachNewVersion
+#### attachNewVersion
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      smartsheet.sheets.attachNewVersion({id: sheetsId})
      .then(function(data) {
@@ -1607,7 +1607,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      smartsheet.sheets.attachNewVersion({id: sheetsId}, function(error, data) {
        if (error) {
@@ -1616,9 +1616,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####deleteAttachment
+#### deleteAttachment
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      var options = {
         id: sheetsId
@@ -1631,7 +1631,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      var options = {
         id: sheetsId
@@ -1643,9 +1643,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####deleteAllAttachmentVersions
+#### deleteAllAttachmentVersions
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      var options = {
         id: sheetsId
@@ -1658,7 +1658,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      var options = {
         id: sheetsId
@@ -1670,9 +1670,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####getColumns
+#### getColumns
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      smartsheet.sheets.getColumns({})
      .then(function(data) {
@@ -1682,7 +1682,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      smartsheet.sheets.getColumns({}, function(error, data) {
        if (error) {
@@ -1691,9 +1691,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####getColumn
+#### getColumn
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      smartsheet.sheets.getColumn({id: sheetsId})
      .then(function(data) {
@@ -1703,7 +1703,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      smartsheet.sheets.getColumn({id: sheetsId}, function(error, data) {
        if (error) {
@@ -1712,9 +1712,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####addColumn
+#### addColumn
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      var options = {
         body: {
@@ -1732,7 +1732,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      var options = {
         body: {
@@ -1749,9 +1749,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####deleteColumn
+#### deleteColumn
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      var options = {
         id: sheetsId
@@ -1764,7 +1764,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      var options = {
         id: sheetsId
@@ -1776,9 +1776,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####updateColumn
+#### updateColumn
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      var options = {
         id: sheetsId,
@@ -1797,7 +1797,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      var options = {
         id: sheetsId,
@@ -1815,9 +1815,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####getComment
+#### getComment
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      smartsheet.sheets.getComment({id: sheetsId})
      .then(function(data) {
@@ -1827,7 +1827,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      smartsheet.sheets.getComment({id: sheetsId}, function(error, data) {
        if (error) {
@@ -1836,9 +1836,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####deleteComment
+#### deleteComment
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      var options = {
         id: sheetsId
@@ -1851,7 +1851,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      var options = {
         id: sheetsId
@@ -1863,9 +1863,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####addCommentAttachment
+#### addCommentAttachment
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      var options = {
         body: {
@@ -1883,7 +1883,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      var options = {
         body: {
@@ -1900,9 +1900,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####createSheet
+#### createSheet
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      var options = {
         body: {
@@ -1920,7 +1920,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      var options = {
         body: {
@@ -1937,9 +1937,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####createSheetFromExisting
+#### createSheetFromExisting
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      var options = {
         body: {
@@ -1957,7 +1957,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      var options = {
         body: {
@@ -1974,9 +1974,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####createSheetInFolder
+#### createSheetInFolder
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      var options = {
         body: {
@@ -1994,7 +1994,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      var options = {
         body: {
@@ -2011,9 +2011,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####createSheetInWorkspace
+#### createSheetInWorkspace
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      var options = {
         body: {
@@ -2031,7 +2031,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      var options = {
         body: {
@@ -2048,9 +2048,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####getDiscussions
+#### getDiscussions
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      smartsheet.sheets.getDiscussions({})
      .then(function(data) {
@@ -2060,7 +2060,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      smartsheet.sheets.getDiscussions({}, function(error, data) {
        if (error) {
@@ -2069,9 +2069,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####getDiscussion
+#### getDiscussion
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      smartsheet.sheets.getDiscussion({id: sheetsId})
      .then(function(data) {
@@ -2081,7 +2081,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      smartsheet.sheets.getDiscussion({id: sheetsId}, function(error, data) {
        if (error) {
@@ -2090,9 +2090,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####listDiscussionAttachments
+#### listDiscussionAttachments
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      smartsheet.sheets.listDiscussionAttachments({})
      .then(function(data) {
@@ -2102,7 +2102,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      smartsheet.sheets.listDiscussionAttachments({}, function(error, data) {
        if (error) {
@@ -2111,9 +2111,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####createDiscussion
+#### createDiscussion
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      var options = {
         body: {
@@ -2131,7 +2131,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      var options = {
         body: {
@@ -2148,9 +2148,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####addDiscussionComment
+#### addDiscussionComment
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      var options = {
         body: {
@@ -2168,7 +2168,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      var options = {
         body: {
@@ -2185,9 +2185,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####deleteDiscussion
+#### deleteDiscussion
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      var options = {
         id: sheetsId
@@ -2200,7 +2200,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      var options = {
         id: sheetsId
@@ -2212,9 +2212,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####getSheet
+#### getSheet
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      smartsheet.sheets.getSheet({id: sheetsId})
      .then(function(data) {
@@ -2224,7 +2224,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      smartsheet.sheets.getSheet({id: sheetsId}, function(error, data) {
        if (error) {
@@ -2233,9 +2233,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####listSheets
+#### listSheets
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      smartsheet.sheets.listSheets({})
      .then(function(data) {
@@ -2245,7 +2245,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      smartsheet.sheets.listSheets({}, function(error, data) {
        if (error) {
@@ -2254,9 +2254,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####getSheetAsCSV
+#### getSheetAsCSV
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      smartsheet.sheets.getSheetAsCSV({id: sheetsId})
      .then(function(data) {
@@ -2266,7 +2266,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      smartsheet.sheets.getSheetAsCSV({id: sheetsId}, function(error, data) {
        if (error) {
@@ -2275,9 +2275,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####getSheetAsExcel
+#### getSheetAsExcel
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      smartsheet.sheets.getSheetAsExcel({id: sheetsId})
      .then(function(data) {
@@ -2287,7 +2287,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      smartsheet.sheets.getSheetAsExcel({id: sheetsId}, function(error, data) {
        if (error) {
@@ -2296,9 +2296,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####getSheetAsPDF
+#### getSheetAsPDF
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      smartsheet.sheets.getSheetAsPDF({id: sheetsId})
      .then(function(data) {
@@ -2308,7 +2308,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      smartsheet.sheets.getSheetAsPDF({id: sheetsId}, function(error, data) {
        if (error) {
@@ -2317,9 +2317,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####getSheetVersion
+#### getSheetVersion
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      smartsheet.sheets.getSheetVersion({id: sheetsId})
      .then(function(data) {
@@ -2329,7 +2329,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      smartsheet.sheets.getSheetVersion({id: sheetsId}, function(error, data) {
        if (error) {
@@ -2338,9 +2338,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####listOrganizationSheets
+#### listOrganizationSheets
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      smartsheet.sheets.listOrganizationSheets({})
      .then(function(data) {
@@ -2350,7 +2350,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      smartsheet.sheets.listOrganizationSheets({}, function(error, data) {
        if (error) {
@@ -2359,9 +2359,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####getRow
+#### getRow
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      smartsheet.sheets.getRow({id: sheetsId})
      .then(function(data) {
@@ -2371,7 +2371,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      smartsheet.sheets.getRow({id: sheetsId}, function(error, data) {
        if (error) {
@@ -2380,9 +2380,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####getRowAttachments
+#### getRowAttachments
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      smartsheet.sheets.getRowAttachments({})
      .then(function(data) {
@@ -2392,7 +2392,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      smartsheet.sheets.getRowAttachments({}, function(error, data) {
        if (error) {
@@ -2401,9 +2401,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####getRowDiscussions
+#### getRowDiscussions
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      smartsheet.sheets.getRowDiscussions({})
      .then(function(data) {
@@ -2413,7 +2413,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      smartsheet.sheets.getRowDiscussions({}, function(error, data) {
        if (error) {
@@ -2422,9 +2422,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####getCellHistory
+#### getCellHistory
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      smartsheet.sheets.getCellHistory({id: sheetsId})
      .then(function(data) {
@@ -2434,7 +2434,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      smartsheet.sheets.getCellHistory({id: sheetsId}, function(error, data) {
        if (error) {
@@ -2443,9 +2443,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####copyRowToAnotherSheet
+#### copyRowToAnotherSheet
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      smartsheet.sheets.copyRowToAnotherSheet({id: sheetsId})
      .then(function(data) {
@@ -2455,7 +2455,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      smartsheet.sheets.copyRowToAnotherSheet({id: sheetsId}, function(error, data) {
        if (error) {
@@ -2464,9 +2464,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####moveRowToAnotherSheet
+#### moveRowToAnotherSheet
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      smartsheet.sheets.moveRowToAnotherSheet({id: sheetsId})
      .then(function(data) {
@@ -2476,7 +2476,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      smartsheet.sheets.moveRowToAnotherSheet({id: sheetsId}, function(error, data) {
        if (error) {
@@ -2485,9 +2485,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####addRow
+#### addRow
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      var options = {
         body: {
@@ -2505,7 +2505,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      var options = {
         body: {
@@ -2522,9 +2522,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####addRows
+#### addRows
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      var options = {
         body: {
@@ -2542,7 +2542,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      var options = {
         body: {
@@ -2559,9 +2559,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####addRowAttachment
+#### addRowAttachment
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      var options = {
         body: {
@@ -2579,7 +2579,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      var options = {
         body: {
@@ -2596,9 +2596,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####createRowDiscussion
+#### createRowDiscussion
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      var options = {
         body: {
@@ -2616,7 +2616,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      var options = {
         body: {
@@ -2633,9 +2633,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####sendRow
+#### sendRow
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      smartsheet.sheets.sendRow({id: sheetsId})
      .then(function(data) {
@@ -2645,7 +2645,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      smartsheet.sheets.sendRow({id: sheetsId}, function(error, data) {
        if (error) {
@@ -2654,9 +2654,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####deleteRow
+#### deleteRow
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      var options = {
         id: sheetsId
@@ -2669,7 +2669,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      var options = {
         id: sheetsId
@@ -2681,9 +2681,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####updateRow
+#### updateRow
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      var options = {
         id: sheetsId,
@@ -2702,7 +2702,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      var options = {
         id: sheetsId,
@@ -2720,9 +2720,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####getShare
+#### getShare
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      smartsheet.sheets.getShare({id: sheetsId})
      .then(function(data) {
@@ -2732,7 +2732,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      smartsheet.sheets.getShare({id: sheetsId}, function(error, data) {
        if (error) {
@@ -2741,9 +2741,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####listShares
+#### listShares
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      smartsheet.sheets.listShares({})
      .then(function(data) {
@@ -2753,7 +2753,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      smartsheet.sheets.listShares({}, function(error, data) {
        if (error) {
@@ -2762,9 +2762,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####share
+#### share
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      smartsheet.sheets.share({id: sheetsId})
      .then(function(data) {
@@ -2774,7 +2774,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      smartsheet.sheets.share({id: sheetsId}, function(error, data) {
        if (error) {
@@ -2783,9 +2783,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####deleteShare
+#### deleteShare
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      var options = {
         id: sheetsId
@@ -2798,7 +2798,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      var options = {
         id: sheetsId
@@ -2810,9 +2810,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####updateShare
+#### updateShare
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      var options = {
         id: sheetsId,
@@ -2831,7 +2831,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      var options = {
         id: sheetsId,
@@ -2849,11 +2849,11 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-###Template API methods
+### Template API methods
 
-####listUserCreatedTemplates
+#### listUserCreatedTemplates
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      smartsheet.templates.listUserCreatedTemplates({})
      .then(function(data) {
@@ -2863,7 +2863,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      smartsheet.templates.listUserCreatedTemplates({}, function(error, data) {
        if (error) {
@@ -2872,9 +2872,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####listPublicTemplates
+#### listPublicTemplates
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      smartsheet.templates.listPublicTemplates({})
      .then(function(data) {
@@ -2884,7 +2884,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      smartsheet.templates.listPublicTemplates({}, function(error, data) {
        if (error) {
@@ -2893,11 +2893,11 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-###User API methods
+### User API methods
 
-####getUser
+#### getUser
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      smartsheet.users.getUser({id: usersId})
      .then(function(data) {
@@ -2907,7 +2907,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      smartsheet.users.getUser({id: usersId}, function(error, data) {
        if (error) {
@@ -2916,9 +2916,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####listAllUsers
+#### listAllUsers
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      smartsheet.users.listAllUsers({})
      .then(function(data) {
@@ -2928,7 +2928,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      smartsheet.users.listAllUsers({}, function(error, data) {
        if (error) {
@@ -2937,11 +2937,11 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####getCurrentUser
+#### getCurrentUser
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
-     smartsheet.users.getCurrentUser({id: usersId})
+     smartsheet.users.getCurrentUser({})
      .then(function(data) {
        console.log(data);
      })
@@ -2949,18 +2949,18 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
-     smartsheet.users.getCurrentUser({id: usersId}, function(error, data) {
+     smartsheet.users.getCurrentUser({}, function(error, data) {
        if (error) {
          console.log(error);
        }
        console.log(data);
      });
 
-####addUser
+#### addUser
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      var options = {
         body: {
@@ -2978,7 +2978,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      var options = {
         body: {
@@ -2995,9 +2995,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####addUserAndSendEmail
+#### addUserAndSendEmail
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      var options = {
         body: {
@@ -3015,7 +3015,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      var options = {
         body: {
@@ -3032,9 +3032,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####updateUser
+#### updateUser
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      var options = {
         id: usersId,
@@ -3053,7 +3053,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      var options = {
         id: usersId,
@@ -3071,9 +3071,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####removeUser
+#### removeUser
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      smartsheet.users.removeUser({id: usersId})
      .then(function(data) {
@@ -3083,7 +3083,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      smartsheet.users.removeUser({id: usersId}, function(error, data) {
        if (error) {
@@ -3092,11 +3092,11 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-###Workspace API methods
+### Workspace API methods
 
-####listWorkspaces
+#### listWorkspaces
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      smartsheet.workspaces.listWorkspaces({})
      .then(function(data) {
@@ -3106,7 +3106,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      smartsheet.workspaces.listWorkspaces({}, function(error, data) {
        if (error) {
@@ -3115,9 +3115,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####getWorkspace
+#### getWorkspace
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      smartsheet.workspaces.getWorkspace({id: workspacesId})
      .then(function(data) {
@@ -3127,7 +3127,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      smartsheet.workspaces.getWorkspace({id: workspacesId}, function(error, data) {
        if (error) {
@@ -3136,9 +3136,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####listWorkspaceFolders
+#### listWorkspaceFolders
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      smartsheet.workspaces.listWorkspaceFolders({})
      .then(function(data) {
@@ -3148,7 +3148,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      smartsheet.workspaces.listWorkspaceFolders({}, function(error, data) {
        if (error) {
@@ -3157,9 +3157,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####createWorkspace
+#### createWorkspace
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      var options = {
         body: {
@@ -3177,7 +3177,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      var options = {
         body: {
@@ -3194,9 +3194,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####createFolder
+#### createFolder
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      var options = {
         body: {
@@ -3214,7 +3214,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      var options = {
         body: {
@@ -3231,9 +3231,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####deleteWorkspace
+#### deleteWorkspace
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      var options = {
         id: workspacesId
@@ -3246,7 +3246,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      var options = {
         id: workspacesId
@@ -3258,9 +3258,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####updateWorkspace
+#### updateWorkspace
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      var options = {
         id: workspacesId,
@@ -3279,7 +3279,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      var options = {
         id: workspacesId,
@@ -3297,9 +3297,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####getShare
+#### getShare
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      smartsheet.workspaces.getShare({id: workspacesId})
      .then(function(data) {
@@ -3309,7 +3309,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      smartsheet.workspaces.getShare({id: workspacesId}, function(error, data) {
        if (error) {
@@ -3318,9 +3318,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####listShares
+#### listShares
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      smartsheet.workspaces.listShares({})
      .then(function(data) {
@@ -3330,7 +3330,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      smartsheet.workspaces.listShares({}, function(error, data) {
        if (error) {
@@ -3339,9 +3339,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####share
+#### share
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      smartsheet.workspaces.share({id: workspacesId})
      .then(function(data) {
@@ -3351,7 +3351,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      smartsheet.workspaces.share({id: workspacesId}, function(error, data) {
        if (error) {
@@ -3360,9 +3360,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####deleteShare
+#### deleteShare
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      var options = {
         id: workspacesId
@@ -3375,7 +3375,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      var options = {
         id: workspacesId
@@ -3387,9 +3387,9 @@ The following code examples show how to call various methods using this SDK.
        console.log(data);
      });
 
-####updateShare
+#### updateShare
 [back to TOC](#table-of-contents)
-#####Example using promises
+##### Example using promises
 
      var options = {
         id: workspacesId,
@@ -3408,7 +3408,7 @@ The following code examples show how to call various methods using this SDK.
        console.log(error);
      });
 
-#####Example using callbacks
+##### Example using callbacks
 
      var options = {
         id: workspacesId,
