@@ -35,7 +35,7 @@ All APIs are exposed inside the root module that is created using the following:
 The **smartsheet** variable now contains access to all of the APIs [documented here](http://www.smartsheet.com/developers/api-documentation).
 See [this page](https://github.com/smartsheet-platform/smartsheet-javascript-sdk/blob/master/ExampleUsage.md) for code examples that show how to call various methods using this SDK.
 
-##Release Notes
+## Release Notes
 
 Each specific release is available for download via [Github](https://github.com/smartsheet-platform/smartsheet-javascript-sdk/tags).
 
