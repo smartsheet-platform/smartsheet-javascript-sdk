@@ -41,3 +41,5 @@ Each specific release is available for download via [Github](https://github.com/
 
 **v0.0.1-beta (Aug 12, 2015)**
 * Initial Release of the Smartsheet SDK for JavaScript
+
+*Note*: Minor changes that result in a patch version increment in NPM (such as updates to the README) will not be tagged as a Release in GitHub.
