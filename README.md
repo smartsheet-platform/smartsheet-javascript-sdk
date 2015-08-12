@@ -14,7 +14,7 @@ To install this SDK, simply run the following command in a terminal window:
 
 The Smartsheet API documentation can be found [here](http://www.smartsheet.com/developers/api-documentation). 
 
-See below for [code examples](#example-usage) that show how to use this SDK.
+See [this page](https://github.com/smartsheet-platform/smartsheet-javascript-sdk/blob/master/ExampleUsage.md) for code examples that show how to use this SDK.
 
 ## Contributing
 
