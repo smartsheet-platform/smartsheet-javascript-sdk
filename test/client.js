@@ -79,7 +79,7 @@ describe('Client Unit Tests', function() {
     });
 
     it('should have delete methods', function() {
-      smartsheet.folders.should.have.property('deleteFolders');
+      smartsheet.folders.should.have.property('deleteFolder');
     });
   });
 
@@ -151,7 +151,7 @@ describe('Client Unit Tests', function() {
   describe('#Sheets', function() {
     it('should have Sheets object',function(){
       smartsheet.should.have.property('sheets');
-      Object.keys(smartsheet.sheets).should.be.length(53);
+      Object.keys(smartsheet.sheets).should.be.length(55);
     });
 
     it('should have Sheets get methods', function() {
