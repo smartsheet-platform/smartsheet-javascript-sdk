@@ -1475,7 +1475,7 @@ The following code examples show how to call various methods using this SDK.
 [back to TOC](#table-of-contents)
 ##### Example using promises
 
-     smartsheet.sheets.getAttachment({id: sheetsId})
+     smartsheet.sheets.getAttachment({sheetId: sheetsId, attachmentId: attachmentsId})
      .then(function(data) {
        console.log(data);
      })
@@ -1485,7 +1485,7 @@ The following code examples show how to call various methods using this SDK.
 
 ##### Example using callbacks
 
-     smartsheet.sheets.getAttachment({id: sheetsId}, function(error, data) {
+     smartsheet.sheets.getAttachment({sheetId: sheetsId, attachmentId: attachmentsId}, function(error, data) {
        if (error) {
          console.log(error);
        }
