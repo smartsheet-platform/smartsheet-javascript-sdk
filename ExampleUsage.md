@@ -2339,7 +2339,12 @@ The following code examples show how to call various methods using this SDK.
 [back to TOC](#table-of-contents)
 ##### Example using promises
 
-     smartsheet.sheets.getRow({id: sheetsId})
+     smartsheet.sheets.getRow({
+        sheetId: sheetId, 
+        rowId: rowId, 
+        queryParameters: {
+            // (optional) querystring parameters as specified in the Smartsheet API documentation
+        }})
      .then(function(data) {
        console.log(data);
      })
@@ -2349,7 +2354,12 @@ The following code examples show how to call various methods using this SDK.
 
 ##### Example using callbacks
 
-     smartsheet.sheets.getRow({id: sheetsId}, function(error, data) {
+     smartsheet.sheets.getRow({
+        sheetId: sheetId, 
+        rowId: rowId, 
+        queryParameters: {
+           // (optional) querystring parameters as specified in the Smartsheet API documentation
+        }}, function(error, data) {
        if (error) {
          console.log(error);
        }
@@ -2360,7 +2370,7 @@ The following code examples show how to call various methods using this SDK.
 [back to TOC](#table-of-contents)
 ##### Example using promises
 
-     smartsheet.sheets.getRowAttachments({})
+     smartsheet.sheets.getRowAttachments({ sheetId: sheetId, rowId: rowId })
      .then(function(data) {
        console.log(data);
      })
@@ -2370,7 +2380,7 @@ The following code examples show how to call various methods using this SDK.
 
 ##### Example using callbacks
 
-     smartsheet.sheets.getRowAttachments({}, function(error, data) {
+     smartsheet.sheets.getRowAttachments({ sheetId: sheetId, rowId: rowId }, function(error, data) {
        if (error) {
          console.log(error);
        }
@@ -2381,7 +2391,7 @@ The following code examples show how to call various methods using this SDK.
 [back to TOC](#table-of-contents)
 ##### Example using promises
 
-     smartsheet.sheets.getRowDiscussions({})
+     smartsheet.sheets.getRowDiscussions({ sheetId: sheetId, rowId: rowId })
      .then(function(data) {
        console.log(data);
      })
