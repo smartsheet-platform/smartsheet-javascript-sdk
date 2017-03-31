@@ -157,7 +157,7 @@ describe('Utils Unit Tests', function() {
 
       it('Content-Disposition should equal filename', function() {
         var headers = smartsheet.internal.buildHeaders({fileName: 'test'});
-        headers['Content-Disposition'].should.equal('attachment; filename=test');
+        headers['Content-Disposition'].should.equal('attachment; filename="test"');
       });
 
       it('Content-Length should equal 123', function() {
