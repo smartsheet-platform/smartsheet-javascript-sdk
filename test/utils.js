@@ -95,11 +95,11 @@ describe('Utils Unit Tests', function() {
       var host = null;
 
       beforeEach(function() {
-        host = process.env.HOST = 'host/';
+        host = process.env.SMARTSHEET_API_HOST = 'host/';
       });
 
       afterEach(function() {
-        process.env.HOST = '';
+        process.env.SMARTSHEET_API_HOST = '';
         host = null;
       });
 
@@ -110,7 +110,7 @@ describe('Utils Unit Tests', function() {
       });
 
       it('url should equal https://api.smartsheet.com/', function() {
-        process.env.HOST = '';
+        process.env.SMARTSHEET_API_HOST = '';
         var builtUrl = smartsheet.internal.buildUrl({});
         builtUrl.should.equal('https://api.smartsheet.com/');
       });
