@@ -14,9 +14,9 @@ var _ = require('underscore');
 
 
 
-//var smartsheet = client.createClient({accessToken:process.env.SS_TOKEN});
-var smartsheet = client.createClient({accessToken:''});
-
+var smartsheet = client.createClient({accessToken:process.env.SMARTSHEET_ACCESS_TOKEN});
+//var smartsheet = client.createClient({accessToken:''});
+var sheetId = 0;
 
 var favorites = smartsheet.favorites;
 //
@@ -24,13 +24,22 @@ var favorites = smartsheet.favorites;
 
  //smartsheet.home.listContents()
  //smartsheet.sheets.listSheets()
- //smartsheet.sheets.getSheet({id:5631528672749444})
- //smartsheet.sheets.copyRowToAnotherSheet({sheetId:5631528672749444, body:{rowIds:[7318413333817220], to:{sheetId:3379728859064196}}})
- //smartsheet.sheets.moveRowToAnotherSheet({sheetId:5631528672749444, body:{rowIds:[7318413333817220], to:{sheetId:3379728859064196}}})
-  smartsheet.reports.getReportAsExcel({id:4503842059511684})
+ //smartsheet.sheets.copyRowToAnotherSheet({sheetId:sheetId, body:{rowIds:[7318413333817220], to:{sheetId:sheetId}}})
+ //smartsheet.sheets.moveRowToAnotherSheet({sheetId:sheetId, body:{rowIds:[7318413333817220], to:{sheetId:sheetId}}})
+  //smartsheet.reports.getReportAsExcel({id:4503842059511684})
 //  smartsheet.reports.listReports()
-   .then(function(reports) {
-    console.log(reports);
+ smartsheet.sheets.getSheetVersion({sheetId: sheetId})
+   .then(function(version) {
+    console.log(version);
+     smartsheet.sheets.getSheet({sheetId: sheetId})
+       .then(function(sheet) {
+        console.log(sheet);
+      })
+      .catch(function(error) {
+        console.log('I AM AN ERROR getting sheetversion inside!!!');
+        console.log(error);
+      });
+
   })
   .catch(function(error) {
     console.log('I AM AN ERROR!!!');
