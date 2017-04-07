@@ -124,6 +124,15 @@ The following code examples show how to call various methods using this SDK.
     - [share](#share-1)
     - [deleteShare](#deleteshare-1)
     - [updateShare](#updateshare-1)
+- [Sight API methods](#sight-api-methods)
+    - [getSight](#getsight)
+    - [listSights](#listsights)
+    - [deleteSight](#deletesight)
+    - [getShare](#getshare-2)
+    - [listShares](#listshares-2)
+    - [share](#share-2)
+    - [deleteShare](#deleteshare-2)
+    - [updateShare](#updateshare-2)
 - [Template API methods](#template-api-methods)
     - [listUserCreatedTemplates](#listusercreatedtemplates)
     - [listPublicTemplates](#listpublictemplates)
@@ -2829,6 +2838,176 @@ The following code examples show how to call various methods using this SDK.
         }
      };
      smartsheet.sheets.updateShare(options, function(error, data) {
+       if (error) {
+         console.log(error);
+       }
+       console.log(data);
+     });
+
+### Sight API methods
+
+#### getSight
+[back to TOC](#table-of-contents)
+#### Example using promises
+
+    smartsheet.sights.getSight({ id: sightId })
+    .then(function(data) {
+      console.log(data);
+    })
+    .catch(function(error) {
+      console.log(error);
+    })
+
+#### Example using callbacks
+
+    smartsheet.sights.getSights({ id: sightId }, function(error, data) {
+      if (error) {
+        console.log(error);
+      }
+      console.log(data);
+    });
+
+#### listSights
+[back to TOC](#table-of-contents)
+#### Example using promises
+
+    smartsheet.sights.listSights()
+    .then(function(data) {
+      console.log(data);
+    })
+    .catch(function(error) {
+      console.log(error);
+    })
+
+#### Example using callbacks
+
+    smartsheet.sights.listSights({}, function(error, data) {
+      if (error) {
+        console.log(error);
+      }
+      console.log(data);
+    });
+
+#### deleteSight
+[back to TOC](#table-of-contents)
+#### Example using promises
+
+    smartsheet.sights.deleteSight({ id: sightId })
+    .then(function(data) {
+      console.log(data);
+    })
+    .catch(function(error) {
+      console.log(error);
+    });
+
+#### Example using callbacks
+
+    smartsheet.sights.deleteSight({ id: sightId }, function(error, data) {
+      if (error) {
+        console.log(error);
+      }
+      console.log(data);
+    })
+
+#### getShare
+[back to TOC](#table-of-contents)
+##### Example using promises
+
+     smartsheet.sights.getShare({ sightId: sightId, shareId: shareId })
+     .then(function(data) {
+       console.log(data);
+     })
+     .catch(function(error) {
+       console.log(error);
+     });
+
+##### Example using callbacks
+
+     smartsheet.sights.getShare({ sightId: sightId, shareId: shareId }, function(error, data) {
+       if (error) {
+         console.log(error);
+       }
+       console.log(data);
+     });
+
+#### listShares
+[back to TOC](#table-of-contents)
+##### Example using promises
+
+     smartsheet.sights.listShares({ sightId: sightId })
+     .then(function(data) {
+       console.log(data);
+     })
+     .catch(function(error) {
+       console.log(error);
+     });
+
+##### Example using callbacks
+
+     smartsheet.sights.listShares({ sightId: sightId }, function(error, data) {
+       if (error) {
+         console.log(error);
+       }
+       console.log(data);
+     });
+
+#### share
+[back to TOC](#table-of-contents)
+##### Example using promises
+
+     smartsheet.sights.share({ body: [{ "email": email, "accessLevel": PERMISSION }], sightId: sightId })
+     .then(function(data) {
+       console.log(data);
+     })
+     .catch(function(error) {
+       console.log(error);
+     });
+
+##### Example using callbacks
+
+     smartsheet.reports.share({ body: [{ "email": email, "accessLevel": PERMISSION }], sightId: sightId }, function(error, data) {
+       if (error) {
+         console.log(error);
+       }
+       console.log(data);
+     });
+
+#### deleteShare
+[back to TOC](#table-of-contents)
+##### Example using promises
+
+     smartsheet.sights.deleteShare({ sightId: sightId, shareId: shareId })
+     .then(function(data) {
+       console.log(data);
+     })
+     .catch(function(error) {
+       console.log(error);
+     });
+
+##### Example using callbacks
+
+     smartsheet.sights.deleteShare({ sightId: sightId, shareId: shareId }, function(error, data) {
+       if (error) {
+         console.log(error);
+       }
+       console.log(data);
+     });
+
+#### updateShare
+[back to TOC](#table-of-contents)
+##### Example using promises
+
+     smartsheet.sights.updateShare({ body: { "accessLevel": PERMISSION }, sightId: sightId, shareId: shareId })
+     .then(function(data) {
+       console.log(data);
+     })
+     .catch(function(error) {
+       console.log(error);
+     });
+
+##### Example using callbacks
+
+     smartsheet.sights.updateShare({ body: { "accessLevel": PERMISSION }, sightId: sightId, shareId: shareId }, function(error, data) {
        if (error) {
          console.log(error);
        }
