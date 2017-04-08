@@ -225,6 +225,152 @@ describe('Client Unit Tests', function() {
       smartsheet.sheets.should.have.property('deleteSheet');
     });
   });
+  describe('#Sights', function() {
+    it('should have Sights object',function(){
+      smartsheet.should.have.property('sights');
+      Object.keys(smartsheet.sights).should.be.length(8);
+    });
+
+    it('should have Sights get methods', function() {
+      smartsheet.sights.should.have.property('getSight');
+      smartsheet.sights.should.have.property('listSights');
+      smartsheet.sights.should.have.property('getShare');
+      smartsheet.sights.should.have.property('listShares');
+    });
+
+    it('should have Sights delete methods', function() {
+      smartsheet.sights.should.have.property('deleteSight');
+      smartsheet.sights.should.have.property('deleteShare');
+    });
+
+    it('should return correct response from getSight', function() {
+          const sights = require('../lib/sights')
+          const getSightExpectedResponse = {
+          "id": 2591554075418573,
+          "name": "Test",
+          "accessLevel": "OWNER",
+          "columnCount": 6,
+          "widgets": [
+              {
+              "id": 3056651398234562,
+              "type": "RICHTEXT",
+              "contents": {
+                  "htmlContent": "<p>This is a test</p>"
+              },
+              "xPosition": 2,
+              "yPosition": 0,
+              "width": 2,
+              "height": 4,
+              "showTitleIcon": false,
+              "titleFormat": ",,1,,,,,,,3,,,,,,",
+              "version": 1
+              },
+              {
+              "id": 48092647672583496,
+              "type": "SHORTCUTLIST",
+              "contents": {
+                  "shortcutData": [
+                  {
+                      "label": "Sight Data",
+                      "labelFormat": ",2,,,,,1,,1,,,,,,,",
+                      "hyperlink": {
+                      "url": "https://app.smartsheet.com/b/home?lx=m1O5qo7tpM1h23KFxYavIw",
+                      "sheetId": 692061146243972
+                      },
+                      "attachmentType": "SMARTSHEET",
+                      "order": 0
+                  }
+                  ]
+              },
+              "xPosition": 1,
+              "yPosition": 0,
+              "width": 1,
+              "height": 1,
+              "showTitleIcon": false,
+              "titleFormat": ",,1,,,,,,,3,,,,,,",
+              "version": 1
+              }
+          ]
+          };
+          
+          const httpUtilsGetMock = {
+            get: function(optionsToSend, callback) {
+              callback(getSightExpectedResponse);
+            }
+          };
+
+          const theSight = sights.create({
+          apiUrls: {sights: '...'},
+          httpUtils: httpUtilsGetMock
+          });
+
+          theSight.getSight({id:2591554075418573}, (data) => {
+          should.deepEqual(data, getSightExpectedResponse);
+          });
+
+        })
+    it('should return the correct response from listSights', function() {
+      const sights = require('../lib/sights')
+      const listSightsExpectedResponse = {
+              "pageNumber": 1,
+              "pageSize": 100,
+              "totalPages": 1,
+              "totalCount": 2,
+              "data": [
+                  {
+                      "id": 2331373580117892,
+                      "name": "Sales Sight",
+                      "accessLevel": "OWNER",
+                      "permalink": "https://app.smartsheet.com/b/home?lx=xUefSOIYmn07iJJesvSHCQ",
+                      "createdAt": "2016-01-28T00:24:41Z",
+                      "modifiedAt": "2016-01-28T20:32:33Z"
+                  },
+                  {
+                      "id": 7397923160909700,
+                      "name": "Sight #2",
+                      "accessLevel": "OWNER",
+                      "permalink": "https://app.smartsheet.com/b/home?lx=xUefSOIYmn07iJJrthEFTG",
+                      "createdAt": "2016-01-28T01:17:51Z",
+                      "modifiedAt": "2016-01-28T20:32:27Z"
+                  }
+              ]
+          }
+      const httpUtilsListMock = {
+        delete: function(optionsToSend, callback) {
+          callback(listSightsExpectedResponse);
+        }
+      }
+      const theSight = sights.create({
+          apiUrls: {sights: '...'},
+          httpUtils: httpUtilsListMock
+          });
+
+          theSight.listSights({}, (data) => {
+          should.deepEqual(data, listSightsExpectedResponse);
+          });
+    });
+
+    it('should return the correct response from deleteSight', function() {
+      const sights = require('../lib/sights')
+      const deleteSightExpectedResponse = {
+                    "resultCode": 0,
+                    "message": "SUCCESS"
+            }
+      const httpUtilsDeleteMock = {
+        delete: function(optionsToSend, callback) {
+          callback(deleteSightExpectedResponse);
+        }
+      }
+      const theSight = sights.create({
+          apiUrls: {sights: '...'},
+          httpUtils: httpUtilsDeleteMock
+          });
+
+          theSight.deleteSight({id:2591554075418573}, (data) => {
+          should.deepEqual(data, deleteSightExpectedResponse);
+          });
+    });
+  })
 
   describe('#templates', function () {
     it('should have templates object', function () {
