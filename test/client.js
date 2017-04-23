@@ -26,6 +26,13 @@ describe('Client Unit Tests', function() {
     });
   });
 
+  describe('#Contacts', function() {
+    it('should have Contacts object', function() {
+      smartsheet.should.have.property('contacts');
+      Object.keys(smartsheet.contacts).should.be.length(2);
+    });
+  });
+
   describe('#Favorites', function() {
     it('should have Favorites object',function(){
       smartsheet.should.have.property('favorites');
