@@ -7,6 +7,7 @@ exports.createClient = function(options) {
   };
   return {
     constants  : require('./lib/utils/constants.js'),
+    contacts   : require('./lib/contacts/').create(options),
     favorites  : require('./lib/favorites/').create(options),
     folders    : require('./lib/folders/').create(options),
     groups     : require('./lib/groups/').create(options),
