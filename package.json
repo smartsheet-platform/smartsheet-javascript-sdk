@@ -1,6 +1,6 @@
 {
   "name": "smartsheet",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Smartsheet JavaScript SDK",
   "main": "index.js",
   "scripts": {
