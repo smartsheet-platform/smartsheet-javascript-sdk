@@ -16,6 +16,9 @@ The following code examples show how to call various methods using this SDK.
 
 ### Table of Contents
 
+- [Contacts API methods](#contacts-api-methods)
+    - [getContact](#getcontact)
+    - [listContacts](#listcontacts)
 - [Favorite API methods](#favorite-api-methods)
     - [listFavorites](#listfavorites)
     - [addItemsToFavorites](#additemstofavorites)
@@ -157,6 +160,50 @@ The following code examples show how to call various methods using this SDK.
     - [share](#share-2)
     - [deleteShare](#deleteshare-2)
     - [updateShare](#updateshare-2)
+
+### Contacts API methods
+
+#### getContact
+[back to TOC](#table-of-contents)
+#### Example using promises
+
+    smartsheet.contacts.getContact({ id: contactId })
+    .then(function(data) {
+      console.log(data);
+    })
+    .catch(function(error) {
+      console.log(error);
+    });
+
+##### Example using callbacks
+
+     smartsheet.contacts.getContact({ id : contactId }, function(error, data) {
+       if (error) {
+         console.log(error);
+       }
+       console.log(data);
+     });
+
+#### listContacts
+[back to TOC](#table-of-contents)
+#### Example using promises
+
+    smartsheet.contacts.listContacts({})
+    .then(function(data) {
+      console.log(data);
+    })
+    .catch(function(error) {
+      console.log(error);
+    });
+
+##### Example using callbacks
+
+     smartsheet.contacts.listContacts({}, function(error, data) {
+       if (error) {
+         console.log(error);
+       }
+       console.log(data);
+     });
 
 ### Favorite API methods
 

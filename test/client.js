@@ -26,6 +26,79 @@ describe('Client Unit Tests', function() {
     });
   });
 
+  describe('#Contacts', function() {
+    it('should have Contacts object', function() {
+      smartsheet.should.have.property('contacts');
+      Object.keys(smartsheet.contacts).should.be.length(2);
+    });
+
+    it('should have Contacts GET methods', function() {
+      smartsheet.contacts.should.have.property('getContact');
+      smartsheet.contacts.should.have.property('listContacts');
+    });
+
+    it('should return correct response from getContact', function() {
+      const contacts = require('../lib/contacts');
+      const getContactExpectedResponse = {
+          "id": "AAAAATYU54QAD7_fNhTnhA",
+          "name": "David Davidson",
+          "email": "dd@example.com"
+      }
+
+      const httpUtilsGetMock = {
+        get: function(optionsToSend, callback) {
+          callback(getContactExpectedResponse)
+        }
+      };
+
+      const theContact = contacts.create({
+        apiUrls: {contacts: '...'},
+        httpUtils: httpUtilsGetMock
+      });
+
+      theContact.getContact({id: "AAAAATYU54QAD7_fNhTnhA"}, (data) => {
+        should.deepEqual(data, getContactExpectedResponse);
+      });
+    });
+
+    it('should return correct response from listContacts', function() {
+      const contacts = require('../lib/contacts');
+      const listContactsExpectedResponse = {
+          "pageNumber": 1,
+          "pageSize": 100,
+          "totalPages": 1,
+          "totalCount": 2,
+          "data": [
+              {
+                  "id": "AAAAATYU54QAD7_fNhTnhA",
+                  "name": "David Davidson",
+                  "email": "dd@example.com"
+              },
+              {
+                  "id": "AAAAATYU54QAH7_fNhTnhA",
+                  "name": "Ed Edwin",
+                  "email": "ee@example.com"
+              }
+          ]
+      }
+
+      const httpUtilsGetMock = {
+        get: function(optionsToSend, callback) {
+          callback(getContactExpectedResponse)
+        }
+      };
+
+      const theContact = contacts.create({
+        apiUrls: {contacts: '...'},
+        httpUtils: httpUtilsGetMock
+      });
+
+      theContact.listContacts({}, (data) => {
+        should.deepEqual(data, listContactsExpectedResponse);
+      });
+    });
+  });
+
   describe('#Favorites', function() {
     it('should have Favorites object',function(){
       smartsheet.should.have.property('favorites');
