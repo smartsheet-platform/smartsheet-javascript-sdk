@@ -2,7 +2,7 @@
 
 This is an SDK to simplify connecting to the [Smartsheet API](http://www.smartsheet.com/developers/api-documentation) from Node.js applications.
 
-**Please note that this SDK is beta and may change significantly in the future.**
+*Please note that this SDK is beta and may change significantly in the future.*
 
 ## Installation
 
