@@ -2728,7 +2728,7 @@ The following code examples show how to call various methods using this SDK.
 ##### Example using promises
 
      var options = {
-        id: sheetsId,
+        sheetId: sheetsId,
         body: {
          //body of request as specified in the Smartsheet API documentation
         },
@@ -2747,7 +2747,7 @@ The following code examples show how to call various methods using this SDK.
 ##### Example using callbacks
 
      var options = {
-        id: sheetsId,
+        sheetId: sheetsId,
         body: {
          //body of request as specified in the Smartsheet API documentation
         },
