@@ -16,30 +16,54 @@ To install this SDK, simply run the following command in a terminal window:
 
 ## Documentation
 
-The Smartsheet API documentation can be found [here](http://www.smartsheet.com/developers/api-documentation). 
-
-See [this page](https://github.com/smartsheet-platform/smartsheet-javascript-sdk/blob/master/ExampleUsage.md) for code examples that show how to use this SDK.
+The Smartsheet API documentation with corresponding SDK example code can be found [here](http://www.smartsheet.com/developers/api-documentation). 
 
 ## Example Usage
 
-All APIs are exposed inside the root module that is created using the following:
+To call the API, you must have an access token, which looks something like this example: ll352u9jujauoqz4gstvsae05. You can find the access token in the UI at Account > Personal Settings > API Access. 
 
+The following is a brief sample using promises that shows you how to:
+
+* Initialize the client
+* List all sheets
+* Load one sheet
+
+    // Initialize the client
     var client = require('smartsheet');
-    var smartsheet = client.createClient({accessToken:'ACCESSTOKEN'});
+    var smartsheet = client.createClient({accessToken:'ll352u9jujauoqz4gstvsae05'});
 
-The `smartsheet` variable now contains access to all of the APIs. For example, you can get a sheet by calling `smartsheet.sheets.getSheet({id: sheetsId})`. Using promises, getting a sheet would look like this:
+    // The `smartsheet` variable now contains access to all of the APIs.
 
-     smartsheet.sheets.getSheet({id: sheetsId})
-     .then(function(data) {
+    // List all sheets
+    smartsheet.sheets.listSheets({})
+        .then(function(data) {
+            console.log(data);
+        })
+        .catch(function(error) {
+            console.log(error);
+        });
+
+    // In the response, you should see a unique sheet Id for each sheet.
+    // Get a sheet
+    smartsheet.sheets.getSheet({id: sheetId})
+        .then(function(data) {
+            console.log(data);
+        })
+        .catch(function(error) {
+            console.log(error);
+        });
+
+Although the example above is using promises and the API documentation samples use promises, you could also access the APIs in this SDK by using callbacks.
+
+    // List all sheets using callbacks
+    smartsheet.sheets.listSheets({}, function(error, data) {
+       if (error) {
+         console.log(error);
+       }
        console.log(data);
-     })
-     .catch(function(error) {
-       console.log(error);
      });
 
-See the [node-read-write-sheet](https://github.com/smartsheet-samples/node-read-write-sheet) project for a code example that shows how to call methods to read and write to a sheet using this SDK.
-
-For a complete list of available API endpoints and corresponding SDK examples go to the [Smartsheet API documentation](http://www.smartsheet.com/developers/api-documentation). 
+ See the [node-read-write-sheet](https://github.com/smartsheet-samples/node-read-write-sheet) project for a code example that shows how to call methods to read and write to a sheet using this SDK.
 
 ## Contributing
 
