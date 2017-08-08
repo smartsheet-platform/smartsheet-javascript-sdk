@@ -4,6 +4,10 @@ This is an SDK to simplify connecting to the [Smartsheet API](http://www.smartsh
 
 *Please note that this SDK is beta and may change significantly in the future.*
 
+## System Requirements
+
+The SDK supports all versions of Node.js.
+
 ## Installation
 
 To install this SDK, simply run the following command in a terminal window: 
@@ -15,15 +19,6 @@ To install this SDK, simply run the following command in a terminal window:
 The Smartsheet API documentation can be found [here](http://www.smartsheet.com/developers/api-documentation). 
 
 See [this page](https://github.com/smartsheet-platform/smartsheet-javascript-sdk/blob/master/ExampleUsage.md) for code examples that show how to use this SDK.
-
-## Contributing
-
-If you would like to contribute a change to the SDK, please fork a branch and then submit a pull request.
-[More info here.](https://help.github.com/articles/using-pull-requests)
-
-## Support
-
-If you have any questions or issues with this SDK please post on [Stack Overflow using the tag "smartsheet-api"](http://stackoverflow.com/questions/tagged/smartsheet-api) or contact us directly at api@smartsheet.com.
 
 ## Example Usage
 
@@ -45,6 +40,15 @@ The `smartsheet` variable now contains access to all of the APIs. For example, y
 See the [node-read-write-sheet](https://github.com/smartsheet-samples/node-read-write-sheet) project for a code example that shows how to call methods to read and write to a sheet using this SDK.
 
 For a complete list of available API endpoints and corresponding SDK examples go to the [Smartsheet API documentation](http://www.smartsheet.com/developers/api-documentation). 
+
+## Contributing
+
+If you would like to contribute a change to the SDK, please fork a branch and then submit a pull request.
+[More info here.](https://help.github.com/articles/using-pull-requests)
+
+## Support
+
+If you have any questions or issues with this SDK please post on [Stack Overflow using the tag "smartsheet-api"](http://stackoverflow.com/questions/tagged/smartsheet-api) or contact us directly at api@smartsheet.com.
 
 ## Release Notes
 
