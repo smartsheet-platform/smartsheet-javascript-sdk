@@ -6,7 +6,7 @@ This is an SDK to simplify connecting to the [Smartsheet API](http://www.smartsh
 
 ## System Requirements
 
-The SDK supports all versions of Node.js.
+The SDK supports Node.js versions 6.x or later.
 
 ## Installation
 
@@ -36,7 +36,7 @@ The following is a brief sample using promises that shows you how to:
 
     // List all sheets
     smartsheet.sheets.listSheets({})
-        .then(function(data) {
+        .then(function(sheets) {
             console.log(data);
         })
         .catch(function(error) {
@@ -46,7 +46,7 @@ The following is a brief sample using promises that shows you how to:
     // In the response, you should see a unique sheet Id for each sheet.
     // Get a sheet
     smartsheet.sheets.getSheet({id: sheetId})
-        .then(function(data) {
+        .then(function(sheet) {
             console.log(data);
         })
         .catch(function(error) {
