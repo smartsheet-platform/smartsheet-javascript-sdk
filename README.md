@@ -36,7 +36,7 @@ The following is a brief sample using promises that shows you how to:
 
     // List all sheets
     smartsheet.sheets.listSheets({})
-        .then(function(sheets) {
+        .then(function(sheetsList) {
             console.log(data);
         })
         .catch(function(error) {
@@ -46,7 +46,7 @@ The following is a brief sample using promises that shows you how to:
     // In the response, you should see a unique sheet Id for each sheet.
     // Get a sheet
     smartsheet.sheets.getSheet({id: sheetId})
-        .then(function(sheet) {
+        .then(function(sheetInfo) {
             console.log(data);
         })
         .catch(function(error) {
