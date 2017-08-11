@@ -28,6 +28,7 @@ The following is a brief sample using promises that shows you how to:
 * List all sheets
 * Load one sheet
 
+<pre class="center-column">
     // Initialize the client
     var client = require('smartsheet');
     var smartsheet = client.createClient({accessToken:'ll352u9jujauoqz4gstvsae05'});
@@ -52,6 +53,8 @@ The following is a brief sample using promises that shows you how to:
         .catch(function(error) {
             console.log(error);
         });
+</pre>
+<br/>
 
 Although the example above is using promises and the API documentation samples use promises, you could also access the APIs in this SDK by using callbacks.
 
