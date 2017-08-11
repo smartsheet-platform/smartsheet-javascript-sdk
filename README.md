@@ -29,30 +29,30 @@ The following is a brief sample using promises that shows you how to:
 * Load one sheet
 
 <pre class="center-column">
-    // Initialize the client
-    var client = require('smartsheet');
-    var smartsheet = client.createClient({accessToken:'ll352u9jujauoqz4gstvsae05'});
+// Initialize the client
+var client = require('smartsheet');
+var smartsheet = client.createClient({accessToken:'ll352u9jujauoqz4gstvsae05'});
 
-    // The `smartsheet` variable now contains access to all of the APIs.
+// The `smartsheet` variable now contains access to all of the APIs.
 
-    // List all sheets
-    smartsheet.sheets.listSheets({})
-        .then(function(sheetsList) {
-            console.log(sheetsList);
-        })
-        .catch(function(error) {
-            console.log(error);
-        });
+// List all sheets
+smartsheet.sheets.listSheets({})
+    .then(function(sheetsList) {
+        console.log(sheetsList);
+    })
+    .catch(function(error) {
+        console.log(error);
+    });
 
-    // In the response, you should see a unique sheet Id for each sheet.
-    // Get a sheet
-    smartsheet.sheets.getSheet({id: 7583368238917508})
-        .then(function(sheetInfo) {
-            console.log(sheetInfo);
-        })
-        .catch(function(error) {
-            console.log(error);
-        });
+// In the response, you should see a unique sheet Id for each sheet.
+// Get a sheet
+smartsheet.sheets.getSheet({id: 7583368238917508})
+    .then(function(sheetInfo) {
+        console.log(sheetInfo);
+    })
+    .catch(function(error) {
+        console.log(error);
+    });
 </pre>
 <br/>
 
