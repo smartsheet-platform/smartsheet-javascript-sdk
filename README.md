@@ -47,8 +47,8 @@ smartsheet.sheets.listSheets({})
 // In the response, you should see a unique sheet Id for each sheet.
 // Get a sheet
 smartsheet.sheets.getSheet({id: 7583368238917508})
-    .then(function(sheetInfo) {
-        console.log(sheetInfo);
+    .then(function(sheet) {
+        console.log(sheet);
     })
     .catch(function(error) {
         console.log(error);
