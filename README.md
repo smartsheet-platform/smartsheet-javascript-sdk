@@ -31,12 +31,12 @@ The following is a brief sample using promises that shows you how to:
 <pre class="center-column">
 // Initialize the client
 var client = require('smartsheet');
-var smartsheet = client.createClient({accessToken:'ll352u9jujauoqz4gstvsae05'});
+var ss = client.createClient({accessToken:'ll352u9jujauoqz4gstvsae05'});
 
-// The `smartsheet` variable now contains access to all of the APIs.
+// The `ss` variable now contains access to all of the APIs.
 
 // List all sheets
-smartsheet.sheets.listSheets({})
+ss.sheets.listSheets({})
     .then(function(sheetsList) {
         console.log(sheetsList);
     })
@@ -46,7 +46,7 @@ smartsheet.sheets.listSheets({})
 
 // In the response, you should see a unique sheet Id for each sheet.
 // Get a sheet
-smartsheet.sheets.getSheet({id: 7583368238917508})
+ss.sheets.getSheet({id: 7583368238917508})
     .then(function(sheet) {
         console.log(sheet);
     })
@@ -59,7 +59,7 @@ smartsheet.sheets.getSheet({id: 7583368238917508})
 Although the example above is using promises and the API documentation samples use promises, you could also access the APIs in this SDK by using callbacks.
 
     // List all sheets using callbacks
-    smartsheet.sheets.listSheets({}, function(error, data) {
+    ss.sheets.listSheets({}, function(error, data) {
        if (error) {
          console.log(error);
        }
