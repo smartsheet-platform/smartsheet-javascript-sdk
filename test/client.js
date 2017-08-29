@@ -337,7 +337,7 @@ describe('Client Unit Tests', function() {
   describe('#Sights', function() {
     it('should have Sights object',function(){
       smartsheet.should.have.property('sights');
-      Object.keys(smartsheet.sights).should.be.length(8);
+      Object.keys(smartsheet.sights).should.be.length(13);
     });
 
     it('should have Sights get methods', function() {
@@ -345,6 +345,17 @@ describe('Client Unit Tests', function() {
       smartsheet.sights.should.have.property('listSights');
       smartsheet.sights.should.have.property('getShare');
       smartsheet.sights.should.have.property('listShares');
+      smartsheet.sights.should.have.property('getSightPublishStatus');
+    });
+
+    it('should have Sights update methods', function() {
+      smartsheet.sights.should.have.property('setSightPublishStatus');
+      smartsheet.sights.should.have.property('moveSight');
+      smartsheet.sights.should.have.property('updateSight');
+    });
+
+    it('should have Sight create methods', function() {
+      smartsheet.sights.should.have.property('copySight');
     });
 
     it('should have Sights delete methods', function() {
