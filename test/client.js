@@ -491,7 +491,7 @@ describe('Client Unit Tests', function() {
   describe('#workspaces', function () {
     it('should have workspaces object', function () {
       smartsheet.should.have.property('workspaces');
-      Object.keys(smartsheet.workspaces).should.be.length(12);
+      Object.keys(smartsheet.workspaces).should.be.length(13);
     });
 
     it('should have get methods', function () {
@@ -506,6 +506,7 @@ describe('Client Unit Tests', function() {
       smartsheet.workspaces.should.have.property('share');
       smartsheet.workspaces.should.have.property('createWorkspace');
       smartsheet.workspaces.should.have.property('createFolder');
+      smartsheet.workspaces.should.have.property('copyWorkspace');
     });
 
     it('should have update methods', function () {
