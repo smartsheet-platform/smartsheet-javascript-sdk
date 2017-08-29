@@ -488,6 +488,26 @@ describe('Client Unit Tests', function() {
     });
   });
 
+  describe('#webhooks', function () {
+    it('should have webhook object', function () {
+      smartsheet.should.have.property('webhooks');
+      Object.keys(smartsheet.webhooks).should.be.length(1);
+    });
+
+    it('should have get methods', function () {
+    });
+
+    it('should have post methods', function () {
+      smartsheet.webhooks.should.have.property('createWebhook');
+    });
+
+    it('should have put methods', function () {
+    });
+
+    it('should have delete methods', function () {
+    });
+  });
+
   describe('#workspaces', function () {
     it('should have workspaces object', function () {
       smartsheet.should.have.property('workspaces');
