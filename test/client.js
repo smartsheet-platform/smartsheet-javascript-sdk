@@ -246,7 +246,7 @@ describe('Client Unit Tests', function() {
   describe('#Sheets', function() {
     it('should have Sheets object',function(){
       smartsheet.should.have.property('sheets');
-      Object.keys(smartsheet.sheets).should.be.length(58);
+      Object.keys(smartsheet.sheets).should.be.length(66);
     });
 
     it('should have Sheets get methods', function() {
@@ -321,6 +321,17 @@ describe('Client Unit Tests', function() {
       smartsheet.sheets.should.have.property('deleteRow');
       smartsheet.sheets.should.have.property('deleteShare');
       smartsheet.sheets.should.have.property('deleteSheet');
+    });
+
+    it('should have update request methods', function() {
+      smartsheet.sheets.should.have.property('createUpdateRequest');
+      smartsheet.sheets.should.have.property('deleteUpdateRequest');
+      smartsheet.sheets.should.have.property('getUpdateRequest');
+      smartsheet.sheets.should.have.property('getAllUpdateRequests');
+      smartsheet.sheets.should.have.property('changeUpdateRequest');
+      smartsheet.sheets.should.have.property('deleteSentUpdateRequest');
+      smartsheet.sheets.should.have.property('getSentUpdateRequest');
+      smartsheet.sheets.should.have.property('getAllSentUpdateRequests');
     });
   });
   describe('#Sights', function() {
