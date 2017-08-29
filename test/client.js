@@ -212,6 +212,26 @@ describe('Client Unit Tests', function() {
     });
   });
 
+  describe('#reports', function() {
+    it('should have reports object', function() {
+      smartsheet.should.have.property('reports');
+      Object.keys(smartsheet.reports).should.be.length(12);
+    });
+
+    it('should have get methods', function () {
+      smartsheet.reports.should.have.property('listReports');
+      smartsheet.reports.should.have.property('getReport');
+      smartsheet.reports.should.have.property('getReportAsExcel');
+      smartsheet.reports.should.have.property('getReportAsCSV');
+      smartsheet.reports.should.have.property('getReportPublishStatus');
+    });
+
+    it('should have update methods', function () {
+      smartsheet.reports.should.have.property('setReportPublishStatus');
+      smartsheet.reports.should.have.property('sendReportViaEmail');
+    });
+  });
+
   describe('#server', function () {
     it('should have server object', function () {
       smartsheet.should.have.property('server');
