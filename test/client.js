@@ -135,7 +135,7 @@ describe('Client Unit Tests', function() {
   describe('#folders', function() {
     it('should have folders object',function(){
       smartsheet.should.have.property('folders');
-      Object.keys(smartsheet.folders).should.be.length(5);
+      Object.keys(smartsheet.folders).should.be.length(6);
     });
 
     it('should have get methods', function() {
@@ -145,6 +145,7 @@ describe('Client Unit Tests', function() {
 
     it('should have create methods', function() {
       smartsheet.folders.should.have.property('createChildFolder');
+      smartsheet.folders.should.have.property('moveFolder');
     });
 
     it('should have Sheets update methods', function() {
