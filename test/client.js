@@ -135,7 +135,7 @@ describe('Client Unit Tests', function() {
   describe('#folders', function() {
     it('should have folders object',function(){
       smartsheet.should.have.property('folders');
-      Object.keys(smartsheet.folders).should.be.length(5);
+      Object.keys(smartsheet.folders).should.be.length(7);
     });
 
     it('should have get methods', function() {
@@ -145,10 +145,12 @@ describe('Client Unit Tests', function() {
 
     it('should have create methods', function() {
       smartsheet.folders.should.have.property('createChildFolder');
+      smartsheet.folders.should.have.property('copyFolder');
     });
 
     it('should have Sheets update methods', function() {
       smartsheet.folders.should.have.property('updateFolder');
+      smartsheet.folders.should.have.property('moveFolder');
     });
 
     it('should have delete methods', function() {
@@ -244,7 +246,7 @@ describe('Client Unit Tests', function() {
   describe('#Sheets', function() {
     it('should have Sheets object',function(){
       smartsheet.should.have.property('sheets');
-      Object.keys(smartsheet.sheets).should.be.length(55);
+      Object.keys(smartsheet.sheets).should.be.length(58);
     });
 
     it('should have Sheets get methods', function() {
@@ -300,11 +302,14 @@ describe('Client Unit Tests', function() {
       smartsheet.sheets.should.have.property('createSheetFromExisting');
       smartsheet.sheets.should.have.property('createSheetInFolder');
       smartsheet.sheets.should.have.property('createSheetInWorkspace');
+      smartsheet.sheets.should.have.property('copySheet');
+      smartsheet.sheets.should.have.property('moveSheet');
     });
 
     it('should have Sheets update methods', function() {
       smartsheet.sheets.should.have.property('updateShare');
       smartsheet.sheets.should.have.property('updateSheet');
+      smartsheet.sheets.should.have.property('editComment');
     });
 
     it('should have Sheets delete methods', function() {
@@ -506,7 +511,7 @@ describe('Client Unit Tests', function() {
   describe('#workspaces', function () {
     it('should have workspaces object', function () {
       smartsheet.should.have.property('workspaces');
-      Object.keys(smartsheet.workspaces).should.be.length(12);
+      Object.keys(smartsheet.workspaces).should.be.length(13);
     });
 
     it('should have get methods', function () {
@@ -521,6 +526,7 @@ describe('Client Unit Tests', function() {
       smartsheet.workspaces.should.have.property('share');
       smartsheet.workspaces.should.have.property('createWorkspace');
       smartsheet.workspaces.should.have.property('createFolder');
+      smartsheet.workspaces.should.have.property('copyWorkspace');
     });
 
     it('should have update methods', function () {
