@@ -485,26 +485,56 @@ describe('Client Unit Tests', function() {
   describe('#users', function () {
     it('should have user object', function () {
       smartsheet.should.have.property('users');
-      Object.keys(smartsheet.users).should.be.length(7);
+      Object.keys(smartsheet.users).should.be.length(12);
     });
 
     it('should have get methods', function () {
       smartsheet.users.should.have.property('getCurrentUser');
       smartsheet.users.should.have.property('listAllUsers');
       smartsheet.users.should.have.property('getUser');
+      smartsheet.users.should.have.property('getAlternateEmail');
+      smartsheet.users.should.have.property('listAlternateEmails');
     });
 
     it('should have create methods', function () {
       smartsheet.users.should.have.property('addUser');
       smartsheet.users.should.have.property('addUserAndSendEmail');
+      smartsheet.users.should.have.property('addAlternateEmail');
     });
 
     it('should have update methods', function () {
       smartsheet.users.should.have.property('updateUser');
+      smartsheet.users.should.have.property('makeAlternateEmailPrimary');
     });
 
     it('should have delete methods', function () {
       smartsheet.users.should.have.property('removeUser');
+      smartsheet.users.should.have.property('deleteAlternateEmail');
+    });
+  });
+
+  describe('#webhooks', function () {
+    it('should have webhook object', function () {
+      smartsheet.should.have.property('webhooks');
+      Object.keys(smartsheet.webhooks).should.be.length(6);
+    });
+
+    it('should have get methods', function () {
+      smartsheet.webhooks.should.have.property('getWebhook');
+      smartsheet.webhooks.should.have.property('listWebhooks');
+    });
+
+    it('should have post methods', function () {
+      smartsheet.webhooks.should.have.property('createWebhook');
+      smartsheet.webhooks.should.have.property('resetSharedSecret');
+    });
+
+    it('should have put methods', function () {
+      smartsheet.webhooks.should.have.property('updateWebhook');
+    });
+
+    it('should have delete methods', function () {
+      smartsheet.webhooks.should.have.property('deleteWebhook');
     });
   });
 
