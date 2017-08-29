@@ -485,13 +485,15 @@ describe('Client Unit Tests', function() {
   describe('#users', function () {
     it('should have user object', function () {
       smartsheet.should.have.property('users');
-      Object.keys(smartsheet.users).should.be.length(8);
+      Object.keys(smartsheet.users).should.be.length(12);
     });
 
     it('should have get methods', function () {
       smartsheet.users.should.have.property('getCurrentUser');
       smartsheet.users.should.have.property('listAllUsers');
       smartsheet.users.should.have.property('getUser');
+      smartsheet.users.should.have.property('getAlternateEmail');
+      smartsheet.users.should.have.property('listAlternateEmails');
     });
 
     it('should have create methods', function () {
@@ -502,10 +504,12 @@ describe('Client Unit Tests', function() {
 
     it('should have update methods', function () {
       smartsheet.users.should.have.property('updateUser');
+      smartsheet.users.should.have.property('makeAlternateEmailPrimary');
     });
 
     it('should have delete methods', function () {
       smartsheet.users.should.have.property('removeUser');
+      smartsheet.users.should.have.property('deleteAlternateEmail');
     });
   });
 
