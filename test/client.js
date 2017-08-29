@@ -224,7 +224,7 @@ describe('Client Unit Tests', function() {
   describe('#Sheets', function() {
     it('should have Sheets object',function(){
       smartsheet.should.have.property('sheets');
-      Object.keys(smartsheet.sheets).should.be.length(56);
+      Object.keys(smartsheet.sheets).should.be.length(57);
     });
 
     it('should have Sheets get methods', function() {
@@ -286,6 +286,7 @@ describe('Client Unit Tests', function() {
     it('should have Sheets update methods', function() {
       smartsheet.sheets.should.have.property('updateShare');
       smartsheet.sheets.should.have.property('updateSheet');
+      smartsheet.sheets.should.have.property('editComment');
     });
 
     it('should have Sheets delete methods', function() {
