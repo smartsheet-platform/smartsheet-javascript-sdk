@@ -224,7 +224,7 @@ describe('Client Unit Tests', function() {
   describe('#Sheets', function() {
     it('should have Sheets object',function(){
       smartsheet.should.have.property('sheets');
-      Object.keys(smartsheet.sheets).should.be.length(55);
+      Object.keys(smartsheet.sheets).should.be.length(56);
     });
 
     it('should have Sheets get methods', function() {
@@ -280,6 +280,7 @@ describe('Client Unit Tests', function() {
       smartsheet.sheets.should.have.property('createSheetFromExisting');
       smartsheet.sheets.should.have.property('createSheetInFolder');
       smartsheet.sheets.should.have.property('createSheetInWorkspace');
+      smartsheet.sheets.should.have.property('copySheet');
     });
 
     it('should have Sheets update methods', function() {
