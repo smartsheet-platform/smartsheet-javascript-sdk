@@ -246,7 +246,7 @@ describe('Client Unit Tests', function() {
   describe('#Sheets', function() {
     it('should have Sheets object',function(){
       smartsheet.should.have.property('sheets');
-      Object.keys(smartsheet.sheets).should.be.length(58);
+      Object.keys(smartsheet.sheets).should.be.length(66);
     });
 
     it('should have Sheets get methods', function() {
@@ -322,11 +322,22 @@ describe('Client Unit Tests', function() {
       smartsheet.sheets.should.have.property('deleteShare');
       smartsheet.sheets.should.have.property('deleteSheet');
     });
+
+    it('should have update request methods', function() {
+      smartsheet.sheets.should.have.property('createUpdateRequest');
+      smartsheet.sheets.should.have.property('deleteUpdateRequest');
+      smartsheet.sheets.should.have.property('getUpdateRequest');
+      smartsheet.sheets.should.have.property('getAllUpdateRequests');
+      smartsheet.sheets.should.have.property('changeUpdateRequest');
+      smartsheet.sheets.should.have.property('deleteSentUpdateRequest');
+      smartsheet.sheets.should.have.property('getSentUpdateRequest');
+      smartsheet.sheets.should.have.property('getAllSentUpdateRequests');
+    });
   });
   describe('#Sights', function() {
     it('should have Sights object',function(){
       smartsheet.should.have.property('sights');
-      Object.keys(smartsheet.sights).should.be.length(8);
+      Object.keys(smartsheet.sights).should.be.length(13);
     });
 
     it('should have Sights get methods', function() {
@@ -334,6 +345,17 @@ describe('Client Unit Tests', function() {
       smartsheet.sights.should.have.property('listSights');
       smartsheet.sights.should.have.property('getShare');
       smartsheet.sights.should.have.property('listShares');
+      smartsheet.sights.should.have.property('getSightPublishStatus');
+    });
+
+    it('should have Sights update methods', function() {
+      smartsheet.sights.should.have.property('setSightPublishStatus');
+      smartsheet.sights.should.have.property('moveSight');
+      smartsheet.sights.should.have.property('updateSight');
+    });
+
+    it('should have Sight create methods', function() {
+      smartsheet.sights.should.have.property('copySight');
     });
 
     it('should have Sights delete methods', function() {
