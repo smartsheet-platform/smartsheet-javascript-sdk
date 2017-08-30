@@ -203,6 +203,17 @@ describe('Client Unit Tests', function() {
     });
   });
 
+  describe('#images', function() {
+    it('should have image object', function(){
+      smartsheet.should.have.property('images');
+      Object.keys(smartsheet.images).should.be.length(1);
+    });
+
+    it('should have get methods', function() {
+      smartsheet.images.should.have.property('listImageUrls');
+    });
+  });
+
   describe('#search', function () {
     it('should have search object', function () {
       smartsheet.should.have.property('search');
