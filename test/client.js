@@ -249,7 +249,7 @@ describe('Client Unit Tests', function() {
   describe('#Sheets', function() {
     it('should have Sheets object',function(){
       smartsheet.should.have.property('sheets');
-      Object.keys(smartsheet.sheets).should.be.length(66);
+      Object.keys(smartsheet.sheets).should.be.length(70);
     });
 
     it('should have Sheets get methods', function() {
@@ -276,9 +276,11 @@ describe('Client Unit Tests', function() {
     });
 
     it('should have Row methods', function () {
+      smartsheet.sheets.should.have.property('addImageToCell');
       smartsheet.sheets.should.have.property('addRow');
-      smartsheet.sheets.should.have.property('addRowAttachment');
       smartsheet.sheets.should.have.property('addRows');
+      smartsheet.sheets.should.have.property('addRowFileAttachment');
+      smartsheet.sheets.should.have.property('addRowUrlAttachment');
       smartsheet.sheets.should.have.property('createRowDiscussion');
       smartsheet.sheets.should.have.property('getRow');
       smartsheet.sheets.should.have.property('getRowAttachments');
@@ -295,9 +297,11 @@ describe('Client Unit Tests', function() {
     });
 
     it('should have Sheets create methods', function() {
-      smartsheet.sheets.should.have.property('addAttachment');
-      smartsheet.sheets.should.have.property('addCommentAttachment');
+      smartsheet.sheets.should.have.property('addCommentFileAttachment');
+      smartsheet.sheets.should.have.property('addCommentUrlAttachment');
       smartsheet.sheets.should.have.property('addDiscussionComment');
+      smartsheet.sheets.should.have.property('addFileAttachment');
+      smartsheet.sheets.should.have.property('addUrlAttachment');
       smartsheet.sheets.should.have.property('attachNewVersion');
       smartsheet.sheets.should.have.property('createDiscussion');
       smartsheet.sheets.should.have.property('createRowDiscussion');
