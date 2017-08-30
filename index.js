@@ -19,6 +19,7 @@ exports.createClient = function(options) {
     sights     : require('./lib/sights/').create(options),
     templates  : require('./lib/templates/').create(options),
     users      : require('./lib/users/').create(options),
+    webhooks   : require('./lib/webhooks/').create(options),
     workspaces : require('./lib/workspaces/').create(options)
   };
 };

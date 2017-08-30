@@ -246,7 +246,7 @@ describe('Client Unit Tests', function() {
   describe('#Sheets', function() {
     it('should have Sheets object',function(){
       smartsheet.should.have.property('sheets');
-      Object.keys(smartsheet.sheets).should.be.length(62);
+      Object.keys(smartsheet.sheets).should.be.length(70);
     });
 
     it('should have Sheets get methods', function() {
@@ -326,11 +326,22 @@ describe('Client Unit Tests', function() {
       smartsheet.sheets.should.have.property('deleteShare');
       smartsheet.sheets.should.have.property('deleteSheet');
     });
+
+    it('should have update request methods', function() {
+      smartsheet.sheets.should.have.property('createUpdateRequest');
+      smartsheet.sheets.should.have.property('deleteUpdateRequest');
+      smartsheet.sheets.should.have.property('getUpdateRequest');
+      smartsheet.sheets.should.have.property('getAllUpdateRequests');
+      smartsheet.sheets.should.have.property('changeUpdateRequest');
+      smartsheet.sheets.should.have.property('deleteSentUpdateRequest');
+      smartsheet.sheets.should.have.property('getSentUpdateRequest');
+      smartsheet.sheets.should.have.property('getAllSentUpdateRequests');
+    });
   });
   describe('#Sights', function() {
     it('should have Sights object',function(){
       smartsheet.should.have.property('sights');
-      Object.keys(smartsheet.sights).should.be.length(8);
+      Object.keys(smartsheet.sights).should.be.length(13);
     });
 
     it('should have Sights get methods', function() {
@@ -338,6 +349,17 @@ describe('Client Unit Tests', function() {
       smartsheet.sights.should.have.property('listSights');
       smartsheet.sights.should.have.property('getShare');
       smartsheet.sights.should.have.property('listShares');
+      smartsheet.sights.should.have.property('getSightPublishStatus');
+    });
+
+    it('should have Sights update methods', function() {
+      smartsheet.sights.should.have.property('setSightPublishStatus');
+      smartsheet.sights.should.have.property('moveSight');
+      smartsheet.sights.should.have.property('updateSight');
+    });
+
+    it('should have Sight create methods', function() {
+      smartsheet.sights.should.have.property('copySight');
     });
 
     it('should have Sights delete methods', function() {
@@ -489,26 +511,56 @@ describe('Client Unit Tests', function() {
   describe('#users', function () {
     it('should have user object', function () {
       smartsheet.should.have.property('users');
-      Object.keys(smartsheet.users).should.be.length(7);
+      Object.keys(smartsheet.users).should.be.length(12);
     });
 
     it('should have get methods', function () {
       smartsheet.users.should.have.property('getCurrentUser');
       smartsheet.users.should.have.property('listAllUsers');
       smartsheet.users.should.have.property('getUser');
+      smartsheet.users.should.have.property('getAlternateEmail');
+      smartsheet.users.should.have.property('listAlternateEmails');
     });
 
     it('should have create methods', function () {
       smartsheet.users.should.have.property('addUser');
       smartsheet.users.should.have.property('addUserAndSendEmail');
+      smartsheet.users.should.have.property('addAlternateEmail');
     });
 
     it('should have update methods', function () {
       smartsheet.users.should.have.property('updateUser');
+      smartsheet.users.should.have.property('makeAlternateEmailPrimary');
     });
 
     it('should have delete methods', function () {
       smartsheet.users.should.have.property('removeUser');
+      smartsheet.users.should.have.property('deleteAlternateEmail');
+    });
+  });
+
+  describe('#webhooks', function () {
+    it('should have webhook object', function () {
+      smartsheet.should.have.property('webhooks');
+      Object.keys(smartsheet.webhooks).should.be.length(6);
+    });
+
+    it('should have get methods', function () {
+      smartsheet.webhooks.should.have.property('getWebhook');
+      smartsheet.webhooks.should.have.property('listWebhooks');
+    });
+
+    it('should have post methods', function () {
+      smartsheet.webhooks.should.have.property('createWebhook');
+      smartsheet.webhooks.should.have.property('resetSharedSecret');
+    });
+
+    it('should have put methods', function () {
+      smartsheet.webhooks.should.have.property('updateWebhook');
+    });
+
+    it('should have delete methods', function () {
+      smartsheet.webhooks.should.have.property('deleteWebhook');
     });
   });
 
