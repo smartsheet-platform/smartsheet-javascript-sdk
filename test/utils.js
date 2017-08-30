@@ -229,17 +229,18 @@ describe('Utils Unit Tests', function() {
         handleResponseStub.restore();
       });
 
-      it('request should error as false',function(){
+      it('request should error as false 1',function(){
         return smartsheet.get(sampleRequest)
           .catch(function(error) {
             error.error.should.equal(true);
           });
       });
 
-      it('request should error as false',function(){
+      it('request should error as false 2',function(){
         smartsheet.get(sampleRequest, function(err, data) {
           err.should.be.equal(mockBody);
-        });
+        })
+        .catch();
       });
     });
 
