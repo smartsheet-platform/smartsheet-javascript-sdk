@@ -102,7 +102,7 @@ describe('Client Unit Tests', function() {
   describe('#Favorites', function() {
     it('should have Favorites object',function(){
       smartsheet.should.have.property('favorites');
-      Object.keys(smartsheet.favorites).should.be.length(17);
+      Object.keys(smartsheet.favorites).should.be.length(20);
     });
 
     it('should have get methods', function() {
@@ -115,16 +115,19 @@ describe('Client Unit Tests', function() {
       smartsheet.favorites.should.have.property('addFolderToFavorites');
       smartsheet.favorites.should.have.property('addReportToFavorites');
       smartsheet.favorites.should.have.property('addTemplateToFavorites');
+      smartsheet.favorites.should.have.property('addSightToFavorites');
       smartsheet.favorites.should.have.property('addWorkspaceToFavorites');
     });
 
     it('should have delete methods', function() {
       smartsheet.favorites.should.have.property('removeSheetFromFavorites');
+      smartsheet.favorites.should.have.property('removeSightFromFavorites');
       smartsheet.favorites.should.have.property('removeWorkspaceFromFavorites');
       smartsheet.favorites.should.have.property('removeFolderFromFavorites');
       smartsheet.favorites.should.have.property('removeTemplateFromFavorites');
       smartsheet.favorites.should.have.property('removeReportFromFavorites');
       smartsheet.favorites.should.have.property('removeSheetsFromFavorites');
+      smartsheet.favorites.should.have.property('removeSightsFromFavorites');
       smartsheet.favorites.should.have.property('removeWorkspacesFromFavorites');
       smartsheet.favorites.should.have.property('removeFoldersFromFavorites');
       smartsheet.favorites.should.have.property('removeTemplatesFromFavorites');
