@@ -317,8 +317,10 @@ describe('Utils Unit Tests', function() {
 
       it('get called once on success', function() {
         givenGetReturnsSuccess();
-        smartsheet.get(sampleRequestForRetry);
-        stub.callCount.should.be.equal(1);
+        return smartsheet.get(sampleRequestForRetry)
+        .then(function (data) {
+          stub.callCount.should.be.equal(1);
+        });
       });
 
       it('get retried on error', function() {
@@ -456,6 +458,62 @@ describe('Utils Unit Tests', function() {
         spyPost.args[0][0].body.should.equal(JSON.stringify(sampleRequestWithQueryParameters.body));
       });
     });
+
+    describe('#Retry', function() {
+      var stub = null;
+      var handleResponseStub = null;
+
+      var sampleRequestForRetry;
+
+      function givenPostReturnsError() {
+        stub.returns(new Promise.resolve([{}, {}]));
+        handleResponseStub.returns(new Promise.reject({errorCode: 4001}));
+      }
+
+      function givenPostReturnsSuccess() {
+        stub.returns(new Promise.resolve([{}, {}]));
+        handleResponseStub.returns(true);
+      }
+
+      beforeEach(function() {
+        stub = sinon.stub(request, 'postAsync');
+        handleResponseStub = sinon.stub(smartsheet, 'handleResponse');
+
+        sampleRequestForRetry = _.extend({}, sampleRequest);
+        sampleRequestForRetry.maxRetryTime = 30;
+        sampleRequestForRetry.calcRetryBackoff = function (numRetry) {return Math.pow(3, numRetry);};
+      });
+
+      afterEach(function() {
+        stub.restore();
+        handleResponseStub.restore();
+      });
+
+      it('post called once on success', function() {
+        givenPostReturnsSuccess();
+        return smartsheet.post(sampleRequestForRetry)
+        .then(function (data) {
+          stub.callCount.should.be.equal(1);
+        });
+      });
+
+      it('post retried on error', function() {
+        givenPostReturnsError();
+        return smartsheet.post(sampleRequestForRetry)
+        .catch(function(err) {
+          stub.callCount.should.be.above(1);
+        });
+      });
+
+      it('post does not exceed max time', function() {
+        givenPostReturnsError();
+        var startTime = Date.now();
+        return smartsheet.post(sampleRequestForRetry)
+        .catch(function(err) {
+          sampleRequestForRetry.maxRetryTime.should.be.above(Date.now() - startTime - 5);
+        });
+      });
+    });
   });
 
   describe('#PUT', function() {
@@ -574,6 +632,63 @@ describe('Utils Unit Tests', function() {
         spyPut.args[0][0].body.should.equal(JSON.stringify(sampleRequestWithQueryParameters.body));
       });
     });
+
+    describe('#Retry', function() {
+      var stub = null;
+      var handleResponseStub = null;
+
+      var sampleRequestForRetry;
+
+      function givenPutReturnsError() {
+        stub.returns(new Promise.resolve([{}, {}]));
+        handleResponseStub.returns(new Promise.reject({errorCode: 4001}));
+      }
+
+      function givenPutReturnsSuccess() {
+        stub.returns(new Promise.resolve([{}, {}]));
+        handleResponseStub.returns(true);
+      }
+
+      beforeEach(function() {
+        stub = sinon.stub(request, 'putAsync');
+        handleResponseStub = sinon.stub(smartsheet, 'handleResponse');
+
+        sampleRequestForRetry = _.extend({}, sampleRequest);
+        sampleRequestForRetry.maxRetryTime = 30;
+        sampleRequestForRetry.calcRetryBackoff = function (numRetry) {return Math.pow(3, numRetry);};
+      });
+
+      afterEach(function() {
+        stub.restore();
+        handleResponseStub.restore();
+      });
+
+      it('put called once on success', function() {
+        givenPutReturnsSuccess();
+        return smartsheet.put(sampleRequestForRetry)
+        .then(function(data) {
+          stub.callCount.should.be.equal(1);
+        });
+        
+      });
+
+      it('put retried on error', function() {
+        givenPutReturnsError();
+        return smartsheet.put(sampleRequestForRetry)
+        .catch(function(err) {
+          stub.callCount.should.be.above(1);
+        });
+      });
+
+      it('put does not exceed max time', function() {
+        givenPutReturnsError();
+        var startTime = Date.now();
+        return smartsheet.put(sampleRequestForRetry)
+        .catch(function(err) {
+          sampleRequestForRetry.maxRetryTime.should.be.above(Date.now() - startTime - 5);
+        });
+      });
+    });
   });
 
   describe('#DELETE', function() {
@@ -685,6 +800,63 @@ describe('Utils Unit Tests', function() {
       it('queryString sent to request should match given',function() {
         smartsheet.delete(sampleRequestWithQueryParameters);
         spyPut.args[0][0].qs.should.equal(sampleRequestWithQueryParameters.queryParameters);
+      });
+    });
+
+    describe('#Retry', function() {
+      var stub = null;
+      var handleResponseStub = null;
+
+      var sampleRequestForRetry;
+
+      function givenDeleteReturnsError() {
+        stub.returns(new Promise.resolve([{}, {}]));
+        handleResponseStub.returns(new Promise.reject({errorCode: 4001}));
+      }
+
+      function givenDeleteReturnsSuccess() {
+        stub.returns(new Promise.resolve([{}, {}]));
+        handleResponseStub.returns(true);
+      }
+
+      beforeEach(function() {
+        stub = sinon.stub(request, 'delAsync');
+        handleResponseStub = sinon.stub(smartsheet, 'handleResponse');
+
+        sampleRequestForRetry = _.extend({}, sampleRequest);
+        sampleRequestForRetry.maxRetryTime = 30;
+        sampleRequestForRetry.calcRetryBackoff = function (numRetry) {return Math.pow(3, numRetry);};
+      });
+
+      afterEach(function() {
+        stub.restore();
+        handleResponseStub.restore();
+      });
+
+      it('delete called once on success', function() {
+        givenDeleteReturnsSuccess();
+        return smartsheet.delete(sampleRequestForRetry)
+        .then(function(data) {
+          stub.callCount.should.be.equal(1);
+        });
+        
+      });
+
+      it('delete retried on error', function() {
+        givenDeleteReturnsError();
+        return smartsheet.delete(sampleRequestForRetry)
+        .catch(function(err) {
+          stub.callCount.should.be.above(1);
+        });
+      });
+
+      it('delete does not exceed max time', function() {
+        givenDeleteReturnsError();
+        var startTime = Date.now();
+        return smartsheet.delete(sampleRequestForRetry)
+        .catch(function(err) {
+          sampleRequestForRetry.maxRetryTime.should.be.above(Date.now() - startTime - 5);
+        });
       });
     });
   });
