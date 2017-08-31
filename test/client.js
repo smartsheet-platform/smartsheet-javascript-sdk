@@ -204,6 +204,17 @@ describe('Client Unit Tests', function() {
     });
   });
 
+  describe('#images', function() {
+    it('should have image object', function(){
+      smartsheet.should.have.property('images');
+      Object.keys(smartsheet.images).should.be.length(1);
+    });
+
+    it('should have get methods', function() {
+      smartsheet.images.should.have.property('listImageUrls');
+    });
+  });
+
   describe('#search', function () {
     it('should have search object', function () {
       smartsheet.should.have.property('search');
@@ -509,6 +520,22 @@ describe('Client Unit Tests', function() {
     it('should have get methods', function () {
       smartsheet.templates.should.have.property('listPublicTemplates');
       smartsheet.templates.should.have.property('listUserCreatedTemplates');
+    });
+  });
+
+  describe('#tokens', function() {
+    it('should have a tokens object', function () {
+      smartsheet.should.have.property('tokens');
+      Object.keys(smartsheet.tokens).should.be.length(3);
+    });
+    
+    it('should have get methods', function () {
+      smartsheet.tokens.should.have.property('getAccessToken');
+      smartsheet.tokens.should.have.property('refreshAccessToken');
+    });
+
+    it('should have delete methods', function () {
+      smartsheet.tokens.should.have.property('revokeAccessToken');
     });
   });
 
