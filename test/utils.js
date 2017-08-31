@@ -234,14 +234,14 @@ describe('Utils Unit Tests', function() {
         handleResponseStub.restore();
       });
 
-      it('request should error as false 1',function(){
+      it('request should error as false, using promises',function(){
         return smartsheet.get(sampleRequest)
           .catch(function(error) {
             error.error.should.equal(true);
           });
       });
 
-      it('request should error as false 2',function(){
+      it('request should error as false, using callbacks',function(){
         smartsheet.get(sampleRequest, function(err, data) {
           err.should.be.equal(mockBody);
         });
