@@ -19,6 +19,7 @@ exports.createClient = function(options) {
     sheets     : require('./lib/sheets/').create(options),
     sights     : require('./lib/sights/').create(options),
     templates  : require('./lib/templates/').create(options),
+    tokens     : require('./lib/tokens/').create(options),
     users      : require('./lib/users/').create(options),
     webhooks   : require('./lib/webhooks/').create(options),
     workspaces : require('./lib/workspaces/').create(options)
