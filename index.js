@@ -3,8 +3,11 @@ var apiUrls = require('./lib/utils/apis.js');
 exports.createClient = function(options) {
   var options = {
     accessToken: options.accessToken,
-    apiUrls: apiUrls
+    apiUrls: apiUrls,
+    maxRetryTime: options.maxRetryTime,
+    calcRetryBackoff: options.calcRetryBackoff
   };
+
   return {
     constants  : require('./lib/utils/constants.js'),
     contacts   : require('./lib/contacts/').create(options),
