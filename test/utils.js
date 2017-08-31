@@ -2,7 +2,9 @@ var should = require('should');
 var request = require('request');
 var sinon = require('sinon');
 var Promise = require('bluebird');
+var _ = require('underscore');
 
+var constants = require('../lib/utils/constants');
 var smartsheet = require('../lib/utils/httpUtils');
 
 var sample = {
@@ -37,6 +39,10 @@ describe('Utils Unit Tests', function() {
 
     it('should have POST method',function(){
       smartsheet.should.have.property('post');
+    });
+
+    it('should have POST file method',function(){
+      smartsheet.should.have.property('postFile');
     });
 
     it('should have PUT method',function(){
@@ -276,6 +282,60 @@ describe('Utils Unit Tests', function() {
       it('queryString sent to request should match given',function() {
         smartsheet.get(sampleRequestWithQueryParameters);
         spyGet.args[0][0].qs.should.equal(sampleRequestWithQueryParameters.queryParameters);
+      });
+    });
+
+    describe('#Retry', function() {
+      var stub = null;
+      var handleResponseStub = null;
+
+      var sampleRequestForRetry;
+
+      function givenGetReturnsError() {
+        stub.returns(new Promise.resolve([{}, {}]));
+        handleResponseStub.returns(new Promise.reject({errorCode: 4001}));
+      }
+
+      function givenGetReturnsSuccess() {
+        stub.returns(new Promise.resolve([{}, {}]));
+        handleResponseStub.returns(true);
+      }
+
+      beforeEach(function() {
+        stub = sinon.stub(request, 'getAsync');
+        handleResponseStub = sinon.stub(smartsheet, 'handleResponse');
+
+        sampleRequestForRetry = _.extend({}, sampleRequest);
+        sampleRequestForRetry.maxRetryTime = 30;
+        sampleRequestForRetry.calcRetryBackoff = function (numRetry) {return Math.pow(3, numRetry);};
+      });
+
+      afterEach(function() {
+        stub.restore();
+        handleResponseStub.restore();
+      });
+
+      it('get called once on success', function() {
+        givenGetReturnsSuccess();
+        smartsheet.get(sampleRequestForRetry);
+        stub.callCount.should.be.equal(1);
+      });
+
+      it('get retried on error', function() {
+        givenGetReturnsError();
+        return smartsheet.get(sampleRequestForRetry)
+        .catch(function(err) {
+          stub.callCount.should.be.above(1);
+        });
+      });
+
+      it('get does not exceed max time', function() {
+        givenGetReturnsError();
+        var startTime = Date.now();
+        return smartsheet.get(sampleRequestForRetry)
+        .catch(function(err) {
+          sampleRequestForRetry.maxRetryTime.should.be.above(Date.now() - startTime - 5);
+        });
       });
     });
   });

@@ -1,11 +1,10 @@
 var apiUrls = require('./lib/utils/apis.js');
-var constants = require('./lib/utils/constants.js');
 
 exports.createClient = function(options) {
   var options = {
     accessToken: options.accessToken,
     apiUrls: apiUrls,
-    maxRetryTime: options.maxRetryTime || constants.maxRetryTime,
+    maxRetryTime: options.maxRetryTime,
     calcRetryBackoff: options.calcRetryBackoff
   };
 
