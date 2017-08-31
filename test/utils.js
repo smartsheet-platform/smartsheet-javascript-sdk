@@ -239,8 +239,7 @@ describe('Utils Unit Tests', function() {
       it('request should error as false 2',function(){
         smartsheet.get(sampleRequest, function(err, data) {
           err.should.be.equal(mockBody);
-        })
-        .catch();
+        });
       });
     });
 
