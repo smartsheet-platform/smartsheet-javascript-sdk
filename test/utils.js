@@ -4,7 +4,6 @@ var sinon = require('sinon');
 var Promise = require('bluebird');
 var _ = require('underscore');
 
-var constants = require('../lib/utils/constants');
 var smartsheet = require('../lib/utils/httpUtils');
 
 var sample = {
