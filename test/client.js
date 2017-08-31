@@ -522,6 +522,22 @@ describe('Client Unit Tests', function() {
     });
   });
 
+  describe('#tokens', function() {
+    it('should have a tokens object', function () {
+      smartsheet.should.have.property('tokens');
+      Object.keys(smartsheet.tokens).should.be.length(3);
+    });
+    
+    it('should have get methods', function () {
+      smartsheet.tokens.should.have.property('getAccessToken');
+      smartsheet.tokens.should.have.property('refreshAccessToken');
+    });
+
+    it('should have delete methods', function () {
+      smartsheet.tokens.should.have.property('revokeAccessToken');
+    });
+  });
+
   describe('#users', function () {
     it('should have user object', function () {
       smartsheet.should.have.property('users');
