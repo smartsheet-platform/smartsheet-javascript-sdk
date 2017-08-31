@@ -12,6 +12,7 @@ exports.createClient = function(options) {
     folders    : require('./lib/folders/').create(options),
     groups     : require('./lib/groups/').create(options),
     home       : require('./lib/home/').create(options),
+    images     : require('./lib/images/').create(options),
     reports    : require('./lib/reports/').create(options),
     search     : require('./lib/search/').create(options),
     server     : require('./lib/server/').create(options),
