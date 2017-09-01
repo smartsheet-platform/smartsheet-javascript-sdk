@@ -2,24 +2,13 @@ var sinon = require('sinon');
 var should = require('should');
 var httpUtils = require('../lib/utils/httpUtils.js');
 var _ = require('underscore');
-var smartsheet = require('../index.js').createClient({});
+var smartsheet = require('../index.js').createClient({accessToken: "token"});
 
 describe('Method Unit Tests', function () {
     it("a test", function () {
 
     });
     var testGroups = [
-        {
-            name: 'webhooks',
-            methods: [
-                { name: 'createWebhook', stub: 'post', options: {}, expectedRequest: {url: "2.0/webhooks/" }},
-                { name: 'deleteWebhook', stub: 'delete', options: { webhookId: 123 }, expectedRequest: {url: "2.0/webhooks/123" }},
-                { name: 'updateWebhook', stub: 'put', options: { webhookId: 123 }, expectedRequest: {url: "2.0/webhooks/123" }},
-                { name: 'getWebhook', stub: 'get', options: { webhookId: 123 }, expectedRequest: {url: "2.0/webhooks/123" }},
-                { name: 'listWebhooks', stub: 'get', options: {}, expectedRequest: {url: "2.0/webhooks/" }},
-                { name: 'resetSharedSecret', stub: 'post', options: { webhookId: 123 }, expectedRequest: {url: "2.0/webhooks/123/resetsharedsecret" }},
-            ]
-        },
         {
             name: 'contacts',
             methods: [
@@ -132,6 +121,27 @@ describe('Method Unit Tests', function () {
                 { name: 'addColumn', stub: 'post', options: {sheetId: 123}, expectedRequest: {url: "2.0/sheets/123/columns/"}},
                 { name: 'updateColumn', stub: 'put', options: {sheetId: 123, columnId: 234}, expectedRequest: {url: "2.0/sheets/123/columns/234"}},
                 { name: 'deleteColumn', stub: 'delete', options: {sheetId: 123, columnId: 234}, expectedRequest: {url: "2.0/sheets/123/columns/234"}},
+                // comments
+                { name: 'getComment', stub: 'get', options: {sheetId: 123, commentId: 234}, expectedRequest: {url: "2.0/sheets/123/comments/234"}},
+                { name: 'deleteComment', stub: 'delete', options: {sheetId: 123, commentId: 234}, expectedRequest: {url: "2.0/sheets/123/comments/234"}},
+                { name: 'addCommentUrlAttachment', stub: 'post', options: {sheetId: 123, commentId: 234}, expectedRequest: {url: "2.0/sheets/123/comments/234/attachments"}},
+                { name: 'addCommentFileAttachment', stub: 'postFile', options: {sheetId: 123, commentId: 234}, expectedRequest: {url: "2.0/sheets/123/comments/234/attachments"}},
+                { name: 'editComment', stub: 'put', options: {sheetId: 123, commentId: 234}, expectedRequest: {url: "2.0/sheets/123/comments/234"}},
+                // create
+                { name: 'createSheet', stub: 'post', options: {}, expectedRequest: {url: "2.0/sheets/"}},
+                { name: 'createSheetFromExisting', stub: 'post', options: {}, expectedRequest: {url: "2.0/sheets/"}},
+                { name: 'createSheetFromExisting', stub: 'post', options: {folderId: 123}, expectedRequest: {url: "2.0/folders/123/sheets"}},
+                { name: 'createSheetFromExisting', stub: 'post', options: {workspaceId: 123}, expectedRequest: {url: "2.0/workspaces/123/sheets"}},
+                { name: 'createSheetInFolder', stub: 'post', options: {folderId: 123}, expectedRequest: {url: "2.0/folders/123/sheets"}},
+                { name: 'createSheetInWorkspace', stub: 'post', options: {workspaceId: 123}, expectedRequest: {url: "2.0/workspaces/123/sheets"}},
+                { name: 'copySheet', stub: 'post', options: {sheetId: 123}, expectedRequest: {url: "2.0/sheets/123/copy"}},
+                // discussions
+                { name: 'getDiscussions', stub: 'get', options: {sheetId:123}, expectedRequest: {url: "2.0/sheets/123/discussions/"}},
+                { name: 'getDiscussion', stub: 'get', options: {sheetId:123, discussionId: 234}, expectedRequest: {url: "2.0/sheets/123/discussions/234"}},
+                { name: 'listDiscussionAttachments', stub: 'get', options: {sheetId:123, discussionId: 234}, expectedRequest: {url: "2.0/sheets/123/discussions/234/attachments"}},
+                { name: 'createDiscussion', stub: 'post', options: {sheetId:123}, expectedRequest: {url: "2.0/sheets/123/discussions/"}},
+                { name: 'addDiscussionComment', stub: 'post', options: {sheetId:123, discussionId: 234}, expectedRequest: {url: "2.0/sheets/123/discussions/234/comments"}},
+                { name: 'deleteDiscussion', stub: 'delete', options: {sheetId:123, discussionId: 234}, expectedRequest: {url: "2.0/sheets/123/discussions/234"}},
             ]
         },
         {
@@ -152,6 +162,56 @@ describe('Method Unit Tests', function () {
             methods: [
                 { name: 'listUserCreatedTemplates', stub: 'get', options: {}, expectedRequest: {url: "2.0/templates/"}},
                 { name: 'listPublicTemplates', stub: 'get', options: {}, expectedRequest: {url: "2.0/templates/public"}},
+            ]
+        },
+        {
+            name: 'tokens',
+            methods: [
+                { name: 'getAccessToken', stub: 'post', options: {}, expectedRequest: {url: "2.0/token", queryParameters: {'grant_type': 'authorization_code'}}},
+                { name: 'refreshAccessToken', stub: 'post', options: {}, expectedRequest: {url: "2.0/token", queryParameters: {'grant_type': 'refresh_token'}}},
+                { name: 'revokeAccessToken', stub: 'delete', options: {}, expectedRequest: {url: "2.0/token", accessToken: "token"}},
+            ]
+        },
+        {
+            name: 'users',
+            methods: [
+                { name: 'getUser', stub: 'get', options: {}, expectedRequest: {url: "2.0/users/"}},
+                { name: 'listAllUsers', stub: 'get', options: {}, expectedRequest: {url: "2.0/users/"}},
+                { name: 'getCurrentUser', stub: 'get', options: {}, expectedRequest: {url: "2.0/users/me"}},
+                { name: 'addUser', stub: 'post', options: {}, expectedRequest: {url: "2.0/users/"}},
+                { name: 'addUserAndSendEmail', stub: 'post', options: {}, expectedRequest: {url: "2.0/users/", queryParameters:{sendEmail:true}}},
+                { name: 'updateUser', stub: 'put', options: {}, expectedRequest: {url: "2.0/users/"}},
+                { name: 'removeUser', stub: 'delete', options: {}, expectedRequest: {url: "2.0/users/"}},
+                // alternate emails
+                { name: 'addAlternateEmail', stub: 'post', options: {userId: 123}, expectedRequest: {url: "2.0/users/123/alternateemails/"}},
+                { name: 'getAlternateEmail', stub: 'get', options: {userId: 123, alternateEmailId: 234}, expectedRequest: {url: "2.0/users/123/alternateemails/234"}},
+                { name: 'listAlternateEmails', stub: 'get', options: {userId: 123}, expectedRequest: {url: "2.0/users/123/alternateemails/"}},
+                { name: 'makeAlternateEmailPrimary', stub: 'post', options: {userId: 123, alternateEmailId: 234}, expectedRequest: {url: "2.0/users/123/alternateemails/234/makeprimary"}},
+                { name: 'deleteAlternateEmail', stub: 'delete', options: {userId: 123, alternateEmailId: 234}, expectedRequest: {url: "2.0/users/123/alternateemails/234"}},
+            ]
+        },
+        {
+            name: 'webhooks',
+            methods: [
+                { name: 'createWebhook', stub: 'post', options: {}, expectedRequest: {url: "2.0/webhooks/" }},
+                { name: 'deleteWebhook', stub: 'delete', options: { webhookId: 123 }, expectedRequest: {url: "2.0/webhooks/123" }},
+                { name: 'updateWebhook', stub: 'put', options: { webhookId: 123 }, expectedRequest: {url: "2.0/webhooks/123" }},
+                { name: 'getWebhook', stub: 'get', options: { webhookId: 123 }, expectedRequest: {url: "2.0/webhooks/123" }},
+                { name: 'listWebhooks', stub: 'get', options: {}, expectedRequest: {url: "2.0/webhooks/" }},
+                { name: 'resetSharedSecret', stub: 'post', options: { webhookId: 123 }, expectedRequest: {url: "2.0/webhooks/123/resetsharedsecret" }},
+            ]
+        },
+        {
+            name: 'workspaces',
+            methods: [
+                { name: 'listWorkspaces', stub: 'get', options: {}, expectedRequest: {url: "2.0/workspaces/"}},
+                { name: 'getWorkspace', stub: 'get', options: {workspaceId: 123}, expectedRequest: {url: "2.0/workspaces/123"}},
+                { name: 'listWorkspaceFolders', stub: 'get', options: {workspaceId: 123}, expectedRequest: {url: "2.0/workspaces/123/folders"}},
+                { name: 'createWorkspace', stub: 'post', options: {}, expectedRequest: {url: "2.0/workspaces/"}},
+                { name: 'createFolder', stub: 'post', options: {workspaceId: 123}, expectedRequest: {url: "2.0/workspaces/123/folders"}},
+                { name: 'deleteWorkspace', stub: 'delete', options: {workspaceId: 123}, expectedRequest: {url: "2.0/workspaces/123"}},
+                { name: 'updateWorkspace', stub: 'put', options: {workspaceId: 123}, expectedRequest: {url: "2.0/workspaces/123"}},
+                { name: 'copyWorkspace', stub: 'post', options: {workspaceId: 123}, expectedRequest: {url: "2.0/workspaces/123/copy"}},
             ]
         },
     ];
