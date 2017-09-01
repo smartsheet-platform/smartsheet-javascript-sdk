@@ -84,8 +84,8 @@ describe('Method Unit Tests', function () {
                 { name: 'listReports', stub: 'get', options: {}, expectedRequest: {url: "2.0/reports/"}},
                 { name: 'getReport', stub: 'get', options: {}, expectedRequest: {url: "2.0/reports/" }},
                 { name: 'sendReportViaEmail', stub: 'post', options: {reportId: 123}, expectedRequest: {url: "2.0/reports/123/emails" }},
-                { name: 'getReportAsExcel', stub: 'get', options: {}, expectedRequest: {url: "2.0/reports/", accept: "application/vnd.ms-excel" }},
-                { name: 'getReportAsCSV', stub: 'get', options: {}, expectedRequest: {url: "2.0/reports/", accept: "text/csv" }},
+                { name: 'getReportAsExcel', stub: 'get', options: {}, expectedRequest: {url: "2.0/reports/", accept: constants.acceptHeaders.vndMsExcel }},
+                { name: 'getReportAsCSV', stub: 'get', options: {}, expectedRequest: {url: "2.0/reports/", accept: constants.acceptHeaders.textCsv }},
                 { name: 'getReportPublishStatus', stub: 'get', options: {reportId: 123}, expectedRequest: {url: "2.0/reports/123/publish" }},
                 { name: 'setReportPublishStatus', stub: 'put', options: {reportId: 123}, expectedRequest: {url: "2.0/reports/123/publish" }},
             ]
