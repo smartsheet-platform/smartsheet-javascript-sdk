@@ -15,8 +15,9 @@ describe('Client Unit Tests', function() {
 
   describe('#Constants', function() {
     it('should have Constants object', function() {
-      Object.keys(smartsheet.constants).should.be.length(6);
+      Object.keys(smartsheet.constants).should.be.length(7);
       smartsheet.should.have.property('constants');
+      smartsheet.constants.should.have.property('maxRetryTime');
       smartsheet.constants.should.have.property('accessLevel');
       smartsheet.constants.should.have.property('accessScope');
       smartsheet.constants.should.have.property('types');
@@ -36,73 +37,12 @@ describe('Client Unit Tests', function() {
       smartsheet.contacts.should.have.property('getContact');
       smartsheet.contacts.should.have.property('listContacts');
     });
-
-    it('should return correct response from getContact', function() {
-      const contacts = require('../lib/contacts');
-      const getContactExpectedResponse = {
-          "id": "AAAAATYU54QAD7_fNhTnhA",
-          "name": "David Davidson",
-          "email": "dd@example.com"
-      }
-
-      const httpUtilsGetMock = {
-        get: function(optionsToSend, callback) {
-          callback(getContactExpectedResponse)
-        }
-      };
-
-      const theContact = contacts.create({
-        apiUrls: {contacts: '...'},
-        httpUtils: httpUtilsGetMock
-      });
-
-      theContact.getContact({id: "AAAAATYU54QAD7_fNhTnhA"}, (data) => {
-        should.deepEqual(data, getContactExpectedResponse);
-      });
-    });
-
-    it('should return correct response from listContacts', function() {
-      const contacts = require('../lib/contacts');
-      const listContactsExpectedResponse = {
-          "pageNumber": 1,
-          "pageSize": 100,
-          "totalPages": 1,
-          "totalCount": 2,
-          "data": [
-              {
-                  "id": "AAAAATYU54QAD7_fNhTnhA",
-                  "name": "David Davidson",
-                  "email": "dd@example.com"
-              },
-              {
-                  "id": "AAAAATYU54QAH7_fNhTnhA",
-                  "name": "Ed Edwin",
-                  "email": "ee@example.com"
-              }
-          ]
-      }
-
-      const httpUtilsGetMock = {
-        get: function(optionsToSend, callback) {
-          callback(getContactExpectedResponse)
-        }
-      };
-
-      const theContact = contacts.create({
-        apiUrls: {contacts: '...'},
-        httpUtils: httpUtilsGetMock
-      });
-
-      theContact.listContacts({}, (data) => {
-        should.deepEqual(data, listContactsExpectedResponse);
-      });
-    });
   });
 
   describe('#Favorites', function() {
     it('should have Favorites object',function(){
       smartsheet.should.have.property('favorites');
-      Object.keys(smartsheet.favorites).should.be.length(17);
+      Object.keys(smartsheet.favorites).should.be.length(20);
     });
 
     it('should have get methods', function() {
@@ -115,16 +55,19 @@ describe('Client Unit Tests', function() {
       smartsheet.favorites.should.have.property('addFolderToFavorites');
       smartsheet.favorites.should.have.property('addReportToFavorites');
       smartsheet.favorites.should.have.property('addTemplateToFavorites');
+      smartsheet.favorites.should.have.property('addSightToFavorites');
       smartsheet.favorites.should.have.property('addWorkspaceToFavorites');
     });
 
     it('should have delete methods', function() {
       smartsheet.favorites.should.have.property('removeSheetFromFavorites');
+      smartsheet.favorites.should.have.property('removeSightFromFavorites');
       smartsheet.favorites.should.have.property('removeWorkspaceFromFavorites');
       smartsheet.favorites.should.have.property('removeFolderFromFavorites');
       smartsheet.favorites.should.have.property('removeTemplateFromFavorites');
       smartsheet.favorites.should.have.property('removeReportFromFavorites');
       smartsheet.favorites.should.have.property('removeSheetsFromFavorites');
+      smartsheet.favorites.should.have.property('removeSightsFromFavorites');
       smartsheet.favorites.should.have.property('removeWorkspacesFromFavorites');
       smartsheet.favorites.should.have.property('removeFoldersFromFavorites');
       smartsheet.favorites.should.have.property('removeTemplatesFromFavorites');
@@ -135,7 +78,7 @@ describe('Client Unit Tests', function() {
   describe('#folders', function() {
     it('should have folders object',function(){
       smartsheet.should.have.property('folders');
-      Object.keys(smartsheet.folders).should.be.length(5);
+      Object.keys(smartsheet.folders).should.be.length(7);
     });
 
     it('should have get methods', function() {
@@ -145,10 +88,12 @@ describe('Client Unit Tests', function() {
 
     it('should have create methods', function() {
       smartsheet.folders.should.have.property('createChildFolder');
+      smartsheet.folders.should.have.property('copyFolder');
     });
 
     it('should have Sheets update methods', function() {
       smartsheet.folders.should.have.property('updateFolder');
+      smartsheet.folders.should.have.property('moveFolder');
     });
 
     it('should have delete methods', function() {
@@ -198,6 +143,17 @@ describe('Client Unit Tests', function() {
     });
   });
 
+  describe('#images', function() {
+    it('should have image object', function(){
+      smartsheet.should.have.property('images');
+      Object.keys(smartsheet.images).should.be.length(1);
+    });
+
+    it('should have get methods', function() {
+      smartsheet.images.should.have.property('listImageUrls');
+    });
+  });
+
   describe('#search', function () {
     it('should have search object', function () {
       smartsheet.should.have.property('search');
@@ -207,6 +163,26 @@ describe('Client Unit Tests', function() {
     it('should have get methods', function () {
       smartsheet.search.should.have.property('searchAll');
       smartsheet.search.should.have.property('searchSheet');
+    });
+  });
+
+  describe('#reports', function() {
+    it('should have reports object', function() {
+      smartsheet.should.have.property('reports');
+      Object.keys(smartsheet.reports).should.be.length(12);
+    });
+
+    it('should have get methods', function () {
+      smartsheet.reports.should.have.property('listReports');
+      smartsheet.reports.should.have.property('getReport');
+      smartsheet.reports.should.have.property('getReportAsExcel');
+      smartsheet.reports.should.have.property('getReportAsCSV');
+      smartsheet.reports.should.have.property('getReportPublishStatus');
+    });
+
+    it('should have update methods', function () {
+      smartsheet.reports.should.have.property('setReportPublishStatus');
+      smartsheet.reports.should.have.property('sendReportViaEmail');
     });
   });
 
@@ -224,7 +200,7 @@ describe('Client Unit Tests', function() {
   describe('#Sheets', function() {
     it('should have Sheets object',function(){
       smartsheet.should.have.property('sheets');
-      Object.keys(smartsheet.sheets).should.be.length(55);
+      Object.keys(smartsheet.sheets).should.be.length(70);
     });
 
     it('should have Sheets get methods', function() {
@@ -251,9 +227,11 @@ describe('Client Unit Tests', function() {
     });
 
     it('should have Row methods', function () {
+      smartsheet.sheets.should.have.property('addImageToCell');
       smartsheet.sheets.should.have.property('addRow');
-      smartsheet.sheets.should.have.property('addRowAttachment');
       smartsheet.sheets.should.have.property('addRows');
+      smartsheet.sheets.should.have.property('addRowFileAttachment');
+      smartsheet.sheets.should.have.property('addRowUrlAttachment');
       smartsheet.sheets.should.have.property('createRowDiscussion');
       smartsheet.sheets.should.have.property('getRow');
       smartsheet.sheets.should.have.property('getRowAttachments');
@@ -270,9 +248,11 @@ describe('Client Unit Tests', function() {
     });
 
     it('should have Sheets create methods', function() {
-      smartsheet.sheets.should.have.property('addAttachment');
-      smartsheet.sheets.should.have.property('addCommentAttachment');
+      smartsheet.sheets.should.have.property('addCommentFileAttachment');
+      smartsheet.sheets.should.have.property('addCommentUrlAttachment');
       smartsheet.sheets.should.have.property('addDiscussionComment');
+      smartsheet.sheets.should.have.property('addFileAttachment');
+      smartsheet.sheets.should.have.property('addUrlAttachment');
       smartsheet.sheets.should.have.property('attachNewVersion');
       smartsheet.sheets.should.have.property('createDiscussion');
       smartsheet.sheets.should.have.property('createRowDiscussion');
@@ -280,11 +260,14 @@ describe('Client Unit Tests', function() {
       smartsheet.sheets.should.have.property('createSheetFromExisting');
       smartsheet.sheets.should.have.property('createSheetInFolder');
       smartsheet.sheets.should.have.property('createSheetInWorkspace');
+      smartsheet.sheets.should.have.property('copySheet');
+      smartsheet.sheets.should.have.property('moveSheet');
     });
 
     it('should have Sheets update methods', function() {
       smartsheet.sheets.should.have.property('updateShare');
       smartsheet.sheets.should.have.property('updateSheet');
+      smartsheet.sheets.should.have.property('editComment');
     });
 
     it('should have Sheets delete methods', function() {
@@ -297,11 +280,22 @@ describe('Client Unit Tests', function() {
       smartsheet.sheets.should.have.property('deleteShare');
       smartsheet.sheets.should.have.property('deleteSheet');
     });
+
+    it('should have update request methods', function() {
+      smartsheet.sheets.should.have.property('createUpdateRequest');
+      smartsheet.sheets.should.have.property('deleteUpdateRequest');
+      smartsheet.sheets.should.have.property('getUpdateRequest');
+      smartsheet.sheets.should.have.property('getAllUpdateRequests');
+      smartsheet.sheets.should.have.property('changeUpdateRequest');
+      smartsheet.sheets.should.have.property('deleteSentUpdateRequest');
+      smartsheet.sheets.should.have.property('getSentUpdateRequest');
+      smartsheet.sheets.should.have.property('getAllSentUpdateRequests');
+    });
   });
   describe('#Sights', function() {
     it('should have Sights object',function(){
       smartsheet.should.have.property('sights');
-      Object.keys(smartsheet.sights).should.be.length(8);
+      Object.keys(smartsheet.sights).should.be.length(13);
     });
 
     it('should have Sights get methods', function() {
@@ -309,141 +303,24 @@ describe('Client Unit Tests', function() {
       smartsheet.sights.should.have.property('listSights');
       smartsheet.sights.should.have.property('getShare');
       smartsheet.sights.should.have.property('listShares');
+      smartsheet.sights.should.have.property('getSightPublishStatus');
+    });
+
+    it('should have Sights update methods', function() {
+      smartsheet.sights.should.have.property('setSightPublishStatus');
+      smartsheet.sights.should.have.property('moveSight');
+      smartsheet.sights.should.have.property('updateSight');
+    });
+
+    it('should have Sight create methods', function() {
+      smartsheet.sights.should.have.property('copySight');
     });
 
     it('should have Sights delete methods', function() {
       smartsheet.sights.should.have.property('deleteSight');
       smartsheet.sights.should.have.property('deleteShare');
     });
-
-    it('should return correct response from getSight', function() {
-          const sights = require('../lib/sights')
-          const getSightExpectedResponse = {
-          "id": 2591554075418573,
-          "name": "Test",
-          "accessLevel": "OWNER",
-          "columnCount": 6,
-          "widgets": [
-              {
-              "id": 3056651398234562,
-              "type": "RICHTEXT",
-              "contents": {
-                  "htmlContent": "<p>This is a test</p>"
-              },
-              "xPosition": 2,
-              "yPosition": 0,
-              "width": 2,
-              "height": 4,
-              "showTitleIcon": false,
-              "titleFormat": ",,1,,,,,,,3,,,,,,",
-              "version": 1
-              },
-              {
-              "id": 48092647672583496,
-              "type": "SHORTCUTLIST",
-              "contents": {
-                  "shortcutData": [
-                  {
-                      "label": "Sight Data",
-                      "labelFormat": ",2,,,,,1,,1,,,,,,,",
-                      "hyperlink": {
-                      "url": "https://app.smartsheet.com/b/home?lx=m1O5qo7tpM1h23KFxYavIw",
-                      "sheetId": 692061146243972
-                      },
-                      "attachmentType": "SMARTSHEET",
-                      "order": 0
-                  }
-                  ]
-              },
-              "xPosition": 1,
-              "yPosition": 0,
-              "width": 1,
-              "height": 1,
-              "showTitleIcon": false,
-              "titleFormat": ",,1,,,,,,,3,,,,,,",
-              "version": 1
-              }
-          ]
-          };
-          
-          const httpUtilsGetMock = {
-            get: function(optionsToSend, callback) {
-              callback(getSightExpectedResponse);
-            }
-          };
-
-          const theSight = sights.create({
-          apiUrls: {sights: '...'},
-          httpUtils: httpUtilsGetMock
-          });
-
-          theSight.getSight({id:2591554075418573}, (data) => {
-          should.deepEqual(data, getSightExpectedResponse);
-          });
-
-        })
-    it('should return the correct response from listSights', function() {
-      const sights = require('../lib/sights')
-      const listSightsExpectedResponse = {
-              "pageNumber": 1,
-              "pageSize": 100,
-              "totalPages": 1,
-              "totalCount": 2,
-              "data": [
-                  {
-                      "id": 2331373580117892,
-                      "name": "Sales Sight",
-                      "accessLevel": "OWNER",
-                      "permalink": "https://app.smartsheet.com/b/home?lx=xUefSOIYmn07iJJesvSHCQ",
-                      "createdAt": "2016-01-28T00:24:41Z",
-                      "modifiedAt": "2016-01-28T20:32:33Z"
-                  },
-                  {
-                      "id": 7397923160909700,
-                      "name": "Sight #2",
-                      "accessLevel": "OWNER",
-                      "permalink": "https://app.smartsheet.com/b/home?lx=xUefSOIYmn07iJJrthEFTG",
-                      "createdAt": "2016-01-28T01:17:51Z",
-                      "modifiedAt": "2016-01-28T20:32:27Z"
-                  }
-              ]
-          }
-      const httpUtilsListMock = {
-        delete: function(optionsToSend, callback) {
-          callback(listSightsExpectedResponse);
-        }
-      }
-      const theSight = sights.create({
-          apiUrls: {sights: '...'},
-          httpUtils: httpUtilsListMock
-          });
-
-          theSight.listSights({}, (data) => {
-          should.deepEqual(data, listSightsExpectedResponse);
-          });
-    });
-
-    it('should return the correct response from deleteSight', function() {
-      const sights = require('../lib/sights')
-      const deleteSightExpectedResponse = {
-                    "resultCode": 0,
-                    "message": "SUCCESS"
-            }
-      const httpUtilsDeleteMock = {
-        delete: function(optionsToSend, callback) {
-          callback(deleteSightExpectedResponse);
-        }
-      }
-      const theSight = sights.create({
-          apiUrls: {sights: '...'},
-          httpUtils: httpUtilsDeleteMock
-          });
-
-          theSight.deleteSight({id:2591554075418573}, (data) => {
-          should.deepEqual(data, deleteSightExpectedResponse);
-          });
-    });
-  })
+  });
 
   describe('#templates', function () {
     it('should have templates object', function () {
@@ -457,36 +334,82 @@ describe('Client Unit Tests', function() {
     });
   });
 
+  describe('#tokens', function() {
+    it('should have a tokens object', function () {
+      smartsheet.should.have.property('tokens');
+      Object.keys(smartsheet.tokens).should.be.length(3);
+    });
+    
+    it('should have get methods', function () {
+      smartsheet.tokens.should.have.property('getAccessToken');
+      smartsheet.tokens.should.have.property('refreshAccessToken');
+    });
+
+    it('should have delete methods', function () {
+      smartsheet.tokens.should.have.property('revokeAccessToken');
+    });
+  });
+
   describe('#users', function () {
     it('should have user object', function () {
       smartsheet.should.have.property('users');
-      Object.keys(smartsheet.users).should.be.length(7);
+      Object.keys(smartsheet.users).should.be.length(12);
     });
 
     it('should have get methods', function () {
       smartsheet.users.should.have.property('getCurrentUser');
       smartsheet.users.should.have.property('listAllUsers');
       smartsheet.users.should.have.property('getUser');
+      smartsheet.users.should.have.property('getAlternateEmail');
+      smartsheet.users.should.have.property('listAlternateEmails');
     });
 
     it('should have create methods', function () {
       smartsheet.users.should.have.property('addUser');
       smartsheet.users.should.have.property('addUserAndSendEmail');
+      smartsheet.users.should.have.property('addAlternateEmail');
     });
 
     it('should have update methods', function () {
       smartsheet.users.should.have.property('updateUser');
+      smartsheet.users.should.have.property('makeAlternateEmailPrimary');
     });
 
     it('should have delete methods', function () {
       smartsheet.users.should.have.property('removeUser');
+      smartsheet.users.should.have.property('deleteAlternateEmail');
+    });
+  });
+
+  describe('#webhooks', function () {
+    it('should have webhook object', function () {
+      smartsheet.should.have.property('webhooks');
+      Object.keys(smartsheet.webhooks).should.be.length(6);
+    });
+
+    it('should have get methods', function () {
+      smartsheet.webhooks.should.have.property('getWebhook');
+      smartsheet.webhooks.should.have.property('listWebhooks');
+    });
+
+    it('should have post methods', function () {
+      smartsheet.webhooks.should.have.property('createWebhook');
+      smartsheet.webhooks.should.have.property('resetSharedSecret');
+    });
+
+    it('should have put methods', function () {
+      smartsheet.webhooks.should.have.property('updateWebhook');
+    });
+
+    it('should have delete methods', function () {
+      smartsheet.webhooks.should.have.property('deleteWebhook');
     });
   });
 
   describe('#workspaces', function () {
     it('should have workspaces object', function () {
       smartsheet.should.have.property('workspaces');
-      Object.keys(smartsheet.workspaces).should.be.length(12);
+      Object.keys(smartsheet.workspaces).should.be.length(13);
     });
 
     it('should have get methods', function () {
@@ -501,6 +424,7 @@ describe('Client Unit Tests', function() {
       smartsheet.workspaces.should.have.property('share');
       smartsheet.workspaces.should.have.property('createWorkspace');
       smartsheet.workspaces.should.have.property('createFolder');
+      smartsheet.workspaces.should.have.property('copyWorkspace');
     });
 
     it('should have update methods', function () {
