@@ -843,7 +843,6 @@ describe('Utils Unit Tests', function() {
         .then(function(data) {
           stub.callCount.should.be.equal(1);
         });
-        
       });
 
       it('delete retried on error', function() {
