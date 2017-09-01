@@ -6,9 +6,6 @@ var _ = require('underscore');
 var smartsheet = require('../index.js').createClient({accessToken: "token"});
 
 describe('Method Unit Tests', function () {
-    it("a test", function () {
-
-    });
     var testGroups = [
         {
             name: 'contacts',
