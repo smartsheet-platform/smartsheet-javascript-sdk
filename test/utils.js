@@ -169,6 +169,11 @@ describe('Utils Unit Tests', function() {
         var headers = smartsheet.internal.buildHeaders({fileName: 'test',   fileSize: 123});
         headers['Content-Length'].should.equal(123);
       });
+
+      it('Assume-User should equal URI encoded email', function() {
+        var headers = smartsheet.internal.buildHeaders({assumeUser: 'john.doe@smartsheet.com'});
+        headers['Assume-User'].should.equal('john.doe%40smartsheet.com');
+      });
     });
   });
 
