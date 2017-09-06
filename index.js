@@ -1,12 +1,17 @@
 var _ = require('underscore');
 var apiUrls = require('./lib/utils/apis.js');
 
+function buildRequestor(clientOptions) {
+  if(clientOptions.requestor) return clientOptions.requestor;
+  
+  var requestorConfig =
+    _.pick(clientOptions, 'maxRetryTime', 'calcRetryBackoff');
+  return require('./lib/utils/httpRequestor.js')
+    .create(requestorConfig);
+};
+
 exports.createClient = function(clientOptions) {
-  var requestor = clientOptions.requestor;
-  if(!requestor) {
-    var requestorConfig = _.pick(clientOptions, 'maxRetryTime', 'calcRetryBackoff');
-    requestor = require('./lib/utils/httpRequestor.js').create(requestorConfig);
-  }
+  var requestor = buildRequestor(clientOptions);
 
   var options = {
     accessToken: clientOptions.accessToken,
