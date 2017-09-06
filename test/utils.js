@@ -4,7 +4,7 @@ var sinon = require('sinon');
 var Promise = require('bluebird');
 var _ = require('underscore');
 
-var smartsheet = require('../lib/utils/httpUtils').create({request: request});
+var requestor = require('../lib/utils/httpRequestor').create({request: request});
 
 var sample = {
   name : 'name'
@@ -31,25 +31,25 @@ var sampleRequestWithQueryParameters = {
 };
 
 describe('Utils Unit Tests', function() {
-  describe('#HttpUtils', function() {
+  describe('#HttpRequestor', function() {
     it('should have GET method',function(){
-      smartsheet.should.have.property('get');
+      requestor.should.have.property('get');
     });
 
     it('should have POST method',function(){
-      smartsheet.should.have.property('post');
+      requestor.should.have.property('post');
     });
 
     it('should have POST file method',function(){
-      smartsheet.should.have.property('postFile');
+      requestor.should.have.property('postFile');
     });
 
     it('should have PUT method',function(){
-      smartsheet.should.have.property('put');
+      requestor.should.have.property('put');
     });
 
     it('should have DELETE method',function(){
-      smartsheet.should.have.property('delete');
+      requestor.should.have.property('delete');
     });
 
     describe('#buildUrl', function() {
@@ -66,23 +66,23 @@ describe('Utils Unit Tests', function() {
 
       it('should return the set HOST with URL appended', function() {
         var url = 'test';
-        var builtUrl = smartsheet.internal.buildUrl({url:url});
+        var builtUrl = requestor.internal.buildUrl({url:url});
         builtUrl.should.equal(host + url);
       });
 
       it('url should equal https://api.smartsheet.com/', function() {
         process.env.SMARTSHEET_API_HOST = '';
-        var builtUrl = smartsheet.internal.buildUrl({});
+        var builtUrl = requestor.internal.buildUrl({});
         builtUrl.should.equal('https://api.smartsheet.com/');
       });
 
       it('url should contain the host + url', function() {
-        var builtUrl = smartsheet.internal.buildUrl({url: 'url/'});
+        var builtUrl = requestor.internal.buildUrl({url: 'url/'});
         builtUrl.should.equal(host + 'url/');
       });
 
       it('url should contain the ID', function() {
-        var builtUrl = smartsheet.internal.buildUrl({url: 'url/', id: '123'});
+        var builtUrl = requestor.internal.buildUrl({url: 'url/', id: '123'});
         builtUrl.should.equal(host + 'url/123');
       });
     });
@@ -92,42 +92,42 @@ describe('Utils Unit Tests', function() {
       var applicationJson = 'application/json';
 
       it('authorization header should have token', function() {
-        var headers = smartsheet.internal.buildHeaders({accessToken: 'token'});
+        var headers = requestor.internal.buildHeaders({accessToken: 'token'});
         headers.Authorization.should.equal('Bearer token');
       });
 
       it('accept header should equal ' + applicationJson, function() {
-        var headers = smartsheet.internal.buildHeaders({});
+        var headers = requestor.internal.buildHeaders({});
         headers.Accept.should.equal(applicationJson);
       });
 
       it('accept header should equal ' + newType, function() {
-        var headers = smartsheet.internal.buildHeaders({accept: newType});
+        var headers = requestor.internal.buildHeaders({accept: newType});
         headers.Accept.should.equal(newType);
       });
 
       it('content-type header should ' + applicationJson, function() {
-        var headers = smartsheet.internal.buildHeaders({contentType: applicationJson});
+        var headers = requestor.internal.buildHeaders({contentType: applicationJson});
         headers['Content-Type'].should.equal(applicationJson);
       });
 
       it('content-type header should equal ' + newType, function() {
-        var headers = smartsheet.internal.buildHeaders({contentType: newType});
+        var headers = requestor.internal.buildHeaders({contentType: newType});
         headers['Content-Type'].should.equal(newType);
       });
 
       it('Content-Disposition should equal filename', function() {
-        var headers = smartsheet.internal.buildHeaders({fileName: 'test'});
+        var headers = requestor.internal.buildHeaders({fileName: 'test'});
         headers['Content-Disposition'].should.equal('attachment; filename="test"');
       });
 
       it('Content-Length should equal 123', function() {
-        var headers = smartsheet.internal.buildHeaders({fileName: 'test',   fileSize: 123});
+        var headers = requestor.internal.buildHeaders({fileName: 'test',   fileSize: 123});
         headers['Content-Length'].should.equal(123);
       });
 
       it('Assume-User should equal URI encoded email', function() {
-        var headers = smartsheet.internal.buildHeaders({assumeUser: 'john.doe@smartsheet.com'});
+        var headers = requestor.internal.buildHeaders({assumeUser: 'john.doe@smartsheet.com'});
         headers['Assume-User'].should.equal('john.doe%40smartsheet.com');
       });
     });
@@ -136,7 +136,7 @@ describe('Utils Unit Tests', function() {
   describe('#GET', function() {
     describe('#Successful request', function() {
       var requestStub = null;
-      var stubbedRequestor = require('../lib/utils/httpUtils')
+      var stubbedRequestor = require('../lib/utils/httpRequestor')
         .create({request: request, handleResponse: () => true});
 
       beforeEach(function() {
@@ -171,7 +171,7 @@ describe('Utils Unit Tests', function() {
 
     describe('#Error on request', function() {
       var requestStub = null;
-      var stubbedRequestor = require('../lib/utils/httpUtils')
+      var stubbedRequestor = require('../lib/utils/httpRequestor')
         .create({request: request, handleResponse: () => true});
       var mockBody;
 
@@ -223,7 +223,7 @@ describe('Utils Unit Tests', function() {
           'Content-Type': 'application/json',
           'User-Agent': 'smartsheet-javascript-sdk'
         };
-        smartsheet.get(sampleRequest);
+        requestor.get(sampleRequest);
         spyGet.args[0][0].headers.Authorization.should.equal(sampleHeaders.Authorization);
         spyGet.args[0][0].headers.Accept.should.equal(sampleHeaders.Accept);
         spyGet.args[0][0].headers['Content-Type'].should.equal(sampleHeaders['Content-Type']);
@@ -231,12 +231,12 @@ describe('Utils Unit Tests', function() {
       });
 
       it('url sent to request should match given',function() {
-        smartsheet.get(sampleRequest);
+        requestor.get(sampleRequest);
         spyGet.args[0][0].url.should.equal('https://api.smartsheet.com/URL');
       });
 
       it('queryString sent to request should match given',function() {
-        smartsheet.get(sampleRequestWithQueryParameters);
+        requestor.get(sampleRequestWithQueryParameters);
         spyGet.args[0][0].qs.should.equal(sampleRequestWithQueryParameters.queryParameters);
       });
     });
@@ -244,7 +244,7 @@ describe('Utils Unit Tests', function() {
     describe('#Retry', function() {
       var requestStub = null;
       var handleResponseStub = sinon.stub();
-      var stubbedRequestor = require('../lib/utils/httpUtils')
+      var stubbedRequestor = require('../lib/utils/httpRequestor')
         .create({request: request, handleResponse: handleResponseStub});
       var sampleRequestForRetry = null;
 
@@ -300,7 +300,7 @@ describe('Utils Unit Tests', function() {
     describe('#Successful request', function() {
       var requestStub = null;
 
-      var stubbedRequestor = require('../lib/utils/httpUtils')
+      var stubbedRequestor = require('../lib/utils/httpRequestor')
         .create({request: request, handleResponse: () => true});
 
       beforeEach(function() {
@@ -337,7 +337,7 @@ describe('Utils Unit Tests', function() {
       var requestStub = null;     
       var mockBody = {error:true};
 
-      var stubbedRequestor = require('../lib/utils/httpUtils')
+      var stubbedRequestor = require('../lib/utils/httpRequestor')
         .create({request: request, handleResponse: () => true});
 
       beforeEach(function() {
@@ -381,7 +381,7 @@ describe('Utils Unit Tests', function() {
           'Content-Type': 'application/json',
           'User-Agent': 'smartsheet-javascript-sdk'
         };
-        smartsheet.post(sampleRequest);
+        requestor.post(sampleRequest);
         spyPost.args[0][0].headers.Authorization.should.equal(sampleHeaders.Authorization);
         spyPost.args[0][0].headers.Accept.should.equal(sampleHeaders.Accept);
         spyPost.args[0][0].headers['Content-Type'].should.equal(sampleHeaders['Content-Type']);
@@ -389,17 +389,17 @@ describe('Utils Unit Tests', function() {
       });
 
       it('url sent to request should match given',function() {
-        smartsheet.post(sampleRequest);
+        requestor.post(sampleRequest);
         spyPost.args[0][0].url.should.equal('https://api.smartsheet.com/URL');
       });
 
       it('queryString sent to request should match given',function() {
-        smartsheet.post(sampleRequestWithQueryParameters);
+        requestor.post(sampleRequestWithQueryParameters);
         spyPost.args[0][0].qs.should.equal(sampleRequestWithQueryParameters.queryParameters);
       });
 
       it('body sent to request should match given',function() {
-        smartsheet.post(sampleRequestWithQueryParameters);
+        requestor.post(sampleRequestWithQueryParameters);
         spyPost.args[0][0].body.should.equal(JSON.stringify(sampleRequestWithQueryParameters.body));
       });
     });
@@ -408,7 +408,7 @@ describe('Utils Unit Tests', function() {
       var requestStub = null;
       var handleResponseStub = sinon.stub();
       
-      var stubbedRequestor = require('../lib/utils/httpUtils')
+      var stubbedRequestor = require('../lib/utils/httpRequestor')
         .create({request: request, handleResponse: handleResponseStub});
 
       var sampleRequestForRetry;
@@ -466,7 +466,7 @@ describe('Utils Unit Tests', function() {
     describe('#Successful request', function() {
       var requestStub = null;
       
-      var stubbedRequestor = require('../lib/utils/httpUtils')
+      var stubbedRequestor = require('../lib/utils/httpRequestor')
         .create({request: request, handleResponse: () => true});
 
       beforeEach(function() {
@@ -503,7 +503,7 @@ describe('Utils Unit Tests', function() {
       var stub = null;
       var mockBody = {error: true};
       
-      var stubbedRequestor = require('../lib/utils/httpUtils')
+      var stubbedRequestor = require('../lib/utils/httpRequestor')
         .create({request: request, handleResponse: () => true});
 
       beforeEach(function() {
@@ -553,7 +553,7 @@ describe('Utils Unit Tests', function() {
           'Content-Type': 'application/json',
           'User-Agent': 'smartsheet-javascript-sdk'
         };
-        smartsheet.put(sampleRequest);
+        requestor.put(sampleRequest);
         spyPut.args[0][0].headers.Authorization.should.equal(sampleHeaders.Authorization);
         spyPut.args[0][0].headers.Accept.should.equal(sampleHeaders.Accept);
         spyPut.args[0][0].headers['Content-Type'].should.equal(sampleHeaders['Content-Type']);
@@ -561,17 +561,17 @@ describe('Utils Unit Tests', function() {
       });
 
       it('url sent to request should match given',function() {
-        smartsheet.put(sampleRequest);
+        requestor.put(sampleRequest);
         spyPut.args[0][0].url.should.equal('https://api.smartsheet.com/URL');
       });
 
       it('queryString sent to request should match given',function() {
-        smartsheet.put(sampleRequestWithQueryParameters);
+        requestor.put(sampleRequestWithQueryParameters);
         spyPut.args[0][0].qs.should.equal(sampleRequestWithQueryParameters.queryParameters);
       });
 
       it('body sent to request should match given',function() {
-        smartsheet.put(sampleRequestWithQueryParameters);
+        requestor.put(sampleRequestWithQueryParameters);
         spyPut.args[0][0].body.should.equal(JSON.stringify(sampleRequestWithQueryParameters.body));
       });
     });
@@ -580,7 +580,7 @@ describe('Utils Unit Tests', function() {
       var requestStub = null;
       var handleResponseStub = sinon.stub();
       
-      var stubbedRequestor = require('../lib/utils/httpUtils')
+      var stubbedRequestor = require('../lib/utils/httpRequestor')
         .create({request: request, handleResponse: handleResponseStub});
 
       var sampleRequestForRetry = null;
@@ -639,7 +639,7 @@ describe('Utils Unit Tests', function() {
     describe('#Successful request', function() {
       var requestStub = null;
       
-      var stubbedRequestor = require('../lib/utils/httpUtils')
+      var stubbedRequestor = require('../lib/utils/httpRequestor')
         .create({request: request, handleResponse: () => true});
 
       beforeEach(function() {
@@ -677,7 +677,7 @@ describe('Utils Unit Tests', function() {
       var handleResponseStub = null;
       var mockBody = {error: true};
       
-      var stubbedRequestor = require('../lib/utils/httpUtils')
+      var stubbedRequestor = require('../lib/utils/httpRequestor')
         .create({request: request, handleResponse: () => true});
 
       beforeEach(function() {
@@ -727,7 +727,7 @@ describe('Utils Unit Tests', function() {
           'Content-Type': 'application/json',
           'User-Agent': 'smartsheet-javascript-sdk'
         };
-        smartsheet.delete(sampleRequest);
+        requestor.delete(sampleRequest);
         spyPut.args[0][0].headers.Authorization.should.equal(sampleHeaders.Authorization);
         spyPut.args[0][0].headers.Accept.should.equal(sampleHeaders.Accept);
         spyPut.args[0][0].headers['Content-Type'].should.equal(sampleHeaders['Content-Type']);
@@ -735,12 +735,12 @@ describe('Utils Unit Tests', function() {
       });
 
       it('url sent to request should match given',function() {
-        smartsheet.delete(sampleRequest);
+        requestor.delete(sampleRequest);
         spyPut.args[0][0].url.should.equal('https://api.smartsheet.com/URL');
       });
 
       it('queryString sent to request should match given',function() {
-        smartsheet.delete(sampleRequestWithQueryParameters);
+        requestor.delete(sampleRequestWithQueryParameters);
         spyPut.args[0][0].qs.should.equal(sampleRequestWithQueryParameters.queryParameters);
       });
     });
@@ -749,7 +749,7 @@ describe('Utils Unit Tests', function() {
       var requestStub = null;
       var handleResponseStub = sinon.stub();
       
-      var stubbedRequestor = require('../lib/utils/httpUtils')
+      var stubbedRequestor = require('../lib/utils/httpRequestor')
         .create({request: request, handleResponse: handleResponseStub});
 
       var sampleRequestForRetry;

@@ -1,7 +1,7 @@
 var client = require('../');
 var fs = require('fs');
 var _ = require('underscore');
-// var test = require('../lib/utils/httpUtils');
+// var test = require('../lib/utils/httpRequestor');
 
 
 

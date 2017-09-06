@@ -5,7 +5,7 @@ exports.createClient = function(clientOptions) {
   var requestor = clientOptions.requestor;
   if(!requestor) {
     var requestorConfig = _.pick(clientOptions, 'maxRetryTime', 'calcRetryBackoff');
-    requestor = require('./lib/utils/httpUtils.js').create(requestorConfig);
+    requestor = require('./lib/utils/httpRequestor.js').create(requestorConfig);
   }
 
   var options = {

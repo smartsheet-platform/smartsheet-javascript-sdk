@@ -1,6 +1,6 @@
 var sinon = require('sinon');
 var should = require('should');
-var requestor = require('../lib/utils/httpUtils.js').create({});
+var requestor = require('../lib/utils/httpRequestor.js').create({});
 var constants = require('../lib/utils/constants.js');
 var _ = require('underscore');
 var smartsheet = require('../index.js').createClient({accessToken: "token", requestor: requestor});
@@ -280,7 +280,7 @@ describe('Method Unit Tests', function () {
                         smartsheet[testGroup.name].should.have.property(method.name);
                     });
 
-                    it('calls utils once', function () {
+                    it('calls requestor once', function () {
                         smartsheet[testGroup.name][method.name](method.options);
                         stub.callCount.should.be.equal(1);
                     });
