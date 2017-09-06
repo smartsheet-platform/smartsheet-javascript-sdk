@@ -4,7 +4,7 @@ var sinon = require('sinon');
 var Promise = require('bluebird');
 var _ = require('underscore');
 
-var smartsheet = require('../lib/utils/httpUtils').create({});
+var smartsheet = require('../lib/utils/httpUtils').create({request: request});
 
 var sample = {
   name : 'name'
@@ -50,50 +50,6 @@ describe('Utils Unit Tests', function() {
 
     it('should have DELETE method',function(){
       smartsheet.should.have.property('delete');
-    });
-
-    describe('#HandleResponse', function () {
-      var mockResponse = null;
-      var mockBody = null;
-
-      beforeEach(function() {
-        mockResponse = {
-          statusCode: 200,
-          headers: {
-            'content-type':'application/json;charset=UTF-8'
-          }
-        };
-
-        mockBody = '{"hello":"world"}';
-        mockBodyError = '{"errorCode": 911, "message":"EMERGENCY"}';
-      });
-
-      afterEach(function() {
-        mockResponse = null;
-        mockBody = null;
-      });
-
-      it('should return a rejected promise if status code is not 200', function() {
-        mockResponse.statusCode = 500;
-        smartsheet.handleResponse(mockResponse, mockBodyError)
-        .catch(function(error) {
-          error.statusCode.should.equal(500);
-          error.message.should.equal('EMERGENCY');
-          error.errorCode.should.equal(911);
-        });
-      });
-
-      it('should return parsed JSON body', function() {
-        var parsed = JSON.parse(mockBody);
-        var result = smartsheet.handleResponse(mockResponse, mockBody);
-        result.hello.should.equal(parsed.hello);
-      });
-
-      it('should return the body if content type is not application/json',function(){
-        mockResponse.headers['content-type'] = 'application/xml';
-        var result = smartsheet.handleResponse(mockResponse, mockBody);
-        result.should.equal(mockBody);
-      });
     });
 
     describe('#buildUrl', function() {
@@ -169,17 +125,22 @@ describe('Utils Unit Tests', function() {
         var headers = smartsheet.internal.buildHeaders({fileName: 'test',   fileSize: 123});
         headers['Content-Length'].should.equal(123);
       });
+
+      it('Assume-User should equal URI encoded email', function() {
+        var headers = smartsheet.internal.buildHeaders({assumeUser: 'john.doe@smartsheet.com'});
+        headers['Assume-User'].should.equal('john.doe%40smartsheet.com');
+      });
     });
   });
 
   describe('#GET', function() {
     describe('#Successful request', function() {
-      var stub = null;
-      var handleResponseStub = null;
+      var requestStub = null;
+      var stubbedRequestor = require('../lib/utils/httpUtils')
+        .create({request: request, handleResponse: () => true});
 
       beforeEach(function() {
-        stub = sinon.stub(request, 'getAsync');
-        handleResponseStub = sinon.stub(smartsheet, 'handleResponse');
+        requestStub = sinon.stub(request, 'getAsync');
         var mockResponse = {
           statusCode: 200,
           headers: {
@@ -187,37 +148,35 @@ describe('Utils Unit Tests', function() {
           }
         };
         var mockBody = '{"hello":"world"}';
-        stub.returns(new Promise.resolve([mockResponse, mockBody]));
-        handleResponseStub.returns(true);
+        requestStub.returns(new Promise.resolve([mockResponse, mockBody]));
       });
 
       afterEach(function() {
-        stub.restore();
-        handleResponseStub.restore();
+        requestStub.restore();
       });
 
       it('request should resolve promise as true',function() {
-        return smartsheet.get(sampleRequest)
+        return stubbedRequestor.get(sampleRequest)
           .then(function(data) {
             data.should.be.true;
           });
       });
 
       it('request should call callback as true',function() {
-        smartsheet.get(sampleRequest, function(err, data) {
+        stubbedRequestor.get(sampleRequest, function(err, data) {
           data.should.be.true;
         });
       });
     });
 
     describe('#Error on request', function() {
-      var stub = null;
-      var handleResponseStub = null;
+      var requestStub = null;
+      var stubbedRequestor = require('../lib/utils/httpUtils')
+        .create({request: request, handleResponse: () => true});
       var mockBody;
 
       beforeEach(function() {
-        stub = sinon.stub(request, 'getAsync');
-        handleResponseStub = sinon.stub(smartsheet, 'handleResponse');
+        requestStub = sinon.stub(request, 'getAsync');
         var mockResponse = {
           statusCode: 403,
           headers: {
@@ -225,24 +184,22 @@ describe('Utils Unit Tests', function() {
           }
         };
         mockBody = {error:true};
-        stub.returns(new Promise.reject(mockBody));
-        handleResponseStub.returns(true);
+        requestStub.returns(new Promise.reject(mockBody));
       });
 
       afterEach(function() {
-        stub.restore();
-        handleResponseStub.restore();
+        requestStub.restore();
       });
 
       it('request should error as false, using promises',function(){
-        return smartsheet.get(sampleRequest)
+        return stubbedRequestor.get(sampleRequest)
           .catch(function(error) {
             error.error.should.equal(true);
           });
       });
 
       it('request should error as false, using callbacks',function(){
-        smartsheet.get(sampleRequest, function(err, data) {
+        stubbedRequestor.get(sampleRequest, function(err, data) {
           err.should.be.equal(mockBody);
         });
       });
@@ -285,55 +242,53 @@ describe('Utils Unit Tests', function() {
     });
 
     describe('#Retry', function() {
-      var stub = null;
-      var handleResponseStub = null;
-
-      var sampleRequestForRetry;
+      var requestStub = null;
+      var handleResponseStub = sinon.stub();
+      var stubbedRequestor = require('../lib/utils/httpUtils')
+        .create({request: request, handleResponse: handleResponseStub});
+      var sampleRequestForRetry = null;
 
       function givenGetReturnsError() {
-        stub.returns(new Promise.resolve([{}, {}]));
+        requestStub.returns(new Promise.resolve([{}, {}]));
         handleResponseStub.returns(new Promise.reject({errorCode: 4001}));
       }
 
       function givenGetReturnsSuccess() {
-        stub.returns(new Promise.resolve([{}, {}]));
+        requestStub.returns(new Promise.resolve([{}, {}]));
         handleResponseStub.returns(true);
       }
 
       beforeEach(function() {
-        stub = sinon.stub(request, 'getAsync');
-        handleResponseStub = sinon.stub(smartsheet, 'handleResponse');
-
+        requestStub = sinon.stub(request, 'getAsync');
         sampleRequestForRetry = _.extend({}, sampleRequest);
         sampleRequestForRetry.maxRetryTime = 30;
         sampleRequestForRetry.calcRetryBackoff = function (numRetry) {return Math.pow(3, numRetry);};
       });
 
       afterEach(function() {
-        stub.restore();
-        handleResponseStub.restore();
+        requestStub.restore();
       });
 
       it('get called once on success', function() {
         givenGetReturnsSuccess();
-        return smartsheet.get(sampleRequestForRetry)
-        .then(function (data) {
-          stub.callCount.should.be.equal(1);
-        });
+        return stubbedRequestor.get(sampleRequestForRetry)
+          .then(function (data) {
+            requestStub.callCount.should.be.equal(1);
+          });
       });
 
       it('get retried on error', function() {
         givenGetReturnsError();
-        return smartsheet.get(sampleRequestForRetry)
-        .catch(function(err) {
-          stub.callCount.should.be.above(1);
-        });
+        return stubbedRequestor.get(sampleRequestForRetry)
+          .catch(function(err) {
+            requestStub.callCount.should.be.above(1);
+          });
       });
 
       it('get does not exceed max time', function() {
         givenGetReturnsError();
         var startTime = Date.now();
-        return smartsheet.get(sampleRequestForRetry)
+        return stubbedRequestor.get(sampleRequestForRetry)
         .catch(function(err) {
           sampleRequestForRetry.maxRetryTime.should.be.above(Date.now() - startTime - 5);
         });
@@ -343,12 +298,13 @@ describe('Utils Unit Tests', function() {
 
   describe('#POST', function() {
     describe('#Successful request', function() {
-      var stub = null;
-      var handleResponseStub = null;
+      var requestStub = null;
+
+      var stubbedRequestor = require('../lib/utils/httpUtils')
+        .create({request: request, handleResponse: () => true});
 
       beforeEach(function() {
-        stub = sinon.stub(request, 'postAsync');
-        handleResponseStub = sinon.stub(smartsheet, 'handleResponse');
+        requestStub = sinon.stub(request, 'postAsync');
         var mockResponse = {
           statusCode: 200,
           headers: {
@@ -356,62 +312,52 @@ describe('Utils Unit Tests', function() {
           }
         };
         var mockBody = '{"hello":"world"}';
-        stub.returns(new Promise.resolve([mockResponse, mockBody]));
-        handleResponseStub.returns(true);
+        requestStub.returns(new Promise.resolve([mockResponse, mockBody]));
       });
 
       afterEach(function() {
-        stub.restore();
-        handleResponseStub.restore();
+        requestStub.restore();
       });
 
       it('request should resolve as true',function() {
-        return smartsheet.post(sampleRequest)
+        return stubbedRequestor.post(sampleRequest)
           .then(function(data) {
-            data.should.equal(true);
+            data.should.be.true;
           });
       });
 
       it('request should call callback as true',function() {
-        smartsheet.post(sampleRequest, function(err, data) {
+        stubbedRequestor.post(sampleRequest, function(err, data) {
           data.should.be.true;
         });
       });
     });
 
     describe('#Error on request', function() {
-      var stub = null;
-      var handleResponseStub = null;
-      var mockBody;
+      var requestStub = null;     
+      var mockBody = {error:true};
+
+      var stubbedRequestor = require('../lib/utils/httpUtils')
+        .create({request: request, handleResponse: () => true});
 
       beforeEach(function() {
-        stub = sinon.stub(request, 'postAsync');
-        handleResponseStub = sinon.stub(smartsheet, 'handleResponse');
-        var mockResponse = {
-          statusCode: 403,
-          headers: {
-            'content-type':'application/json;charset=UTF-8'
-          }
-        };
-        mockBody = {error:true};
-        stub.returns(new Promise.reject(mockBody));
-        handleResponseStub.returns(true);
+        requestStub = sinon.stub(request, 'postAsync');
+        requestStub.returns(new Promise.reject(mockBody));
       });
 
       afterEach(function() {
-        stub.restore();
-        handleResponseStub.restore();
+        requestStub.restore();
       });
 
       it('request should error as false',function(){
-        return smartsheet.post(sampleRequest)
+        return stubbedRequestor.post(sampleRequest)
           .catch(function(error) {
             error.error.should.equal(true);
           });
       });
 
       it('request should error as false',function(){
-        smartsheet.post(sampleRequest, function(err, data) {
+        stubbedRequestor.post(sampleRequest, function(err, data) {
           err.should.be.equal(mockBody);
         });
       });
@@ -459,24 +405,26 @@ describe('Utils Unit Tests', function() {
     });
 
     describe('#Retry', function() {
-      var stub = null;
-      var handleResponseStub = null;
+      var requestStub = null;
+      var handleResponseStub = sinon.stub();
+      
+      var stubbedRequestor = require('../lib/utils/httpUtils')
+        .create({request: request, handleResponse: handleResponseStub});
 
       var sampleRequestForRetry;
 
       function givenPostReturnsError() {
-        stub.returns(new Promise.resolve([{}, {}]));
+        requestStub.returns(new Promise.resolve([{}, {}]));
         handleResponseStub.returns(new Promise.reject({errorCode: 4001}));
       }
 
       function givenPostReturnsSuccess() {
-        stub.returns(new Promise.resolve([{}, {}]));
+        requestStub.returns(new Promise.resolve([{}, {}]));
         handleResponseStub.returns(true);
       }
 
       beforeEach(function() {
-        stub = sinon.stub(request, 'postAsync');
-        handleResponseStub = sinon.stub(smartsheet, 'handleResponse');
+        requestStub = sinon.stub(request, 'postAsync');
 
         sampleRequestForRetry = _.extend({}, sampleRequest);
         sampleRequestForRetry.maxRetryTime = 30;
@@ -484,30 +432,29 @@ describe('Utils Unit Tests', function() {
       });
 
       afterEach(function() {
-        stub.restore();
-        handleResponseStub.restore();
+        requestStub.restore();
       });
 
       it('post called once on success', function() {
         givenPostReturnsSuccess();
-        return smartsheet.post(sampleRequestForRetry)
+        return stubbedRequestor.post(sampleRequestForRetry)
         .then(function (data) {
-          stub.callCount.should.be.equal(1);
+          requestStub.callCount.should.be.equal(1);
         });
       });
 
       it('post retried on error', function() {
         givenPostReturnsError();
-        return smartsheet.post(sampleRequestForRetry)
+        return stubbedRequestor.post(sampleRequestForRetry)
         .catch(function(err) {
-          stub.callCount.should.be.above(1);
+          requestStub.callCount.should.be.above(1);
         });
       });
 
       it('post does not exceed max time', function() {
         givenPostReturnsError();
         var startTime = Date.now();
-        return smartsheet.post(sampleRequestForRetry)
+        return stubbedRequestor.post(sampleRequestForRetry)
         .catch(function(err) {
           sampleRequestForRetry.maxRetryTime.should.be.above(Date.now() - startTime - 5);
         });
@@ -517,12 +464,13 @@ describe('Utils Unit Tests', function() {
 
   describe('#PUT', function() {
     describe('#Successful request', function() {
-      var stub = null;
-      var handleResponseStub = null;
+      var requestStub = null;
+      
+      var stubbedRequestor = require('../lib/utils/httpUtils')
+        .create({request: request, handleResponse: () => true});
 
       beforeEach(function() {
-        stub = sinon.stub(request, 'putAsync');
-        handleResponseStub = sinon.stub(smartsheet, 'handleResponse');
+        requestStub = sinon.stub(request, 'putAsync');
         var mockResponse = {
           statusCode: 200,
           headers: {
@@ -530,24 +478,22 @@ describe('Utils Unit Tests', function() {
           }
         };
         var mockBody = '{"hello":"world"}';
-        stub.returns(new Promise.resolve([mockResponse, mockBody]));
-        handleResponseStub.returns(true);
+        requestStub.returns(new Promise.resolve([mockResponse, mockBody]));
       });
 
       afterEach(function() {
-        stub.restore();
-        handleResponseStub.restore();
+        requestStub.restore();
       });
 
       it('request should resolve as true',function() {
-        return smartsheet.put(sampleRequest)
+        return stubbedRequestor.put(sampleRequest)
           .then(function(data) {
-            data.should.equal(true);
+            data.should.be.true;
           });
       });
 
       it('request should call callback as true',function() {
-        smartsheet.put(sampleRequest, function(err, data) {
+        stubbedRequestor.put(sampleRequest, function(err, data) {
           data.should.be.true;
         });
       });
@@ -555,37 +501,35 @@ describe('Utils Unit Tests', function() {
 
     describe('#Error on request', function() {
       var stub = null;
-      var handleResponseStub = null;
-      var mockBody;
+      var mockBody = {error: true};
+      
+      var stubbedRequestor = require('../lib/utils/httpUtils')
+        .create({request: request, handleResponse: () => true});
 
       beforeEach(function() {
         stub = sinon.stub(request, 'putAsync');
-        handleResponseStub = sinon.stub(smartsheet, 'handleResponse');
         var mockResponse = {
           statusCode: 403,
           headers: {
             'content-type':'application/json;charset=UTF-8'
           }
         };
-        mockBody = {error:true};
         stub.returns(new Promise.reject(mockBody));
-        handleResponseStub.returns(true);
       });
 
       afterEach(function() {
         stub.restore();
-        handleResponseStub.restore();
       });
 
       it('request should error as false',function(){
-        return smartsheet.put(sampleRequest)
+        return stubbedRequestor.put(sampleRequest)
           .catch(function(error) {
-            error.error.should.equal(true);
+            error.error.should.be.true;
           });
       });
 
       it('request should error as false',function(){
-        smartsheet.put(sampleRequest, function(err, data) {
+        stubbedRequestor.put(sampleRequest, function(err, data) {
           err.should.be.equal(mockBody);
         });
       });
@@ -633,24 +577,26 @@ describe('Utils Unit Tests', function() {
     });
 
     describe('#Retry', function() {
-      var stub = null;
-      var handleResponseStub = null;
+      var requestStub = null;
+      var handleResponseStub = sinon.stub();
+      
+      var stubbedRequestor = require('../lib/utils/httpUtils')
+        .create({request: request, handleResponse: handleResponseStub});
 
-      var sampleRequestForRetry;
+      var sampleRequestForRetry = null;
 
       function givenPutReturnsError() {
-        stub.returns(new Promise.resolve([{}, {}]));
+        requestStub.returns(new Promise.resolve([{}, {}]));
         handleResponseStub.returns(new Promise.reject({errorCode: 4001}));
       }
 
       function givenPutReturnsSuccess() {
-        stub.returns(new Promise.resolve([{}, {}]));
+        requestStub.returns(new Promise.resolve([{}, {}]));
         handleResponseStub.returns(true);
       }
 
       beforeEach(function() {
-        stub = sinon.stub(request, 'putAsync');
-        handleResponseStub = sinon.stub(smartsheet, 'handleResponse');
+        requestStub = sinon.stub(request, 'putAsync');
 
         sampleRequestForRetry = _.extend({}, sampleRequest);
         sampleRequestForRetry.maxRetryTime = 30;
@@ -658,31 +604,30 @@ describe('Utils Unit Tests', function() {
       });
 
       afterEach(function() {
-        stub.restore();
-        handleResponseStub.restore();
+        requestStub.restore();
       });
 
       it('put called once on success', function() {
         givenPutReturnsSuccess();
-        return smartsheet.put(sampleRequestForRetry)
+        return stubbedRequestor.put(sampleRequestForRetry)
         .then(function(data) {
-          stub.callCount.should.be.equal(1);
+          requestStub.callCount.should.be.equal(1);
         });
         
       });
 
       it('put retried on error', function() {
         givenPutReturnsError();
-        return smartsheet.put(sampleRequestForRetry)
+        return stubbedRequestor.put(sampleRequestForRetry)
         .catch(function(err) {
-          stub.callCount.should.be.above(1);
+          requestStub.callCount.should.be.above(1);
         });
       });
 
       it('put does not exceed max time', function() {
         givenPutReturnsError();
         var startTime = Date.now();
-        return smartsheet.put(sampleRequestForRetry)
+        return stubbedRequestor.put(sampleRequestForRetry)
         .catch(function(err) {
           sampleRequestForRetry.maxRetryTime.should.be.above(Date.now() - startTime - 5);
         });
@@ -692,12 +637,13 @@ describe('Utils Unit Tests', function() {
 
   describe('#DELETE', function() {
     describe('#Successful request', function() {
-      var stub = null;
-      var handleResponseStub = null;
+      var requestStub = null;
+      
+      var stubbedRequestor = require('../lib/utils/httpUtils')
+        .create({request: request, handleResponse: () => true});
 
       beforeEach(function() {
-        stub = sinon.stub(request, 'delAsync');
-        handleResponseStub = sinon.stub(smartsheet, 'handleResponse');
+        requestStub = sinon.stub(request, 'delAsync');
         var mockResponse = {
           statusCode: 200,
           headers: {
@@ -705,62 +651,59 @@ describe('Utils Unit Tests', function() {
           }
         };
         var mockBody = '{"hello":"world"}';
-        stub.returns(new Promise.resolve([mockResponse, mockBody]));
-        handleResponseStub.returns(true);
+        requestStub.returns(new Promise.resolve([mockResponse, mockBody]));
       });
 
       afterEach(function() {
-        stub.restore();
-        handleResponseStub.restore();
+        requestStub.restore();
       });
 
       it('request should resolve as true',function() {
-        return smartsheet.delete(sampleRequest)
+        return stubbedRequestor.delete(sampleRequest)
           .then(function(data) {
-            data.should.equal(true);
+            data.should.be.true;
           });
       });
 
       it('request should call callback as true',function() {
-        smartsheet.delete(sampleRequest, function(err, data) {
+        stubbedRequestor.delete(sampleRequest, function(err, data) {
           data.should.be.true;
         });
       });
     });
 
     describe('#Error on request', function() {
-      var stub = null;
+      var requestStub = null;
       var handleResponseStub = null;
-      var mockBody;
+      var mockBody = {error: true};
+      
+      var stubbedRequestor = require('../lib/utils/httpUtils')
+        .create({request: request, handleResponse: () => true});
 
       beforeEach(function() {
-        stub = sinon.stub(request, 'delAsync');
-        handleResponseStub = sinon.stub(smartsheet, 'handleResponse');
+        requestStub = sinon.stub(request, 'delAsync');
         var mockResponse = {
           statusCode: 403,
           headers: {
             'content-type':'application/json;charset=UTF-8'
           }
         };
-        mockBody = {error:true};
-        stub.returns(new Promise.reject(mockBody));
-        handleResponseStub.returns(true);
+        requestStub.returns(new Promise.reject(mockBody));
       });
 
       afterEach(function() {
-        stub.restore();
-        handleResponseStub.restore();
+        requestStub.restore();
       });
 
       it('request should error as false',function(){
-        return smartsheet.delete(sampleRequest)
+        return stubbedRequestor.delete(sampleRequest)
           .catch(function(error) {
-            error.error.should.equal(true);
+            error.error.should.be.true;
           });
       });
 
       it('request should error as false',function(){
-        smartsheet.delete(sampleRequest, function(err, data) {
+        stubbedRequestor.delete(sampleRequest, function(err, data) {
           err.should.be.equal(mockBody);
         });
       });
@@ -803,24 +746,26 @@ describe('Utils Unit Tests', function() {
     });
 
     describe('#Retry', function() {
-      var stub = null;
-      var handleResponseStub = null;
+      var requestStub = null;
+      var handleResponseStub = sinon.stub();
+      
+      var stubbedRequestor = require('../lib/utils/httpUtils')
+        .create({request: request, handleResponse: handleResponseStub});
 
       var sampleRequestForRetry;
 
       function givenDeleteReturnsError() {
-        stub.returns(new Promise.resolve([{}, {}]));
+        requestStub.returns(new Promise.resolve([{}, {}]));
         handleResponseStub.returns(new Promise.reject({errorCode: 4001}));
       }
 
       function givenDeleteReturnsSuccess() {
-        stub.returns(new Promise.resolve([{}, {}]));
+        requestStub.returns(new Promise.resolve([{}, {}]));
         handleResponseStub.returns(true);
       }
 
       beforeEach(function() {
-        stub = sinon.stub(request, 'delAsync');
-        handleResponseStub = sinon.stub(smartsheet, 'handleResponse');
+        requestStub = sinon.stub(request, 'delAsync');
 
         sampleRequestForRetry = _.extend({}, sampleRequest);
         sampleRequestForRetry.maxRetryTime = 30;
@@ -828,31 +773,29 @@ describe('Utils Unit Tests', function() {
       });
 
       afterEach(function() {
-        stub.restore();
-        handleResponseStub.restore();
+        requestStub.restore();
       });
 
       it('delete called once on success', function() {
         givenDeleteReturnsSuccess();
-        return smartsheet.delete(sampleRequestForRetry)
+        return stubbedRequestor.delete(sampleRequestForRetry)
         .then(function(data) {
-          stub.callCount.should.be.equal(1);
+          requestStub.callCount.should.be.equal(1);
         });
-        
       });
 
       it('delete retried on error', function() {
         givenDeleteReturnsError();
-        return smartsheet.delete(sampleRequestForRetry)
+        return stubbedRequestor.delete(sampleRequestForRetry)
         .catch(function(err) {
-          stub.callCount.should.be.above(1);
+          requestStub.callCount.should.be.above(1);
         });
       });
 
       it('delete does not exceed max time', function() {
         givenDeleteReturnsError();
         var startTime = Date.now();
-        return smartsheet.delete(sampleRequestForRetry)
+        return stubbedRequestor.delete(sampleRequestForRetry)
         .catch(function(err) {
           sampleRequestForRetry.maxRetryTime.should.be.above(Date.now() - startTime - 5);
         });

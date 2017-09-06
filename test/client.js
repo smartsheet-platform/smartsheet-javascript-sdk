@@ -320,7 +320,7 @@ describe('Client Unit Tests', function() {
       smartsheet.sights.should.have.property('deleteSight');
       smartsheet.sights.should.have.property('deleteShare');
     });
-  })
+  });
 
   describe('#templates', function () {
     it('should have templates object', function () {
