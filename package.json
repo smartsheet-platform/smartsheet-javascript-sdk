@@ -30,7 +30,7 @@
   },
   "homepage": "http://smartsheet.com/developers",
   "dependencies": {
-    "bluebird": "^2.9.24",
+    "bluebird": "^3.5.0",
     "request": "^2.54.0",
     "underscore": "^1.8.2"
   },
@@ -42,7 +42,7 @@
     "jshint-stylish": "^1.0.1",
     "mocha": "^2.2.1",
     "mock": "^0.1.1",
-    "should": "^5.2.0",
+    "should": "^13.0.1",
     "sinon": "^1.14.1"
   }
 }
