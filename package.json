@@ -32,7 +32,8 @@
   "dependencies": {
     "bluebird": "^3.5.0",
     "request": "^2.54.0",
-    "underscore": "^1.8.2"
+    "underscore": "^1.8.2",
+    "winston": "^2.3.1"
   },
   "devDependencies": {
     "gulp": "^3.8.11",
