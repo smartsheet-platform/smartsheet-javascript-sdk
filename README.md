@@ -1,4 +1,4 @@
-# Smartsheet SDK for JavaScript
+# Smartsheet SDK for JavaScript [![Build Status](https://travis-ci.org/armstnp/smartsheet-javascript-sdk.svg?branch=master)](https://travis-ci.org/armstnp/smartsheet-javascript-sdk)
 
 This is an SDK to simplify connecting to the [Smartsheet API](http://www.smartsheet.com/developers/api-documentation) from Node.js applications.
 
