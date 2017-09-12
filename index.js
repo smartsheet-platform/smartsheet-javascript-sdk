@@ -1,11 +1,38 @@
+var _ = require('underscore');
+var winston = require('winston');
 var apiUrls = require('./lib/utils/apis.js');
 
-exports.createClient = function(options) {
+// Possible TODO: Namespace parameters for different subcomponents
+// E.g. clientOptions.requestor.instance OR
+//      clientOptions.requestor.settings
+//          w/ sub-paths maxRetryTime and calcRetryBackoff
+
+function buildRequestor(clientOptions) {
+  if(clientOptions.requestor) return clientOptions.requestor;
+  
+  var requestorConfig =
+    _.pick(clientOptions, 'maxRetryTime', 'calcRetryBackoff');
+
+  requestorConfig.logger = buildLogger(clientOptions);
+  
+  return require('./lib/utils/httpRequestor.js')
+    .create(requestorConfig);
+};
+
+function buildLogger(clientOptions) {
+  return clientOptions.logger
+    || (clientOptions.logContainer && clientOptions.logContainer.get('smartsheet'))
+    || winston.loggers.get('smartsheet')
+    || winston;
+}
+
+exports.createClient = function(clientOptions) {
+  var requestor = buildRequestor(clientOptions);
+
   var options = {
-    accessToken: options.accessToken,
+    accessToken: clientOptions.accessToken,
     apiUrls: apiUrls,
-    maxRetryTime: options.maxRetryTime,
-    calcRetryBackoff: options.calcRetryBackoff
+    requestor: requestor
   };
 
   return {
