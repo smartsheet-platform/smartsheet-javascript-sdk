@@ -2,8 +2,6 @@
 
 This is an SDK to simplify connecting to the [Smartsheet API](http://www.smartsheet.com/developers/api-documentation) from Node.js applications.
 
-*Please note that this SDK is beta and may change significantly in the future.*
-
 ## System Requirements
 
 The SDK supports Node.js versions 6.x or later.
@@ -31,35 +29,36 @@ The following is a brief sample using promises that shows you how to:
 <pre class="center-column">
 // Initialize the client
 var client = require('smartsheet');
-var ss = client.createClient({accessToken:'ll352u9jujauoqz4gstvsae05'});
+var smartsheet = client.createClient({
+    accessToken: 'll352u9jujauoqz4gstvsae05'
+});
 
-// The `ss` variable now contains access to all of the APIs.
+// The `smartsheet` variable now contains access to all of the APIs
 
 // List all sheets
-ss.sheets.listSheets({})
-    .then(function(sheetsList) {
-        console.log(sheetsList);
-    })
-    .catch(function(error) {
-        console.log(error);
-    });
+smartsheet.sheets.listSheets()
+    .then(function (result) {
+        // Default to first sheet
+        var sheetId = result.data[0].id;
 
-// In the response, you should see a unique sheet Id for each sheet.
-// Get a sheet
-ss.sheets.getSheet({id: 7583368238917508})
-    .then(function(sheet) {
-        console.log(sheet);
-    })
-    .catch(function(error) {
+        // Load the entire sheet
+        smartsheet.sheets.getSheet({id: sheetId})
+            .then(function(sheetInfo) {
+                console.log(sheetInfo);
+            })
+            .catch(function(error) {
+                console.log(error);
+        });
+    }).catch(function(error) {
         console.log(error);
-    });
+});
 </pre>
 <br/>
 
 Although the example above is using promises and the API documentation samples use promises, you could also access the APIs in this SDK by using callbacks.
 
     // List all sheets using callbacks
-    ss.sheets.listSheets({}, function(error, data) {
+    smartsheet.sheets.listSheets({}, function(error, data) {
        if (error) {
          console.log(error);
        }
@@ -81,7 +80,10 @@ If you have any questions or issues with this SDK please post on [Stack Overflow
 
 Each specific release is available for download via [GitHub](https://github.com/smartsheet-platform/smartsheet-javascript-sdk/tags).
 
+**v1 (September 2017)**
+Official release of the Smartsheet SDK for JavaScript
+
 **v0.0.1-beta (Aug 12, 2015)**
-* Initial Release of the Smartsheet SDK for JavaScript
+Initial Release of the Smartsheet SDK for JavaScript
 
 *Note*: Minor changes that result in a patch version increment in NPM (such as updates to the README) will not be tagged as a Release in GitHub.
