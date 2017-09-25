@@ -22,8 +22,7 @@ function buildRequestor(clientOptions) {
 function buildLogger(clientOptions) {
   return clientOptions.logger
     || (clientOptions.logContainer && clientOptions.logContainer.get('smartsheet'))
-    || winston.loggers.get('smartsheet')
-    || winston;
+    || winston.loggers.get('smartsheet');
 }
 
 exports.createClient = function(clientOptions) {
