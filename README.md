@@ -10,7 +10,9 @@ The SDK supports Node.js versions 6.x or later.
 
 To install this SDK, simply run the following command in a terminal window: 
 
-    npm install smartsheet
+```bash
+npm install smartsheet
+```
 
 ## Documentation
 
@@ -26,7 +28,7 @@ The following is a brief sample using promises that shows you how to:
 * List all sheets
 * Load one sheet
 
-<pre class="center-column">
+```javascript
 // Initialize the client
 var client = require('smartsheet');
 var smartsheet = client.createClient({
@@ -37,33 +39,36 @@ var smartsheet = client.createClient({
 
 // List all sheets
 smartsheet.sheets.listSheets()
-    .then(function (result) {
-        // Default to first sheet
-        var sheetId = result.data[0].id;
+  .then(function (result) {
+    // Default to first sheet
+    var sheetId = result.data[0].id;
 
-        // Load the entire sheet
-        smartsheet.sheets.getSheet({id: sheetId})
-            .then(function(sheetInfo) {
-                console.log(sheetInfo);
-            })
-            .catch(function(error) {
-                console.log(error);
-        });
-    }).catch(function(error) {
+    // Load the entire sheet
+    smartsheet.sheets.getSheet({id: sheetId})
+      .then(function(sheetInfo) {
+        console.log(sheetInfo);
+      })
+      .catch(function(error) {
         console.log(error);
-});
-</pre>
-<br/>
+      });
+  })
+  .catch(function(error) {
+    console.log(error);
+  });
+```
 
 Although the example above is using promises and the API documentation samples use promises, you could also access the APIs in this SDK by using callbacks.
 
-    // List all sheets using callbacks
-    smartsheet.sheets.listSheets({}, function(error, data) {
-       if (error) {
-         console.log(error);
-       }
-       console.log(data);
-     });
+```javascript
+// List all sheets using callbacks
+smartsheet.sheets.listSheets({}, function(error, data) {
+  if (error) {
+    console.log(error);
+  } else {
+    console.log(data);
+  }
+});
+```
 
  See the [node-read-write-sheet](https://github.com/smartsheet-samples/node-read-write-sheet) project for a code example that shows how to call methods to read and write to a sheet using this SDK.
 
