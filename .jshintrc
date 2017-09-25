@@ -1,0 +1,5 @@
+{
+  "esversion": 6,
+  "predef": ["-Promise"],
+  "laxbreak": true // Primarily for ternary operator clarity
+}
