@@ -32,7 +32,7 @@ The following is a brief sample using promises that shows you how to:
 // Initialize the client
 var client = require('smartsheet');
 var smartsheet = client.createClient({
-    accessToken: 'll352u9jujauoqz4gstvsae05'
+  accessToken: 'll352u9jujauoqz4gstvsae05'
 });
 
 // The `smartsheet` variable now contains access to all of the APIs
