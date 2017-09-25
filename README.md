@@ -67,6 +67,27 @@ Although the example above is using promises and the API documentation samples u
 
  See the [node-read-write-sheet](https://github.com/smartsheet-samples/node-read-write-sheet) project for a code example that shows how to call methods to read and write to a sheet using this SDK.
 
+## Configuration
+
+When creating the client object, pass an object with any of the following options to tune its behaviour.
+
+### Retry Configuration
+
+* `maxRetryTime` - The maximum time in milliseconds for requests to retry on eligible failure.  By default, this is set to 15 seconds.
+* `calcRetryBackoff` - A function accepting the index of the retry being attempted (0 for the first retry, 1 for the second, etc.) and returning the number of milliseconds to wait until making the subsequent retry call.  By default, this is set to exponential backoff with additional jitter.
+
+## Logging
+
+This library leverages [**winston**](https://github.com/winstonjs/winston) for logging.  **winston** provides [documentation on configuring loggers](https://github.com/winstonjs/winston#working-with-multiple-loggers-in-winston).  To receive logs from the SDK, choose one of the following:
+
+* Create and configure a **winston** container named 'smartsheet'. _(Recommended)_
+* Create and configure a **winston** logger named 'smartsheet'.
+
+If you choose not to use **winston** and want to use your own logger, pass a logger object in the client configuration under the key `logger` that meets the following specification:
+
+* `silly`, `verbose`, `debug`, `info`, `warn`, `error` - Logging levels following **winston**'s logging format
+* `log` - Similar to the above, but accepting the logging level string as its initial parameter; this log level will be one of the above options.
+
 ## Contributing
 
 If you would like to contribute a change to the SDK, please fork a branch and then submit a pull request.
