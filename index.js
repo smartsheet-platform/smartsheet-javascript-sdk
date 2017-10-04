@@ -20,9 +20,48 @@ function buildRequestor(clientOptions) {
 };
 
 function buildLogger(clientOptions) {
-  return clientOptions.logger
-    || (clientOptions.logContainer && clientOptions.logContainer.get('smartsheet'))
-    || winston.loggers.get('smartsheet');
+  if((clientOptions.logger && clientOptions.loggerContainer)
+      || (clientOptions.logger && clientOptions.logLevel)
+      || (clientOptions.loggerContainer && clientOptions.logLevel)) {
+    throw new Error(
+      "Smartsheet client options may specify at most one of " +
+      "'logger', 'loggerContainer', and 'logLevel'.");
+  }
+  
+  if(clientOptions.logger) return clientOptions.logger;
+
+  if(clientOptions.logLevel) return buildLoggerFromLevel(clientOptions.logLevel);
+
+  if(clientOptions.loggerContainer) return buildLoggerFromContainer(clientOptions.loggerContainer);
+
+  return null;
+}
+
+function buildLoggerFromLevel(logLevel) {
+  if(winston.levels[clientOptions.logLevel] == null) {
+    throw new Error(
+      'Smartsheet client received configuration with invalid log level ' +
+      `'${clientOptions.logLevel}'. Use one of the standard Winston log levels.`);
+  }
+
+  return new (winston.Logger)({
+    transports: [
+      new winston.transports.Console({
+        level: clientOptions.logLevel,
+        showLevel: false,
+        label: 'Smartsheet'
+      })
+    ]
+  });
+}
+
+function buildLoggerFromContainer(container) {
+  if(container.has('smartsheet'))
+    return container.get('smartsheet');
+  else
+    throw new Error(
+      "Smartsheet client received a logger container, but could not find a logger named " +
+      "'smartsheet' inside.");
 }
 
 exports.createClient = function(clientOptions) {
