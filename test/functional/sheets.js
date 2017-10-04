@@ -6,9 +6,9 @@ var smartsheet = null;
 
 describe('Client Unit Tests', function() {
   beforeEach(function() {
-    requestor = require('../lib/utils/httpRequestor.js').create({});
+    requestor = require('../../lib/utils/httpRequestor.js').create({});
     sinon.spy(requestor, 'get');
-    var client = require('..');
+    var client = require('../..');
     smartsheet = client.createClient({accessToken:'1234', requestor: requestor});
   });
 

@@ -1,9 +1,9 @@
 var sinon = require('sinon');
 var should = require('should');
-var requestor = require('../lib/utils/httpRequestor.js').create({});
-var constants = require('../lib/utils/constants.js');
+var requestor = require('../../lib/utils/httpRequestor.js').create({});
+var constants = require('../../lib/utils/constants.js');
 var _ = require('underscore');
-var smartsheet = require('../index.js').createClient({accessToken: "token", requestor: requestor});
+var smartsheet = require('../../index.js').createClient({accessToken: "token", requestor: requestor});
 
 describe('Method Unit Tests', function () {
     var testGroups = [
