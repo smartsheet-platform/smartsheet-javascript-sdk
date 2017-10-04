@@ -78,7 +78,7 @@ When creating the client object, pass an object with any of the following option
 
 ### Retry Configuration
 
-* `maxRetryTime` - The maximum time in milliseconds for requests to retry on eligible failure.  By default, this is set to 15 seconds.
+* `maxRetryDurationSeconds` - The maximum time in seconds for requests to retry on eligible failure.  By default, this is set to 15 seconds.
 * `calcRetryBackoff` - A function accepting the index of the retry being attempted (0 for the first retry, 1 for the second, etc.) and returning the number of milliseconds to wait until making the subsequent retry call.  By default, this is set to exponential backoff with additional jitter.
 
 ## Logging

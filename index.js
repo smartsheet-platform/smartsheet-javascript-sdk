@@ -5,13 +5,16 @@ var apiUrls = require('./lib/utils/apis.js');
 // Possible TODO: Namespace parameters for different subcomponents
 // E.g. clientOptions.requestor.instance OR
 //      clientOptions.requestor.settings
-//          w/ sub-paths maxRetryTime and calcRetryBackoff
+//          w/ sub-paths maxRetryDurationSeconds and calcRetryBackoff
 
 function buildRequestor(clientOptions) {
   if(clientOptions.requestor) return clientOptions.requestor;
   
   var requestorConfig =
-    _.pick(clientOptions, 'maxRetryTime', 'calcRetryBackoff');
+    _.pick(clientOptions, 'maxRetryDurationSeconds', 'calcRetryBackoff');
+  
+  if(requestorConfig.maxRetryDurationSeconds)
+    requestorConfig.maxRetryDurationMillis = requestorConfig.maxRetryDurationSeconds * 1000;
 
   requestorConfig.logger = buildLogger(clientOptions);
   
