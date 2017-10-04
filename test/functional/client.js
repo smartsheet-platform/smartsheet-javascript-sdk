@@ -17,7 +17,7 @@ describe('Client Unit Tests', function() {
     it('should have Constants object', function() {
       Object.keys(smartsheet.constants).should.be.length(7);
       smartsheet.should.have.property('constants');
-      smartsheet.constants.should.have.property('maxRetryTime');
+      smartsheet.constants.should.have.property('maxRetryDurationMillis');
       smartsheet.constants.should.have.property('accessLevel');
       smartsheet.constants.should.have.property('accessScope');
       smartsheet.constants.should.have.property('types');

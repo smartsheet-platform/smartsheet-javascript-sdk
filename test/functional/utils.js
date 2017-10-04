@@ -245,7 +245,7 @@ describe('Utils Unit Tests', function() {
       beforeEach(() => {
         requestStub = sinon.stub(request, 'getAsync');
         sampleRequestForRetry = _.extend({}, sampleRequest);
-        sampleRequestForRetry.maxRetryTime = 30;
+        sampleRequestForRetry.maxRetryDurationMillis = 30;
         sampleRequestForRetry.calcRetryBackoff = function (numRetry) {return Math.pow(3, numRetry);};
       });
 
@@ -273,7 +273,7 @@ describe('Utils Unit Tests', function() {
         return stubbedRequestor
           .get(sampleRequestForRetry)
           .catch(err =>
-            sampleRequestForRetry.maxRetryTime.should.be.above(Date.now() - startTime - 5));
+            sampleRequestForRetry.maxRetryDurationMillis.should.be.above(Date.now() - startTime - 5));
       });
     });
   });
@@ -405,7 +405,7 @@ describe('Utils Unit Tests', function() {
         requestStub = sinon.stub(request, 'postAsync');
 
         sampleRequestForRetry = _.extend({}, sampleRequest);
-        sampleRequestForRetry.maxRetryTime = 30;
+        sampleRequestForRetry.maxRetryDurationMillis = 30;
         sampleRequestForRetry.calcRetryBackoff = function (numRetry) {return Math.pow(3, numRetry);};
       });
 
@@ -432,7 +432,7 @@ describe('Utils Unit Tests', function() {
         var startTime = Date.now();
         return stubbedRequestor
           .post(sampleRequestForRetry)
-          .catch(err => sampleRequestForRetry.maxRetryTime
+          .catch(err => sampleRequestForRetry.maxRetryDurationMillis
                    .should.be.above(Date.now() - startTime - 5));
       });
     });
@@ -571,7 +571,7 @@ describe('Utils Unit Tests', function() {
         requestStub = sinon.stub(request, 'putAsync');
 
         sampleRequestForRetry = _.extend({}, sampleRequest);
-        sampleRequestForRetry.maxRetryTime = 30;
+        sampleRequestForRetry.maxRetryDurationMillis = 30;
         sampleRequestForRetry.calcRetryBackoff = function (numRetry) {return Math.pow(3, numRetry);};
       });
 
@@ -598,7 +598,7 @@ describe('Utils Unit Tests', function() {
         var startTime = Date.now();
         return stubbedRequestor
           .put(sampleRequestForRetry)
-          .catch(err => sampleRequestForRetry.maxRetryTime
+          .catch(err => sampleRequestForRetry.maxRetryDurationMillis
                    .should.be.above(Date.now() - startTime - 5));
       });
     });
@@ -733,7 +733,7 @@ describe('Utils Unit Tests', function() {
         requestStub = sinon.stub(request, 'delAsync');
 
         sampleRequestForRetry = _.extend({}, sampleRequest);
-        sampleRequestForRetry.maxRetryTime = 30;
+        sampleRequestForRetry.maxRetryDurationMillis = 30;
         sampleRequestForRetry.calcRetryBackoff = function (numRetry) {return Math.pow(3, numRetry);};
       });
 
@@ -760,7 +760,7 @@ describe('Utils Unit Tests', function() {
         var startTime = Date.now();
         return stubbedRequestor
           .delete(sampleRequestForRetry)
-          .catch(err => sampleRequestForRetry.maxRetryTime
+          .catch(err => sampleRequestForRetry.maxRetryDurationMillis
                    .should.be.above(Date.now() - startTime - 5));
       });
     });
