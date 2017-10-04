@@ -20,9 +20,7 @@ function buildRequestor(clientOptions) {
 };
 
 function buildLogger(clientOptions) {
-  if((clientOptions.logger && clientOptions.loggerContainer)
-      || (clientOptions.logger && clientOptions.logLevel)
-      || (clientOptions.loggerContainer && clientOptions.logLevel)) {
+  if(hasMultipleLogOptions(clientOptions)) {
     throw new Error(
       "Smartsheet client options may specify at most one of " +
       "'logger', 'loggerContainer', and 'logLevel'.");
@@ -35,6 +33,12 @@ function buildLogger(clientOptions) {
   if(clientOptions.loggerContainer) return buildLoggerFromContainer(clientOptions.loggerContainer);
 
   return null;
+}
+
+function hasMultipleLogOptions(clientOptions) {
+  return (clientOptions.logger && clientOptions.loggerContainer)
+  || (clientOptions.logger && clientOptions.logLevel)
+  || (clientOptions.loggerContainer && clientOptions.logLevel);
 }
 
 function buildLoggerFromLevel(logLevel) {
