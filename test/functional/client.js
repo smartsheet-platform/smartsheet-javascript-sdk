@@ -5,7 +5,7 @@ var smartsheet = null;
 
 describe('Client Unit Tests', function() {
   beforeEach(function() {
-    client = require('../');
+    client = require('../../');
     smartsheet = client.createClient({accessToken:'1234'});
   });
 

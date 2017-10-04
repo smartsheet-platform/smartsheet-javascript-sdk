@@ -4,7 +4,7 @@ var sinon = require('sinon');
 var Promise = require('bluebird');
 var _ = require('underscore');
 
-var requestor = require('../lib/utils/httpRequestor').create({request: request});
+var requestor = require('../../lib/utils/httpRequestor').create({request: request});
 
 var sample = {
   name : 'name'
@@ -126,7 +126,7 @@ describe('Utils Unit Tests', function() {
   describe('#GET', function() {
     describe('#Successful request', function() {
       var requestStub = null;
-      var stubbedRequestor = require('../lib/utils/httpRequestor')
+      var stubbedRequestor = require('../../lib/utils/httpRequestor')
         .create({request: request, handleResponse: () => ({content: true})});
 
       beforeEach(() => {
@@ -157,7 +157,7 @@ describe('Utils Unit Tests', function() {
 
     describe('#Error on request', function() {
       var requestStub = null;
-      var stubbedRequestor = require('../lib/utils/httpRequestor')
+      var stubbedRequestor = require('../../lib/utils/httpRequestor')
         .create({request: request, handleResponse: () => ({content: true})});
       var mockBody;
 
@@ -228,7 +228,7 @@ describe('Utils Unit Tests', function() {
     describe('#Retry', function() {
       var requestStub = null;
       var handleResponseStub = sinon.stub();
-      var stubbedRequestor = require('../lib/utils/httpRequestor')
+      var stubbedRequestor = require('../../lib/utils/httpRequestor')
         .create({request: request, handleResponse: handleResponseStub});
       var sampleRequestForRetry = null;
 
@@ -282,7 +282,7 @@ describe('Utils Unit Tests', function() {
     describe('#Successful request', function() {
       var requestStub = null;
 
-      var stubbedRequestor = require('../lib/utils/httpRequestor')
+      var stubbedRequestor = require('../../lib/utils/httpRequestor')
         .create({request: request, handleResponse: () => ({content: true})});
 
       beforeEach(() => {
@@ -317,7 +317,7 @@ describe('Utils Unit Tests', function() {
       var requestStub = null;     
       var mockBody = {error:true};
 
-      var stubbedRequestor = require('../lib/utils/httpRequestor')
+      var stubbedRequestor = require('../../lib/utils/httpRequestor')
         .create({request: request, handleResponse: () => ({content: true})});
 
       beforeEach(() => {
@@ -386,7 +386,7 @@ describe('Utils Unit Tests', function() {
       var requestStub = null;
       var handleResponseStub = sinon.stub();
       
-      var stubbedRequestor = require('../lib/utils/httpRequestor')
+      var stubbedRequestor = require('../../lib/utils/httpRequestor')
         .create({request: request, handleResponse: handleResponseStub});
 
       var sampleRequestForRetry;
@@ -442,7 +442,7 @@ describe('Utils Unit Tests', function() {
     describe('#Successful request', function() {
       var requestStub = null;
       
-      var stubbedRequestor = require('../lib/utils/httpRequestor')
+      var stubbedRequestor = require('../../lib/utils/httpRequestor')
         .create({request: request, handleResponse: () => ({content: true})});
 
       beforeEach(() => {
@@ -477,7 +477,7 @@ describe('Utils Unit Tests', function() {
       var stub = null;
       var mockBody = {error: true};
       
-      var stubbedRequestor = require('../lib/utils/httpRequestor')
+      var stubbedRequestor = require('../../lib/utils/httpRequestor')
         .create({request: request, handleResponse: () => ({content: true})});
 
       beforeEach(() => {
@@ -552,7 +552,7 @@ describe('Utils Unit Tests', function() {
       var requestStub = null;
       var handleResponseStub = sinon.stub();
       
-      var stubbedRequestor = require('../lib/utils/httpRequestor')
+      var stubbedRequestor = require('../../lib/utils/httpRequestor')
         .create({request: request, handleResponse: handleResponseStub});
 
       var sampleRequestForRetry = null;
@@ -608,7 +608,7 @@ describe('Utils Unit Tests', function() {
     describe('#Successful request', function() {
       var requestStub = null;
       
-      var stubbedRequestor = require('../lib/utils/httpRequestor')
+      var stubbedRequestor = require('../../lib/utils/httpRequestor')
         .create({request: request, handleResponse: () => ({content: true})});
 
       beforeEach(() => {
@@ -644,7 +644,7 @@ describe('Utils Unit Tests', function() {
       var handleResponseStub = null;
       var mockBody = {error: true};
       
-      var stubbedRequestor = require('../lib/utils/httpRequestor')
+      var stubbedRequestor = require('../../lib/utils/httpRequestor')
         .create({request: request, handleResponse: () => ({content: true})});
 
       beforeEach(() => {
@@ -714,7 +714,7 @@ describe('Utils Unit Tests', function() {
       var requestStub = null;
       var handleResponseStub = sinon.stub();
       
-      var stubbedRequestor = require('../lib/utils/httpRequestor')
+      var stubbedRequestor = require('../../lib/utils/httpRequestor')
         .create({request: request, handleResponse: handleResponseStub});
 
       var sampleRequestForRetry;

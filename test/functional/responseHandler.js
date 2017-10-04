@@ -2,7 +2,7 @@ var should = require('should');
 var Promise = require('bluebird');
 var _ = require('underscore');
 
-var handleResponse = require('../lib/utils/responseHandler');
+var handleResponse = require('../../lib/utils/responseHandler');
 
 describe('Utils Unit Tests', function() {
   describe('#responseHandler', function() {
