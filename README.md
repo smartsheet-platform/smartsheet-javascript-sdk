@@ -85,13 +85,19 @@ When creating the client object, pass an object with any of the following option
 
 This library leverages [**winston**](https://github.com/winstonjs/winston) for logging.  **winston** provides [documentation on configuring loggers](https://github.com/winstonjs/winston#working-with-multiple-loggers-in-winston).  To receive logs from the SDK, choose one of the following:
 
-* Create and configure a **winston** container named 'smartsheet'. _(Recommended)_
-* Create and configure a **winston** logger named 'smartsheet'.
+### Simple
 
-If you choose not to use **winston** and want to use your own logger, pass a logger object in the client configuration under the key `logger` that meets the following specification:
+Pass the `logLevel` configuration option as one of the default **winston** log levels: `silly`, `verbose`, `debug`, `info`, `warn`, or `error`.  This will default to a simple Console transport.
 
-* `silly`, `verbose`, `debug`, `info`, `warn`, `error` - Logging levels following **winston**'s logging format
-* `log` - Similar to the above, but accepting the logging level string as its initial parameter; this log level will be one of the above options.
+### Flexible
+
+Create a **winston** container or configure the default `winston.loggers` container, adding a logger named 'smartsheet'. Pass this container in as the configuration option `loggerContainer`. _(Recommended)_
+
+### Customized
+
+If you choose not to use **winston** and want to use your own logger, pass a logger object as the configuration option `logger` that meets the following specification:
+* `silly`, `verbose`, `debug`, `info`, `warn`, `error` - Logging methods following **winston**'s logging format
+* `log` - Similar to the above, but accepting the logging level string as its initial parameter; this log level is guaranteed be one of the above options.
 
 ## Contributing
 
