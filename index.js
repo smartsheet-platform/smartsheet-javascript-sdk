@@ -38,16 +38,16 @@ function buildLogger(clientOptions) {
 }
 
 function buildLoggerFromLevel(logLevel) {
-  if(winston.levels[clientOptions.logLevel] == null) {
+  if(winston.levels[logLevel] == null) {
     throw new Error(
       'Smartsheet client received configuration with invalid log level ' +
-      `'${clientOptions.logLevel}'. Use one of the standard Winston log levels.`);
+      `'${logLevel}'. Use one of the standard Winston log levels.`);
   }
 
   return new (winston.Logger)({
     transports: [
       new winston.transports.Console({
-        level: clientOptions.logLevel,
+        level: logLevel,
         showLevel: false,
         label: 'Smartsheet'
       })
