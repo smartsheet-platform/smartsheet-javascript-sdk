@@ -112,8 +112,8 @@ If you have any questions or issues with this SDK please post on [Stack Overflow
 
 Each specific release is available for download via [GitHub](https://github.com/smartsheet-platform/smartsheet-javascript-sdk/tags).
 
-**v1 (September 2017)**
-Official release of the Smartsheet SDK for JavaScript
+**v1.0.0-beta.0 (October 2017)**
+Beta release of the Smartsheet SDK for JavaScript
 
 **v0.0.1-beta (Aug 12, 2015)**
 Initial Release of the Smartsheet SDK for JavaScript
