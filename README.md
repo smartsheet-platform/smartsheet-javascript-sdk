@@ -76,24 +76,21 @@ smartsheet.sheets.listSheets({}, function(error, data) {
 
 When creating the client object, pass an object with any of the following options to tune its behavior.
 
-### Retry Configuration
+### Quick Start
 
-* `maxRetryDurationSeconds` - The maximum time in seconds for requests to retry on eligible failure.  By default, this is set to 15 seconds.
-* `calcRetryBackoff` - A function accepting the index of the retry being attempted (0 for the first retry, 1 for the second, etc.) and returning the number of milliseconds to wait until making the subsequent retry call.  By default, this is set to exponential backoff with additional jitter.
+**Retry Configuration** If you need to adjust the time between retry attempts, use `maxRetryDurationSeconds`, which is set to 15 seconds by default.
 
-## Logging
-
-This library leverages [**winston**](https://github.com/winstonjs/winston) for logging.  **winston** provides [documentation on configuring loggers](https://github.com/winstonjs/winston#working-with-multiple-loggers-in-winston).  To receive logs from the SDK, choose one of the following:
-
-### Simple
+**Logging** This library leverages [**winston**](https://github.com/winstonjs/winston) for logging.
 
 Pass the `logLevel` configuration option as one of the default **winston** log levels: `silly`, `verbose`, `debug`, `info`, `warn`, or `error`.  This will default to a simple Console transport.
 
-### Flexible
+### Advanced
 
-Create a **winston** container or configure the default `winston.loggers` container, adding a logger named 'smartsheet'. Pass this container in as the configuration option `loggerContainer`. _(Recommended)_
+**Retry Configuration** For additional customization, you can use the `calcRetryBackoff` function, which accepts the index of the retry being attempted (0 for the first retry, 1 for the second, etc.) and returns the number of milliseconds to wait until making the subsequent retry call. By default, this is set to exponential backoff with additional jitter.
 
-### Customized
+**Logging** Create a **winston** container or configure the default `winston.loggers` container, adding a logger named 'smartsheet'. Pass this container in as the configuration option `loggerContainer`. _(Recommended)_
+
+**winston** provides [documentation on configuring loggers](https://github.com/winstonjs/winston#working-with-multiple-loggers-in-winston).
 
 If you choose not to use **winston** and want to use your own logger, pass a logger object as the configuration option `logger` that meets the following specification:
 * `silly`, `verbose`, `debug`, `info`, `warn`, `error` - Logging methods following **winston**'s logging format
