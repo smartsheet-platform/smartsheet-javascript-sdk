@@ -20,7 +20,7 @@ The Smartsheet API documentation with corresponding SDK example code can be foun
 
 ## Example Usage
 
-To call the API, you must have an access token, which looks something like this example: ll352u9jujauoqz4gstvsae05. You can find the access token in the UI at Account > Personal Settings > API Access. 
+To call the API, you must have an access token, which looks something like this example: ll352u9jujauoqz4gstvsae05. You can find the access token in the Smartsheet UI at Account > Personal Settings > API Access. 
 
 The following is a brief sample using promises that shows you how to:
 
@@ -32,7 +32,8 @@ The following is a brief sample using promises that shows you how to:
 // Initialize the client
 var client = require('smartsheet');
 var smartsheet = client.createClient({
-  accessToken: 'll352u9jujauoqz4gstvsae05'
+  accessToken: 'll352u9jujauoqz4gstvsae05',
+  logLevel: 'info'
 });
 
 // The `smartsheet` variable now contains access to all of the APIs
@@ -40,10 +41,9 @@ var smartsheet = client.createClient({
 // List all sheets
 smartsheet.sheets.listSheets()
   .then(function (result) {
-    // Default to first sheet
-    var sheetId = result.data[0].id;
+    var sheetId = result.data[0].id;                // Choose the first sheet
 
-    // Load the entire sheet
+    // Load one sheet
     smartsheet.sheets.getSheet({id: sheetId})
       .then(function(sheetInfo) {
         console.log(sheetInfo);
@@ -74,7 +74,7 @@ smartsheet.sheets.listSheets({}, function(error, data) {
 
 ## Configuration
 
-When creating the client object, pass an object with any of the following options to tune its behaviour.
+When creating the client object, pass an object with any of the following options to tune its behavior.
 
 ### Retry Configuration
 
