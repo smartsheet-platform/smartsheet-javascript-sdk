@@ -1,6 +1,6 @@
 # Smartsheet SDK for JavaScript [![Build Status](https://travis-ci.org/armstnp/smartsheet-javascript-sdk.svg?branch=master)](https://travis-ci.org/armstnp/smartsheet-javascript-sdk) [![Coverage Status](https://coveralls.io/repos/github/armstnp/smartsheet-javascript-sdk/badge.svg?branch=master)](https://coveralls.io/github/armstnp/smartsheet-javascript-sdk?branch=master)
 
-This is an SDK to simplify connecting to the [Smartsheet API](http://www.smartsheet.com/developers/api-documentation) from Node.js applications.
+This is a client SDK to simplify connecting to the [Smartsheet API](http://www.smartsheet.com/developers/api-documentation) from Node.js applications.
 
 ## System Requirements
 
@@ -74,7 +74,7 @@ smartsheet.sheets.listSheets({}, function(error, data) {
 
 ## Configuration
 
-When creating the client object, pass an object with any of the following options to tune its behavior.
+When creating the client object, pass an object with any of the following properties to tune its behavior.
 
 * `maxRetryDurationSeconds` - The maximum time in seconds to retry intermittent errors. (Defaults to 15 seconds.)
 
