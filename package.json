@@ -1,14 +1,17 @@
 {
   "name": "smartsheet",
-  "version": "0.2.0",
-  "description": "Smartsheet JavaScript SDK",
+  "version": "1.0.0-beta.0",
+  "description": "Smartsheet JavaScript client SDK",
   "main": "index.js",
   "scripts": {
-    "test": "istanbul cover _mocha -- -u exports -R spec"
+    "test": "mocha \"test/**/*.js\"",
+    "test-functional": "mocha \"test/functional/**/*.js\"",
+    "coverage": "istanbul cover _mocha -- -u exports -R spec \"test/functional/**/*.js\"",
+    "report-coverage": "cat ./coverage/lcov.info | coveralls"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/smartsheet-platform/smartsheet-javascript-sdk.git"
+    "url": "github:smartsheet-platform/smartsheet-javascript-sdk"
   },
   "keywords": [
     "Smartsheet",
@@ -16,33 +19,36 @@
     "collaboration"
   ],
   "author": "Smartsheet",
-  "licenses": [
-    {
-      "type": "Apache-2.0",
-      "url": "http://www.apache.org/licenses/LICENSE-2.0"
-    }
-  ],
+  "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/smartsheet-platform/smartsheet-javascript-sdk/issues"
+    "url": "https://github.com/smartsheet-platform/smartsheet-javascript-sdk/issues",
+    "email": "api@smartsheet.com"
   },
   "browser": {
     "request": "browser-request"
   },
-  "homepage": "http://smartsheet.com/developers",
+  "homepage": "http://developers.smartsheet.com",
   "dependencies": {
-    "bluebird": "^2.9.24",
+    "bluebird": "^3.5.0",
     "request": "^2.54.0",
-    "underscore": "^1.8.2"
+    "underscore": "^1.8.2",
+    "winston": "^2.3.1"
   },
   "devDependencies": {
+    "coveralls": "^2.13.1",
     "gulp": "^3.8.11",
     "gulp-jshint": "^1.10.0",
     "gulp-mocha": "^2.0.1",
     "gulp-util": "^3.0.4",
+    "istanbul": "^0.4.5",
     "jshint-stylish": "^1.0.1",
     "mocha": "^2.2.1",
     "mock": "^0.1.1",
-    "should": "^5.2.0",
+    "should": "^13.0.1",
     "sinon": "^1.14.1"
+  },
+  "directories": {
+    "lib": "lib",
+    "test": "test"
   }
 }
