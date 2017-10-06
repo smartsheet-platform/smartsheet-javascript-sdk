@@ -72,7 +72,7 @@ smartsheet.sheets.listSheets({}, function(error, data) {
 
  See the [node-read-write-sheet](https://github.com/smartsheet-samples/node-read-write-sheet) project for a code example that shows how to call methods to read and write to a sheet using this SDK.
 
-## Configuration
+## Basic Configuration
 
 When creating the client object, pass an object with any of the following properties to tune its behavior.
 
@@ -80,6 +80,8 @@ When creating the client object, pass an object with any of the following proper
 
 * `logLevel` - Set to `'info'` to log each call and return value to the console. 
 
+
+## Advanced Configuration Options
 ### Logging Configuration
 
 
@@ -96,19 +98,19 @@ Supported log levels are:
 |`'debug'`|Full payloads|
 |`'silly'`|Full payloads and HTTP headers|
 
-You may create your own **winston** container or configure the default `winston.loggers` container, adding a logger named 'smartsheet'. Pass this container in as the configuration option `loggerContainer`. ([winston documentation on configuring loggers](https://github.com/winstonjs/winston#working-with-multiple-loggers-in-winston).)
+You may create your own **winston** container or configure the default `winston.loggers` container, adding a logger named 'smartsheet'. Specify this container using the configuration option `loggerContainer`. ([winston documentation on configuring loggers](https://github.com/winstonjs/winston#working-with-multiple-loggers-in-winston).)
 
 If you want to use your own logger, pass a logger object as the configuration option `logger` that implements the following methods:
 * `silly`, `verbose`, `debug`, `info`, `warn`, `error` - Standard logging methods
 * `log` - Similar to the above, but accepting the logging level string as its initial parameter; the log level is guaranteed be one of the above options.
 
 ### Retry Configuration
-For additional customization, you can specify `calcRetryBackoff` function.  This function is called with two arguments:
+For additional customization, you can specify a `calcRetryBackoff` function.  This function is called with two arguments:
 
 * The first accepts the index of the retry being attempted (0 for the first retry, 1 for the second, etc.)
 * The second accepts the Error Object that caused the retry.
 
-The function must return the number of milliseconds to wait until making the subsequent retry call, or a negative number if no more retries should be made.
+The function must return the number of milliseconds to wait before making the subsequent retry call, or a negative number if no more retries should be made.
 
 The default implementation performs exponential backoff with jitter.
 
