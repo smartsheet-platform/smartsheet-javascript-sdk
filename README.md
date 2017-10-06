@@ -92,7 +92,7 @@ Supported log levels are:
 |`'error'`|Failures only|
 |`'warn'`|Failures and retries|
 |`'info'`|Each call URL and response code|
-|`'verbose'`|Payloads, truncated to 124 characters|
+|`'verbose'`|Payloads, truncated to 1024 characters|
 |`'debug'`|Full payloads|
 |`'silly'`|Full payloads and HTTP headers|
 
@@ -103,7 +103,14 @@ If you want to use your own logger, pass a logger object as the configuration op
 * `log` - Similar to the above, but accepting the logging level string as its initial parameter; the log level is guaranteed be one of the above options.
 
 ### Retry Configuration
-For additional customization, you can specify `calcRetryBackoff` function, which accepts the index of the retry being attempted (0 for the first retry, 1 for the second, etc.) and returns the number of milliseconds to wait until making the subsequent retry call. The default implementation, performs exponential backoff with jitter.
+For additional customization, you can specify `calcRetryBackoff` function.  This function is called with two arguments:
+
+* The first accepts the index of the retry being attempted (0 for the first retry, 1 for the second, etc.)
+* The second accepts the Error Object that caused the retry.
+
+The function must return the number of milliseconds to wait until making the subsequent retry call, or a negative number if no more retries should be made.
+
+The default implementation performs exponential backoff with jitter.
 
 ## Contributing
 

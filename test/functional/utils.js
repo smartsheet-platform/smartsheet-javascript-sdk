@@ -30,6 +30,8 @@ var sampleRequestWithQueryParameters = {
   }
 };
 
+var EXPECTED_VERSION = '1.0.0-beta.0';
+
 describe('Utils Unit Tests', function() {
   describe('#HttpRequestor', function() {
     it('should have GET method', () => requestor.should.have.property('get'));
@@ -205,7 +207,7 @@ describe('Utils Unit Tests', function() {
           Authorization: 'Bearer TOKEN',
           Accept: 'application/json',
           'Content-Type': 'application/json',
-          'User-Agent': 'smartsheet-javascript-sdk'
+          'User-Agent': `smartsheet-javascript-sdk/${EXPECTED_VERSION}`
         };
         requestor.get(sampleRequest);
         spyGet.args[0][0].headers.Authorization.should.equal(sampleHeaders.Authorization);
@@ -242,6 +244,17 @@ describe('Utils Unit Tests', function() {
         handleResponseStub.returns({content: true});
       }
 
+      function givenEarlyExitBackoff() {
+        sampleRequestForRetry.calcRetryBackoff = numRetry => numRetry == 1 ? -1 : 1;
+      }
+
+      function givenBackoffDependsOnError() {
+        sampleRequestForRetry.calcRetryBackoff = (numRetry, error) => {
+          if(error.errorCode == 4001) return numRetry == 1 ? -1 : 1;
+          else throw new Error('Error object not provided to backoff');
+        };
+      }
+
       beforeEach(() => {
         requestStub = sinon.stub(request, 'getAsync');
         sampleRequestForRetry = _.extend({}, sampleRequest);
@@ -274,6 +287,22 @@ describe('Utils Unit Tests', function() {
           .get(sampleRequestForRetry)
           .catch(err =>
             sampleRequestForRetry.maxRetryDurationMillis.should.be.above(Date.now() - startTime - 5));
+      });
+
+      it('get stops retrying when receiving a negative backoff', () => {
+        givenGetReturnsError();
+        givenEarlyExitBackoff();
+        return stubbedRequestor
+          .get(sampleRequestForRetry)
+          .catch(err => requestStub.callCount.should.equal(2));
+      });
+
+      it('get passes the causing error to the backoff function', () => {
+        givenGetReturnsError();
+        givenBackoffDependsOnError();
+        return stubbedRequestor
+          .get(sampleRequestForRetry)
+          .catch(err => requestStub.callCount.should.equal(2));
       });
     });
   });
@@ -357,7 +386,7 @@ describe('Utils Unit Tests', function() {
           Authorization: 'Bearer TOKEN',
           Accept: 'application/json',
           'Content-Type': 'application/json',
-          'User-Agent': 'smartsheet-javascript-sdk'
+          'User-Agent': `smartsheet-javascript-sdk/${EXPECTED_VERSION}`
         };
         requestor.post(sampleRequest);
         spyPost.args[0][0].headers.Authorization.should.equal(sampleHeaders.Authorization);
@@ -400,6 +429,17 @@ describe('Utils Unit Tests', function() {
         requestStub.returns(new Promise.resolve([{}, {}]));
         handleResponseStub.returns({content: true});
       }
+      
+      function givenEarlyExitBackoff() {
+        sampleRequestForRetry.calcRetryBackoff = numRetry => numRetry == 1 ? -1 : 1;
+      }
+      
+      function givenBackoffDependsOnError() {
+        sampleRequestForRetry.calcRetryBackoff = (numRetry, error) => {
+          if(error.errorCode == 4001) return numRetry == 1 ? -1 : 1;
+          else throw new Error('Error object not provided to backoff');
+        };
+      }
 
       beforeEach(() => {
         requestStub = sinon.stub(request, 'postAsync');
@@ -434,6 +474,22 @@ describe('Utils Unit Tests', function() {
           .post(sampleRequestForRetry)
           .catch(err => sampleRequestForRetry.maxRetryDurationMillis
                    .should.be.above(Date.now() - startTime - 5));
+      });
+
+      it('post stops retrying when receiving a negative backoff', () => {
+        givenPostReturnsError();
+        givenEarlyExitBackoff();
+        return stubbedRequestor
+          .post(sampleRequestForRetry)
+          .catch(err => requestStub.callCount.should.equal(2));
+      });
+
+      it('post passes the causing error to the backoff function', () => {
+        givenPostReturnsError();
+        givenBackoffDependsOnError();
+        return stubbedRequestor
+          .post(sampleRequestForRetry)
+          .catch(err => requestStub.callCount.should.equal(2));
       });
     });
   });
@@ -523,7 +579,7 @@ describe('Utils Unit Tests', function() {
           Authorization: 'Bearer TOKEN',
           Accept: 'application/json',
           'Content-Type': 'application/json',
-          'User-Agent': 'smartsheet-javascript-sdk'
+          'User-Agent': `smartsheet-javascript-sdk/${EXPECTED_VERSION}`
         };
         requestor.put(sampleRequest);
         spyPut.args[0][0].headers.Authorization.should.equal(sampleHeaders.Authorization);
@@ -566,6 +622,17 @@ describe('Utils Unit Tests', function() {
         requestStub.returns(new Promise.resolve([{}, {}]));
         handleResponseStub.returns({content: true});
       }
+      
+      function givenEarlyExitBackoff() {
+        sampleRequestForRetry.calcRetryBackoff = numRetry => numRetry == 1 ? -1 : 1;
+      }
+      
+      function givenBackoffDependsOnError() {
+        sampleRequestForRetry.calcRetryBackoff = (numRetry, error) => {
+          if(error.errorCode == 4001) return numRetry == 1 ? -1 : 1;
+          else throw new Error('Error object not provided to backoff');
+        };
+      }
 
       beforeEach(() => {
         requestStub = sinon.stub(request, 'putAsync');
@@ -600,6 +667,22 @@ describe('Utils Unit Tests', function() {
           .put(sampleRequestForRetry)
           .catch(err => sampleRequestForRetry.maxRetryDurationMillis
                    .should.be.above(Date.now() - startTime - 5));
+      });
+
+      it('put stops retrying when receiving a negative backoff', () => {
+        givenPutReturnsError();
+        givenEarlyExitBackoff();
+        return stubbedRequestor
+          .put(sampleRequestForRetry)
+          .catch(err => requestStub.callCount.should.equal(2));
+      });
+
+      it('put passes the causing error to the backoff function', () => {
+        givenPutReturnsError();
+        givenBackoffDependsOnError();
+        return stubbedRequestor
+          .put(sampleRequestForRetry)
+          .catch(err => requestStub.callCount.should.equal(2));
       });
     });
   });
@@ -690,7 +773,7 @@ describe('Utils Unit Tests', function() {
           Authorization: 'Bearer TOKEN',
           Accept: 'application/json',
           'Content-Type': 'application/json',
-          'User-Agent': 'smartsheet-javascript-sdk'
+          'User-Agent': `smartsheet-javascript-sdk/${EXPECTED_VERSION}`
         };
         requestor.delete(sampleRequest);
         spyPut.args[0][0].headers.Authorization.should.equal(sampleHeaders.Authorization);
@@ -728,6 +811,17 @@ describe('Utils Unit Tests', function() {
         requestStub.returns(new Promise.resolve([{}, {}]));
         handleResponseStub.returns({content: true});
       }
+      
+      function givenEarlyExitBackoff() {
+        sampleRequestForRetry.calcRetryBackoff = numRetry => numRetry == 1 ? -1 : 1;
+      }
+      
+      function givenBackoffDependsOnError() {
+        sampleRequestForRetry.calcRetryBackoff = (numRetry, error) => {
+          if(error.errorCode == 4001) return numRetry == 1 ? -1 : 1;
+          else throw new Error('Error object not provided to backoff');
+        };
+      }
 
       beforeEach(() => {
         requestStub = sinon.stub(request, 'delAsync');
@@ -762,6 +856,22 @@ describe('Utils Unit Tests', function() {
           .delete(sampleRequestForRetry)
           .catch(err => sampleRequestForRetry.maxRetryDurationMillis
                    .should.be.above(Date.now() - startTime - 5));
+      });
+
+      it('delete stops retrying when receiving a negative backoff', () => {
+        givenDeleteReturnsError();
+        givenEarlyExitBackoff();
+        return stubbedRequestor
+          .delete(sampleRequestForRetry)
+          .catch(err => requestStub.callCount.should.equal(2));
+      });
+
+      it('delete passes the causing error to the backoff function', () => {
+        givenDeleteReturnsError();
+        givenBackoffDependsOnError();
+        return stubbedRequestor
+          .delete(sampleRequestForRetry)
+          .catch(err => requestStub.callCount.should.equal(2));
       });
     });
   });
