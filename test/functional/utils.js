@@ -248,6 +248,13 @@ describe('Utils Unit Tests', function() {
         sampleRequestForRetry.calcRetryBackoff = numRetry => numRetry == 1 ? -1 : 1;
       }
 
+      function givenBackoffDependsOnError() {
+        sampleRequestForRetry.calcRetryBackoff = (numRetry, error) => {
+          if(error.errorCode == 4001) return numRetry == 1 ? -1 : 1;
+          else throw new Error('Error object not provided to backoff');
+        };
+      }
+
       beforeEach(() => {
         requestStub = sinon.stub(request, 'getAsync');
         sampleRequestForRetry = _.extend({}, sampleRequest);
@@ -285,6 +292,14 @@ describe('Utils Unit Tests', function() {
       it('get stops retrying when receiving a negative backoff', () => {
         givenGetReturnsError();
         givenEarlyExitBackoff();
+        return stubbedRequestor
+          .get(sampleRequestForRetry)
+          .catch(err => requestStub.callCount.should.equal(2));
+      });
+
+      it('get passes the causing error to the backoff function', () => {
+        givenGetReturnsError();
+        givenBackoffDependsOnError();
         return stubbedRequestor
           .get(sampleRequestForRetry)
           .catch(err => requestStub.callCount.should.equal(2));
@@ -418,6 +433,13 @@ describe('Utils Unit Tests', function() {
       function givenEarlyExitBackoff() {
         sampleRequestForRetry.calcRetryBackoff = numRetry => numRetry == 1 ? -1 : 1;
       }
+      
+      function givenBackoffDependsOnError() {
+        sampleRequestForRetry.calcRetryBackoff = (numRetry, error) => {
+          if(error.errorCode == 4001) return numRetry == 1 ? -1 : 1;
+          else throw new Error('Error object not provided to backoff');
+        };
+      }
 
       beforeEach(() => {
         requestStub = sinon.stub(request, 'postAsync');
@@ -457,6 +479,14 @@ describe('Utils Unit Tests', function() {
       it('post stops retrying when receiving a negative backoff', () => {
         givenPostReturnsError();
         givenEarlyExitBackoff();
+        return stubbedRequestor
+          .post(sampleRequestForRetry)
+          .catch(err => requestStub.callCount.should.equal(2));
+      });
+
+      it('post passes the causing error to the backoff function', () => {
+        givenPostReturnsError();
+        givenBackoffDependsOnError();
         return stubbedRequestor
           .post(sampleRequestForRetry)
           .catch(err => requestStub.callCount.should.equal(2));
@@ -596,6 +626,13 @@ describe('Utils Unit Tests', function() {
       function givenEarlyExitBackoff() {
         sampleRequestForRetry.calcRetryBackoff = numRetry => numRetry == 1 ? -1 : 1;
       }
+      
+      function givenBackoffDependsOnError() {
+        sampleRequestForRetry.calcRetryBackoff = (numRetry, error) => {
+          if(error.errorCode == 4001) return numRetry == 1 ? -1 : 1;
+          else throw new Error('Error object not provided to backoff');
+        };
+      }
 
       beforeEach(() => {
         requestStub = sinon.stub(request, 'putAsync');
@@ -635,6 +672,14 @@ describe('Utils Unit Tests', function() {
       it('put stops retrying when receiving a negative backoff', () => {
         givenPutReturnsError();
         givenEarlyExitBackoff();
+        return stubbedRequestor
+          .put(sampleRequestForRetry)
+          .catch(err => requestStub.callCount.should.equal(2));
+      });
+
+      it('put passes the causing error to the backoff function', () => {
+        givenPutReturnsError();
+        givenBackoffDependsOnError();
         return stubbedRequestor
           .put(sampleRequestForRetry)
           .catch(err => requestStub.callCount.should.equal(2));
@@ -770,6 +815,13 @@ describe('Utils Unit Tests', function() {
       function givenEarlyExitBackoff() {
         sampleRequestForRetry.calcRetryBackoff = numRetry => numRetry == 1 ? -1 : 1;
       }
+      
+      function givenBackoffDependsOnError() {
+        sampleRequestForRetry.calcRetryBackoff = (numRetry, error) => {
+          if(error.errorCode == 4001) return numRetry == 1 ? -1 : 1;
+          else throw new Error('Error object not provided to backoff');
+        };
+      }
 
       beforeEach(() => {
         requestStub = sinon.stub(request, 'delAsync');
@@ -809,6 +861,14 @@ describe('Utils Unit Tests', function() {
       it('delete stops retrying when receiving a negative backoff', () => {
         givenDeleteReturnsError();
         givenEarlyExitBackoff();
+        return stubbedRequestor
+          .delete(sampleRequestForRetry)
+          .catch(err => requestStub.callCount.should.equal(2));
+      });
+
+      it('delete passes the causing error to the backoff function', () => {
+        givenDeleteReturnsError();
+        givenBackoffDependsOnError();
         return stubbedRequestor
           .delete(sampleRequestForRetry)
           .catch(err => requestStub.callCount.should.equal(2));
