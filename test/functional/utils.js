@@ -244,6 +244,10 @@ describe('Utils Unit Tests', function() {
         handleResponseStub.returns({content: true});
       }
 
+      function givenEarlyExitBackoff() {
+        sampleRequestForRetry.calcRetryBackoff = numRetry => numRetry == 1 ? -1 : 1;
+      }
+
       beforeEach(() => {
         requestStub = sinon.stub(request, 'getAsync');
         sampleRequestForRetry = _.extend({}, sampleRequest);
@@ -276,6 +280,14 @@ describe('Utils Unit Tests', function() {
           .get(sampleRequestForRetry)
           .catch(err =>
             sampleRequestForRetry.maxRetryDurationMillis.should.be.above(Date.now() - startTime - 5));
+      });
+
+      it('get stops retrying when receiving a negative backoff', () => {
+        givenGetReturnsError();
+        givenEarlyExitBackoff();
+        return stubbedRequestor
+          .get(sampleRequestForRetry)
+          .catch(err => requestStub.callCount.should.equal(2));
       });
     });
   });
@@ -402,6 +414,10 @@ describe('Utils Unit Tests', function() {
         requestStub.returns(new Promise.resolve([{}, {}]));
         handleResponseStub.returns({content: true});
       }
+      
+      function givenEarlyExitBackoff() {
+        sampleRequestForRetry.calcRetryBackoff = numRetry => numRetry == 1 ? -1 : 1;
+      }
 
       beforeEach(() => {
         requestStub = sinon.stub(request, 'postAsync');
@@ -436,6 +452,14 @@ describe('Utils Unit Tests', function() {
           .post(sampleRequestForRetry)
           .catch(err => sampleRequestForRetry.maxRetryDurationMillis
                    .should.be.above(Date.now() - startTime - 5));
+      });
+
+      it('post stops retrying when receiving a negative backoff', () => {
+        givenPostReturnsError();
+        givenEarlyExitBackoff();
+        return stubbedRequestor
+          .post(sampleRequestForRetry)
+          .catch(err => requestStub.callCount.should.equal(2));
       });
     });
   });
@@ -568,6 +592,10 @@ describe('Utils Unit Tests', function() {
         requestStub.returns(new Promise.resolve([{}, {}]));
         handleResponseStub.returns({content: true});
       }
+      
+      function givenEarlyExitBackoff() {
+        sampleRequestForRetry.calcRetryBackoff = numRetry => numRetry == 1 ? -1 : 1;
+      }
 
       beforeEach(() => {
         requestStub = sinon.stub(request, 'putAsync');
@@ -602,6 +630,14 @@ describe('Utils Unit Tests', function() {
           .put(sampleRequestForRetry)
           .catch(err => sampleRequestForRetry.maxRetryDurationMillis
                    .should.be.above(Date.now() - startTime - 5));
+      });
+
+      it('put stops retrying when receiving a negative backoff', () => {
+        givenPutReturnsError();
+        givenEarlyExitBackoff();
+        return stubbedRequestor
+          .put(sampleRequestForRetry)
+          .catch(err => requestStub.callCount.should.equal(2));
       });
     });
   });
@@ -730,6 +766,10 @@ describe('Utils Unit Tests', function() {
         requestStub.returns(new Promise.resolve([{}, {}]));
         handleResponseStub.returns({content: true});
       }
+      
+      function givenEarlyExitBackoff() {
+        sampleRequestForRetry.calcRetryBackoff = numRetry => numRetry == 1 ? -1 : 1;
+      }
 
       beforeEach(() => {
         requestStub = sinon.stub(request, 'delAsync');
@@ -764,6 +804,14 @@ describe('Utils Unit Tests', function() {
           .delete(sampleRequestForRetry)
           .catch(err => sampleRequestForRetry.maxRetryDurationMillis
                    .should.be.above(Date.now() - startTime - 5));
+      });
+
+      it('delete stops retrying when receiving a negative backoff', () => {
+        givenDeleteReturnsError();
+        givenEarlyExitBackoff();
+        return stubbedRequestor
+          .delete(sampleRequestForRetry)
+          .catch(err => requestStub.callCount.should.equal(2));
       });
     });
   });
