@@ -30,6 +30,8 @@ var sampleRequestWithQueryParameters = {
   }
 };
 
+var EXPECTED_VERSION = '1.0.0-beta.0';
+
 describe('Utils Unit Tests', function() {
   describe('#HttpRequestor', function() {
     it('should have GET method', () => requestor.should.have.property('get'));
@@ -205,7 +207,7 @@ describe('Utils Unit Tests', function() {
           Authorization: 'Bearer TOKEN',
           Accept: 'application/json',
           'Content-Type': 'application/json',
-          'User-Agent': 'smartsheet-javascript-sdk'
+          'User-Agent': `smartsheet-javascript-sdk/${EXPECTED_VERSION}`
         };
         requestor.get(sampleRequest);
         spyGet.args[0][0].headers.Authorization.should.equal(sampleHeaders.Authorization);
@@ -357,7 +359,7 @@ describe('Utils Unit Tests', function() {
           Authorization: 'Bearer TOKEN',
           Accept: 'application/json',
           'Content-Type': 'application/json',
-          'User-Agent': 'smartsheet-javascript-sdk'
+          'User-Agent': `smartsheet-javascript-sdk/${EXPECTED_VERSION}`
         };
         requestor.post(sampleRequest);
         spyPost.args[0][0].headers.Authorization.should.equal(sampleHeaders.Authorization);
@@ -523,7 +525,7 @@ describe('Utils Unit Tests', function() {
           Authorization: 'Bearer TOKEN',
           Accept: 'application/json',
           'Content-Type': 'application/json',
-          'User-Agent': 'smartsheet-javascript-sdk'
+          'User-Agent': `smartsheet-javascript-sdk/${EXPECTED_VERSION}`
         };
         requestor.put(sampleRequest);
         spyPut.args[0][0].headers.Authorization.should.equal(sampleHeaders.Authorization);
@@ -690,7 +692,7 @@ describe('Utils Unit Tests', function() {
           Authorization: 'Bearer TOKEN',
           Accept: 'application/json',
           'Content-Type': 'application/json',
-          'User-Agent': 'smartsheet-javascript-sdk'
+          'User-Agent': `smartsheet-javascript-sdk/${EXPECTED_VERSION}`
         };
         requestor.delete(sampleRequest);
         spyPut.args[0][0].headers.Authorization.should.equal(sampleHeaders.Authorization);
