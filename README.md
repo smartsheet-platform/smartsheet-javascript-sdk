@@ -2,6 +2,12 @@
 
 This is a client SDK to simplify connecting to the [Smartsheet API](http://www.smartsheet.com/developers/api-documentation) from Node.js applications.
 
+**Note: This 1.0 version is currently published to `npm` as a beta**, so you'll need to install with 
+
+```bash
+npm install smartsheet@beta
+```
+
 ## System Requirements
 
 The SDK supports Node.js versions 6.x or later.
