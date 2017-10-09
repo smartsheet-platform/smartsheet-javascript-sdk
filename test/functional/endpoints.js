@@ -167,7 +167,7 @@ describe('Method Unit Tests', function () {
                 { name: 'addRowUrlAttachment', stub: 'post', options: {sheetId: 123, rowId: 234}, expectedRequest: {url: "2.0/sheets/123/rows/234/attachments"}},
                 { name: 'addRowFileAttachment', stub: 'postFile', options: {sheetId: 123, rowId: 234}, expectedRequest: {url: "2.0/sheets/123/rows/234/attachments"}},
                 { name: 'createRowDiscussion', stub: 'post', options: {sheetId: 123, rowId: 234}, expectedRequest: {url: "2.0/sheets/123/rows/234/discussions"}},
-                { name: 'sendRow', stub: 'post', options: {sheetId: 123, rowId: 234}, expectedRequest: {url: "2.0/sheets/123/rows/234/emails"}},
+                { name: 'sendRows', stub: 'post', options: {sheetId: 123}, expectedRequest: {url: "2.0/sheets/123/rows/emails"}},
                 { name: 'deleteRow', stub: 'delete', options: {sheetId: 123, rowId: 234}, expectedRequest: {url: "2.0/sheets/123/rows?ids=234"}},
                 { name: 'updateRow', stub: 'put', options: {sheetId: 123, rowId: 234}, expectedRequest: {url: "2.0/sheets/123/rows/234"}},
                 { name: 'addImageToCell', stub: 'postFile', options: {sheetId: 123, rowId: 234, columnId: 345}, expectedRequest: {url: "2.0/sheets/123/rows/234/columns/345/cellimages"}},
