@@ -1,4 +1,4 @@
-# Smartsheet SDK for JavaScript [![Build Status](https://travis-ci.org/smartsheet-platform/smartsheet-javascript-sdk.svg?branch=master)](https://travis-ci.org/smartsheet-platform/smartsheet-javascript-sdk) [![Coverage Status](https://coveralls.io/repos/github/armstnp/smartsheet-javascript-sdk/badge.svg?branch=master)](https://coveralls.io/github/armstnp/smartsheet-javascript-sdk?branch=master)
+# Smartsheet SDK for JavaScript [![Build Status](https://travis-ci.org/smartsheet-platform/smartsheet-javascript-sdk.svg?branch=master)](https://travis-ci.org/smartsheet-platform/smartsheet-javascript-sdk) [![Coverage Status](https://coveralls.io/repos/github/smartsheet-platform/smartsheet-javascript-sdk/badge.svg?branch=master)](https://coveralls.io/github/smartsheet-platform/smartsheet-javascript-sdk?branch=master)
 
 This is a client SDK to simplify connecting to the [Smartsheet API](http://www.smartsheet.com/developers/api-documentation) from Node.js applications.
 
