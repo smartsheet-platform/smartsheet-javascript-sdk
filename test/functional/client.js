@@ -237,7 +237,7 @@ describe('Client Unit Tests', function() {
       smartsheet.sheets.should.have.property('getRowAttachments');
       smartsheet.sheets.should.have.property('getRowDiscussions');
       smartsheet.sheets.should.have.property('updateRow');
-      smartsheet.sheets.should.have.property('sendRow');
+      smartsheet.sheets.should.have.property('sendRows');
     });
 
     it('should have Column methods', function() {

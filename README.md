@@ -1,4 +1,4 @@
-# Smartsheet SDK for JavaScript [![Build Status](https://travis-ci.org/smartsheet-platform/smartsheet-javascript-sdk.svg?branch=master)](https://travis-ci.org/smartsheet-platform/smartsheet-javascript-sdk) [![Coverage Status](https://coveralls.io/repos/github/smartsheet-platform/smartsheet-javascript-sdk/badge.svg?branch=master)](https://coveralls.io/github/smartsheet-platform/smartsheet-javascript-sdk?branch=master)
+# Smartsheet SDK for JavaScript [![Build Status](https://travis-ci.org/smartsheet-platform/smartsheet-javascript-sdk.svg?branch=master)](https://travis-ci.org/smartsheet-platform/smartsheet-javascript-sdk) [![Coverage Status](https://coveralls.io/repos/github/smartsheet-platform/smartsheet-javascript-sdk/badge.svg?branch=master)](https://coveralls.io/github/smartsheet-platform/smartsheet-javascript-sdk?branch=master) [![npm version](https://badge.fury.io/js/smartsheet.svg)](https://badge.fury.io/js/smartsheet)
 
 This is a client SDK to simplify connecting to the [Smartsheet API](http://www.smartsheet.com/developers/api-documentation) from Node.js applications.
 
@@ -119,6 +119,18 @@ For additional customization, you can specify a `calcRetryBackoff` function.  Th
 The function must return the number of milliseconds to wait before making the subsequent retry call, or a negative number if no more retries should be made.
 
 The default implementation performs exponential backoff with jitter.
+
+## Testing
+
+The source code comes with several scripts for running tests:
+
+|Script|Action|
+|---|---|
+|`npm run test`|Runs all tests|
+|`npm run test-functional`|Runs only functional tests|
+|`npm run coverage`|Runs functional tests and reports on code coverage|
+|`gulp jshint`|Runs JSHint against the codebase|
+|`gulp [watch]`|Watches the codebase and runs JSHint whenever changes are made|
 
 ## Contributing
 
