@@ -120,6 +120,18 @@ The function must return the number of milliseconds to wait before making the su
 
 The default implementation performs exponential backoff with jitter.
 
+## Testing
+
+The source code comes with several scripts for running tests:
+
+|Script|Action|
+|---|---|
+|`npm run test`|Runs all tests|
+|`npm run test-functional`|Runs only functional tests|
+|`npm run coverage`|Runs functional tests and reports on code coverage|
+|`gulp jshint`|Runs JSHint against the codebase|
+|`gulp [watch]`|Watches the codebase and runs JSHint whenever changes are made|
+
 ## Contributing
 
 If you would like to contribute a change to the SDK, please fork a branch and then submit a pull request.
