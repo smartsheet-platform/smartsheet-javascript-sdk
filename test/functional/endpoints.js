@@ -116,6 +116,7 @@ describe('Method Unit Tests', function () {
                 { name: 'listAttachments', stub: 'get', options: {sheetId: 123}, expectedRequest: {url: "2.0/sheets/123/attachments/"}},
                 { name: 'listAttachmentVersions', stub: 'get', options: {sheetId: 123, attachmentId: 234}, expectedRequest: {url: "2.0/sheets/123/attachments/234/versions"}},
                 { name: 'addUrlAttachment', stub: 'post', options: {sheetId: 123}, expectedRequest: {url: "2.0/sheets/123/attachments/"}},
+                { name: 'addAttachment', stub: 'post', options: {sheetId: 123}, expectedRequest: {url: "2.0/sheets/123/attachments/"}},
                 { name: 'addFileAttachment', stub: 'postFile', options: {sheetId: 123}, expectedRequest: {url: "2.0/sheets/123/attachments/"}},
                 { name: 'attachNewVersion', stub: 'postFile', options: {sheetId: 123, attachmentId: 234}, expectedRequest: {url: "2.0/sheets/123/attachments/234/versions"}},
                 { name: 'deleteAttachment', stub: 'delete', options: {sheetId: 123}, expectedRequest: {url: "2.0/sheets/123/attachments/"}},
@@ -130,6 +131,7 @@ describe('Method Unit Tests', function () {
                 { name: 'getComment', stub: 'get', options: {sheetId: 123, commentId: 234}, expectedRequest: {url: "2.0/sheets/123/comments/234"}},
                 { name: 'deleteComment', stub: 'delete', options: {sheetId: 123, commentId: 234}, expectedRequest: {url: "2.0/sheets/123/comments/234"}},
                 { name: 'addCommentUrlAttachment', stub: 'post', options: {sheetId: 123, commentId: 234}, expectedRequest: {url: "2.0/sheets/123/comments/234/attachments"}},
+                { name: 'addCommentAttachment', stub: 'post', options: {sheetId: 123, commentId: 234}, expectedRequest: {url: "2.0/sheets/123/comments/234/attachments"}},
                 { name: 'addCommentFileAttachment', stub: 'postFile', options: {sheetId: 123, commentId: 234}, expectedRequest: {url: "2.0/sheets/123/comments/234/attachments"}},
                 { name: 'editComment', stub: 'put', options: {sheetId: 123, commentId: 234}, expectedRequest: {url: "2.0/sheets/123/comments/234"}},
                 // create
@@ -165,6 +167,7 @@ describe('Method Unit Tests', function () {
                 { name: 'addRow', stub: 'post', options: {sheetId: 123}, expectedRequest: {url: "2.0/sheets/123/rows/"}},
                 { name: 'addRows', stub: 'post', options: {sheetId: 123}, expectedRequest: {url: "2.0/sheets/123/rows/"}},
                 { name: 'addRowUrlAttachment', stub: 'post', options: {sheetId: 123, rowId: 234}, expectedRequest: {url: "2.0/sheets/123/rows/234/attachments"}},
+                { name: 'addRowAttachment', stub: 'post', options: {sheetId: 123, rowId: 234}, expectedRequest: {url: "2.0/sheets/123/rows/234/attachments"}},
                 { name: 'addRowFileAttachment', stub: 'postFile', options: {sheetId: 123, rowId: 234}, expectedRequest: {url: "2.0/sheets/123/rows/234/attachments"}},
                 { name: 'createRowDiscussion', stub: 'post', options: {sheetId: 123, rowId: 234}, expectedRequest: {url: "2.0/sheets/123/rows/234/discussions"}},
                 { name: 'sendRows', stub: 'post', options: {sheetId: 123}, expectedRequest: {url: "2.0/sheets/123/rows/emails"}},
