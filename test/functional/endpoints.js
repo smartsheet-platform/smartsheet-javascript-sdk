@@ -11,13 +11,13 @@ describe('Method Unit Tests', function () {
             name: 'contacts',
             methods: [
                 { name: 'getContact', stub: 'get', options: {}, expectedRequest: {url: "2.0/contacts/" }},
-                { name: 'listContacts', stub: 'get', options: {}, expectedRequest: {url: "2.0/contacts/" }},
+                { name: 'listContacts', stub: 'get', options: undefined, expectedRequest: {url: "2.0/contacts/" }},
             ]
         },
         {
             name: 'favorites',
             methods: [
-                { name: 'listFavorites', stub: 'get', options: {}, expectedRequest: {url: "2.0/favorites/" }},
+                { name: 'listFavorites', stub: 'get', options: undefined, expectedRequest: {url: "2.0/favorites/" }},
                 { name: 'addItemsToFavorites', stub: 'post', options: {}, expectedRequest: {url: "2.0/favorites/" }},
                 { name: 'addSheetToFavorites', stub: 'post', options: { objectId: 123 }, expectedRequest: {url: "2.0/favorites/", body: { objectId: 123, type: 'sheet' } }},
                 { name: 'addFolderToFavorites', stub: 'post', options: { objectId: 123 }, expectedRequest: {url: "2.0/favorites/", body: { objectId: 123, type: 'folder' } }},
@@ -55,8 +55,8 @@ describe('Method Unit Tests', function () {
         {
             name: 'groups',
             methods: [
-                { name: 'listGroups', stub: 'get', options: {}, expectedRequest: {url: "2.0/groups/" }},
                 { name: 'getGroup', stub: 'get', options: {}, expectedRequest: {url: "2.0/groups/" }},
+                { name: 'listGroups', stub: 'get', options: undefined, expectedRequest: {url: "2.0/groups/" }},
                 { name: 'createGroup', stub: 'post', options: {}, expectedRequest: {url: "2.0/groups/" }},
                 { name: 'addGroupMembers', stub: 'post', options: {groupId: 123}, expectedRequest: {url: "2.0/groups/123/members/" }},
                 { name: 'updateGroup', stub: 'put', options: {}, expectedRequest: {url: "2.0/groups/" }},
@@ -67,8 +67,8 @@ describe('Method Unit Tests', function () {
         {
             name: 'home',
             methods: [
-                { name: 'listContents', stub: 'get', options: {}, expectedRequest: {url: "2.0/home/" }},
-                { name: 'listFolders', stub: 'get', options: {}, expectedRequest: {url: "2.0/home/folders" }},
+                { name: 'listContents', stub: 'get', options: undefined, expectedRequest: {url: "2.0/home/" }},
+                { name: 'listFolders', stub: 'get', options: undefined, expectedRequest: {url: "2.0/home/folders" }},
                 { name: 'createFolder', stub: 'post', options: {}, expectedRequest: {url: "2.0/home/folders" }},
             ]
         },
@@ -81,8 +81,8 @@ describe('Method Unit Tests', function () {
         {
             name: 'reports',
             methods: [
-                { name: 'listReports', stub: 'get', options: {}, expectedRequest: {url: "2.0/reports/"}},
                 { name: 'getReport', stub: 'get', options: {}, expectedRequest: {url: "2.0/reports/" }},
+                { name: 'listReports', stub: 'get', options: undefined, expectedRequest: {url: "2.0/reports/"}},
                 { name: 'sendReportViaEmail', stub: 'post', options: {reportId: 123}, expectedRequest: {url: "2.0/reports/123/emails" }},
                 { name: 'getReportAsExcel', stub: 'get', options: {}, expectedRequest: {url: "2.0/reports/", accept: constants.acceptHeaders.vndMsExcel, encoding:null }},
                 { name: 'getReportAsCSV', stub: 'get', options: {}, expectedRequest: {url: "2.0/reports/", accept: constants.acceptHeaders.textCsv }},
@@ -100,7 +100,7 @@ describe('Method Unit Tests', function () {
         {
             name: 'server',
             methods: [
-                { name: 'getInfo', stub: 'get', options: {}, expectedRequest: {url: "2.0/serverinfo/"}},
+                { name: 'getInfo', stub: 'get', options: undefined, expectedRequest: {url: "2.0/serverinfo/"}},
             ]
         },
         {
@@ -149,12 +149,12 @@ describe('Method Unit Tests', function () {
                 { name: 'deleteDiscussion', stub: 'delete', options: {sheetId:123, discussionId: 234}, expectedRequest: {url: "2.0/sheets/123/discussions/234"}},
                 // get
                 { name: 'getSheet', stub: 'get', options: {}, expectedRequest: {url: "2.0/sheets/"}},
-                { name: 'listSheets', stub: 'get', options: {}, expectedRequest: {url: "2.0/sheets/"}},
+                { name: 'listSheets', stub: 'get', options: undefined, expectedRequest: {url: "2.0/sheets/"}},
                 { name: 'getSheetAsCSV', stub: 'get', options: {}, expectedRequest: {url: "2.0/sheets/", accept: constants.acceptHeaders.textCsv}},
                 { name: 'getSheetAsExcel', stub: 'get', options: {}, expectedRequest: {url: "2.0/sheets/", accept: constants.acceptHeaders.vndMsExcel, encoding:null}},
                 { name: 'getSheetAsPDF', stub: 'get', options: {}, expectedRequest: {url: "2.0/sheets/", accept: constants.acceptHeaders.applicationPdf, encoding:null}},
                 { name: 'getSheetVersion', stub: 'get', options: {sheetId: 123}, expectedRequest: {url: "2.0/sheets/123/version"}},
-                { name: 'listOrganizationSheets', stub: 'get', options: {}, expectedRequest: {url: "2.0/users/sheets"}},
+                { name: 'listOrganizationSheets', stub: 'get', options: undefined, expectedRequest: {url: "2.0/users/sheets"}},
                 // rows
                 { name: 'getRow', stub: 'get', options: {sheetId: 123, rowId: 234}, expectedRequest: {url: "2.0/sheets/123/rows/234"}},
                 { name: 'getRowAttachments', stub: 'get', options: {sheetId: 123, rowId: 234}, expectedRequest: {url: "2.0/sheets/123/rows/234/attachments"}},
@@ -192,7 +192,7 @@ describe('Method Unit Tests', function () {
         {
             name: 'sights',
             methods: [
-                { name: 'listSights', stub: 'get', options: {}, expectedRequest: {url: "2.0/sights/"}},
+                { name: 'listSights', stub: 'get', options: undefined, expectedRequest: {url: "2.0/sights/"}},
                 { name: 'getSight', stub: 'get', options: {sightId:123}, expectedRequest: {url: "2.0/sights/123"}},
                 { name: 'deleteSight', stub: 'delete', options: {sightId:123}, expectedRequest: {url: "2.0/sights/123"}},
                 { name: 'updateSight', stub: 'put', options: {sightId:123}, expectedRequest: {url: "2.0/sights/123"}},
@@ -205,8 +205,8 @@ describe('Method Unit Tests', function () {
         {
             name: 'templates',
             methods: [
-                { name: 'listUserCreatedTemplates', stub: 'get', options: {}, expectedRequest: {url: "2.0/templates/"}},
-                { name: 'listPublicTemplates', stub: 'get', options: {}, expectedRequest: {url: "2.0/templates/public"}},
+                { name: 'listUserCreatedTemplates', stub: 'get', options: undefined, expectedRequest: {url: "2.0/templates/"}},
+                { name: 'listPublicTemplates', stub: 'get', options: undefined, expectedRequest: {url: "2.0/templates/public"}},
             ]
         },
         {
@@ -221,7 +221,7 @@ describe('Method Unit Tests', function () {
             name: 'users',
             methods: [
                 { name: 'getUser', stub: 'get', options: {}, expectedRequest: {url: "2.0/users/"}},
-                { name: 'listAllUsers', stub: 'get', options: {}, expectedRequest: {url: "2.0/users/"}},
+                { name: 'listAllUsers', stub: 'get', options: undefined, expectedRequest: {url: "2.0/users/"}},
                 { name: 'getCurrentUser', stub: 'get', options: {}, expectedRequest: {url: "2.0/users/me"}},
                 { name: 'addUser', stub: 'post', options: {}, expectedRequest: {url: "2.0/users/"}},
                 { name: 'addUserAndSendEmail', stub: 'post', options: {}, expectedRequest: {url: "2.0/users/", queryParameters:{sendEmail:true}}},
@@ -242,14 +242,14 @@ describe('Method Unit Tests', function () {
                 { name: 'deleteWebhook', stub: 'delete', options: { webhookId: 123 }, expectedRequest: {url: "2.0/webhooks/123" }},
                 { name: 'updateWebhook', stub: 'put', options: { webhookId: 123 }, expectedRequest: {url: "2.0/webhooks/123" }},
                 { name: 'getWebhook', stub: 'get', options: { webhookId: 123 }, expectedRequest: {url: "2.0/webhooks/123" }},
-                { name: 'listWebhooks', stub: 'get', options: {}, expectedRequest: {url: "2.0/webhooks/" }},
+                { name: 'listWebhooks', stub: 'get', options: undefined, expectedRequest: {url: "2.0/webhooks/" }},
                 { name: 'resetSharedSecret', stub: 'post', options: { webhookId: 123 }, expectedRequest: {url: "2.0/webhooks/123/resetsharedsecret" }},
             ]
         },
         {
             name: 'workspaces',
             methods: [
-                { name: 'listWorkspaces', stub: 'get', options: {}, expectedRequest: {url: "2.0/workspaces/"}},
+                { name: 'listWorkspaces', stub: 'get', options: undefined, expectedRequest: {url: "2.0/workspaces/"}},
                 { name: 'getWorkspace', stub: 'get', options: {workspaceId: 123}, expectedRequest: {url: "2.0/workspaces/123"}},
                 { name: 'listWorkspaceFolders', stub: 'get', options: {workspaceId: 123}, expectedRequest: {url: "2.0/workspaces/123/folders"}},
                 { name: 'createWorkspace', stub: 'post', options: {}, expectedRequest: {url: "2.0/workspaces/"}},
