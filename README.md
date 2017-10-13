@@ -147,6 +147,10 @@ Each specific release is available for download via [GitHub](https://github.com/
 
 **v1.0.0-beta.0 (October 2017)**
 Beta release of the Smartsheet SDK for JavaScript
+* **Major Change**: The previous release supported attaching URLs to Smartsheet objects, but not files.  This release allows the attachment of files through new methods.
+  * `sheets.addFileAttachment`, `sheets.addCommentFileAttachment`, and `sheets.addRowFileAttachment` are new endpoints that allow for the attachment of files.
+  * `sheets.addUrlAttachment`, `sheets.addCommentUrlAttachment`, and `sheets.addRowUrlAttachment` are the new, recommended methods for attaching URLs.
+  * `sheets.addAttachment`, `sheets.addCommentAttachment`, and `sheets.addRowAttachment` still work as before, permitting URL attachments; these methods are not recommended, and may be deprecated in the future.
 
 **v0.0.1-beta (Aug 12, 2015)**
 Initial Release of the Smartsheet SDK for JavaScript
