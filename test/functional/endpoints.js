@@ -178,6 +178,7 @@ describe('Method Unit Tests', function () {
                 { name: 'sendRows', stub: 'post', options: {sheetId: 123}, expectedRequest: {url: "2.0/sheets/123/rows/emails"}},
                 { name: 'deleteRow', stub: 'delete', options: {sheetId: 123, rowId: 234}, expectedRequest: {url: "2.0/sheets/123/rows?ids=234"}},
                 { name: 'deleteRows', stub: 'delete', options: {sheetId: 123, queryParameters: {ids: [234, 456]}}, expectedRequest: {url: "2.0/sheets/123/rows", queryParameters: {ids: '234,456'}}},
+                { name: 'deleteRows', stub: 'delete', options: {sheetId: 123, queryParameters: {ids: '234,456'}}, expectedRequest: {url: "2.0/sheets/123/rows", queryParameters: {ids: '234,456'}}},
                 { name: 'updateRow', stub: 'put', options: {sheetId: 123, rowId: 234}, expectedRequest: {url: "2.0/sheets/123/rows/234"}},
                 { name: 'addImageToCell', stub: 'postFile', options: {sheetId: 123, rowId: 234, columnId: 345}, expectedRequest: {url: "2.0/sheets/123/rows/234/columns/345/cellimages"}},
                 // send update requests
