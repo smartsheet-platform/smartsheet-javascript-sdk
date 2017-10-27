@@ -62,10 +62,10 @@ describe('Utils Unit Tests', function() {
         builtUrl.should.equal(host + url);
       });
 
-      it('url should equal https://api.smartsheet.com/', () => {
+      it('url should equal https://api.smartsheet.com/2.0/', () => {
         process.env.SMARTSHEET_API_HOST = '';
         var builtUrl = requestor.internal.buildUrl({});
-        builtUrl.should.equal('https://api.smartsheet.com/');
+        builtUrl.should.equal('https://api.smartsheet.com/2.0/');
       });
 
       it('url should contain the host + url', () => {
@@ -218,7 +218,7 @@ describe('Utils Unit Tests', function() {
 
       it('url sent to request should match given', () => {
         requestor.get(sampleRequest);
-        spyGet.args[0][0].url.should.equal('https://api.smartsheet.com/URL');
+        spyGet.args[0][0].url.should.equal('https://api.smartsheet.com/2.0/URL');
       });
 
       it('queryString sent to request should match given', () => {
@@ -397,7 +397,7 @@ describe('Utils Unit Tests', function() {
 
       it('url sent to request should match given', () => {
         requestor.post(sampleRequest);
-        spyPost.args[0][0].url.should.equal('https://api.smartsheet.com/URL');
+        spyPost.args[0][0].url.should.equal('https://api.smartsheet.com/2.0/URL');
       });
 
       it('queryString sent to request should match given', () => {
@@ -590,7 +590,7 @@ describe('Utils Unit Tests', function() {
 
       it('url sent to request should match given', () => {
         requestor.put(sampleRequest);
-        spyPut.args[0][0].url.should.equal('https://api.smartsheet.com/URL');
+        spyPut.args[0][0].url.should.equal('https://api.smartsheet.com/2.0/URL');
       });
 
       it('queryString sent to request should match given', () => {
@@ -784,7 +784,7 @@ describe('Utils Unit Tests', function() {
 
       it('url sent to request should match given', () => {
         requestor.delete(sampleRequest);
-        spyPut.args[0][0].url.should.equal('https://api.smartsheet.com/URL');
+        spyPut.args[0][0].url.should.equal('https://api.smartsheet.com/2.0/URL');
       });
 
       it('queryString sent to request should match given', () => {

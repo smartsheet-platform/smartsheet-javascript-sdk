@@ -1,7 +1,7 @@
 var sinon = require('sinon');
 var should = require('should');
 var assert = require('assert');
-var helpers = require('helpers');
+// var helpers = require('helpers');
 
 var smartsheet = null;
 
@@ -27,7 +27,7 @@ describe('Mock API SDK Tests', function() {
         should(sheets.data[0].name).equal("Copy of Sample Sheet");
       })
       .catch(function(error){
-        helpers.getMessage();
+        // helpers.getMessage();
         var messageObj = JSON.parse(error.message);
         return Promise.reject(new Error(messageObj.message));
       });
