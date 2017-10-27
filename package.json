@@ -6,6 +6,7 @@
   "scripts": {
     "test": "mocha \"test/**/*.js\"",
     "test-functional": "mocha \"test/functional/**/*.js\"",
+    "test-mock-api": "mocha \"test/mock-api/**/*.js\"",
     "coverage": "istanbul cover _mocha -- -u exports -R spec \"test/functional/**/*.js\"",
     "report-coverage": "cat ./coverage/lcov.info | coveralls"
   },
