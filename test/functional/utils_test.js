@@ -284,15 +284,6 @@ describe('Utils Unit Tests', function() {
           .catch(err => requestStub.callCount.should.be.above(1));
       });
 
-      it('get does not exceed max time', () => {
-        givenGetReturnsError();
-        var startTime = Date.now();
-        return stubbedRequestor
-          .get(sampleRequestForRetry)
-          .catch(err =>
-            sampleRequestForRetry.maxRetryDurationMillis.should.be.above(Date.now() - startTime - 5));
-      });
-
       it('get stops retrying when receiving a negative backoff', () => {
         givenGetReturnsError();
         givenEarlyExitBackoff();
@@ -473,15 +464,6 @@ describe('Utils Unit Tests', function() {
         return stubbedRequestor
           .post(sampleRequestForRetry)
           .catch(err => requestStub.callCount.should.be.above(1));
-      });
-
-      it('post does not exceed max time', () => {
-        givenPostReturnsError();
-        var startTime = Date.now();
-        return stubbedRequestor
-          .post(sampleRequestForRetry)
-          .catch(err => sampleRequestForRetry.maxRetryDurationMillis
-                   .should.be.above(Date.now() - startTime - 5));
       });
 
       it('post stops retrying when receiving a negative backoff', () => {
@@ -674,15 +656,6 @@ describe('Utils Unit Tests', function() {
           .catch(err => requestStub.callCount.should.be.above(1));
       });
 
-      it('put does not exceed max time', () => {
-        givenPutReturnsError();
-        var startTime = Date.now();
-        return stubbedRequestor
-          .put(sampleRequestForRetry)
-          .catch(err => sampleRequestForRetry.maxRetryDurationMillis
-                   .should.be.above(Date.now() - startTime - 5));
-      });
-
       it('put stops retrying when receiving a negative backoff', () => {
         givenPutReturnsError();
         givenEarlyExitBackoff();
@@ -867,15 +840,6 @@ describe('Utils Unit Tests', function() {
         return stubbedRequestor
           .delete(sampleRequestForRetry)
           .catch(err => requestStub.callCount.should.be.above(1));
-      });
-
-      it('delete does not exceed max time', () => {
-        givenDeleteReturnsError();
-        var startTime = Date.now();
-        return stubbedRequestor
-          .delete(sampleRequestForRetry)
-          .catch(err => sampleRequestForRetry.maxRetryDurationMillis
-                   .should.be.above(Date.now() - startTime - 5));
       });
 
       it('delete stops retrying when receiving a negative backoff', () => {
