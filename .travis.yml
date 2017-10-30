@@ -4,8 +4,13 @@ node_js:
   - "lts/boron"
   - "lts/argon"
 
+before_install:
+  - git clone -b add-travis-scripts https://github.com/stollgr/wiremock-scenario-templating.git
+  - wiremock-scenario-templating/travis_scripts/install_wiremock.sh
+
 script:
-  - npm run test-functional
+  - wiremock-scenario-templating/travis_scripts/start_wiremock.sh
+  - npm test
 
 branches:
   only:
