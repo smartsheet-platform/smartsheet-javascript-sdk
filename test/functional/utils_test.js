@@ -151,9 +151,10 @@ describe('Utils Unit Tests', function() {
         stubbedRequestor.get(sampleRequest)
           .should.eventually.be.true);
 
-      it('request should call callback as true', () =>
+      it('request should call callback as true', (done) =>
         stubbedRequestor.get(sampleRequest, function(err, data) {
           data.should.be.true;
+          done();
         }));
     });
 
@@ -172,7 +173,7 @@ describe('Utils Unit Tests', function() {
           }
         };
         mockBody = {error:true};
-        requestStub.returns(new Promise.reject(mockBody));
+        requestStub.returns(Promise.reject(mockBody));
       });
 
       afterEach(() => {
@@ -184,10 +185,13 @@ describe('Utils Unit Tests', function() {
           .get(sampleRequest)
           .catch(error => error.error.should.be.true));
 
-      it('request should error as false, using callbacks', () => {
+      it('request should error as false, using callbacks', (done) => {
         stubbedRequestor
           .get(sampleRequest,
-               (err, data) => err.should.be.eql(mockBody));
+               (err, data) => {
+                 err.should.be.eql(mockBody);
+                 done();
+                });
       });
     });
 
@@ -235,12 +239,12 @@ describe('Utils Unit Tests', function() {
       var sampleRequestForRetry = null;
 
       function givenGetReturnsError() {
-        requestStub.returns(new Promise.resolve([{}, {}]));
-        handleResponseStub.returns(new Promise.reject({errorCode: 4001}));
+        requestStub.returns(Promise.resolve([{}, {}]));
+        handleResponseStub.returns(Promise.reject({errorCode: 4001}));
       }
 
       function givenGetReturnsSuccess() {
-        requestStub.returns(new Promise.resolve([{}, {}]));
+        requestStub.returns(Promise.resolve([{}, {}]));
         handleResponseStub.returns({content: true});
       }
 
@@ -323,7 +327,7 @@ describe('Utils Unit Tests', function() {
           }
         };
         var mockBody = '{"hello":"world"}';
-        requestStub.returns(new Promise.resolve([mockResponse, mockBody]));
+        requestStub.returns(Promise.resolve([mockResponse, mockBody]));
       });
 
       afterEach(() => {
@@ -335,9 +339,10 @@ describe('Utils Unit Tests', function() {
           .post(sampleRequest)
           .then(data => data.should.be.true));
 
-      it('request should call callback as true', () => {
+      it('request should call callback as true', (done) => {
         stubbedRequestor.post(sampleRequest, function(err, data) {
           data.should.be.true;
+          done();
         });
       });
     });
@@ -351,7 +356,7 @@ describe('Utils Unit Tests', function() {
 
       beforeEach(() => {
         requestStub = sinon.stub(request, 'postAsync');
-        requestStub.returns(new Promise.reject(mockBody));
+        requestStub.returns(Promise.reject(mockBody));
       });
 
       afterEach(() => {
@@ -363,10 +368,13 @@ describe('Utils Unit Tests', function() {
           .post(sampleRequest)
           .catch(error => error.error.should.be.true));
 
-      it('request should error as false', () => {
+      it('request should error as false', (done) => {
         stubbedRequestor
           .post(sampleRequest,
-                (err, data) => err.should.be.eql(mockBody));
+                (err, data) => {
+                  err.should.be.eql(mockBody);
+                  done();
+                });
       });
     });
 
@@ -421,12 +429,12 @@ describe('Utils Unit Tests', function() {
       var sampleRequestForRetry;
 
       function givenPostReturnsError() {
-        requestStub.returns(new Promise.resolve([{}, {}]));
-        handleResponseStub.returns(new Promise.reject({errorCode: 4001}));
+        requestStub.returns(Promise.resolve([{}, {}]));
+        handleResponseStub.returns(Promise.reject({errorCode: 4001}));
       }
 
       function givenPostReturnsSuccess() {
-        requestStub.returns(new Promise.resolve([{}, {}]));
+        requestStub.returns(Promise.resolve([{}, {}]));
         handleResponseStub.returns({content: true});
       }
       
@@ -510,7 +518,7 @@ describe('Utils Unit Tests', function() {
           }
         };
         var mockBody = '{"hello":"world"}';
-        requestStub.returns(new Promise.resolve([mockResponse, mockBody]));
+        requestStub.returns(Promise.resolve([mockResponse, mockBody]));
       });
 
       afterEach(() => {
@@ -522,10 +530,13 @@ describe('Utils Unit Tests', function() {
           .put(sampleRequest)
           .then(data => data.should.be.true));
 
-      it('request should call callback as true', () => {
+      it('request should call callback as true', (done) => {
         stubbedRequestor
           .put(sampleRequest,
-               (err, data) => data.should.be.true);
+               (err, data) => {
+                 data.should.be.true;
+                 done();
+                });
       });
     });
 
@@ -544,7 +555,7 @@ describe('Utils Unit Tests', function() {
             'content-type':'application/json;charset=UTF-8'
           }
         };
-        stub.returns(new Promise.reject(mockBody));
+        stub.returns(Promise.reject(mockBody));
       });
 
       afterEach(() => {
@@ -556,10 +567,13 @@ describe('Utils Unit Tests', function() {
           .put(sampleRequest)
           .catch(error => error.error.should.be.true));
 
-      it('request should error as false', () => {
+      it('request should error as false', (done) => {
         stubbedRequestor
           .put(sampleRequest,
-               (err, data) => err.should.eql(mockBody));
+               (err, data) => {
+                 err.should.eql(mockBody);
+                 done();
+                });
       });
     });
 
@@ -614,12 +628,12 @@ describe('Utils Unit Tests', function() {
       var sampleRequestForRetry = null;
 
       function givenPutReturnsError() {
-        requestStub.returns(new Promise.resolve([{}, {}]));
-        handleResponseStub.returns(new Promise.reject({errorCode: 4001}));
+        requestStub.returns(Promise.resolve([{}, {}]));
+        handleResponseStub.returns(Promise.reject({errorCode: 4001}));
       }
 
       function givenPutReturnsSuccess() {
-        requestStub.returns(new Promise.resolve([{}, {}]));
+        requestStub.returns(Promise.resolve([{}, {}]));
         handleResponseStub.returns({content: true});
       }
       
@@ -703,7 +717,7 @@ describe('Utils Unit Tests', function() {
           }
         };
         var mockBody = '{"hello":"world"}';
-        requestStub.returns(new Promise.resolve([mockResponse, mockBody]));
+        requestStub.returns(Promise.resolve([mockResponse, mockBody]));
       });
 
       afterEach(() => {
@@ -715,10 +729,13 @@ describe('Utils Unit Tests', function() {
           .delete(sampleRequest)
           .then(data => data.should.be.true));
 
-      it('request should call callback as true', () => {
+      it('request should call callback as true', (done) => {
         stubbedRequestor
           .delete(sampleRequest,
-                  (err, data) => data.should.be.true);
+                  (err, data) => {
+                    data.should.be.true;
+                    done();
+                  });
       });
     });
 
@@ -738,7 +755,7 @@ describe('Utils Unit Tests', function() {
             'content-type':'application/json;charset=UTF-8'
           }
         };
-        requestStub.returns(new Promise.reject(mockBody));
+        requestStub.returns(Promise.reject(mockBody));
       });
 
       afterEach(() => {
@@ -750,10 +767,13 @@ describe('Utils Unit Tests', function() {
           .delete(sampleRequest)
           .catch(error => error.error.should.be.true));
 
-      it('request should error as false', () => {
+      it('request should error as false', (done) => {
         stubbedRequestor
           .delete(sampleRequest,
-                  (err, data) => err.should.eql(mockBody));
+                  (err, data) => {
+                    err.should.eql(mockBody);
+                    done();
+                  });
       });
     });
 
@@ -803,12 +823,12 @@ describe('Utils Unit Tests', function() {
       var sampleRequestForRetry;
 
       function givenDeleteReturnsError() {
-        requestStub.returns(new Promise.resolve([{}, {}]));
-        handleResponseStub.returns(new Promise.reject({errorCode: 4001}));
+        requestStub.returns(Promise.resolve([{}, {}]));
+        handleResponseStub.returns(Promise.reject({errorCode: 4001}));
       }
 
       function givenDeleteReturnsSuccess() {
-        requestStub.returns(new Promise.resolve([{}, {}]));
+        requestStub.returns(Promise.resolve([{}, {}]));
         handleResponseStub.returns({content: true});
       }
       
