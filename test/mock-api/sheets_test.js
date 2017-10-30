@@ -7,8 +7,11 @@ var smartsheet = require('../..');
 
 
 describe('Mock API SDK Tests', function() {
-  process.env.SMARTSHEET_API_HOST = "http://localhost:8082/";
   var client = smartsheet.createClient({accessToken:'1234'});
+  
+  beforeEach (function() {
+    process.env.SMARTSHEET_API_HOST = "http://localhost:8082/";
+  });
 
   describe('#Sheets', function() {
     var scenarios = [
