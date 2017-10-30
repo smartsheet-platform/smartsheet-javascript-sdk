@@ -1,8 +1,8 @@
 language: node_js
 
 node_js:
-  - "6"
-  - "4.8"
+  - "lts/boron"
+  - "lts/argon"
 
 script:
   - npm run test-functional
