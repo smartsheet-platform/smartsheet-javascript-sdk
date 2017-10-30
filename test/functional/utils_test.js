@@ -30,7 +30,7 @@ var sampleRequestWithQueryParameters = {
   }
 };
 
-var EXPECTED_VERSION = '1.0.0-beta.0';
+var EXPECTED_VERSION = '1.0.1';
 
 describe('Utils Unit Tests', function() {
   describe('#HttpRequestor', function() {
