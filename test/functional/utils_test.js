@@ -62,10 +62,10 @@ describe('Utils Unit Tests', function() {
         builtUrl.should.equal(host + url);
       });
 
-      it('url should equal https://api.smartsheet.com/', () => {
+      it('url should equal https://api.smartsheet.com/2.0/', () => {
         process.env.SMARTSHEET_API_HOST = '';
         var builtUrl = requestor.internal.buildUrl({});
-        builtUrl.should.equal('https://api.smartsheet.com/');
+        builtUrl.should.equal('https://api.smartsheet.com/2.0/');
       });
 
       it('url should contain the host + url', () => {
@@ -151,9 +151,10 @@ describe('Utils Unit Tests', function() {
         stubbedRequestor.get(sampleRequest)
           .should.eventually.be.true);
 
-      it('request should call callback as true', () =>
+      it('request should call callback as true', (done) =>
         stubbedRequestor.get(sampleRequest, function(err, data) {
           data.should.be.true;
+          done();
         }));
     });
 
@@ -172,7 +173,7 @@ describe('Utils Unit Tests', function() {
           }
         };
         mockBody = {error:true};
-        requestStub.returns(new Promise.reject(mockBody));
+        requestStub.returns(Promise.reject(mockBody));
       });
 
       afterEach(() => {
@@ -184,10 +185,13 @@ describe('Utils Unit Tests', function() {
           .get(sampleRequest)
           .catch(error => error.error.should.be.true));
 
-      it('request should error as false, using callbacks', () => {
+      it('request should error as false, using callbacks', (done) => {
         stubbedRequestor
           .get(sampleRequest,
-               (err, data) => err.should.be.eql(mockBody));
+               (err, data) => {
+                 err.should.be.eql(mockBody);
+                 done();
+                });
       });
     });
 
@@ -218,7 +222,7 @@ describe('Utils Unit Tests', function() {
 
       it('url sent to request should match given', () => {
         requestor.get(sampleRequest);
-        spyGet.args[0][0].url.should.equal('https://api.smartsheet.com/URL');
+        spyGet.args[0][0].url.should.equal('https://api.smartsheet.com/2.0/URL');
       });
 
       it('queryString sent to request should match given', () => {
@@ -235,12 +239,12 @@ describe('Utils Unit Tests', function() {
       var sampleRequestForRetry = null;
 
       function givenGetReturnsError() {
-        requestStub.returns(new Promise.resolve([{}, {}]));
-        handleResponseStub.returns(new Promise.reject({errorCode: 4001}));
+        requestStub.returns(Promise.resolve([{}, {}]));
+        handleResponseStub.returns(Promise.reject({errorCode: 4001}));
       }
 
       function givenGetReturnsSuccess() {
-        requestStub.returns(new Promise.resolve([{}, {}]));
+        requestStub.returns(Promise.resolve([{}, {}]));
         handleResponseStub.returns({content: true});
       }
 
@@ -280,15 +284,6 @@ describe('Utils Unit Tests', function() {
           .catch(err => requestStub.callCount.should.be.above(1));
       });
 
-      it('get does not exceed max time', () => {
-        givenGetReturnsError();
-        var startTime = Date.now();
-        return stubbedRequestor
-          .get(sampleRequestForRetry)
-          .catch(err =>
-            sampleRequestForRetry.maxRetryDurationMillis.should.be.above(Date.now() - startTime - 5));
-      });
-
       it('get stops retrying when receiving a negative backoff', () => {
         givenGetReturnsError();
         givenEarlyExitBackoff();
@@ -323,7 +318,7 @@ describe('Utils Unit Tests', function() {
           }
         };
         var mockBody = '{"hello":"world"}';
-        requestStub.returns(new Promise.resolve([mockResponse, mockBody]));
+        requestStub.returns(Promise.resolve([mockResponse, mockBody]));
       });
 
       afterEach(() => {
@@ -335,9 +330,10 @@ describe('Utils Unit Tests', function() {
           .post(sampleRequest)
           .then(data => data.should.be.true));
 
-      it('request should call callback as true', () => {
+      it('request should call callback as true', (done) => {
         stubbedRequestor.post(sampleRequest, function(err, data) {
           data.should.be.true;
+          done();
         });
       });
     });
@@ -351,7 +347,7 @@ describe('Utils Unit Tests', function() {
 
       beforeEach(() => {
         requestStub = sinon.stub(request, 'postAsync');
-        requestStub.returns(new Promise.reject(mockBody));
+        requestStub.returns(Promise.reject(mockBody));
       });
 
       afterEach(() => {
@@ -363,10 +359,13 @@ describe('Utils Unit Tests', function() {
           .post(sampleRequest)
           .catch(error => error.error.should.be.true));
 
-      it('request should error as false', () => {
+      it('request should error as false', (done) => {
         stubbedRequestor
           .post(sampleRequest,
-                (err, data) => err.should.be.eql(mockBody));
+                (err, data) => {
+                  err.should.be.eql(mockBody);
+                  done();
+                });
       });
     });
 
@@ -397,7 +396,7 @@ describe('Utils Unit Tests', function() {
 
       it('url sent to request should match given', () => {
         requestor.post(sampleRequest);
-        spyPost.args[0][0].url.should.equal('https://api.smartsheet.com/URL');
+        spyPost.args[0][0].url.should.equal('https://api.smartsheet.com/2.0/URL');
       });
 
       it('queryString sent to request should match given', () => {
@@ -421,12 +420,12 @@ describe('Utils Unit Tests', function() {
       var sampleRequestForRetry;
 
       function givenPostReturnsError() {
-        requestStub.returns(new Promise.resolve([{}, {}]));
-        handleResponseStub.returns(new Promise.reject({errorCode: 4001}));
+        requestStub.returns(Promise.resolve([{}, {}]));
+        handleResponseStub.returns(Promise.reject({errorCode: 4001}));
       }
 
       function givenPostReturnsSuccess() {
-        requestStub.returns(new Promise.resolve([{}, {}]));
+        requestStub.returns(Promise.resolve([{}, {}]));
         handleResponseStub.returns({content: true});
       }
       
@@ -467,15 +466,6 @@ describe('Utils Unit Tests', function() {
           .catch(err => requestStub.callCount.should.be.above(1));
       });
 
-      it('post does not exceed max time', () => {
-        givenPostReturnsError();
-        var startTime = Date.now();
-        return stubbedRequestor
-          .post(sampleRequestForRetry)
-          .catch(err => sampleRequestForRetry.maxRetryDurationMillis
-                   .should.be.above(Date.now() - startTime - 5));
-      });
-
       it('post stops retrying when receiving a negative backoff', () => {
         givenPostReturnsError();
         givenEarlyExitBackoff();
@@ -510,7 +500,7 @@ describe('Utils Unit Tests', function() {
           }
         };
         var mockBody = '{"hello":"world"}';
-        requestStub.returns(new Promise.resolve([mockResponse, mockBody]));
+        requestStub.returns(Promise.resolve([mockResponse, mockBody]));
       });
 
       afterEach(() => {
@@ -522,10 +512,13 @@ describe('Utils Unit Tests', function() {
           .put(sampleRequest)
           .then(data => data.should.be.true));
 
-      it('request should call callback as true', () => {
+      it('request should call callback as true', (done) => {
         stubbedRequestor
           .put(sampleRequest,
-               (err, data) => data.should.be.true);
+               (err, data) => {
+                 data.should.be.true;
+                 done();
+                });
       });
     });
 
@@ -544,7 +537,7 @@ describe('Utils Unit Tests', function() {
             'content-type':'application/json;charset=UTF-8'
           }
         };
-        stub.returns(new Promise.reject(mockBody));
+        stub.returns(Promise.reject(mockBody));
       });
 
       afterEach(() => {
@@ -556,10 +549,13 @@ describe('Utils Unit Tests', function() {
           .put(sampleRequest)
           .catch(error => error.error.should.be.true));
 
-      it('request should error as false', () => {
+      it('request should error as false', (done) => {
         stubbedRequestor
           .put(sampleRequest,
-               (err, data) => err.should.eql(mockBody));
+               (err, data) => {
+                 err.should.eql(mockBody);
+                 done();
+                });
       });
     });
 
@@ -590,7 +586,7 @@ describe('Utils Unit Tests', function() {
 
       it('url sent to request should match given', () => {
         requestor.put(sampleRequest);
-        spyPut.args[0][0].url.should.equal('https://api.smartsheet.com/URL');
+        spyPut.args[0][0].url.should.equal('https://api.smartsheet.com/2.0/URL');
       });
 
       it('queryString sent to request should match given', () => {
@@ -614,12 +610,12 @@ describe('Utils Unit Tests', function() {
       var sampleRequestForRetry = null;
 
       function givenPutReturnsError() {
-        requestStub.returns(new Promise.resolve([{}, {}]));
-        handleResponseStub.returns(new Promise.reject({errorCode: 4001}));
+        requestStub.returns(Promise.resolve([{}, {}]));
+        handleResponseStub.returns(Promise.reject({errorCode: 4001}));
       }
 
       function givenPutReturnsSuccess() {
-        requestStub.returns(new Promise.resolve([{}, {}]));
+        requestStub.returns(Promise.resolve([{}, {}]));
         handleResponseStub.returns({content: true});
       }
       
@@ -660,15 +656,6 @@ describe('Utils Unit Tests', function() {
           .catch(err => requestStub.callCount.should.be.above(1));
       });
 
-      it('put does not exceed max time', () => {
-        givenPutReturnsError();
-        var startTime = Date.now();
-        return stubbedRequestor
-          .put(sampleRequestForRetry)
-          .catch(err => sampleRequestForRetry.maxRetryDurationMillis
-                   .should.be.above(Date.now() - startTime - 5));
-      });
-
       it('put stops retrying when receiving a negative backoff', () => {
         givenPutReturnsError();
         givenEarlyExitBackoff();
@@ -703,7 +690,7 @@ describe('Utils Unit Tests', function() {
           }
         };
         var mockBody = '{"hello":"world"}';
-        requestStub.returns(new Promise.resolve([mockResponse, mockBody]));
+        requestStub.returns(Promise.resolve([mockResponse, mockBody]));
       });
 
       afterEach(() => {
@@ -715,10 +702,13 @@ describe('Utils Unit Tests', function() {
           .delete(sampleRequest)
           .then(data => data.should.be.true));
 
-      it('request should call callback as true', () => {
+      it('request should call callback as true', (done) => {
         stubbedRequestor
           .delete(sampleRequest,
-                  (err, data) => data.should.be.true);
+                  (err, data) => {
+                    data.should.be.true;
+                    done();
+                  });
       });
     });
 
@@ -738,7 +728,7 @@ describe('Utils Unit Tests', function() {
             'content-type':'application/json;charset=UTF-8'
           }
         };
-        requestStub.returns(new Promise.reject(mockBody));
+        requestStub.returns(Promise.reject(mockBody));
       });
 
       afterEach(() => {
@@ -750,10 +740,13 @@ describe('Utils Unit Tests', function() {
           .delete(sampleRequest)
           .catch(error => error.error.should.be.true));
 
-      it('request should error as false', () => {
+      it('request should error as false', (done) => {
         stubbedRequestor
           .delete(sampleRequest,
-                  (err, data) => err.should.eql(mockBody));
+                  (err, data) => {
+                    err.should.eql(mockBody);
+                    done();
+                  });
       });
     });
 
@@ -784,7 +777,7 @@ describe('Utils Unit Tests', function() {
 
       it('url sent to request should match given', () => {
         requestor.delete(sampleRequest);
-        spyPut.args[0][0].url.should.equal('https://api.smartsheet.com/URL');
+        spyPut.args[0][0].url.should.equal('https://api.smartsheet.com/2.0/URL');
       });
 
       it('queryString sent to request should match given', () => {
@@ -803,12 +796,12 @@ describe('Utils Unit Tests', function() {
       var sampleRequestForRetry;
 
       function givenDeleteReturnsError() {
-        requestStub.returns(new Promise.resolve([{}, {}]));
-        handleResponseStub.returns(new Promise.reject({errorCode: 4001}));
+        requestStub.returns(Promise.resolve([{}, {}]));
+        handleResponseStub.returns(Promise.reject({errorCode: 4001}));
       }
 
       function givenDeleteReturnsSuccess() {
-        requestStub.returns(new Promise.resolve([{}, {}]));
+        requestStub.returns(Promise.resolve([{}, {}]));
         handleResponseStub.returns({content: true});
       }
       
@@ -847,15 +840,6 @@ describe('Utils Unit Tests', function() {
         return stubbedRequestor
           .delete(sampleRequestForRetry)
           .catch(err => requestStub.callCount.should.be.above(1));
-      });
-
-      it('delete does not exceed max time', () => {
-        givenDeleteReturnsError();
-        var startTime = Date.now();
-        return stubbedRequestor
-          .delete(sampleRequestForRetry)
-          .catch(err => sampleRequestForRetry.maxRetryDurationMillis
-                   .should.be.above(Date.now() - startTime - 5));
       });
 
       it('delete stops retrying when receiving a negative backoff', () => {

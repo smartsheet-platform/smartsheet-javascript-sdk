@@ -4,8 +4,9 @@
   "description": "Smartsheet JavaScript client SDK",
   "main": "index.js",
   "scripts": {
-    "test": "mocha \"test/**/*.js\"",
-    "test-functional": "mocha \"test/functional/**/*.js\"",
+    "test": "mocha \"test/**/*_test.js\"",
+    "test-functional": "mocha \"test/functional/**/*_test.js\"",
+    "test-mock-api": "mocha \"test/mock-api/**/*_test.js\"",
     "coverage": "istanbul cover _mocha -- -u exports -R spec \"test/functional/**/*.js\"",
     "report-coverage": "cat ./coverage/lcov.info | coveralls"
   },
