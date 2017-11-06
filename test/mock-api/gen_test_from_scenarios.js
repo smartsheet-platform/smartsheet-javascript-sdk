@@ -1,8 +1,15 @@
+// Summary:
+// This script can be used to generate mock api tests from a scenario.json
+// file. The output will be a JSON array that can be copied into a test file and
+// run. You will need to replace the 'TODO_METHOD' string for each
+// test with an actual method (such as client.sheets.listSheets) before
+// running the tests.
+
 var _ = require('underscore');
 var fs = require('fs');
 
 if (process.argv.length < 4) {
-    console.log("Usage: node gen_test_from_scenario.js path/to/scenario/file path/to/output/file");
+    console.log("Usage: node gen_test_from_scenarios.js path/to/scenario/file path/to/output/file");
     process.exit(1);
 }
 
