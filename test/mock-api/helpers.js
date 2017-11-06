@@ -22,20 +22,17 @@ var defineMockApiTest = function(scenario) {
                     }
                 })
                 .catch(function(error) {
-                    if (scenario.shouldError) {
+                    if (scenario.shouldError && !isScenarioError(error)) {
                         return Promise.resolve();
                     }
                     else {
-                        var errorMessage = getErrorMessage(error);
-                        return Promise.reject(new Error(errorMessage));
+                        return Promise.reject(new Error(error.message));
                     }
                 });
         });
     });
 };
 
-function getErrorMessage(error) {
-    var messageObj = JSON.parse(error.message);
-
-    return messageObj.message;
+function isScenarioError(error) {
+    return error.errorCode === 9999;
 }
