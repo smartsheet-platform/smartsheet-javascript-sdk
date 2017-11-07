@@ -588,6 +588,170 @@ describe('Mock API SDK Tests', function() {
             }
           ]
         }
+      },
+      {
+        "name": "Add Rows - Assign Object Value - Predecessor List",
+        "method": client.sheets.addRows,
+        "shouldError": false,
+        "options": {
+          "sheetId": 1,
+          "body": [
+            {
+              "cells": [
+                {
+                  "columnId": 101,
+                  "objectValue": {
+                    "objectType": "PREDECESSOR_LIST",
+                    "predecessors": [
+                      {
+                        "rowId": 10,
+                        "type": "FS",
+                        "lag": {
+                          "objectType": "DURATION",
+                          "days": 2,
+                          "hours": 4
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "Update Rows - Clear Value - Text Number",
+        "method": client.sheets.updateRow,
+        "shouldError": false,
+        "options": {
+          "sheetId": 1,
+          "body": [
+            {
+              "id": 10,
+              "cells": [
+                {
+                  "columnId": 101,
+                  "value": ""
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "Update Rows - Clear Value - Checkbox",
+        "method": client.sheets.updateRow,
+        "shouldError": false,
+        "options": {
+          "sheetId": 1,
+          "body": [
+            {
+              "id": 10,
+              "cells": [
+                {
+                  "columnId": 101,
+                  "value": ""
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "Update Rows - Clear Value - Hyperlink",
+        "method": client.sheets.updateRow,
+        "shouldError": false,
+        "options": {
+          "sheetId": 1,
+          "body": [
+            {
+              "id": 10,
+              "cells": [
+                {
+                  "columnId": 101,
+                  "value": "",
+                  "hyperlink": null
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "Update Rows - Clear Value - Cell Link",
+        "method": client.sheets.updateRow,
+        "shouldError": false,
+        "options": {
+          "sheetId": 1,
+          "body": [
+            {
+              "id": 10,
+              "cells": [
+                {
+                  "columnId": 101,
+                  "value": "",
+                  "linkInFromCell": null
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "Update Rows - Invalid - Assign Hyperlink and Cell Link",
+        "method": client.sheets.updateRow,
+        "shouldError": false,
+        "options": {
+          "sheetId": 1,
+          "body": [
+            {
+              "id": 10,
+              "cells": [
+                {
+                  "columnId": 101,
+                  "value": "",
+                  "linkInFromCell": {
+                    "sheetId": 2,
+                    "rowId": 20,
+                    "columnId": 201
+                  },
+                  "hyperlink": {
+                    "url": "www.google.com"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "Update Rows - Location - Top",
+        "method": client.sheets.updateRow,
+        "shouldError": false,
+        "options": {
+          "sheetId": 1,
+          "body": [
+            {
+              "id": 10,
+              "toTop": true
+            }
+          ]
+        }
+      },
+      {
+        "name": "Update Rows - Location - Bottom",
+        "method": client.sheets.updateRow,
+        "shouldError": false,
+        "options": {
+          "sheetId": 1,
+          "body": [
+            {
+              "id": 10,
+              "toBottom": true
+            }
+          ]
+        }
       }
     ];
     
