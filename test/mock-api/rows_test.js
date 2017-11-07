@@ -701,7 +701,7 @@ describe('Mock API SDK Tests', function() {
       {
         "name": "Update Rows - Invalid - Assign Hyperlink and Cell Link",
         "method": client.sheets.updateRow,
-        "shouldError": false,
+        "shouldError": true,
         "options": {
           "sheetId": 1,
           "body": [
