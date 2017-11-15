@@ -5,11 +5,11 @@ node_js:
   - "lts/argon"
 
 before_install:
-  - git clone https://github.com/stollgr/wiremock-scenario-templating.git
-  - wiremock-scenario-templating/travis_scripts/install_wiremock.sh
+  - git clone https://github.com/smartsheet-platform/smartsheet-sdk-tests.git
+  - smartsheet-sdk-tests/travis_scripts/install_wiremock.sh
 
 script:
-  - wiremock-scenario-templating/travis_scripts/start_wiremock.sh
+  - smartsheet-sdk-tests/travis_scripts/start_wiremock.sh
   - npm test
 
 branches:
