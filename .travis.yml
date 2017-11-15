@@ -1,7 +1,16 @@
 language: node_js
 
 node_js:
-  - "6"
+  - "lts/boron"
+  - "lts/argon"
+
+before_install:
+  - git clone https://github.com/smartsheet-platform/smartsheet-sdk-tests.git
+  - smartsheet-sdk-tests/travis_scripts/install_wiremock.sh
+
+script:
+  - smartsheet-sdk-tests/travis_scripts/start_wiremock.sh
+  - npm test
 
 branches:
   only:
