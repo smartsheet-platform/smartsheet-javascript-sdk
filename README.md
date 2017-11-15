@@ -8,7 +8,7 @@ The SDK supports Node.js versions 6.x or later.
 
 ## Installation
 
-To install this SDK, simply run the following command in a terminal window: 
+To install this SDK, simply run the following command in a terminal window:
 
 ```bash
 npm install smartsheet
@@ -16,11 +16,11 @@ npm install smartsheet
 
 ## Documentation
 
-The Smartsheet API documentation with corresponding SDK example code can be found [here](http://www.smartsheet.com/developers/api-documentation). 
+The Smartsheet API documentation with corresponding SDK example code can be found [here](http://www.smartsheet.com/developers/api-documentation).
 
 ## Example Usage
 
-To call the API, you must have an access token, which looks something like this example: ll352u9jujauoqz4gstvsae05. You can find the access token in the Smartsheet UI at Account > Personal Settings > API Access. 
+To call the API, you must have an access token, which looks something like this example: ll352u9jujauoqz4gstvsae05. You can find the access token in the Smartsheet UI at Account > Personal Settings > API Access.
 
 The following is a brief sample using promises that shows you how to:
 
@@ -78,7 +78,7 @@ When creating the client object, pass an object with any of the following proper
 
 * `maxRetryDurationSeconds` - The maximum time in seconds to retry intermittent errors. (Defaults to 15 seconds.)
 
-* `logLevel` - Set to `'info'` to log each call and return value to the console. 
+* `logLevel` - Set to `'info'` to log each call and return value to the console.
 
 
 ## Advanced Configuration Options
@@ -120,8 +120,9 @@ The source code comes with several scripts for running tests:
 
 |Script|Action|
 |---|---|
-|`npm run test`|Runs all tests|
+|`npm run test`|Runs all tests. Note, the mock API tests will fail unless the mock server is running|
 |`npm run test-functional`|Runs only functional tests|
+|`npm run test-mock-api`|Runs only mock API tests. Clone the [Smartsheet SDK tests](https://github.com/smartsheet-platform/smartsheet-sdk-tests) repo and follow the instructions from the README to start the mock server|
 |`npm run coverage`|Runs functional tests and reports on code coverage|
 |`gulp jshint`|Runs JSHint against the codebase|
 |`gulp [watch]`|Watches the codebase and runs JSHint whenever changes are made|
