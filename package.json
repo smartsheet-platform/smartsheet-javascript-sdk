@@ -7,7 +7,7 @@
     "test": "mocha \"test/**/*_test.js\"",
     "test-functional": "mocha \"test/functional/**/*_test.js\"",
     "test-mock-api": "mocha \"test/mock-api/**/*_test.js\"",
-    "coverage": "istanbul cover _mocha -- -u exports -R spec \"test/functional/**/*.js\"",
+    "coverage": "istanbul cover _mocha -- -u exports -R spec \"test/**/*_test.js\"",
     "report-coverage": "cat ./coverage/lcov.info | coveralls"
   },
   "repository": {
