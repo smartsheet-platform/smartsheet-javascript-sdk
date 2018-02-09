@@ -117,6 +117,7 @@ describe('Method Unit Tests', function () {
                 { name: 'updateSheet', stub: 'put', options: {}, expectedRequest: {url: "sheets/"}},
                 { name: 'deleteSheet', stub: 'delete', options: {}, expectedRequest: {url: "sheets/"}},
                 { name: 'moveSheet', stub: 'post', options: {sheetId: 123}, expectedRequest: {url: "sheets/123/move"}},
+                { name: 'sortRowsInSheet', stub: 'post', options: {sheetId: 123}, expectedRequest: {url: "sheets/123/sort"}},
                 // attachments
                 { name: 'listAttachments', stub: 'get', options: {sheetId: 123}, expectedRequest: {url: "sheets/123/attachments/"}},
                 { name: 'listAttachmentVersions', stub: 'get', options: {sheetId: 123, attachmentId: 234}, expectedRequest: {url: "sheets/123/attachments/234/versions"}},
