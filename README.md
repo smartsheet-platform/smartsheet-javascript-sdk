@@ -38,8 +38,16 @@ var smartsheet = client.createClient({
 
 // The `smartsheet` variable now contains access to all of the APIs
 
+// Set queryParameters for `include` and pagination
+var options = {
+  queryParameters: {
+    include: "attachments",
+    includeAll: true
+  }
+};
+
 // List all sheets
-smartsheet.sheets.listSheets()
+smartsheet.sheets.listSheets(options)
   .then(function (result) {
     var sheetId = result.data[0].id;                // Choose the first sheet
 
