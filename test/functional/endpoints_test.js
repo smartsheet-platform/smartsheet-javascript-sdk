@@ -147,6 +147,10 @@ describe('Method Unit Tests', function () {
                 { name: 'createSheetInFolder', stub: 'post', options: {folderId: 123}, expectedRequest: {url: "folders/123/sheets"}},
                 { name: 'createSheetInWorkspace', stub: 'post', options: {workspaceId: 123}, expectedRequest: {url: "workspaces/123/sheets"}},
                 { name: 'copySheet', stub: 'post', options: {sheetId: 123}, expectedRequest: {url: "sheets/123/copy"}},
+                // cross sheet references
+                { name: 'createCrossSheetReference', stub: 'post', options: {sheetId: 123}, expectedRequest: {url: "sheets/123/crosssheetreferences/"}},
+                { name: 'getCrossSheetReference', stub: 'get', options: {sheetId: 123, crossSheetReferenceId: 234}, expectedRequest: {url: "sheets/123/crosssheetreferences/234"}},
+                { name: 'listCrossSheetReferences', stub: 'get', options: {sheetId: 123}, expectedRequest: {url: "sheets/123/crosssheetreferences/"}},
                 // discussions
                 { name: 'getDiscussions', stub: 'get', options: {sheetId:123}, expectedRequest: {url: "sheets/123/discussions/"}},
                 { name: 'getDiscussion', stub: 'get', options: {sheetId:123, discussionId: 234}, expectedRequest: {url: "sheets/123/discussions/234"}},
