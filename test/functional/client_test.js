@@ -200,7 +200,7 @@ describe('Client Unit Tests', function() {
   describe('#Sheets', function() {
     it('should have Sheets object',function(){
       smartsheet.should.have.property('sheets');
-      Object.keys(smartsheet.sheets).should.be.length(77);
+      Object.keys(smartsheet.sheets).should.be.length(81);
     });
 
     it('should have Sheets get methods', function() {

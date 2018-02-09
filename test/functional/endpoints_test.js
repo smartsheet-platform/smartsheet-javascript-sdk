@@ -126,6 +126,11 @@ describe('Method Unit Tests', function () {
                 { name: 'attachNewVersion', stub: 'postFile', options: {sheetId: 123, attachmentId: 234}, expectedRequest: {url: "sheets/123/attachments/234/versions"}},
                 { name: 'deleteAttachment', stub: 'delete', options: {sheetId: 123}, expectedRequest: {url: "sheets/123/attachments/"}},
                 { name: 'deleteAllAttachmentVersions', stub: 'delete', options: {sheetId: 123, attachmentId: 234}, expectedRequest: {url: "sheets/123/attachments/234/versions"}},
+                // automation rules
+                { name: 'deleteAutomationRule', stub: 'delete', options: {sheetId: 123, automationRuleId: 234}, expectedRequest: {url: "sheets/123/automationrules/234"}},
+                { name: 'getAutomationRule', stub: 'get', options: {sheetId: 123, automationRuleId: 234}, expectedRequest: {url: "sheets/123/automationrules/234"}},
+                { name: 'listAutomationRules', stub: 'get', options: {sheetId: 123}, expectedRequest: {url: "sheets/123/automationrules/"}},
+                { name: 'updateAutomationRule', stub: 'put', options: {sheetId: 123, automationRuleId: 234}, expectedRequest: {url: "sheets/123/automationrules/234"}},
                 // columns
                 { name: 'getColumns', stub: 'get', options: {sheetId: 123}, expectedRequest: {url: "sheets/123/columns/"}},
                 { name: 'getColumn', stub: 'get', options: {sheetId: 123, columnId: 234}, expectedRequest: {url: "sheets/123/columns/234"}},
