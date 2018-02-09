@@ -200,7 +200,7 @@ describe('Client Unit Tests', function() {
   describe('#Sheets', function() {
     it('should have Sheets object',function(){
       smartsheet.should.have.property('sheets');
-      Object.keys(smartsheet.sheets).should.be.length(74);
+      Object.keys(smartsheet.sheets).should.be.length(78);
     });
 
     it('should have Sheets get methods', function() {
@@ -232,7 +232,7 @@ describe('Client Unit Tests', function() {
       smartsheet.sheets.should.have.property('addRows');
       smartsheet.sheets.should.have.property('addRowFileAttachment');
       smartsheet.sheets.should.have.property('addRowUrlAttachment');
-      smartsheet.sheets.should.have.property('addRowAttachment');      
+      smartsheet.sheets.should.have.property('addRowAttachment');
       smartsheet.sheets.should.have.property('createRowDiscussion');
       smartsheet.sheets.should.have.property('getRow');
       smartsheet.sheets.should.have.property('getRowAttachments');
@@ -343,7 +343,7 @@ describe('Client Unit Tests', function() {
       smartsheet.should.have.property('tokens');
       Object.keys(smartsheet.tokens).should.be.length(3);
     });
-    
+
     it('should have get methods', function () {
       smartsheet.tokens.should.have.property('getAccessToken');
       smartsheet.tokens.should.have.property('refreshAccessToken');
