@@ -59,3 +59,51 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Changed
 - Improve README
+## 0.2.0 - April 24, 2017
+### Added
+- Add contacts support
+
+## 0.1.0 - April 7, 2017
+### Added
+- Add Smartsheet Sights support
+
+## 0.0.8 - March 31, 2017
+### Changed
+- Remove hardcoded sheet id in sample code
+
+## 0.0.7 - March 31, 2017
+### Changed
+- Use `SMARTSHEET_API_HOST` instead of `HOST`
+
+## 0.0.6 - March 31, 2017
+### Added
+- Add getSheet tests
+
+### Fixed
+- Fix options cloning issue
+
+## 0.0.5 - January 13, 2016
+### Fixed
+- Fix deleteRow to handle bulk delete of rows
+- Fix urlOptions undefined bug when using smartsheet.workspaces.listWorkspaces()
+
+## 0.0.4 - August 12, 2015
+### Changed
+- Update readme
+
+## 0.0.3 - August 12, 2015
+### Changed
+- Add example usage
+- Streamline readme
+
+## 0.0.2 - August 12, 2015
+### Changed
+- Comment out debug statements
+- Update readme
+### Fixed
+- Bug fixes
+
+
+## 0.0.1 - April 27, 2015
+### Added
+- Initial commit
