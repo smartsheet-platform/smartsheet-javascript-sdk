@@ -10,9 +10,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Add automation rule support
 - Add sort rows support
 - Add cross sheet reference support
+- Add arbitrary request support
 
 ### Changed
 - Set gzip encoding header
+
+### Fixed
+- Fixed bug preventing query params from being with `searchAll`
 
 ## 1.0.4 - February 2, 2018
 ### Added
