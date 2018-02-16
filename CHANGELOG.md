@@ -7,13 +7,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## Unreleased
 ### Added
-- Add webhook 'Change Agent' header support
 - Add automation rule support
 - Add sort rows support
 - Add cross sheet reference support
 
 ### Changed
 - Set gzip encoding header
+
+## 1.0.4 - February 2, 2018
+### Added
+- Add webhook 'Change Agent' header support
 
 ## 1.0.3 - November 21, 2017
 ### Added
