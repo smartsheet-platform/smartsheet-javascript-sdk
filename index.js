@@ -9,15 +9,15 @@ var apiUrls = require('./lib/utils/apis.js');
 
 function buildRequestor(clientOptions) {
   if(clientOptions.requestor) return clientOptions.requestor;
-  
+
   var requestorConfig =
     _.pick(clientOptions, 'maxRetryDurationSeconds', 'calcRetryBackoff');
-  
+
   if(requestorConfig.maxRetryDurationSeconds)
     requestorConfig.maxRetryDurationMillis = requestorConfig.maxRetryDurationSeconds * 1000;
 
   requestorConfig.logger = buildLogger(clientOptions);
-  
+
   return require('./lib/utils/httpRequestor.js')
     .create(requestorConfig);
 };
@@ -28,7 +28,7 @@ function buildLogger(clientOptions) {
       "Smartsheet client options may specify at most one of " +
       "'logger', 'loggerContainer', and 'logLevel'.");
   }
-  
+
   if(clientOptions.logger) return clientOptions.logger;
 
   if(clientOptions.logLevel) return buildLoggerFromLevel(clientOptions.logLevel);
@@ -89,6 +89,7 @@ exports.createClient = function(clientOptions) {
     home       : require('./lib/home/').create(options),
     images     : require('./lib/images/').create(options),
     reports    : require('./lib/reports/').create(options),
+    request    : require('./lib/request/').create(options),
     search     : require('./lib/search/').create(options),
     server     : require('./lib/server/').create(options),
     sheets     : require('./lib/sheets/').create(options),

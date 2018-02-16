@@ -96,6 +96,16 @@ describe('Method Unit Tests', function () {
             ]
         },
         {
+            name: 'request',
+            methods: [
+                { name: 'get', stub: 'get', options: {url: "something"}, expectedRequest: {url: "something"}},
+                { name: 'post', stub: 'post', options: {url: "something"}, expectedRequest: {url: "something"}},
+                { name: 'put', stub: 'put', options: {url: "something"}, expectedRequest: {url: "something"}},
+                { name: 'postFile', stub: 'postFile', options: {url: "something"}, expectedRequest: {url: "something"}},
+                { name: 'delete', stub: 'delete', options: {url: "something"}, expectedRequest: {url: "something"}},
+            ]
+        },
+        {
             name: 'search',
             methods: [
                 { name: 'searchAll', stub: 'get', options: {query: "query"}, expectedRequest: {url: "search/", queryParameters: {query: "query"}}},
