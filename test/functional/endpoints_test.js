@@ -109,6 +109,8 @@ describe('Method Unit Tests', function () {
             name: 'search',
             methods: [
                 { name: 'searchAll', stub: 'get', options: {query: "query"}, expectedRequest: {url: "search/", queryParameters: {query: "query"}}},
+                { name: 'searchAll', stub: 'get', options: {query: "query", queryParameters: {someParam: "something"}}, expectedRequest: {url: "search/", queryParameters: {query: "query", someParam: "something"}}},
+                { name: 'searchAll', stub: 'get', options: {query: "query", queryParameters: {query: "something"}}, expectedRequest: {url: "search/", queryParameters: {query: "something"}}},
                 { name: 'searchSheet', stub: 'get', options: {sheetId: 123}, expectedRequest: {url: "search/sheets/123" }},
             ]
         },
