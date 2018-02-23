@@ -6,7 +6,7 @@ var helpers = require('./helpers');
 
 describe('Mock API SDK Tests', function() {
   var client = helpers.setupClient();
-  
+
   beforeEach(helpers.setupMockApiTest);
 
   describe('#Rows', function() {
@@ -699,6 +699,25 @@ describe('Mock API SDK Tests', function() {
         }
       },
       {
+        "name": "Update Rows - Clear Value - Predecessor List",
+        "method": client.sheets.updateRow,
+        "shouldError": false,
+        "options": {
+          "sheetId": 1,
+          "body": [
+            {
+              "id": 10,
+              "cells": [
+                {
+                  "columnId": 123,
+                  "value": null
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
         "name": "Update Rows - Invalid - Assign Hyperlink and Cell Link",
         "method": client.sheets.updateRow,
         "shouldError": true,
@@ -754,7 +773,7 @@ describe('Mock API SDK Tests', function() {
         }
       }
     ];
-    
+
     helpers.defineMockApiTests(scenarios);
   });
 });
