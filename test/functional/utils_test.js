@@ -3,6 +3,7 @@ var request = require('request');
 var sinon = require('sinon');
 var Promise = require('bluebird');
 var _ = require('underscore');
+var fs = require('fs');
 
 var requestor = require('../../lib/utils/httpRequestor').create({request: request});
 
@@ -82,6 +83,16 @@ describe('Utils Unit Tests', function() {
     describe('#buildHeaders', function() {
       var newType = 'text/xml';
       var applicationJson = 'application/json';
+      var fsStub = null;
+
+      beforeEach(() => {
+        fsStub = sinon.stub(fs, 'statSync');
+        fsStub.returns({size: 234});
+      });
+
+      afterEach(() => {
+        fsStub.restore();
+      });
 
       it('authorization header should have token', () => {
         var headers = requestor.internal.buildHeaders({accessToken: 'token'});
@@ -113,9 +124,19 @@ describe('Utils Unit Tests', function() {
         headers['Content-Disposition'].should.equal('attachment; filename="test"');
       });
 
-      it('Content-Length should equal 123', () => {
+      it('Should set Content-Length to fileSize', () => {
         var headers = requestor.internal.buildHeaders({fileName: 'test',   fileSize: 123});
         headers['Content-Length'].should.equal(123);
+      });
+
+      it('Should set Content-Length from file size when path is specified', () => {
+        var headers = requestor.internal.buildHeaders({fileName: 'test',   path: "somePath"});
+        headers['Content-Length'].should.equal(234);
+      });
+
+      it('Should prefer path over fileSize for Content-Length', () => {
+        var headers = requestor.internal.buildHeaders({fileName: 'test',   path: "somePath", fileSize: 123});
+        headers['Content-Length'].should.equal(234);
       });
 
       it('Assume-User should equal URI encoded email', () => {
@@ -339,7 +360,7 @@ describe('Utils Unit Tests', function() {
     });
 
     describe('#Error on request', function() {
-      var requestStub = null;     
+      var requestStub = null;
       var mockBody = {error:true};
 
       var stubbedRequestor = require('../../lib/utils/httpRequestor')
@@ -413,7 +434,7 @@ describe('Utils Unit Tests', function() {
     describe('#Retry', function() {
       var requestStub = null;
       var handleResponseStub = sinon.stub();
-      
+
       var stubbedRequestor = require('../../lib/utils/httpRequestor')
         .create({request: request, handleResponse: handleResponseStub});
 
@@ -428,11 +449,11 @@ describe('Utils Unit Tests', function() {
         requestStub.returns(Promise.resolve([{}, {}]));
         handleResponseStub.returns({content: true});
       }
-      
+
       function givenEarlyExitBackoff() {
         sampleRequestForRetry.calcRetryBackoff = numRetry => numRetry == 1 ? -1 : 1;
       }
-      
+
       function givenBackoffDependsOnError() {
         sampleRequestForRetry.calcRetryBackoff = (numRetry, error) => {
           if(error.errorCode == 4001) return numRetry == 1 ? -1 : 1;
@@ -487,7 +508,7 @@ describe('Utils Unit Tests', function() {
   describe('#PUT', function() {
     describe('#Successful request', function() {
       var requestStub = null;
-      
+
       var stubbedRequestor = require('../../lib/utils/httpRequestor')
         .create({request: request, handleResponse: () => ({content: true})});
 
@@ -525,7 +546,7 @@ describe('Utils Unit Tests', function() {
     describe('#Error on request', function() {
       var stub = null;
       var mockBody = {error: true};
-      
+
       var stubbedRequestor = require('../../lib/utils/httpRequestor')
         .create({request: request, handleResponse: () => ({content: true})});
 
@@ -603,7 +624,7 @@ describe('Utils Unit Tests', function() {
     describe('#Retry', function() {
       var requestStub = null;
       var handleResponseStub = sinon.stub();
-      
+
       var stubbedRequestor = require('../../lib/utils/httpRequestor')
         .create({request: request, handleResponse: handleResponseStub});
 
@@ -618,11 +639,11 @@ describe('Utils Unit Tests', function() {
         requestStub.returns(Promise.resolve([{}, {}]));
         handleResponseStub.returns({content: true});
       }
-      
+
       function givenEarlyExitBackoff() {
         sampleRequestForRetry.calcRetryBackoff = numRetry => numRetry == 1 ? -1 : 1;
       }
-      
+
       function givenBackoffDependsOnError() {
         sampleRequestForRetry.calcRetryBackoff = (numRetry, error) => {
           if(error.errorCode == 4001) return numRetry == 1 ? -1 : 1;
@@ -677,7 +698,7 @@ describe('Utils Unit Tests', function() {
   describe('#DELETE', function() {
     describe('#Successful request', function() {
       var requestStub = null;
-      
+
       var stubbedRequestor = require('../../lib/utils/httpRequestor')
         .create({request: request, handleResponse: () => ({content: true})});
 
@@ -716,7 +737,7 @@ describe('Utils Unit Tests', function() {
       var requestStub = null;
       var handleResponseStub = null;
       var mockBody = {error: true};
-      
+
       var stubbedRequestor = require('../../lib/utils/httpRequestor')
         .create({request: request, handleResponse: () => ({content: true})});
 
@@ -789,7 +810,7 @@ describe('Utils Unit Tests', function() {
     describe('#Retry', function() {
       var requestStub = null;
       var handleResponseStub = sinon.stub();
-      
+
       var stubbedRequestor = require('../../lib/utils/httpRequestor')
         .create({request: request, handleResponse: handleResponseStub});
 
@@ -804,11 +825,11 @@ describe('Utils Unit Tests', function() {
         requestStub.returns(Promise.resolve([{}, {}]));
         handleResponseStub.returns({content: true});
       }
-      
+
       function givenEarlyExitBackoff() {
         sampleRequestForRetry.calcRetryBackoff = numRetry => numRetry == 1 ? -1 : 1;
       }
-      
+
       function givenBackoffDependsOnError() {
         sampleRequestForRetry.calcRetryBackoff = (numRetry, error) => {
           if(error.errorCode == 4001) return numRetry == 1 ? -1 : 1;
