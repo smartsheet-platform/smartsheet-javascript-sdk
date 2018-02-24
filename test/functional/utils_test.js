@@ -4,6 +4,7 @@ var sinon = require('sinon');
 var Promise = require('bluebird');
 var _ = require('underscore');
 var packageJson = require('../../package.json');
+var fs = require('fs');
 
 var requestor = require('../../lib/utils/httpRequestor').create({request: request});
 
@@ -83,6 +84,16 @@ describe('Utils Unit Tests', function() {
     describe('#buildHeaders', function() {
       var newType = 'text/xml';
       var applicationJson = 'application/json';
+      var fsStub = null;
+
+      beforeEach(() => {
+        fsStub = sinon.stub(fs, 'statSync');
+        fsStub.returns({size: 234});
+      });
+
+      afterEach(() => {
+        fsStub.restore();
+      });
 
       it('authorization header should have token', () => {
         var headers = requestor.internal.buildHeaders({accessToken: 'token'});
@@ -114,9 +125,19 @@ describe('Utils Unit Tests', function() {
         headers['Content-Disposition'].should.equal('attachment; filename="test"');
       });
 
-      it('Content-Length should equal 123', () => {
+      it('Should set Content-Length to fileSize', () => {
         var headers = requestor.internal.buildHeaders({fileName: 'test',   fileSize: 123});
         headers['Content-Length'].should.equal(123);
+      });
+
+      it('Should set Content-Length from file size when path is specified', () => {
+        var headers = requestor.internal.buildHeaders({fileName: 'test',   path: "somePath"});
+        headers['Content-Length'].should.equal(234);
+      });
+
+      it('Should prefer path over fileSize for Content-Length', () => {
+        var headers = requestor.internal.buildHeaders({fileName: 'test',   path: "somePath", fileSize: 123});
+        headers['Content-Length'].should.equal(234);
       });
 
       it('Assume-User should equal URI encoded email', () => {
