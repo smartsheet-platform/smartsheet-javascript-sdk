@@ -3,6 +3,7 @@ var request = require('request');
 var sinon = require('sinon');
 var Promise = require('bluebird');
 var _ = require('underscore');
+var packageJson = require('../../package.json');
 var fs = require('fs');
 
 var requestor = require('../../lib/utils/httpRequestor').create({request: request});
@@ -142,6 +143,16 @@ describe('Utils Unit Tests', function() {
       it('Assume-User should equal URI encoded email', () => {
         var headers = requestor.internal.buildHeaders({assumeUser: 'john.doe@smartsheet.com'});
         headers['Assume-User'].should.equal('john.doe%40smartsheet.com');
+      });
+
+      it('Should set the user agent string based on the version', () => {
+        var headers = requestor.internal.buildHeaders({});
+        headers['User-Agent'].should.equal(`smartsheet-javascript-sdk/${packageJson.version}`);
+      });
+
+      it('Should used a passed in value for the user agent string', () => {
+        var headers = requestor.internal.buildHeaders({userAgent: 'someAgentString'});
+        headers['User-Agent'].should.equal(`smartsheet-javascript-sdk/${packageJson.version}/someAgentString`);
       });
     });
   });

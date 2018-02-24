@@ -3,7 +3,8 @@ var should = require('should');
 var requestor = require('../../lib/utils/httpRequestor.js').create({});
 var constants = require('../../lib/utils/constants.js');
 var _ = require('underscore');
-var smartsheet = require('../../index.js').createClient({accessToken: "token", requestor: requestor});
+var smartsheet = require('../../index.js');
+
 
 describe('Method Unit Tests', function () {
     var testGroups = [
@@ -298,9 +299,11 @@ describe('Method Unit Tests', function () {
             _.each(testGroup.methods, function (method) {
                 describe('#' + method.name, function () {
                     var stub;
+                    var client;
 
                     beforeEach(function () {
                         stub = sinon.stub(requestor, method.stub);
+                        client = smartsheet.createClient({accessToken: "token", requestor: requestor, userAgent: "user agent"});
                     });
 
                     afterEach(function () {
@@ -308,18 +311,23 @@ describe('Method Unit Tests', function () {
                     });
 
                     it('method exists', function () {
-                        smartsheet.should.have.property(testGroup.name);
-                        smartsheet[testGroup.name].should.have.property(method.name);
+                        client.should.have.property(testGroup.name);
+                        client[testGroup.name].should.have.property(method.name);
                     });
 
                     it('calls requestor once', function () {
-                        smartsheet[testGroup.name][method.name](method.options);
+                        client[testGroup.name][method.name](method.options);
                         stub.callCount.should.be.equal(1);
                     });
 
+                    it('passes constructor args', function () {
+                        client[testGroup.name][method.name](method.options);
+                        stub.args[0][0].should.have.properties({userAgent: "user agent"});
+                    });
+
                     it('multiple requests are correct', function () {
-                        smartsheet[testGroup.name][method.name](method.options);
-                        smartsheet[testGroup.name][method.name](method.options);
+                        client[testGroup.name][method.name](method.options);
+                        client[testGroup.name][method.name](method.options);
                         stub.args[0][0].should.have.properties(method.expectedRequest);
                     });
                 });

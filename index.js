@@ -77,7 +77,8 @@ exports.createClient = function(clientOptions) {
   var options = {
     accessToken: clientOptions.accessToken || process.env.SMARTSHEET_ACCESS_TOKEN,
     apiUrls: apiUrls,
-    requestor: requestor
+    requestor: requestor,
+    userAgent: clientOptions.userAgent
   };
 
   return {
