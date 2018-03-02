@@ -245,8 +245,8 @@ describe('Method Unit Tests', function () {
         {
             name: 'tokens',
             methods: [
-                { name: 'getAccessToken', stub: 'post', options: {}, expectedRequest: {url: "token", queryParameters: {'grant_type': 'authorization_code'}}},
-                { name: 'refreshAccessToken', stub: 'post', options: {}, expectedRequest: {url: "token", queryParameters: {'grant_type': 'refresh_token'}}},
+                { name: 'getAccessToken', stub: 'post', options: {}, expectedRequest: {url: "token", queryParameters: {'grant_type': 'authorization_code'}}, noAuth: true},
+                { name: 'refreshAccessToken', stub: 'post', options: {}, expectedRequest: {url: "token", queryParameters: {'grant_type': 'refresh_token'}}, noAuth: true},
                 { name: 'revokeAccessToken', stub: 'delete', options: {}, expectedRequest: {url: "token", accessToken: "token"}},
             ]
         },
@@ -324,6 +324,19 @@ describe('Method Unit Tests', function () {
                         client[testGroup.name][method.name](method.options);
                         stub.args[0][0].should.have.properties({userAgent: "user agent"});
                     });
+
+                    if (method.noAuth === true) {
+                        it('does not pass access token', function () {
+                            client[testGroup.name][method.name](method.options);
+                            stub.args[0][0].should.not.have.properties({accessToken: "token"});
+                        });
+                    }
+                    else {
+                        it('passes access token', function () {
+                            client[testGroup.name][method.name](method.options);
+                            stub.args[0][0].should.have.properties({accessToken: "token"});
+                        });
+                    }
 
                     it('multiple requests are correct', function () {
                         client[testGroup.name][method.name](method.options);
