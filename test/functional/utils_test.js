@@ -70,6 +70,17 @@ describe('Utils Unit Tests', function() {
         builtUrl.should.equal('https://api.smartsheet.com/2.0/');
       });
 
+      it('prefers baseUrl over env var', () => {
+        var builtUrl = requestor.internal.buildUrl({baseUrl: 'base url'});
+        builtUrl.should.equal('base url');
+      });
+
+      it('prefers baseUrl over default', () => {
+        process.env.SMARTSHEET_API_HOST = '';
+        var builtUrl = requestor.internal.buildUrl({baseUrl: 'base url'});
+        builtUrl.should.equal('base url');
+      });
+
       it('url should contain the host + url', () => {
         var builtUrl = requestor.internal.buildUrl({url: 'url/'});
         builtUrl.should.equal(host + 'url/');
