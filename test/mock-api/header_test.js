@@ -6,8 +6,6 @@ var helpers = require("./helpers");
 describe("Mock API SDK Tests", function() {
   var client = helpers.setupClient();
 
-  beforeEach(helpers.setupMockApiTest);
-
   describe("#Header", function() {
     var scenarios = [
         {
