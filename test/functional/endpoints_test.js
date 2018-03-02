@@ -303,7 +303,7 @@ describe('Method Unit Tests', function () {
 
                     beforeEach(function () {
                         stub = sinon.stub(requestor, method.stub);
-                        client = smartsheet.createClient({accessToken: "token", requestor: requestor, userAgent: "user agent"});
+                        client = smartsheet.createClient({accessToken: "token", requestor: requestor, userAgent: "user agent", baseUrl: "base url"});
                     });
 
                     afterEach(function () {
@@ -322,7 +322,7 @@ describe('Method Unit Tests', function () {
 
                     it('passes constructor args', function () {
                         client[testGroup.name][method.name](method.options);
-                        stub.args[0][0].should.have.properties({userAgent: "user agent"});
+                        stub.args[0][0].should.have.properties({userAgent: "user agent", baseUrl: "base url"});
                     });
 
                     if (method.noAuth === true) {
