@@ -6,8 +6,6 @@ var helpers = require('./helpers');
 
 describe('Mock API SDK Tests', function() {
   var client = helpers.setupClient();
-  
-  beforeEach(helpers.setupMockApiTest);
 
   describe('#Sheets', function() {
     var scenarios = [
@@ -39,7 +37,7 @@ describe('Mock API SDK Tests', function() {
         }
       }
     ];
-    
+
     helpers.defineMockApiTests(scenarios);
   });
 });

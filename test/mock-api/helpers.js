@@ -3,12 +3,8 @@ var assert = require('assert');
 var _ = require('underscore');
 var smartsheet = require('../..');
 
-exports.setupMockApiTest = function() {
-    process.env.SMARTSHEET_API_HOST = "http://localhost:8082/";
-};
-
 exports.setupClient = function() {
-    return smartsheet.createClient({accessToken:'1234'});
+    return smartsheet.createClient({accessToken:'1234', baseUrl: "http://localhost:8082/"});
 };
 
 exports.defineMockApiTests = function(scenarios) {
