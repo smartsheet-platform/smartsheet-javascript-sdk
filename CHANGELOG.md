@@ -11,6 +11,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Add sort rows support
 - Add cross sheet reference support
 - Add arbitrary request support
+- Add file path support for file attachment methods:
+    - sheets.addFileAttachment
+    - sheets.attachNewVersion
+    - sheets.addCommentFileAttachment
+    - sheets.addRowFileAttachment
+    - sheets.addImageToCell
+    - request.postFile
+- Add `userAgent` argument to client constructor. Value is appended to user agent string.
+- Add `baseUrl` argument to client constructor
 
 ### Changed
 - Set gzip encoding header
