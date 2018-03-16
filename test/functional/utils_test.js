@@ -32,7 +32,7 @@ var sampleRequestWithQueryParameters = {
   }
 };
 
-var EXPECTED_VERSION = '1.0.4';
+var EXPECTED_VERSION = packageJson.version;
 
 describe('Utils Unit Tests', function() {
   describe('#HttpRequestor', function() {
