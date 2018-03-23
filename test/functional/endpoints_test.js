@@ -192,8 +192,8 @@ describe('Method Unit Tests', function () {
                 { name: 'getCellHistory', stub: 'get', options: {sheetId: 123, rowId: 234, columnId: 345}, expectedRequest: {url: "sheets/123/rows/234/columns/345/history"}},
                 { name: 'copyRowToAnotherSheet', stub: 'post', options: {sheetId: 123}, expectedRequest: {url: "sheets/123/rows/copy"}},
                 { name: 'moveRowToAnotherSheet', stub: 'post', options: {sheetId: 123}, expectedRequest: {url: "sheets/123/rows/move"}},
-                { name: 'addRow', stub: 'post', options: {sheetId: 123}, expectedRequest: {url: "sheets/123/rows/"}},
-                { name: 'addRows', stub: 'post', options: {sheetId: 123}, expectedRequest: {url: "sheets/123/rows/"}},
+                { name: 'addRow', stub: 'post', options: {sheetId: 123}, expectedRequest: {url: "sheets/123/rows"}},
+                { name: 'addRows', stub: 'post', options: {sheetId: 123}, expectedRequest: {url: "sheets/123/rows"}},
                 { name: 'addRowUrlAttachment', stub: 'post', options: {sheetId: 123, rowId: 234}, expectedRequest: {url: "sheets/123/rows/234/attachments"}},
                 { name: 'addRowAttachment', stub: 'post', options: {sheetId: 123, rowId: 234}, expectedRequest: {url: "sheets/123/rows/234/attachments"}},
                 { name: 'addRowFileAttachment', stub: 'postFile', options: {sheetId: 123, rowId: 234}, expectedRequest: {url: "sheets/123/rows/234/attachments"}},
@@ -202,15 +202,16 @@ describe('Method Unit Tests', function () {
                 { name: 'deleteRow', stub: 'delete', options: {sheetId: 123, rowId: 234}, expectedRequest: {url: "sheets/123/rows?ids=234"}},
                 { name: 'deleteRows', stub: 'delete', options: {sheetId: 123, queryParameters: {ids: [234, 456]}}, expectedRequest: {url: "sheets/123/rows", queryParameters: {ids: '234,456'}}},
                 { name: 'deleteRows', stub: 'delete', options: {sheetId: 123, queryParameters: {ids: '234,456'}}, expectedRequest: {url: "sheets/123/rows", queryParameters: {ids: '234,456'}}},
-                { name: 'updateRow', stub: 'put', options: {sheetId: 123, rowId: 234}, expectedRequest: {url: "sheets/123/rows/234"}},
+                { name: 'updateRow', stub: 'put', options: {sheetId: 123}, expectedRequest: {url: "sheets/123/rows"}},
+                { name: 'updateRow', stub: 'put', options: {sheetId: 123, rowId: 234}, expectedRequest: {url: "sheets/123/rows"}},
                 { name: 'addImageToCell', stub: 'postFile', options: {sheetId: 123, rowId: 234, columnId: 345}, expectedRequest: {url: "sheets/123/rows/234/columns/345/cellimages"}},
-                // send update requests
+                // update requests
                 { name: 'createUpdateRequest', stub: 'post', options: {sheetId: 123}, expectedRequest: {url: "sheets/123/updaterequests/"}},
                 { name: 'deleteUpdateRequest', stub: 'delete', options: {sheetId: 123, updateRequestId: 234}, expectedRequest: {url: "sheets/123/updaterequests/234"}},
                 { name: 'getUpdateRequest', stub: 'get', options: {sheetId: 123, updateRequestId: 234}, expectedRequest: {url: "sheets/123/updaterequests/234"}},
                 { name: 'getAllUpdateRequests', stub: 'get', options: {sheetId: 123}, expectedRequest: {url: "sheets/123/updaterequests/"}},
                 { name: 'changeUpdateRequest', stub: 'put', options: {sheetId: 123, updateRequestId: 234}, expectedRequest: {url: "sheets/123/updaterequests/234"}},
-                // update requests
+                // sent update requests
                 { name: 'deleteSentUpdateRequest', stub: 'delete', options: {sheetId: 123, sentUpdateRequestId: 234}, expectedRequest: {url: "sheets/123/sentupdaterequests/234"}},
                 { name: 'getSentUpdateRequest', stub: 'get', options: {sheetId: 123, sentUpdateRequestId: 234}, expectedRequest: {url: "sheets/123/sentupdaterequests/234"}},
                 { name: 'getAllSentUpdateRequests', stub: 'get', options: {sheetId: 123}, expectedRequest: {url: "sheets/123/sentupdaterequests/"}},
@@ -318,6 +319,12 @@ describe('Method Unit Tests', function () {
                     it('calls requestor once', function () {
                         client[testGroup.name][method.name](method.options);
                         stub.callCount.should.be.equal(1);
+                    });
+
+                    it('allows arbitrary options', function () {
+                        var optionsWithArbitraryOption = _.extend({somethingArbitrary: 123}, method.options);
+                        client[testGroup.name][method.name](optionsWithArbitraryOption);
+                        stub.args[0][0].should.have.properties({somethingArbitrary: 123});
                     });
 
                     it('passes constructor args', function () {

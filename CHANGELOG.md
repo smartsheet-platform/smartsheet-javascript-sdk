@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## Unreleased
+### Fixed
+- Fixed bug that incorrectly formatted the Update Rows url when `rowId` was passed
+- Fixed bug preventing users from passing header options (assume user, Smartsheet change agent, etc.) to the `server.getInfo` and `add<Object>ToFavorites` methods
+
 ## 1.1.0 - March 16, 2018
 ### Added
 - Add automation rule support
