@@ -203,6 +203,7 @@ describe('Method Unit Tests', function () {
                 { name: 'deleteRows', stub: 'delete', options: {sheetId: 123, queryParameters: {ids: [234, 456]}}, expectedRequest: {url: "sheets/123/rows", queryParameters: {ids: '234,456'}}},
                 { name: 'deleteRows', stub: 'delete', options: {sheetId: 123, queryParameters: {ids: '234,456'}}, expectedRequest: {url: "sheets/123/rows", queryParameters: {ids: '234,456'}}},
                 { name: 'updateRow', stub: 'put', options: {sheetId: 123}, expectedRequest: {url: "sheets/123/rows"}},
+                { name: 'updateRow', stub: 'put', options: {sheetId: 123, rowId: 234}, expectedRequest: {url: "sheets/123/rows"}},
                 { name: 'addImageToCell', stub: 'postFile', options: {sheetId: 123, rowId: 234, columnId: 345}, expectedRequest: {url: "sheets/123/rows/234/columns/345/cellimages"}},
                 // send update requests
                 { name: 'createUpdateRequest', stub: 'post', options: {sheetId: 123}, expectedRequest: {url: "sheets/123/updaterequests/"}},
