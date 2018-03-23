@@ -331,6 +331,197 @@ describe("Mock API SDK Tests", function() {
                         ]
                     }
                 }
+            },
+            {
+                "name": "Serialization - Favorite",
+                "method": client.favorites.addSheetToFavorites,
+                "shouldError": false,
+                "options": {
+                    "objectId": 1
+                }
+            },
+            {
+                "name": "Serialization - Report",
+                "method": client.reports.getReport,
+                "shouldError": false,
+                "options": {
+                    "id": 1
+                }
+            },
+            {
+                "name": "Serialization - Share",
+                "method": client.sheets.share,
+                "shouldError": false,
+                "options": {
+                    "sheetId": 1,
+                    "body": {
+                        "email": "john.doe@smartsheet.com",
+                        "accessLevel": "VIEWER",
+                        "subject": "Check out this sheet",
+                        "message": "Let me know what you think. Thanks!",
+                        "ccMe": true
+                    },
+                    "queryParameters": {
+                        "sendEmail": "true"
+                    }
+                }
+            },
+            {
+                "name": "Serialization - Send via Email",
+                "method": client.sheets.sendSheetViaEmail,
+                "shouldError": false,
+                "options": {
+                    "sheetId": 1,
+                    "body": {
+                        "sendTo": [
+                            {
+                                "email": "john.doe@smartsheet.com"
+                            },
+                            {
+                                "groupId": 2
+                            }
+                        ],
+                        "subject": "Some subject",
+                        "message": "Some message",
+                        "ccMe": true,
+                        "format": "PDF",
+                        "formatDetails": {
+                            "paperSize": "LETTER"
+                        }
+                    }
+                }
+            },
+            {
+                "name": "Serialization - Row Email",
+                "method": client.sheets.sendRows,
+                "shouldError": false,
+                "options": {
+                    "sheetId": 1,
+                    "body": {
+                        "sendTo": [
+                            {
+                                "groupId": 2
+                            }
+                        ],
+                        "subject": "Some subject",
+                        "message": "Some message",
+                        "columnIds": [
+                            3
+                        ],
+                        "includeAttachments": false,
+                        "includeDiscussions": true,
+                        "layout": "VERTICAL",
+                        "rowIds": [
+                            4
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "Serialization - Template",
+                "method": client.templates.listPublicTemplates,
+                "shouldError": false,
+                "options": {}
+            },
+            {
+                "name": "Serialization - Update Request",
+                "method": client.sheets.createUpdateRequest,
+                "shouldError": false,
+                "options": {
+                    "sheetId": 1,
+                    "body": {
+                        "sendTo": [
+                            {
+                                "email": "john.doe@smartsheet.com"
+                            }
+                        ],
+                        "rowIds": [
+                            2
+                        ],
+                        "columnIds": [
+                            3
+                        ],
+                        "includeAttachments": true,
+                        "includeDiscussions": false,
+                        "subject": "Some subject",
+                        "message": "Some message",
+                        "ccMe": true,
+                        "schedule": {
+                            "type": "MONTHLY",
+                            "startAt": "2018-03-01T19:00:00Z",
+                            "endAt": "2018-06-01T00:00:00Z",
+                            "dayOrdinal": "FIRST",
+                            "dayDescriptors": [
+                                "FRIDAY"
+                            ],
+                            "repeatEvery": 1
+                        }
+                    }
+                }
+            },
+            {
+                "name": "Serialization - Sent Update Requests",
+                "method": client.sheets.getSentUpdateRequest,
+                "shouldError": false,
+                "options": {
+                    "sheetId": 1,
+                    "sentUpdateRequestId": 2
+                }
+            },
+            {
+                "name": "Serialization - Sheet Settings",
+                "method": client.sheets.updateSheet,
+                "shouldError": false,
+                "options": {
+                    "id": 1,
+                    "body": {
+                        "userSettings": {
+                            "criticalPathEnabled": true,
+                            "displaySummaryTasks": true
+                        },
+                        "projectSettings": {
+                            "workingDays": [
+                                "MONDAY",
+                                "TUESDAY"
+                            ],
+                            "nonWorkingDays": [
+                                "2018-04-04",
+                                "2018-05-05",
+                                "2018-06-06"
+                            ],
+                            "lengthOfDay": 23.5
+                        }
+                    }
+                }
+            },
+            {
+                "name": "Serialization - Container Destination",
+                "method": client.folders.copyFolder,
+                "shouldError": false,
+                "options": {
+                    "folderId": 1,
+                    "body": {
+                        "destinationType": "home",
+                        "destinationId": null,
+                        "newName": "Copy of Some Folder"
+                    }
+                }
+            },
+            {
+                "name": "Serialization - Cross Sheet Reference",
+                "method": client.sheets.createCrossSheetReference,
+                "shouldError": false,
+                "options": {
+                    "sheetId": 1,
+                    "body": {
+                        "name": "Some Cross Sheet Reference",
+                        "sourceSheetId": 2,
+                        "startRowId": 3,
+                        "endRowId": 4,
+                        "startColumnId": 5,
+                        "endColumnId": 6
+                    }
+                }
             }
         ];
 
