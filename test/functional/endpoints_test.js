@@ -178,7 +178,7 @@ describe('Method Unit Tests', function () {
                 { name: 'addDiscussionComment', stub: 'post', options: {sheetId:123, discussionId: 234}, expectedRequest: {url: "sheets/123/discussions/234/comments"}},
                 { name: 'deleteDiscussion', stub: 'delete', options: {sheetId:123, discussionId: 234}, expectedRequest: {url: "sheets/123/discussions/234"}},
                 // get
-                { name: 'getSheet', stub: 'get', options: {}, expectedRequest: {url: "sheets/"}},
+                { name: 'getSheet', stub: 'get', options: {sheetId:123}, expectedRequest: {url: "sheets/123"}},
                 { name: 'listSheets', stub: 'get', options: undefined, expectedRequest: {url: "sheets/"}},
                 { name: 'getSheetAsCSV', stub: 'get', options: {}, expectedRequest: {url: "sheets/", accept: constants.acceptHeaders.textCsv}},
                 { name: 'getSheetAsExcel', stub: 'get', options: {}, expectedRequest: {url: "sheets/", accept: constants.acceptHeaders.vndMsExcel, encoding:null}},
