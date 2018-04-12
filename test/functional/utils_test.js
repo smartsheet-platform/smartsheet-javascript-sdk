@@ -136,6 +136,16 @@ describe('Utils Unit Tests', function() {
         headers['Content-Disposition'].should.equal('attachment; filename="test"');
       });
 
+      it('Should set Content-Disposition to contentDisposition', () => {
+        var headers = requestor.internal.buildHeaders({contentDisposition: 'some content disposition'});
+        headers['Content-Disposition'].should.equal('some content disposition');
+      });
+
+      it('Should prefer contentDisposition to fileName', () => {
+        var headers = requestor.internal.buildHeaders({fileName: 'test', contentDisposition: 'something else'});
+        headers['Content-Disposition'].should.equal('something else');
+      });
+
       it('Should set Content-Length to fileSize', () => {
         var headers = requestor.internal.buildHeaders({fileName: 'test',   fileSize: 123});
         headers['Content-Length'].should.equal(123);
