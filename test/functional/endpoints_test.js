@@ -166,6 +166,15 @@ describe('Method Unit Tests', function () {
                 { name: 'createSheetInFolder', stub: 'post', options: {folderId: 123}, expectedRequest: {url: "folders/123/sheets"}},
                 { name: 'createSheetInWorkspace', stub: 'post', options: {workspaceId: 123}, expectedRequest: {url: "workspaces/123/sheets"}},
                 { name: 'copySheet', stub: 'post', options: {sheetId: 123}, expectedRequest: {url: "sheets/123/copy"}},
+                // Not yet released
+                // { name: 'importXlsxAndReplaceSheet', stub: 'postFile', options: {sheetId: 123}, expectedRequest: {url: "sheets/123/import", contentType: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", contentDisposition: 'attachment'}},
+                // { name: 'importCsvAndReplaceSheet', stub: 'postFile', options: {sheetId: 123}, expectedRequest: {url: "sheets/123/import", contentType: "text/csv", contentDisposition: 'attachment'}},
+                { name: 'importXlsxSheet', stub: 'postFile', options: undefined, expectedRequest: {url: "sheets/import", contentType: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", contentDisposition: 'attachment'}},
+                { name: 'importCsvSheet', stub: 'postFile', options: undefined, expectedRequest: {url: "sheets/import", contentType: "text/csv", contentDisposition: 'attachment'}},
+                { name: 'importXlsxSheetIntoFolder', stub: 'postFile', options: {folderId: 123}, expectedRequest: {url: "folders/123/sheets/import", contentType: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", contentDisposition: 'attachment'}},
+                { name: 'importCsvSheetIntoFolder', stub: 'postFile', options: {folderId: 123}, expectedRequest: {url: "folders/123/sheets/import", contentType: "text/csv", contentDisposition: 'attachment'}},
+                { name: 'importXlsxSheetIntoWorkspace', stub: 'postFile', options: {workspaceId: 123}, expectedRequest: {url: "workspaces/123/sheets/import", contentType: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", contentDisposition: 'attachment'}},
+                { name: 'importCsvSheetIntoWorkspace', stub: 'postFile', options: {workspaceId: 123}, expectedRequest: {url: "workspaces/123/sheets/import", contentType: "text/csv", contentDisposition: 'attachment'}},
                 // cross sheet references
                 { name: 'createCrossSheetReference', stub: 'post', options: {sheetId: 123}, expectedRequest: {url: "sheets/123/crosssheetreferences/"}},
                 { name: 'getCrossSheetReference', stub: 'get', options: {sheetId: 123, crossSheetReferenceId: 234}, expectedRequest: {url: "sheets/123/crosssheetreferences/234"}},
