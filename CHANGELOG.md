@@ -13,6 +13,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Fixed bug that incorrectly formatted the Update Rows url when `rowId` was passed
 - Fixed bug preventing users from passing header options (assume user, Smartsheet change agent, etc.) to the `server.getInfo` and `add<Object>ToFavorites` methods
 
+### Security
+- CVE-2018-3728: Updated `request` dependency, updating descendant `hoek` to a version patching the vulnerability.
+
 ## 1.1.0 - March 16, 2018
 ### Added
 - Add automation rule support
