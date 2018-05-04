@@ -5,13 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## Unreleased
+## 1.3.0 - May 2, 2018
 ### Added
 - Added support for import sheet from XLSX, CSV file endpoints
 
 ### Fixed
 - Fixed bug that incorrectly formatted the Update Rows url when `rowId` was passed
 - Fixed bug preventing users from passing header options (assume user, Smartsheet change agent, etc.) to the `server.getInfo` and `add<Object>ToFavorites` methods
+
+### Security
+- CVE-2018-3728: Updated `request` dependency, updating descendant `hoek` to a version patching the vulnerability.
 
 ## 1.1.0 - March 16, 2018
 ### Added
