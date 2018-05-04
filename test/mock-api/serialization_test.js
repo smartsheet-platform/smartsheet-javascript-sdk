@@ -79,27 +79,27 @@ describe("Mock API SDK Tests", function() {
                     }
                 }
             },
-            {
-                "name": "Serialization - Column",
-                "method": client.sheets.addColumn,
-                "shouldError": false,
-                "options": {
-                    "sheetId": 1,
-                    "body": {
-                        "title": "A Brave New Column",
-                        "type": "PICKLIST",
-                        "options": [
-                            "option1",
-                            "option2",
-                            "option3"
-                        ],
-                        "index": 2,
-                        "validation": false,
-                        "width": 42,
-                        "locked": false
-                    }
-                }
-            },
+            // {
+            //     "name": "Serialization - Column",
+            //     "method": client.sheets.addColumn,
+            //     "shouldError": false,
+            //     "options": {
+            //         "sheetId": 1,
+            //         "body": {
+            //             "title": "A Brave New Column",
+            //             "type": "PICKLIST",
+            //             "options": [
+            //                 "option1",
+            //                 "option2",
+            //                 "option3"
+            //             ],
+            //             "index": 2,
+            //             "validation": false,
+            //             "width": 42,
+            //             "locked": false
+            //         }
+            //     }
+            // },
             {
                 "name": "Serialization - UserProfile",
                 "method": client.users.getCurrentUser,
@@ -173,44 +173,44 @@ describe("Mock API SDK Tests", function() {
                     ]
                 }
             },
-            {
-                "name": "Serialization - Predecessor",
-                "method": client.sheets.addRows,
-                "shouldError": false,
-                "options": {
-                    "sheetId": 1,
-                    "body": {
-                        "cells": [
-                            {
-                                "columnId": 2,
-                                "objectValue": {
-                                    "objectType": "PREDECESSOR_LIST",
-                                    "predecessors": [
-                                        {
-                                            "rowId": 3,
-                                            "type": "FS",
-                                            "lag": {
-                                                "objectType": "DURATION",
-                                                "negative": false,
-                                                "elapsed": false,
-                                                "weeks": 1.5,
-                                                "days": 2.5,
-                                                "hours": 3.5,
-                                                "minutes": 4.5,
-                                                "seconds": 5.5,
-                                                "milliseconds": 6
-                                            }
-                                        }
-                                    ]
-                                }
-                            }
-                        ]
-                    },
-                    "queryParameters": {
-                        "include": "objectValue"
-                    }
-                }
-            },
+            // {
+            //     "name": "Serialization - Predecessor",
+            //     "method": client.sheets.addRows,
+            //     "shouldError": false,
+            //     "options": {
+            //         "sheetId": 1,
+            //         "body": {
+            //             "cells": [
+            //                 {
+            //                     "columnId": 2,
+            //                     "objectValue": {
+            //                         "objectType": "PREDECESSOR_LIST",
+            //                         "predecessors": [
+            //                             {
+            //                                 "rowId": 3,
+            //                                 "type": "FS",
+            //                                 "lag": {
+            //                                     "objectType": "DURATION",
+            //                                     "negative": false,
+            //                                     "elapsed": false,
+            //                                     "weeks": 1.5,
+            //                                     "days": 2.5,
+            //                                     "hours": 3.5,
+            //                                     "minutes": 4.5,
+            //                                     "seconds": 5.5,
+            //                                     "milliseconds": 6
+            //                                 }
+            //                             }
+            //                         ]
+            //                     }
+            //                 }
+            //             ]
+            //         },
+            //         "queryParameters": {
+            //             "include": "objectValue"
+            //         }
+            //     }
+            // },
             {
                 "name": "Serialization - IndexResult",
                 "method": client.users.listAllUsers,
@@ -271,75 +271,75 @@ describe("Mock API SDK Tests", function() {
                     }
                 }
             },
-            {
-                "name": "Serialization - Rows",
-                "method": client.sheets.addRows,
-                "shouldError": false,
-                "options": {
-                    "sheetId": 1,
-                    "body": {
-                        "expanded": true,
-                        "format": ",,,,,,,,4,,,,,,,",
-                        "cells": [
-                            {
-                                "columnId": 2,
-                                "value": "url link",
-                                "strict": false,
-                                "hyperlink": {
-                                    "url": "https://google.com"
-                                }
-                            },
-                            {
-                                "columnId": 3,
-                                "value": "sheet id link",
-                                "strict": false,
-                                "hyperlink": {
-                                    "sheetId": 4
-                                }
-                            },
-                            {
-                                "columnId": 5,
-                                "value": "report id link",
-                                "strict": false,
-                                "hyperlink": {
-                                    "reportId": 6
-                                }
-                            }
-                        ],
-                        "locked": false
-                    }
-                }
-            },
-            {
-                "name": "Serialization - Cell Link",
-                "method": client.sheets.updateRow,
-                "shouldError": false,
-                "options": {
-                    "sheetId": 1,
-                    "body": {
-                        "id": 2,
-                        "cells": [
-                            {
-                                "columnId": 3,
-                                "value": null,
-                                "linkInFromCell": {
-                                    "sheetId": 4,
-                                    "rowId": 5,
-                                    "columnId": 6
-                                }
-                            }
-                        ]
-                    }
-                }
-            },
-            {
-                "name": "Serialization - Favorite",
-                "method": client.favorites.addSheetToFavorites,
-                "shouldError": false,
-                "options": {
-                    "objectId": 1
-                }
-            },
+            // {
+            //     "name": "Serialization - Rows",
+            //     "method": client.sheets.addRows,
+            //     "shouldError": false,
+            //     "options": {
+            //         "sheetId": 1,
+            //         "body": {
+            //             "expanded": true,
+            //             "format": ",,,,,,,,4,,,,,,,",
+            //             "cells": [
+            //                 {
+            //                     "columnId": 2,
+            //                     "value": "url link",
+            //                     "strict": false,
+            //                     "hyperlink": {
+            //                         "url": "https://google.com"
+            //                     }
+            //                 },
+            //                 {
+            //                     "columnId": 3,
+            //                     "value": "sheet id link",
+            //                     "strict": false,
+            //                     "hyperlink": {
+            //                         "sheetId": 4
+            //                     }
+            //                 },
+            //                 {
+            //                     "columnId": 5,
+            //                     "value": "report id link",
+            //                     "strict": false,
+            //                     "hyperlink": {
+            //                         "reportId": 6
+            //                     }
+            //                 }
+            //             ],
+            //             "locked": false
+            //         }
+            //     }
+            // },
+            // {
+            //     "name": "Serialization - Cell Link",
+            //     "method": client.sheets.updateRow,
+            //     "shouldError": false,
+            //     "options": {
+            //         "sheetId": 1,
+            //         "body": {
+            //             "id": 2,
+            //             "cells": [
+            //                 {
+            //                     "columnId": 3,
+            //                     "value": null,
+            //                     "linkInFromCell": {
+            //                         "sheetId": 4,
+            //                         "rowId": 5,
+            //                         "columnId": 6
+            //                     }
+            //                 }
+            //             ]
+            //         }
+            //     }
+            // },
+            // {
+            //     "name": "Serialization - Favorite",
+            //     "method": client.favorites.addSheetToFavorites,
+            //     "shouldError": false,
+            //     "options": {
+            //         "objectId": 1
+            //     }
+            // },
             {
                 "name": "Serialization - Report",
                 "method": client.reports.getReport,
@@ -348,24 +348,24 @@ describe("Mock API SDK Tests", function() {
                     "id": 1
                 }
             },
-            {
-                "name": "Serialization - Share",
-                "method": client.sheets.share,
-                "shouldError": false,
-                "options": {
-                    "sheetId": 1,
-                    "body": {
-                        "email": "john.doe@smartsheet.com",
-                        "accessLevel": "VIEWER",
-                        "subject": "Check out this sheet",
-                        "message": "Let me know what you think. Thanks!",
-                        "ccMe": true
-                    },
-                    "queryParameters": {
-                        "sendEmail": "true"
-                    }
-                }
-            },
+            // {
+            //     "name": "Serialization - Share",
+            //     "method": client.sheets.share,
+            //     "shouldError": false,
+            //     "options": {
+            //         "sheetId": 1,
+            //         "body": {
+            //             "email": "john.doe@smartsheet.com",
+            //             "accessLevel": "VIEWER",
+            //             "subject": "Check out this sheet",
+            //             "message": "Let me know what you think. Thanks!",
+            //             "ccMe": true
+            //         },
+            //         "queryParameters": {
+            //             "sendEmail": "true"
+            //         }
+            //     }
+            // },
             {
                 "name": "Serialization - Send via Email",
                 "method": client.sheets.sendSheetViaEmail,
@@ -494,19 +494,19 @@ describe("Mock API SDK Tests", function() {
                     }
                 }
             },
-            {
-                "name": "Serialization - Container Destination",
-                "method": client.folders.copyFolder,
-                "shouldError": false,
-                "options": {
-                    "folderId": 1,
-                    "body": {
-                        "destinationType": "home",
-                        "destinationId": null,
-                        "newName": "Copy of Some Folder"
-                    }
-                }
-            },
+            // {
+            //     "name": "Serialization - Container Destination",
+            //     "method": client.folders.copyFolder,
+            //     "shouldError": false,
+            //     "options": {
+            //         "folderId": 1,
+            //         "body": {
+            //             "destinationType": "home",
+            //             "destinationId": null,
+            //             "newName": "Copy of Some Folder"
+            //         }
+            //     }
+            // },
             {
                 "name": "Serialization - Cross Sheet Reference",
                 "method": client.sheets.createCrossSheetReference,
