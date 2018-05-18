@@ -16,6 +16,10 @@ exports.defineMockApiTests = function(scenarios) {
 var defineMockApiTest = function(scenario) {
     describe('#' + scenario.name, function () {
         it('makes request', function () {
+            if(_.has(scenario, 'skip')) {
+              this.skip(scenario.skip);
+            }
+
             scenario.options.apiScenario = scenario.name;
             return scenario.method(scenario.options)
             .then(function(response) {
