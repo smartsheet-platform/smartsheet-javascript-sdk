@@ -42,7 +42,6 @@ describe('Client Unit Tests', function() {
   describe('#Favorites', function() {
     it('should have Favorites object',function(){
       smartsheet.should.have.property('favorites');
-      Object.keys(smartsheet.favorites).should.be.length(20);
     });
 
     it('should have get methods', function() {

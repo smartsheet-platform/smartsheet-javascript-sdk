@@ -342,11 +342,15 @@ describe("Mock API SDK Tests", function() {
             },
             {
                 "name": "Serialization - Favorite",
-                "skip": "JS SDK doesn't yet support adding multiple favorites",
-                "method": client.favorites.addSheetToFavorites,
+                "method": client.favorites.addMultipleToFavorites,
                 "shouldError": false,
                 "options": {
-                    "objectId": 1
+                    "body": [
+                        {
+                            "objectId": 1,
+                            "type": "sheet"
+                        }
+                    ]
                 }
             },
             {
