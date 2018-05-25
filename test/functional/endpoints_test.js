@@ -247,6 +247,13 @@ describe('Method Unit Tests', function () {
             ]
         },
         {
+            name: 'solutionCenter',
+            methods: [
+                { name: 'getCategories', stub: 'get', options: undefined, expectedRequest: {url: "solutioncenter/categories"}},
+                { name: 'getTiles', stub: 'get', options: {categoryId: 123}, expectedRequest: {url: "solutioncenter/categories/123/tiles"}},
+            ]
+        },
+        {
             name: 'templates',
             methods: [
                 { name: 'listUserCreatedTemplates', stub: 'get', options: undefined, expectedRequest: {url: "templates/"}},
