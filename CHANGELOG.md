@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - Added support for bulk creation of favorites: `favorites.addMultipleToFavorites`.
 
+### Fixed
+- Fixed a number of methods that mutated the options struct
+
 ## 1.3.0 - May 2, 2018
 ### Added
 - Added support for import sheet from XLSX, CSV file endpoints
