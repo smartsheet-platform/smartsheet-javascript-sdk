@@ -311,6 +311,7 @@ describe('Method Unit Tests', function () {
                 describe('#' + method.name, function () {
                     var stub;
                     var client;
+                    var originalOptions = (method.options === undefined) ? undefined : JSON.parse(JSON.stringify(method.options));
 
                     beforeEach(function () {
                         stub = sinon.stub(requestor, method.stub);
@@ -359,6 +360,16 @@ describe('Method Unit Tests', function () {
                         client[testGroup.name][method.name](method.options);
                         client[testGroup.name][method.name](method.options);
                         stub.args[0][0].should.have.properties(method.expectedRequest);
+                    });
+
+                    it('does not mutate options', function () {
+                        if (originalOptions === undefined) {
+                            return;
+                        }
+
+                        var beforeOptions = JSON.stringify(originalOptions);
+                        client[testGroup.name][method.name](method.options);
+                        beforeOptions.should.equal(JSON.stringify(method.options));
                     });
                 });
             });
