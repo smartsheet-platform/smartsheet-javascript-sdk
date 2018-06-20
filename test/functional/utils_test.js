@@ -204,11 +204,12 @@ describe('Utils Unit Tests', function() {
         stubbedRequestor.get(sampleRequest)
           .should.eventually.be.true);
 
-      it('request should call callback as true', (done) =>
+      it('request should call callback as true', function(done) {
         stubbedRequestor.get(sampleRequest, function(err, data) {
           data.should.be.true;
           done();
-        }));
+        })
+      });
     });
 
     describe('#Error on request', function() {
