@@ -12,6 +12,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Fixed
 - Fixed a number of methods that mutated the options struct
 
+### Security
+- CVE-2017-16042: Updated `mocha` and `gulp-mocha` dev dependencies to transitively update vulnerable versions of `growl`.
+
 ## 1.3.0 - May 2, 2018
 ### Added
 - Added support for import sheet from XLSX, CSV file endpoints
