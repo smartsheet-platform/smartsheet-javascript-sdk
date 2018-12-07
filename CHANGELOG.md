@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## Unreleased
 
+## 1.4.1 - December 7, 2018
+
 ### Security
 - CVE-2016-10540: Updated `minimatch` dev dependency.
 - CVE-2018-1000620: Updated `cryptiles` dependency package lock.
