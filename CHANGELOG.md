@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Security
 - CVE-2016-10540: Updated `minimatch` dev dependency.
+- CVE-2018-1000620: Updated `cryptiles` dependency package lock.
 - Updated `gulp` and `gulp-jshint` dev dependencies to resolve lower-level npm audit findings.
 
 ## 1.4.0 - June 29, 2018
