@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## Unreleased
 
+### Security
+- CVE-2016-10540: Updated `minimatch` dev dependency.
+- Updated `gulp` and `gulp-jshint` dev dependencies to resolve lower-level npm audit findings.
+
 ## 1.4.0 - June 29, 2018
 ### Added
 - Added support for bulk creation of favorites: `favorites.addMultipleToFavorites`.
