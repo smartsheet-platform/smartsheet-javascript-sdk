@@ -140,6 +140,17 @@ The function must return the number of milliseconds to wait before making the su
 
 The default implementation performs exponential backoff with jitter.
 
+### Base URL Configuration
+The SDK can be directed to point at a different base URL, which can be helpful for testing against mock APIs or connecting to specialized Smartsheet environments.
+
+When creating the Smartsheet client, set the base URL by passing it into the constructor arguments:
+
+```javascript
+var smartsheet = require('smartsheet').createClient({
+  baseUrl: 'https://new-base-url.smartsheet.com/api/v2'
+});
+```
+
 ## Testing
 
 The source code comes with several scripts for running tests:
