@@ -80,6 +80,24 @@ smartsheet.sheets.listSheets({}, function(error, data) {
 
  See the [node-read-write-sheet](https://github.com/smartsheet-samples/node-read-write-sheet) project for a code example that shows how to call methods to read and write to a sheet using this SDK.
 
+## Conventions
+
+Each endpoint takes two arguments: a set of options, and an optional callback function. If the callback is not specified, the SDK will return a promise instead.
+
+The options argument is an object that contains any number of parameters specific to the endpoint, and may optionally require a `body` field that will be placed in the body of the request when applicable.
+
+Each endpoint also permits an optional parameter in the options object:
+
+* `queryParameters` - This option is common for specifying enhancements or additional features for an API call. It specifies the query string for the call's URL.
+
+  This must be an object mapping URL query string fields to their values. For example, to make a call with the query string `?include=comments&includeAll=true`, an API call would look like the following:
+
+  ```javascript
+  ...getSheet({
+    ...
+    queryParameters: {include: 'comments', includeAll: true});
+  ```
+
 ## Basic Configuration
 
 When creating the client object, pass an object with any of the following properties to tune its behavior.
