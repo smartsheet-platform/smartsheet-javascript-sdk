@@ -164,6 +164,51 @@ The source code comes with several scripts for running tests:
 |`gulp jshint`|Runs JSHint against the codebase|
 |`gulp [watch]`|Watches the codebase and runs JSHint whenever changes are made|
 
+## Passthrough Option
+
+If there is an API Feature that is not yet supported by the JavaScript SDK, there is a passthrough option that allows you to call arbitrary API endpoints.
+
+To invoke the passthrough, your code can call one of the following methods:
+
+`response = smartsheet.request.get(getOptions, callback)`
+
+`response = smartsheet.request.post(postOptions, callback)`
+
+`response = smartsheet.request.postFile(postOptions, callback)`
+
+`response = smartsheet.request.put(putOptions, callback)`
+
+`response = smartsheet.request.deleteRequest(deleteOptions, callback)`
+
+The `...Options` parameter takes the normal set of parameters taken by other similar SDK calls, but also requires a `url` parameter that tells it the relative path of the endpoint to call.
+
+### Passthrough Example
+
+The following example shows how to POST data to `https://api.smartsheet.com/2.0/sheets` using the passthrough method:
+
+```javascript
+var payload = {
+  name: 'my new sheet',
+  columns: [
+    {
+      title: 'Favorite',
+      type: 'CHECKBOX',
+      symbol: 'STAR'
+    },
+    {
+      title: 'Primary Column',
+      primary: true,
+      type: 'TEXT_NUMBER'
+    }
+  ]
+};
+
+var responsePromise = smartsheet.request.post({
+  url: 'sheets',
+  body: payload
+});
+```
+
 ## Contributing
 
 If you would like to contribute a change to the SDK, please fork a branch and then submit a pull request.
