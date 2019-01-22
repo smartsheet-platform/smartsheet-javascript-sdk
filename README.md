@@ -80,6 +80,24 @@ smartsheet.sheets.listSheets({}, function(error, data) {
 
  See the [node-read-write-sheet](https://github.com/smartsheet-samples/node-read-write-sheet) project for a code example that shows how to call methods to read and write to a sheet using this SDK.
 
+## Conventions
+
+Each endpoint takes two arguments: a set of options, and an optional callback function. If the callback is not specified, the SDK will return a promise instead.
+
+The options argument is an object that contains any number of parameters specific to the endpoint, and may optionally require a `body` field that will be placed in the body of the request when applicable.
+
+Each endpoint also permits an optional parameter in the options object:
+
+* `queryParameters` - This option is common for specifying enhancements or additional features for an API call. It specifies the query string for the call's URL.
+
+  This must be an object mapping URL query string fields to their values. For example, to make a call with the query string `?include=comments&includeAll=true`, an API call would look like the following:
+
+  ```javascript
+  ...getSheet({
+    ...
+    queryParameters: {include: 'comments', includeAll: true});
+  ```
+
 ## Basic Configuration
 
 When creating the client object, pass an object with any of the following properties to tune its behavior.
@@ -122,6 +140,17 @@ The function must return the number of milliseconds to wait before making the su
 
 The default implementation performs exponential backoff with jitter.
 
+### Base URL Configuration
+The SDK can be directed to point at a different base URL, which can be helpful for testing against mock APIs or connecting to specialized Smartsheet environments.
+
+When creating the Smartsheet client, set the base URL by passing it into the constructor arguments:
+
+```javascript
+var smartsheet = require('smartsheet').createClient({
+  baseUrl: 'https://new-base-url.smartsheet.com/api/v2'
+});
+```
+
 ## Testing
 
 The source code comes with several scripts for running tests:
@@ -134,6 +163,51 @@ The source code comes with several scripts for running tests:
 |`npm run coverage`|Runs functional tests and reports on code coverage|
 |`gulp jshint`|Runs JSHint against the codebase|
 |`gulp [watch]`|Watches the codebase and runs JSHint whenever changes are made|
+
+## Passthrough Option
+
+If there is an API Feature that is not yet supported by the JavaScript SDK, there is a passthrough option that allows you to call arbitrary API endpoints. Passthrough calls support error retry and logging.
+
+To invoke the passthrough, your code can call one of the following methods:
+
+`response = smartsheet.request.get(getOptions, callback)`
+
+`response = smartsheet.request.post(postOptions, callback)`
+
+`response = smartsheet.request.postFile(postOptions, callback)`
+
+`response = smartsheet.request.put(putOptions, callback)`
+
+`response = smartsheet.request.deleteRequest(deleteOptions, callback)`
+
+The `...Options` parameter takes the normal set of parameters taken by other similar SDK calls, but also requires a `url` parameter that tells it the relative path of the endpoint to call.
+
+### Passthrough Example
+
+The following example shows how to POST data to `https://api.smartsheet.com/2.0/sheets` using the passthrough method:
+
+```javascript
+var payload = {
+  name: 'my new sheet',
+  columns: [
+    {
+      title: 'Favorite',
+      type: 'CHECKBOX',
+      symbol: 'STAR'
+    },
+    {
+      title: 'Primary Column',
+      primary: true,
+      type: 'TEXT_NUMBER'
+    }
+  ]
+};
+
+var responsePromise = smartsheet.request.post({
+  url: 'sheets',
+  body: payload
+});
+```
 
 ## Contributing
 
