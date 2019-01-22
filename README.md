@@ -166,7 +166,7 @@ The source code comes with several scripts for running tests:
 
 ## Passthrough Option
 
-If there is an API Feature that is not yet supported by the JavaScript SDK, there is a passthrough option that allows you to call arbitrary API endpoints.
+If there is an API Feature that is not yet supported by the JavaScript SDK, there is a passthrough option that allows you to call arbitrary API endpoints. Passthrough calls support error retry and logging.
 
 To invoke the passthrough, your code can call one of the following methods:
 
