@@ -151,6 +151,14 @@ var smartsheet = require('smartsheet').createClient({
 });
 ```
 
+To create a SmartsheetGov client, the baseURL will need to be `constants.baseURIs.govBaseURI`.
+
+```javascript
+var smartsheet = require('smartsheet').createClient({
+  baseUrl: constants.baseURIs.govBaseURI
+});
+```
+
 ## Testing
 
 The source code comes with several scripts for running tests:
