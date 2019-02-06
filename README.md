@@ -151,6 +151,8 @@ var smartsheet = require('smartsheet').createClient({
 });
 ```
 
+To create a SmartsheetGov client, the `baseUrl` will need to be `https://api.smartsheetgov.com/2.0`.
+
 ## Testing
 
 The source code comes with several scripts for running tests:
