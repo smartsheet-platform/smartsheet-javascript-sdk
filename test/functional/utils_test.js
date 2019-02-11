@@ -5,6 +5,7 @@ var Promise = require('bluebird');
 var _ = require('underscore');
 var packageJson = require('../../package.json');
 var fs = require('fs');
+var constants = require('../../lib/utils/constants.js');
 
 var requestor = require('../../lib/utils/httpRequestor').create({request: request});
 
@@ -68,6 +69,12 @@ describe('Utils Unit Tests', function() {
         process.env.SMARTSHEET_API_HOST = '';
         var builtUrl = requestor.internal.buildUrl({});
         builtUrl.should.equal('https://api.smartsheet.com/2.0/');
+      });
+
+      it('url should equal https://api.smartsheetgov.com/2.0', () => {
+        var url = constants.baseURIs.govBaseURI;
+        var builtUrl = requestor.internal.buildUrl({baseUrl:url});
+        builtUrl.should.equal('https://api.smartsheetgov.com/2.0');
       });
 
       it('prefers baseUrl over env var', () => {
