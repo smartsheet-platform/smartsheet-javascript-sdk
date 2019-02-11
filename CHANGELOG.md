@@ -6,7 +6,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## Unreleased
-Updated documentation regarding the usage of baseUrl to clarify how clients can access smartsheetgov
+- Added constant for smartsheetgov
+- Updated `extend` dependency to version 3.0.2 to resolve security vulnerability
+- Updated documentation regarding the usage of baseUrl to clarify how clients can access smartsheetgov
 
 ## 1.4.1 - December 7, 2018
 
