@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Added constant for smartsheetgov
 - Updated documentation regarding the usage of baseUrl to clarify how clients can access smartsheetgov
 
+## 1.4.2 - February 11, 2019
+- Update `extend` dependency version to resolve security vulnerability
+
 ## 1.4.1 - December 7, 2018
 
 ### Security
