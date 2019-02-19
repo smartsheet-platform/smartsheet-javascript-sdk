@@ -70,6 +70,12 @@ describe('Utils Unit Tests', function() {
         builtUrl.should.equal('https://api.smartsheet.com/2.0/');
       });
 
+      it('url should equal https://api.smartsheetgov.com/2.0', () => {
+        var url = 'https://api.smartsheetgov.com/2.0';
+        var builtUrl = requestor.internal.buildUrl({baseUrl:url});
+        builtUrl.should.equal('https://api.smartsheetgov.com/2.0');
+      });
+
       it('prefers baseUrl over env var', () => {
         var builtUrl = requestor.internal.buildUrl({baseUrl: 'base url'});
         builtUrl.should.equal('base url');
