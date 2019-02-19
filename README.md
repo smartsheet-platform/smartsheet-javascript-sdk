@@ -147,17 +147,17 @@ When creating the Smartsheet client, set the base URL by passing it into the con
 
 ```javascript
 var smartsheet = require('smartsheet').createClient({
-  baseUrl: 'https://new-base-url.smartsheet.com/api/v2'
+  baseUrl: smartsheet.smartSheetURIs.defaultBaseURI
 });
 ```
 
 #### Working With Smartsheetgov.com Accounts
-If you need to access Smartsheetgov you will need to specify the Smartsheetgov API URI as the `baseUrl` during creation of the Smartsheet client object. SmartsheetGov uses a base URI of `https://api.smartsheetgov.com/2.0/`. The Smartsheetgov URI is defined as a constant (`baseURIs.govBaseURI`).
+If you need to access Smartsheetgov you will need to specify the Smartsheetgov API URI as the `baseUrl` during creation of the Smartsheet client object. SmartsheetGov uses a base URI of `https://api.smartsheetgov.com/2.0/`. The Smartsheetgov URI is defined as a constant (`smartSheetURIs.govBaseURI`).
 
 Invoke the SmartsheetBuilder with the base URI pointing to Smartsheetgov:
 ```javascript
 var smartsheet = require('smartsheet').createClient({
-  baseUrl: smartsheet.baseURIs.govBaseURI
+  baseUrl: smartsheet.smartSheetURIs.govBaseURI
 });
 ```
 

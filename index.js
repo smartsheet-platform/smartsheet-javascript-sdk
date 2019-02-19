@@ -105,3 +105,8 @@ exports.createClient = function(clientOptions) {
     workspaces : require('./lib/workspaces/').create(options)
   };
 };
+
+exports.smartSheetURIs = {
+  defaultBaseURI: 'https://api.smartsheet.com/2.0/',
+  govBaseURI: 'https://api.smartsheetgov.com/2.0'
+}

@@ -15,7 +15,7 @@ describe('Client Unit Tests', function() {
 
   describe('#Constants', function() {
     it('should have Constants object', function() {
-      Object.keys(smartsheet.constants).should.be.length(8);
+      Object.keys(smartsheet.constants).should.be.length(7);
       smartsheet.should.have.property('constants');
       smartsheet.constants.should.have.property('maxRetryDurationMillis');
       smartsheet.constants.should.have.property('accessLevel');
@@ -24,7 +24,6 @@ describe('Client Unit Tests', function() {
       smartsheet.constants.should.have.property('paperSize');
       smartsheet.constants.should.have.property('acceptHeaders');
       smartsheet.constants.should.have.property('sheet');
-      smartsheet.constants.should.have.property('baseURIs');
     });
   });
 

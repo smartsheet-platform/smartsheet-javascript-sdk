@@ -72,7 +72,7 @@ describe('Utils Unit Tests', function() {
       });
 
       it('url should equal https://api.smartsheetgov.com/2.0', () => {
-        var url = constants.baseURIs.govBaseURI;
+        var url = 'https://api.smartsheetgov.com/2.0';
         var builtUrl = requestor.internal.buildUrl({baseUrl:url});
         builtUrl.should.equal('https://api.smartsheetgov.com/2.0');
       });
