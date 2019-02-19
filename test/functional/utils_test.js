@@ -5,7 +5,6 @@ var Promise = require('bluebird');
 var _ = require('underscore');
 var packageJson = require('../../package.json');
 var fs = require('fs');
-var constants = require('../../lib/utils/constants.js');
 
 var requestor = require('../../lib/utils/httpRequestor').create({request: request});
 
