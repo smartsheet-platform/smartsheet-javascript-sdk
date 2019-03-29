@@ -16,6 +16,12 @@ describe('Method Unit Tests', function () {
             ]
         },
         {
+            name: 'events',
+            methods: [
+                { name: 'getEvents', stub: 'get', options: {}, expectedRequest: {url: "events/" }}
+            ]
+        },
+        {
             name: 'favorites',
             methods: [
                 { name: 'listFavorites', stub: 'get', options: undefined, expectedRequest: {url: "favorites/" }},

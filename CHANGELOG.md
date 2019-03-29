@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## Unreleased
+### Added
+- Added events endpoint to retrieve events that are occurring in your Smartsheet plan.
 
 ## 1.5.0 - February 18, 2019
 - Updated documentation regarding the usage of baseUrl to clarify how clients can access smartsheetgov
