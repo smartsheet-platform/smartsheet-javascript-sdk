@@ -6,7 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## Unreleased
-### Added
+
+## 1.6.0 - April 8, 2019
 - Added events endpoint to retrieve events that are occurring in your Smartsheet plan.
 
 ## 1.5.0 - February 18, 2019
