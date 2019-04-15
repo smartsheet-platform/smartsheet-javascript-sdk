@@ -28,7 +28,7 @@ describe('Client Unit Tests', function() {
             }
         }
 
-        var testGetEvents = async function getEvents(moreEventsAvailable) {
+        async function getEvents(moreEventsAvailable) {
         do {
             let result = await smartsheet.events.getEvents(options);
             should(result.data).have.property('nextStreamPosition');
@@ -47,7 +47,7 @@ describe('Client Unit Tests', function() {
         while (moreEventsAvailable);
         }
 
-        testGetEvents(moreEventsAvailable);
+        getEvents(moreEventsAvailable);
     });
   });
 });
