@@ -18,7 +18,7 @@ describe('Client Unit Tests', function() {
   });
 
   describe('#Events', function() {
-    it('should iterate through stream data until all data has been returned using the since parameter', function() {
+    it('should iterate through stream data until all data has been returned', function() {
         // call events API with since query parameter
         let moreEventsAvailable = true;
         let options = {
