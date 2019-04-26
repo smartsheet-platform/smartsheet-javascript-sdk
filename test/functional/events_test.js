@@ -12,42 +12,54 @@ describe('Client Unit Tests', function() {
     smartsheet = client.createClient({accessToken:'1234', requestor: requestor});
   });
 
-  afterEach(function() {
-    smartsheet = null;
-    requestor = null;
-  });
+  // afterEach(function() {
+  //   smartsheet = null;
+  //   requestor = null;
+  // });
 
-  describe('#Events', function() {
-    it('should iterate through stream data until all data has been returned', function() {
-        // call events API with since query parameter
-        let moreEventsAvailable = true;
-        let options = {
-            queryParameters: {
-                since: '2018-01-09T17:41:05Z',
-                maxCount: 1
-            }
+  describe('#Events', async function() {
+    it('should iterate through stream data until all data has been returned', async function() {
+      // call events API with since query parameter
+      let options = {
+        queryParameters: {
+          since: '2018-01-09T17:41:05Z',
+          maxCount: 10
+        }
+      }
+
+      async function getEvents(options) {
+        try {
+          let result = await smartsheet.events.getEvents(options);
+          should(result).have.property('moreAvailable');
+          should(result).have.property('data');
+          should(result).have.property('nextStreamPosition');
+          
+          // should(result).have.property('xxxx');
+          getNextStreamOfEvents(result.moreAvailable, result.nextStreamPosition);
+        } catch(error) {
+          console.error(error)
+          throw error
+        }
+      }
+      
+      function getNextStreamOfEvents(moreEventsAvailable, nextStreamPosition) {
+        // subsequent calls require the streamPosition property
+        options = {
+          queryParameters: {
+            streamPosition: nextStreamPosition,
+            maxCount: 10
+          }
         }
 
-        async function getEvents(moreEventsAvailable) {
-        do {
-            let result = await smartsheet.events.getEvents(options);
-            should(result.data).have.property('nextStreamPosition');
-            should(result.data).have.property('moreAvailable');
-            should(result.data).have.property('data');
-
-            // subsequent calls must use the nextStreamPosition value
-            options = {
-                queryParameters: {
-                    streamPosition: result.nextStreamPosition,
-                    maxCount: 1
-                }
-            }
-            moreEventsAvailable = result.moreAvailable;
-        }
-        while (moreEventsAvailable);
-        }
-
-        getEvents(moreEventsAvailable);
+        if (moreEventsAvailable) {
+          getEvents(options);
+        } 
+        // else {
+        //   done();
+        // }
+      }
+      
+      getEvents(options);
     });
   });
 });
