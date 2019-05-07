@@ -11,7 +11,7 @@ Many events have additional information available as a part of the event. That i
 // Initialize the client
 var client = require('smartsheet');
 var smartsheet = client.createClient({
-  accessToken: 'll352u9jujauoqz4gstvsae05',
+  accessToken: '1234',
   logLevel: 'info'
 });
 
