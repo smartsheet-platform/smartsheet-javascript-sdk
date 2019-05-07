@@ -12,8 +12,8 @@ describe('Client Unit Tests', function() {
     smartsheet = client.createClient({accessToken:'1234', requestor: requestor});
   });
 
-  describe('#Events', async function() {
-    it('should iterate through stream data until all data has been returned', async function() {
+  describe('#Events', function() {
+    it('should iterate through stream data until all data has been returned', function() {
       const currentDate = new Date();
       const dateWeekAgo = currentDate.setDate(currentDate.getDate() - 7);
       // The first call to the events reporting API
@@ -27,20 +27,13 @@ describe('Client Unit Tests', function() {
         }
       }
 
-      async function getEvents(options) {
-        try {
-          let result = await smartsheet.events.getEvents(options);
-          should(result).have.property('moreAvailable');
-          should(result).have.property('data');
-          should(result).have.property('nextStreamPosition');
-
+      function getEvents(options) {
+        smartsheet.events.getEvents(options)
+        .then((result) => {
           printNewSheetEvents(result);
-          
           getNextStreamOfEvents(result.moreAvailable, result.nextStreamPosition);
-        } catch(error) {
-          console.error(error)
-          throw error
-        }
+        })
+        .catch((error) => console.log(JSON.stringify(error)));
       }
       
       function getNextStreamOfEvents(moreEventsAvailable, nextStreamPosition) {
@@ -62,7 +55,7 @@ describe('Client Unit Tests', function() {
         // Find all created sheets
         result.data.forEach(function (item) {
           if (item.objectType === "SHEET" && item.action === "CREATE") {
-            console.log(item)
+            console.log(item.additionalDetails.sheetName)
           }
         })
       }
