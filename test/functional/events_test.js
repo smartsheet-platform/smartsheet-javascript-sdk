@@ -12,18 +12,18 @@ describe('Client Unit Tests', function() {
     smartsheet = client.createClient({accessToken:'1234', requestor: requestor});
   });
 
-  // afterEach(function() {
-  //   smartsheet = null;
-  //   requestor = null;
-  // });
-
   describe('#Events', async function() {
     it('should iterate through stream data until all data has been returned', async function() {
-      // call events API with since query parameter
+      const currentDate = new Date();
+      const dateWeekAgo = currentDate.setDate(currentDate.getDate() - 7);
+      // The first call to the events reporting API
+      // requires the since query parameter.
+      // If you pass in an UNIX epoch date, numericDates must be true
       let options = {
         queryParameters: {
-          since: '2018-01-09T17:41:05Z',
-          maxCount: 10
+          since: dateWeekAgo,
+          maxCount: 10,
+          numericDates: true
         }
       }
 
@@ -33,8 +33,9 @@ describe('Client Unit Tests', function() {
           should(result).have.property('moreAvailable');
           should(result).have.property('data');
           should(result).have.property('nextStreamPosition');
+
+          printNewSheetEvents(result);
           
-          // should(result).have.property('xxxx');
           getNextStreamOfEvents(result.moreAvailable, result.nextStreamPosition);
         } catch(error) {
           console.error(error)
@@ -43,7 +44,7 @@ describe('Client Unit Tests', function() {
       }
       
       function getNextStreamOfEvents(moreEventsAvailable, nextStreamPosition) {
-        // subsequent calls require the streamPosition property
+        // Subsequent calls require the streamPosition property
         options = {
           queryParameters: {
             streamPosition: nextStreamPosition,
@@ -54,9 +55,16 @@ describe('Client Unit Tests', function() {
         if (moreEventsAvailable) {
           getEvents(options);
         } 
-        // else {
-        //   done();
-        // }
+      }
+
+      // This example is looking specifically for new sheet events
+      function printNewSheetEvents(result) {
+        // Find all created sheets
+        result.data.forEach(function (item) {
+          if (item.objectType === "SHEET" && item.action === "CREATE") {
+            console.log(item)
+          }
+        })
       }
       
       getEvents(options);

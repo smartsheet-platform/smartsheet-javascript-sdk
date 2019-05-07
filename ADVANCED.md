@@ -1,0 +1,8 @@
+# Advanced Topics for the Smartsheet SDK for Javascript
+
+## Event Reporting
+The following sample demonstrates 'best' practices for enumerating events using the Smartsheet Event Reporting feature. All enumerations must begin using the since parameter to the `list_events` method. Specify 0 as an argument (i.e. since=0) if you wish to begin enumeration at the beginning of stored event history. A more common scenario would be to enumerate events over a certain time frame by providing an ISO 8601 formatted or numerical (UNIX epoch) date as an argument to `list_events`. In this sample, events for the previous 7 days are enumerated.
+
+After the initial list of events is returned, you should only continue to enumerate events if the `more_available` flag in the previous response indicates that more data is available. To continue the enumeration, supply an argument to the `stream_position` parameter to the `list_events` method (`since` must be _____). The `stream_position` argument you supplied was provided by the `next_stream_position` attribute of the previous response.
+
+Many events have additional information available as a part of the event. That information can be accessed using the ___ stored in the `additional_details` attribute (Note that attributes of the `additional_details` dictionary use camelCase/JSON names, e.g. `sheetName` not `sheet_name`). An example is provided for `sheetName` below. Information about the additional details provided can be found [here](https://smartsheet-platform.github.io/event-reporting-docs/).
