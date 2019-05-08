@@ -39,6 +39,17 @@ describe('Client Unit Tests', function() {
     });
   });
 
+  describe('#Events', function() {
+    it('should have Events object', function() {
+      smartsheet.should.have.property('events');
+      Object.keys(smartsheet.events).should.be.length(1);
+    });
+
+    it('should have Events GET methods', function() {
+      smartsheet.events.should.have.property('getEvents');
+    });
+  });
+
   describe('#Favorites', function() {
     it('should have Favorites object',function(){
       smartsheet.should.have.property('favorites');

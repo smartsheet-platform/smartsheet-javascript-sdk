@@ -219,10 +219,18 @@ var responsePromise = smartsheet.request.post({
 });
 ```
 
+## Advanced Topics
+For details about more advanced features, see [Advanced Topics](ADVANCED.md).
+
 ## Contributing
 
 If you would like to contribute a change to the SDK, please fork a branch and then submit a pull request.
 [More info here.](https://help.github.com/articles/using-pull-requests)
+
+## Version Numbers
+Starting from the v2.77.0 release, Smartsheet SDKs will use a new versioning strategy. Since all users are on the Smartsheet API 2.0, the SDK version numbers will start with 2. The 2nd number will be an internal reference number. The 3rd number is for incremental changes. 
+
+For example, v2.77.0 means that you are using our 2.0 version of the API, the API is synched internally to a tag of 77, and then if there are numbers after the last decimal, that will indicate a minor change.
 
 ## Support
 

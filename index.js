@@ -87,6 +87,7 @@ exports.createClient = function(clientOptions) {
   return {
     constants  : require('./lib/utils/constants.js'),
     contacts   : require('./lib/contacts/').create(options),
+    events     : require('./lib/events/').create(options),
     favorites  : require('./lib/favorites/').create(options),
     folders    : require('./lib/folders/').create(options),
     groups     : require('./lib/groups/').create(options),
@@ -108,5 +109,5 @@ exports.createClient = function(clientOptions) {
 
 exports.smartSheetURIs = {
   defaultBaseURI: 'https://api.smartsheet.com/2.0/',
-  govBaseURI: 'https://api.smartsheetgov.com/2.0'
+  govBaseURI: 'https://api.smartsheetgov.com/2.0/'
 }
