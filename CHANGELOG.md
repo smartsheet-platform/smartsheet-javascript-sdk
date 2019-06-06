@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## Unreleased
 
 ## 2.77.1 - June 6, 2019
+- Updated `js-yaml` and `handlebars` dependencies due to security vulnerabilities
 - Automated publication process to npm using Travis CI
 
 ## 2.77.0 - May 9, 2019
