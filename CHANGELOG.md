@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## Unreleased
 
+## 2.77.1 - June 6, 2019
+- Automated publication process to npm using Travis CI
+
 ## 2.77.0 - May 9, 2019
 - Added events endpoint to retrieve events that are occurring in your Smartsheet plan.
 
