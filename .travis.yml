@@ -18,6 +18,7 @@ branches:
 after_success:
 - npm run coverage
 - npm run report-coverage
+
 before_deploy: "echo 'Deploying release to npm'"
 deploy:
   provider: npm
