@@ -174,6 +174,8 @@ The source code comes with several scripts for running tests:
 |`gulp jshint`|Runs JSHint against the codebase|
 |`gulp [watch]`|Watches the codebase and runs JSHint whenever changes are made|
 
+Note that a successful test run will currently output some unhandled rejection messages in the body of the logs. This is expected, and does not indicate test failure.
+
 ## Passthrough Option
 
 If there is an API Feature that is not yet supported by the JavaScript SDK, there is a passthrough option that allows you to call arbitrary API endpoints. Passthrough calls support error retry and logging.
