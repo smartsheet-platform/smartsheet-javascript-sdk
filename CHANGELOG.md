@@ -8,12 +8,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## Unreleased
 ## 2.77.3 - Aug 16, 2019
 - Added support for the following sheet summary endpoints:
-    - `getSummary`
-    - `getSummaryFields`
-    - `addSummaryFields`
-    - `deleteSummaryFields`
-    - `updateSummaryFields`
-    - `addSummaryFieldImage`
+    - `sheets.getSummary`
+    - `sheets.getSummaryFields`
+    - `sheets.addSummaryFields`
+    - `sheets.deleteSummaryFields`
+    - `sheets.updateSummaryFields`
+    - `sheets.addSummaryFieldImage`
 
 ## 2.77.2 - Aug 9, 2019
 - Updated the following dependencies due to security vulnerabilities:
