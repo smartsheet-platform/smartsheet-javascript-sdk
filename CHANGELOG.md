@@ -6,8 +6,14 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## Unreleased
-### Added
-- Added support for sheet summary endpoints.
+## 2.77.3 - Aug 16, 2019
+- Added support for the following sheet summary endpoints:
+    - `getSummary`
+    - `getSummaryFields`
+    - `addSummaryFields`
+    - `deleteSummaryFields`
+    - `updateSummaryFields`
+    - `addSummaryFieldImage`
 
 ## 2.77.2 - Aug 9, 2019
 - Updated the following dependencies due to security vulnerabilities:
