@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## Unreleased
 ## 2.77.3 - Aug 16, 2019
-- Added support for the following sheet summary endpoints:
+- Added support for the following sheet summary methods:
     - `sheets.getSummary`
     - `sheets.getSummaryFields`
     - `sheets.addSummaryFields`
