@@ -201,6 +201,13 @@ describe('Method Unit Tests', function () {
                 { name: 'getSheetAsPDF', stub: 'get', options: {}, expectedRequest: {url: "sheets/", accept: constants.acceptHeaders.applicationPdf, encoding:null}},
                 { name: 'getSheetVersion', stub: 'get', options: {sheetId: 123}, expectedRequest: {url: "sheets/123/version"}},
                 { name: 'listOrganizationSheets', stub: 'get', options: undefined, expectedRequest: {url: "users/sheets"}},
+                // summaries
+                { name: 'getSummary', stub: 'get', options: {sheetId: 123}, expectedRequest: {url: "sheets/123/summary"}},
+                { name: 'getSummaryFields', stub: 'get', options: {sheetId: 123}, expectedRequest: {url: "sheets/123/summary/fields"}},
+                { name: 'addSummaryFields', stub: 'post', options: {sheetId: 123, body: {}}, expectedRequest: {url: "sheets/123/summary/fields"}},
+                { name: 'deleteSummaryFields', stub: 'delete', options: {sheetId: 123}, expectedRequest: {url: "sheets/123/summary/fields"}},
+                { name: 'updateSummaryFields', stub: 'put', options: {sheetId: 123, body: {}}, expectedRequest: {url: "sheets/123/summary/fields"}},
+                { name: 'addSummaryFieldImage', stub: 'postFile', options: {sheetId: 123, fieldId: 234}, expectedRequest: {url: "sheets/123/summary/fields/234/images"}},
                 // rows
                 { name: 'getRow', stub: 'get', options: {sheetId: 123, rowId: 234}, expectedRequest: {url: "sheets/123/rows/234"}},
                 { name: 'getRowAttachments', stub: 'get', options: {sheetId: 123, rowId: 234}, expectedRequest: {url: "sheets/123/rows/234/attachments"}},
