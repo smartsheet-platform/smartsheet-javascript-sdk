@@ -1,6 +1,6 @@
 {
   "name": "smartsheet",
-  "version": "2.77.3",
+  "version": "2.77.4",
   "description": "Smartsheet JavaScript client SDK",
   "main": "index.js",
   "scripts": {
@@ -48,7 +48,7 @@
     "mock": "^0.1.1",
     "should": "^13.0.1",
     "sinon": "^1.14.1",
-    "yargs": "^10.0.3"
+    "yargs": "^14.0.0"
   },
   "directories": {
     "lib": "lib",
