@@ -41,7 +41,6 @@
     "gulp": "^4.0.0",
     "gulp-jshint": "^2.1.0",
     "gulp-mocha": "^6.0.0",
-    "gulp-util": "^3.0.4",
     "istanbul": "^0.4.5",
     "jshint-stylish": "^1.0.1",
     "mocha": "^5.2.0",
