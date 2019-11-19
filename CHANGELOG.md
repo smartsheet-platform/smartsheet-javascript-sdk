@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## Unreleased
+## [2.86.0] - 2019-11-19
+### Added
+- support for profile images
+
 ## 2.77.3 - Aug 16, 2019
 - Added support for the following sheet summary methods:
     - `sheets.getSummary`
