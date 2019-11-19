@@ -290,6 +290,8 @@ describe('Method Unit Tests', function () {
                 { name: 'listAlternateEmails', stub: 'get', options: {userId: 123}, expectedRequest: {url: "users/123/alternateemails/"}},
                 { name: 'makeAlternateEmailPrimary', stub: 'post', options: {userId: 123, alternateEmailId: 234}, expectedRequest: {url: "users/123/alternateemails/234/makeprimary"}},
                 { name: 'deleteAlternateEmail', stub: 'delete', options: {userId: 123, alternateEmailId: 234}, expectedRequest: {url: "users/123/alternateemails/234"}},
+                // profile image
+                { name: 'addProfileImage', stub: 'postFile', options: {userId: 123}, expectedRequest: {url: "users/123/profileimage"}},
             ]
         },
         {
