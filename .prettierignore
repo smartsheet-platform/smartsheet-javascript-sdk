@@ -1,10 +1,6 @@
 node_modules/
+.nyc_output/
 coverage/
-config/default.json
-.idea/**
-.DS_Store
-npm-debug.log
-.vscode/
 # generated via TypeScript with `npm run build` (and prepare script):
 /index.d.ts
 /index.js
