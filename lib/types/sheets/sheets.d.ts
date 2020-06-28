@@ -30,5 +30,8 @@ export interface SheetsResource
   sendSheetViaEmail: DefaultSDKFunction;
   getPublishStatus: DefaultSDKFunction;
   setPublishStatus: DefaultSDKFunction;
+  updateSheet: DefaultSDKFunction;
+  deleteSheet: DefaultSDKFunction;
+  moveSheet: DefaultSDKFunction;
   sortRowsInSheet: DefaultSDKFunction;
 }

@@ -37,9 +37,17 @@ describe("TypeScript", () => {
     });
 
     it("should have sheets", () => {
-      expect(client).to.have.property("sheets");
-      expect(client).to.have.nested.property("sheets.listSheets");
-      expect(client).to.have.nested.property("sheets.getSheet");
+      expect(client.sheets).to.be.instanceOf(Object);
+      expect(client.sheets.listSheets).to.be.instanceOf(Function);
+      expect(client.sheets.getSheet).to.be.instanceOf(Function);
+      expect(client.sheets.getSheet).to.be.instanceOf(Function);
+      expect(client.sheets.sendSheetViaEmail).to.be.instanceOf(Function);
+      expect(client.sheets.getPublishStatus).to.be.instanceOf(Function);
+      expect(client.sheets.setPublishStatus).to.be.instanceOf(Function);
+      expect(client.sheets.updateSheet).to.be.instanceOf(Function);
+      expect(client.sheets.deleteSheet).to.be.instanceOf(Function);
+      expect(client.sheets.moveSheet).to.be.instanceOf(Function);
+      expect(client.sheets.sortRowsInSheet).to.be.instanceOf(Function);
     });
   });
 });
