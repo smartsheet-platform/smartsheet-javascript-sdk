@@ -12,7 +12,7 @@
     "coverage": "istanbul cover _mocha -- -u exports -R spec \"test/**/*_test.js\"",
     "report-coverage": "cat ./coverage/lcov.info | coveralls",
     "build": "tsc --declaration",
-    "prepare": "npm run --silent lint && npm run --silent build",
+    "prepare": "npm run --silent build",
     "eslint": "eslint --ext \".t\" \"**/*.ts\"",
     "eslint-fix": "eslint --ext \".t\" \"**/*.ts\" --fix",
     "plint": "prettier -l \"**/*.ts\"",
