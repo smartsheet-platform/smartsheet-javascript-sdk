@@ -5,13 +5,9 @@ import smartsheetDefault, { SmartsheetClient } from "../../";
 describe("TypeScript", () => {
   describe("Default Export", () => {
     function assertDefaultProps(defaultExport: typeof smartsheetDefault) {
-      expect(defaultExport).to.have.property("createClient");
-      expect(defaultExport)
-        .to.have.nested.property("smartSheetURIs.defaultBaseURI")
-        .to.be.a("string");
-      expect(defaultExport)
-        .to.have.nested.property("smartSheetURIs.govBaseURI")
-        .to.be.a("string");
+      expect(defaultExport.createClient).to.be.instanceOf(Object);
+      expect(defaultExport.smartSheetURIs.defaultBaseURI).to.be.a("string");
+      expect(defaultExport.smartSheetURIs.govBaseURI).to.be.a("string");
     }
 
     it("should allow default import", () => {
