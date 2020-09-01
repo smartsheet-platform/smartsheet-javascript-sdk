@@ -6,6 +6,16 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## Unreleased
+
+## [2.101.0] - 2020-09-01
+### Added
+- Add support for custom properties in header
+### Fixed
+- addImageToCell throws TypeError: preview.substring is not a function
+### Updated
+- Bump handlebars from 4.1.2 to 4.5.3
+- Bump lodash from 4.17.14 to 4.17.19
+
 ## [2.86.0] - 2019-11-19
 ### Added
 - support for profile images
