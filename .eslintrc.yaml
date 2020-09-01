@@ -1,0 +1,6 @@
+extends:
+  - "@activescott/eslint-config"
+rules:
+  semi:
+    - error
+    - always

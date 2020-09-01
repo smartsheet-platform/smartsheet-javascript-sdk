@@ -4,6 +4,7 @@ dist: trusty
 
 node_js:
   - "lts/carbon"
+  - 13
 
 before_install:
   - git clone https://github.com/smartsheet-platform/smartsheet-sdk-tests.git

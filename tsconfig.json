@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "target": "ES3",
+    "module": "CommonJS",
+    "noImplicitAny": true,
+    "strictNullChecks": true
+  },
+  "files": ["index.ts"]
+}
