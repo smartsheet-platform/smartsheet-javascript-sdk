@@ -181,6 +181,12 @@ describe('Utils Unit Tests', function() {
         var headers = requestor.internal.buildHeaders({userAgent: 'someAgentString'});
         headers['User-Agent'].should.equal(`smartsheet-javascript-sdk/${packageJson.version}/someAgentString`);
       });
+
+      it('Custom properties should be allowed', () => {
+        var headers = requestor.internal.buildHeaders({customProperties: {custom1: 'value', custom2: 'value2'}});
+        headers['custom1'].should.equal(`value`);
+        headers['custom2'].should.equal(`value2`);
+      });
     });
   });
 
