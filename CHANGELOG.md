@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## Unreleased
 
+## [2.126.0] - 2021-05-07
+### Updated
+- Bump lodash from 4.17.19 to 4.17.21
+- Bump handlebars from 4.5.3 to 4.7.7
+- Bump underscore from 1.9.1 to 1.12.1
+- Bump y18n from 3.2.1 to 3.2.2
+- Bump ini from 1.3.5 to 1.3.7
+
 ## [2.101.0] - 2020-09-01
 ### Added
 - Add support for custom properties in header
