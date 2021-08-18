@@ -20,7 +20,7 @@ The Smartsheet API documentation with corresponding SDK example code can be foun
 
 ## Example Usage
 
-To call the API, you must have an access token, which looks something like this example: ll352u9jujauoqz4gstvsae05. You can find the access token in the Smartsheet UI at Account > Personal Settings > API Access.
+To call the API, you must have an access token, which looks something like this example: JKlMNOpQ12RStUVwxYZAbcde3F5g6hijklM789. You can find the access token in the Smartsheet UI at Account > Personal Settings > API Access.
 
 The following is a brief sample using promises that shows you how to:
 
@@ -32,7 +32,7 @@ The following is a brief sample using promises that shows you how to:
 // Initialize the client
 var client = require('smartsheet');
 var smartsheet = client.createClient({
-  accessToken: 'll352u9jujauoqz4gstvsae05',
+  accessToken: 'JKlMNOpQ12RStUVwxYZAbcde3F5g6hijklM789',
   logLevel: 'info'
 });
 
