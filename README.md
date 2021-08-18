@@ -161,6 +161,17 @@ var smartsheet = require('smartsheet').createClient({
 });
 ```
 
+#### Working With Smartsheet Regions Europe Accounts
+
+If you need to access Smartsheet.eu you will need to specify the Smartsheet.eu API URI as the `baseUrl` during creation of the Smartsheet client object. Smartsheet.eu uses a base URI of `https://api.smartsheet.eu/2.0/`. The Smartsheet.eu URI is defined as a constant (`smartSheetURIs.euBaseURI`).
+
+Invoke the SmartsheetBuilder with the base URI pointing to Smartsheet.eu:
+```javascript
+var smartsheet = require('smartsheet').createClient({
+  baseUrl: smartsheet.smartSheetURIs.euBaseURI
+});
+```
+
 ## Testing
 
 The source code comes with several scripts for running tests:
