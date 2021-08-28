@@ -4,6 +4,13 @@ import {
   ClientLoggerOptions,
 } from "./lib/types/client";
 export { SmartsheetClient } from "./lib/types/client";
+export { SheetData } from "./lib/types/sheets/get";
+export { Column } from "./lib/types/sheets/columns";
+export {
+  RowData,
+  CellHistoryCellData,
+  GetCellHistoryResponse,
+} from "./lib/types/sheets/rows";
 import { NPMLoggingLevel } from "winston";
 import * as _ from "underscore";
 import * as winston from "winston";
