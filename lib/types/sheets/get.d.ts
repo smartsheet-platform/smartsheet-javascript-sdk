@@ -14,14 +14,22 @@ export interface SheetResource {
   listOrganizationSheets: DefaultSDKFunction;
 }
 
-export type GetSheetOptions = PageOptions & {
+export type GetSheetOptions = {
   id: number;
-  include?: string;
-  exclude?: string;
-  columnIds?: string;
-  filterId?: number;
-  ifVersionAfter?: number;
-  level?: number;
+  queryParameters?: PageOptions & {
+    include?: string;
+    exclude?: string;
+    columnIds?: string;
+    filterId?: number;
+    ifVersionAfter?: number;
+    level?: number;
+    /** a comma-separated list of row Ids on which to filter the rows included in the result */
+    rowIds?: string;
+    /** a comma-separated list of row numbers on which to filter the rows included in the result. Non-existent row numbers are ignored. */
+    rowNumbers?: string;
+    /** filter to return only rows that have been modified since the date/time provided. Date should be in ISO-8601 format, for example, rowsModifiedSince=2020-01-30T13:25:32-07:00. */
+    rowsModifiedSince?: string;
+  }
 };
 
 /**

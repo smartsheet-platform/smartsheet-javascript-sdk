@@ -1,5 +1,6 @@
 import { SheetsResource } from "./sheets/sheets";
 import { NPMLoggingLevel } from "winston";
+import { HttpRequestor } from "./utils/httpRequestor";
 
 export interface SmartsheetClient {
   /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -29,6 +30,7 @@ export interface ClientOptions extends ClientLoggerOptions {
   accessToken?: string;
   baseUrl?: string;
   userAgent?: string;
+  requestor?: HttpRequestor;
 }
 
 export interface ClientLoggerOptions {

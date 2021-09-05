@@ -4,7 +4,8 @@ import {
   ClientLoggerOptions,
 } from "./lib/types/client";
 export { SmartsheetClient } from "./lib/types/client";
-export { SheetData } from "./lib/types/sheets/get";
+export { HttpRequestor } from "./lib/types/utils/httpRequestor"
+export { GetSheetOptions, SheetData } from "./lib/types/sheets/get";
 export { Column } from "./lib/types/sheets/columns";
 export {
   RowData,
