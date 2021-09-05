@@ -33,4 +33,4 @@ export interface RequestorRequestOptions {
   calcRetryBackoff?: (numRetries: number, errorReason: any) => number;
 }
 
-export type RequestorResponse = IncomingMessage;
+export type RequestorResponse = any;
