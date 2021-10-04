@@ -20,7 +20,7 @@ The Smartsheet API documentation with corresponding SDK example code can be foun
 
 ## Example Usage
 
-To call the API, you must have an access token, which looks something like this example: ll352u9jujauoqz4gstvsae05. You can find the access token in the Smartsheet UI at Account > Personal Settings > API Access.
+To call the API, you must have an access token, which looks something like this example: JKlMNOpQ12RStUVwxYZAbcde3F5g6hijklM789. You can find the access token in the Smartsheet UI at Account > Personal Settings > API Access.
 
 The following is a brief sample using promises that shows you how to:
 
@@ -32,7 +32,7 @@ The following is a brief sample using promises that shows you how to:
 // Initialize the client
 var client = require('smartsheet');
 var smartsheet = client.createClient({
-  accessToken: 'll352u9jujauoqz4gstvsae05',
+  accessToken: 'JKlMNOpQ12RStUVwxYZAbcde3F5g6hijklM789',
   logLevel: 'info'
 });
 
@@ -158,6 +158,17 @@ Invoke the SmartsheetBuilder with the base URI pointing to Smartsheetgov:
 ```javascript
 var smartsheet = require('smartsheet').createClient({
   baseUrl: smartsheet.smartSheetURIs.govBaseURI
+});
+```
+
+#### Working With Smartsheet Regions Europe Accounts
+
+If you need to access Smartsheet.eu you will need to specify the Smartsheet.eu API URI as the `baseUrl` during creation of the Smartsheet client object. Smartsheet.eu uses a base URI of `https://api.smartsheet.eu/2.0/`. The Smartsheet.eu URI is defined as a constant (`smartSheetURIs.euBaseURI`).
+
+Invoke the SmartsheetBuilder with the base URI pointing to Smartsheet.eu:
+```javascript
+var smartsheet = require('smartsheet').createClient({
+  baseUrl: smartsheet.smartSheetURIs.euBaseURI
 });
 ```
 
