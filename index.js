@@ -109,5 +109,6 @@ exports.createClient = function(clientOptions) {
 
 exports.smartSheetURIs = {
   defaultBaseURI: 'https://api.smartsheet.com/2.0/',
+  euBaseURI: 'https://api.smartsheet.eu/2.0/',
   govBaseURI: 'https://api.smartsheetgov.com/2.0/'
 }
