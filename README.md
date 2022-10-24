@@ -1,6 +1,6 @@
 # Smartsheet SDK for JavaScript [![Build Status](https://travis-ci.org/smartsheet-platform/smartsheet-javascript-sdk.svg?branch=master)](https://travis-ci.org/smartsheet-platform/smartsheet-javascript-sdk) [![Coverage Status](https://coveralls.io/repos/github/smartsheet-platform/smartsheet-javascript-sdk/badge.svg?branch=master)](https://coveralls.io/github/smartsheet-platform/smartsheet-javascript-sdk?branch=master) [![npm version](https://badge.fury.io/js/smartsheet.svg)](https://badge.fury.io/js/smartsheet)
 
-This is a client SDK to simplify connecting to the [Smartsheet API](http://www.smartsheet.com/developers/api-documentation) from Node.js applications.
+This is a client SDK to simplify connecting to the [Smartsheet API](https://smartsheet.redoc.ly/) from Node.js applications.
 
 ## System Requirements
 
@@ -16,7 +16,7 @@ npm install smartsheet
 
 ## Documentation
 
-The Smartsheet API documentation with corresponding SDK example code can be found [here](http://www.smartsheet.com/developers/api-documentation).
+The Smartsheet API documentation with corresponding SDK example code can be found [here](https://smartsheet.redoc.ly/).
 
 ## Example Usage
 
@@ -247,7 +247,7 @@ For example, v2.77.0 means that you are using our 2.0 version of the API, the AP
 
 ## Support
 
-If you have any questions or issues with this SDK please post on [Stack Overflow using the tag "smartsheet-api"](http://stackoverflow.com/questions/tagged/smartsheet-api) or contact us directly at api@smartsheet.com.
+If you have any questions or issues with this SDK please post on [Stack Overflow using the tag "smartsheet-api"](http://stackoverflow.com/questions/tagged/smartsheet-api) or contact us directly at devrel@smartsheet.com.
 
 ## Release Notes
 
