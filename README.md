@@ -2,6 +2,9 @@
 
 This is a client SDK to simplify connecting to the [Smartsheet API](https://smartsheet.redoc.ly/) from Node.js applications.
 
+## Notice
+This repo `has moved` to the Smartsheet Organization on GitHub and can be accessed [here](https://github.com/smartsheet/smartsheet-javascript-sdk).
+
 ## System Requirements
 
 The SDK supports Node.js versions 6.x or later.
